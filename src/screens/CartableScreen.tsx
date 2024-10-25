@@ -13,12 +13,22 @@ import { useDispatch } from "react-redux";
 
 // HOOKS
 import { useAppSelector } from "@/hooks/usePreTypesHooks";
+import useCreateColumns from "@/hooks/useCreateColumns";
 
 // COMPONENTS
 // import RequestsGrid from "@/grids/RequestsGrid";
+import Grid from "@/components/Grid";
 
 // LIBRARIES
 import { toast } from "react-toastify";
+import Skeleton from "react-loading-skeleton";
+
+// SCHEMAS
+import { requestSchema as columnDefs } from "@/schemas/requestSchema.js";
+
+// DATA
+import { requestCellRenderer } from "@/data/grid-cells/requestCellRenderer";
+import { requestGridActionsRenderer } from "@/data/grid-actions/requestGridActions";
 
 function CartableScreen() {
   // MAIN STATE
@@ -34,6 +44,7 @@ function CartableScreen() {
     useLazyGetRoleQuery();
   const [
     getRequests,
+
     { isLoading: isRequestsLoading, isFetching: isRequestsFetching },
   ] = useLazyGetRequestQuery();
 
@@ -57,32 +68,35 @@ function CartableScreen() {
     }
   }, [dispatch, getRoles]);
 
-  const fetchRequests = useCallback(async (Role: string) => {
-    try {
-      const res = (await getRequests({ Role }).unwrap()) as any;
-      const mappedData = res?.itemList.map(
-        (item: RequestType, index: number) => ({
-          id: item.requestID,
-          requestRowNum: index + 1,
-          requestNO: item.requestNO || "-",
-          requestTypeID: item.requestTypeID,
-          personID: item.personID,
-          requestTypeNameFa: item.requestTypeNameFa,
-          personName: item.personFirstName + " " + item.personLastName || "-",
-          date: item.requestDate,
-          body: item.requestText,
-        })
-      );
+  const fetchRequests = useCallback(
+    async (Role: string) => {
+      try {
+        const res = (await getRequests({ Role }).unwrap()) as any;
+        const mappedData = res?.itemList.map(
+          (item: RequestType, index: number) => ({
+            id: item.requestID,
+            requestRowNum: index + 1,
+            requestNO: item.requestNO || "-",
+            requestTypeID: item.requestTypeID,
+            personID: item.personID,
+            requestTypeNameFa: item.requestTypeNameFa,
+            personName: item.personFirstName + " " + item.personLastName || "-",
+            date: item.requestDate,
+            body: item.requestText,
+          })
+        );
 
-      setRequestTableData(mappedData);
-    } catch (error) {
-      console.log(error);
-      const apiError = error as ApiError;
-      toast.error(apiError.data?.message || apiError.error, {
-        autoClose: 2000,
-      });
-    }
-  }, []);
+        setRequestTableData(mappedData);
+      } catch (error) {
+        console.log(error);
+        const apiError = error as ApiError;
+        toast.error(apiError.data?.message || apiError.error, {
+          autoClose: 2000,
+        });
+      }
+    },
+    [getRequests]
+  );
 
   // SIDE EFFECTS
   useEffect(() => {
@@ -101,6 +115,26 @@ function CartableScreen() {
     }
   }, [selectedRole, fetchRequests]);
 
+  // HANDLERS
+  const handleRefresh = () => {
+    fetchRequests(selectedRole?.value);
+  };
+
+  const customCellRenderers = requestCellRenderer(selectedRole);
+
+  const topBarActions = requestGridActionsRenderer({
+    isLoading: isRequestsLoading,
+    isFetching: isRequestsFetching,
+    roles: allRoles,
+    handleRefresh,
+  });
+
+  const columns = useCreateColumns({
+    columnDefs,
+    customCellRenderers,
+    dependencies: [selectedRole?.value],
+  });
+
   return (
     <section className="flex-col">
       <div className="title-primary--container flex-row flex-center">
@@ -109,9 +143,27 @@ function CartableScreen() {
         </h4>
       </div>
 
-      {/* {selectedRole && (
-        <RequestsGrid isLoading={isLoading || isFetching} roles={allRoles} />
-      )} */}
+      {isRequestsLoading ||
+      isRequestsFetching ||
+      isRolesFetching ||
+      isRolesLoading ? (
+        <div className="skeleton-lg">
+          <Skeleton
+            count={5}
+            baseColor="#dfdfdf"
+            highlightColor="#9f9f9f"
+            duration={1}
+            direction="rtl"
+          />
+        </div>
+      ) : (
+        <Grid
+          columns={columns}
+          data={requestTableData}
+          topBarActions={topBarActions}
+          scroll={false}
+        />
+      )}
     </section>
   );
 }

@@ -1,3 +1,5 @@
+@use "../abstracts" as *;
+
 .modal {
     position: fixed;
     background-color: $color-grey-1;

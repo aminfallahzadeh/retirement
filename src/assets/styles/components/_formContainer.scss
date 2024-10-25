@@ -1,3 +1,5 @@
+@use "../abstracts" as *;
+
 .formContainer {
     background-color: var(--color-bg-container);
     border-radius: $border-radius-primary;

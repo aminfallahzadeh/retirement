@@ -1,3 +1,5 @@
+@use "../abstracts" as *;
+
 .topnav {
     height: $top-nav-height;
     position: fixed;

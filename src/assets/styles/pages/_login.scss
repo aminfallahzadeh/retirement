@@ -1,3 +1,5 @@
+@use "../abstracts/variables" as *;
+
 .login {
     background-color: $color-login-bg;
 

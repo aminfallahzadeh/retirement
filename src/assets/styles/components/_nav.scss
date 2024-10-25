@@ -1,3 +1,5 @@
+@use "../abstracts" as *;
+
 .nav {
     background-color: var(--color-bg-nav-primary);
     display: flex;
