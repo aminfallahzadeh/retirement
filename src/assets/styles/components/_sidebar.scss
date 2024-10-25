@@ -1,0 +1,39 @@
+.ps-sidebar-root {
+	position: fixed !important;
+	right: 0 !important;
+	top: 0 !important;
+	padding-top: $top-nav-height !important;
+	overflow-x: hidden !important;
+	min-width: $side-nav-width !important;
+	width: $side-nav-width !important;
+	z-index: 9 !important;
+	height: 100% !important;
+	font-size: 0.88rem !important;
+	border-left-style: none !important;
+}
+
+.ps-sidebar-container {
+	background-color: var(--color-bg-sidebar-1) !important;
+	color: var(--color-sidebar-text) !important;
+}
+
+.ps-menu-button {
+	transition: all 0.25s;
+
+	&:hover {
+		background-color: var(--color-sidebar-hover) !important;
+	}
+}
+
+.ps-menu-label {
+	display: flex;
+}
+
+.ps-submenu-content {
+	background-color: var(--color-bg-sidebar-2) !important;
+}
+
+.ps-active {
+	background-color: var(--color-sidebar-hover) !important;
+	color: var(--color-sidebar-text-selected) !important;
+}

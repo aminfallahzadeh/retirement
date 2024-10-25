@@ -1,0 +1,190 @@
+@font-face {
+    font-family: sahel;
+    src:
+        url("../../fonts/Sahel.eot") format("embedded-opentype"),
+        url("../../fonts/Sahel.ttf") format("truetype"),
+        url("../../fonts/Sahel.woff") format("woff"),
+        url("../../fonts/Sahel.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: Vazir;
+    src:
+        url("../../fonts/Vazir.eot") format("embedded-opentype"),
+        url("../../fonts/Vazir.ttf") format("truetype"),
+        url("../../fonts/Vazir.woff") format("woff"),
+        url("../../fonts/Vazir.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: IranYekan;
+    src: url("../../fonts/Qs_Iranyekan.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: Nastaliq;
+    src: url("../../fonts/IranNastaliq.ttf") format("truetype");
+}
+
+body {
+    font-family: IranYekan, sans-serif !important;
+}
+
+input {
+    font-family: IranYekan, sans-serif !important;
+}
+
+html {
+    font-family: Vazir, sans-serif !important;
+}
+
+textarea {
+    padding: 0.65rem !important;
+    font-family: IranYekan !important;
+}
+
+select {
+    font-family: IranYekan !important;
+    padding: 0 0.5rem !important;
+}
+
+.heading-primary {
+    font-size: 35px;
+    color: var(--color-txt-primary);
+    position: relative;
+    text-align: center;
+    font-family: Nastaliq;
+    font-weight: lighter;
+    line-height: 0;
+    padding-top: 35px;
+    -webkit-text-shadow: -2px 3px 7px rgba(var(--color-txt-primary-rgb), 0.8);
+    -moz-text-shadow: -2px 3px 7px rgba(var(--color-txt-primary-rgb), 0.8);
+    text-shadow: -2px 3px 7px rgba(var(--color-txt-primary-rgb), 0.4);
+}
+
+.title-primary {
+    font-size: 1.7rem;
+    position: relative;
+    padding: 0 1rem;
+    width: max-content;
+    cursor: default;
+
+    background: linear-gradient(
+        -90deg,
+        var(--color-accent-primary),
+        var(--color-accent-gr-primary),
+        var(--color-accent-primary)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    &::before {
+        content: "";
+        position: absolute;
+        transition: all 0.25s ease;
+        bottom: 0;
+        right: 0;
+        height: 0;
+        width: 2px;
+        background-color: var(--color-accent-primary);
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        transition: all 0.25s ease;
+        bottom: 0;
+        left: 0;
+        height: 0;
+        width: 2px;
+        background-color: var(--color-accent-primary);
+    }
+
+    &:hover::before,
+    &:hover::after {
+        height: 80%;
+    }
+
+    &--container {
+        background: linear-gradient(90deg, var(--color-bg-primary), var(--color-white), var(--color-bg-primary));
+    }
+
+    &--underline {
+        &::before {
+            content: "";
+            position: absolute;
+            transition: all 0.25s ease;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            width: 50%;
+            background: linear-gradient(-90deg, var(--color-accent-gr-primary), var(--color-accent-primary));
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            transition: all 0.25s ease;
+            bottom: 0;
+            right: 0;
+            height: 2px;
+            width: 50%;
+            // background-color: var(--color-accent-primary);
+            background: linear-gradient(-90deg, var(--color-accent-primary), var(--color-accent-gr-primary));
+        }
+    }
+
+    &:hover &--underline::before {
+        width: 0;
+        left: 0;
+    }
+
+    &:hover &--underline::after {
+        width: 0;
+        right: 0;
+    }
+}
+
+.title-secondary {
+    font-size: 1.2rem;
+    color: $color-grey-4;
+    display: inline-block;
+    margin-bottom: 1rem;
+
+    &:after {
+        content: "";
+        display: block;
+        border-top: 2px solid $color-grey-4;
+        margin-top: 0.5em;
+    }
+}
+
+.title-tertiary {
+    font-size: 18px;
+    position: relative;
+    text-align: center;
+    width: max-content;
+    color: var(--color-accent-primary);
+    cursor: default;
+}
+
+.title-quaternary {
+    font-size: 15px;
+    text-align: center;
+    color: var(--color-black);
+    cursor: default;
+}
+
+.paragraph-primary {
+    color: $color-grey-5;
+    padding: 1.5rem;
+}
+
+.error-form {
+    color: $color-accent-red;
+    font-size: 0.8rem;
+    position: absolute;
+    top: -22px;
+    left: 0;
+}

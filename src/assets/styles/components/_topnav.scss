@@ -1,0 +1,92 @@
+.topnav {
+    height: $top-nav-height;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    z-index: 9;
+    background-color: var(--color-fg-primary);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    /* ONLY FOR DEMO */
+    &__exit {
+        position: absolute;
+        left: 7rem;
+        top: 0;
+    }
+
+    &__container {
+        display: flex;
+        column-gap: 50px;
+        margin-right: 60px;
+        margin-top: 10px;
+        position: relative;
+
+        &--logo {
+            img {
+                width: 100%;
+            }
+        }
+
+        &--links {
+            color: $color-white;
+            margin-bottom: 0 !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            column-gap: 30px;
+
+            &-list {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 0 !important;
+                column-gap: 20px;
+            }
+
+            li {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                column-gap: 2px;
+                text-decoration: none;
+                list-style: none;
+                cursor: pointer;
+                transition: all 0.25s;
+                font-size: 1rem;
+
+                a {
+                    color: $color-white;
+                    transition: all 0.25s;
+                }
+
+                a:hover {
+                    color: $color-accent-red;
+                }
+
+                & > * {
+                    text-decoration: none;
+                }
+
+                &:hover {
+                    color: $color-accent-red;
+                }
+            }
+        }
+
+        &--banner {
+            width: 280px;
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+    &__active {
+        a {
+            color: $color-accent-red !important;
+        }
+    }
+}
