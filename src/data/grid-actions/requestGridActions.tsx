@@ -6,7 +6,7 @@ import { Refresh as RefreshIcon } from "@mui/icons-material";
 import RoleSelectionForm from "@/forms/RoleSelectionForm";
 
 // TYPEs
-import { RoleType } from "@/types/RoleDataType";
+import { RoleDataType } from "@/types/roleDataTypes";
 
 export const requestGridActionsRenderer = ({
   isLoading,
@@ -16,7 +16,7 @@ export const requestGridActionsRenderer = ({
 }: {
   isLoading: boolean;
   isFetching: boolean;
-  roles: RoleType[];
+  roles: RoleDataType["itemList"];
   handleRefresh: () => void;
 }) => (
   <Box

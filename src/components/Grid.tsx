@@ -1,8 +1,9 @@
 // REACT IMPORTS
-import { useState } from "react";
+import { useState, ReactNode } from "react";
 
 // TYPES
-import { GridProps } from "@/types/GridTypes";
+import { GridProps } from "@/types/grid-types/gridTypes";
+import { GridColumnProps } from "@/types/grid-types/gridTypes";
 
 // MUI
 import {
@@ -24,14 +25,21 @@ import { defaultTableOptions } from "@/utils.js";
 // HELPERS
 import { convertToPersianNumber } from "@/helper.js";
 
-function Grid({
+function Grid<T>({
   columns,
   data,
   topBarActions,
   bottomBarActions,
   scroll,
   props,
-}: GridProps) {
+}: {
+  columns: GridColumnProps[];
+  data: T[];
+  topBarActions?: ReactNode;
+  bottomBarActions?: ReactNode;
+  scroll: boolean;
+  props?: object;
+}) {
   const [rowSelection, setRowSelection] = useState<MRT_RowSelectionState>({});
 
   const table = useMaterialReactTable({

@@ -5,29 +5,31 @@ import { Link } from "react-router-dom";
 import { IconButton, Tooltip } from "@mui/material";
 
 // TYPES
-import { RoleType } from "@/types/RoleDataType";
+import { RoleType } from "@/types/roleDataTypes.js";
+import { MRT_RowData } from "material-react-table";
+import { CellRendererProps } from "@/types/grid-types/gridTypes";
 
 // HELPERS
 import {
   convertToPersianDateFormatted,
   convertToPersianNumber,
-} from "../../helper.js";
+} from "@/helper.js";
 import {
   VisibilityOutlined as EyeIcon,
   TextSnippetOutlined as CheckIcon,
 } from "@mui/icons-material";
 
 export const requestCellRenderer = (selectedRole: RoleType) => ({
-  requestRowNum: ({ renderedCellValue }: { renderedCellValue: any }) => (
+  requestRowNum: ({ renderedCellValue }: CellRendererProps) => (
     <div>{convertToPersianNumber(renderedCellValue)}</div>
   ),
-  requestNO: ({ renderedCellValue }: { renderedCellValue: any }) => (
+  requestNO: ({ renderedCellValue }: CellRendererProps) => (
     <div>{convertToPersianNumber(renderedCellValue)}</div>
   ),
-  date: ({ renderedCellValue }: { renderedCellValue: any }) => (
+  date: ({ renderedCellValue }: CellRendererProps) => (
     <div>{convertToPersianDateFormatted(renderedCellValue)}</div>
   ),
-  senderInfo: ({ row }: { row: any }) => (
+  senderInfo: ({ row }: MRT_RowData) => (
     <Tooltip
       title={
         <>
@@ -39,14 +41,14 @@ export const requestCellRenderer = (selectedRole: RoleType) => ({
       <Link
         to={
           row.original.requestTypeID === "62A54585-F331-434A-9027-C9F3060F683A"
-            ? `/retirement-organization/group-slips?requestID=${row.original.id}`
+            ? `/retirement/group-slips?requestID=${row.original.id}`
             : row.original.requestTypeID ===
               "EC1E7E50-9815-442F-9CCB-27F47AB05199"
-            ? `/retirement-organization/group-slips?requestID=${row.original.id}&personID=${row.original.personID}`
+            ? `/retirement/group-slips?requestID=${row.original.id}&personID=${row.original.personID}`
             : row.original.requestTypeID ===
               "6E7BA26E-A1DC-4A5E-9700-17820A36158D"
-            ? `/retirement-organization/batch-statements?requestID=${row.original.id}`
-            : `/retirement-organization/retired?personID=${row.original.personID}&Role=${selectedRole?.value}&requestID=${row.original.id}`
+            ? `/retirement/batch-statements?requestID=${row.original.id}`
+            : `/retirement/retired?personID=${row.original.personID}&Role=${selectedRole?.value}&requestID=${row.original.id}`
         }
       >
         <span>
@@ -57,10 +59,10 @@ export const requestCellRenderer = (selectedRole: RoleType) => ({
       </Link>
     </Tooltip>
   ),
-  observe: ({ row }: { row: any }) => (
+  observe: ({ row }: MRT_RowData) => (
     <Tooltip title={convertToPersianNumber(row.original.requestNO)}>
       <Link
-        to={`/retirement-organization/request?requestID=${row.id}&Role=${selectedRole?.value}&type=${row.original.requestTypeID}`}
+        to={`/retirement/request?requestID=${row.id}&Role=${selectedRole?.value}&type=${row.original.requestTypeID}`}
       >
         <span>
           <IconButton sx={{ padding: "0" }} color="info">

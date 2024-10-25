@@ -2,8 +2,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 // TYPEs
-import { RequestType } from "@/types/RequestTypes";
-import { RoleType } from "@/types/RoleDataType";
+import { RequestType } from "@/types/requestTypes";
+import { RoleType } from "@/types/roleDataTypes";
 
 const initialState: {
   requestTableData: RequestType[];

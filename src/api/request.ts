@@ -5,8 +5,12 @@ import { REQUEST_URL_HTTPS } from "@/constants/urls";
 import { apiSlice } from "@/slices/apiSlice";
 
 // TYPES
-import { GetExpertParams, GetRequestParams } from "@/types/RequestApiTypes";
-import { RoleDataType } from "@/types/RoleDataType";
+import {
+  GetExpertParams,
+  GetRequestParams,
+  GetRequestReponse,
+} from "@/types/requestApiTypes";
+import { RoleDataType } from "@/types/roleDataTypes";
 
 export const requestApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -20,7 +24,7 @@ export const requestApiSlice = apiSlice.injectEndpoints({
         url: `${REQUEST_URL_HTTPS}/GetExpert?Requestid=${RequestID}&conditionValue=${conditionValue}&Role=${Role}`,
       }),
     }),
-    getRequest: builder.query<void, GetRequestParams>({
+    getRequest: builder.query<GetRequestReponse, GetRequestParams>({
       query: ({
         Role,
         personID,

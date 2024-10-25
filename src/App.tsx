@@ -1,14 +1,17 @@
 // REACT IMPORTS
 import { useState, useEffect } from "react";
+
+// HOOKS
 import useLogout from "@/hooks/useLogout";
 
 // RRD
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 
 // REDUX
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setPersonTableData } from "@/slices/personDataSlice";
 import { setUserID } from "@/slices/authSlice";
+import { useAppSelector } from "@/hooks/usePreTypesHooks";
 
 // MUI
 import { ThemeProvider, createTheme } from "@mui/material/styles";
@@ -19,8 +22,11 @@ import { ToastContainer } from "react-toastify";
 import { useIdleTimer } from "react-idle-timer";
 import { jwtDecode } from "jwt-decode";
 
+// TYPES
+import { JwtPayload } from "jwt-decode";
+
 // COMPONENTS
-import Header from "./components/Header";
+import Header from "@/components/Header";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,11 +41,11 @@ function App() {
   // USER ACTIVITY STATES
   const [isActive, setIsActive] = useState(true);
   const [remaining, setRemaining] = useState(0);
-  const [firstName, setFirstName] = useState("");
+  const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState("");
 
-  const { token } = useSelector((state) => state.auth);
-  const { navPanelOpen } = useSelector((state) => state.themeData);
+  const { token } = useAppSelector((state) => state.auth);
+  const { navPanelOpen } = useAppSelector((state) => state.themeData);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -61,6 +67,7 @@ function App() {
     onIdle,
     onActive,
     timeout: 1000 * 60 * 30,
+    // timeout: 1000,
     throttle: 500,
   });
 
@@ -68,11 +75,14 @@ function App() {
     if (!token) {
       navigate("/retirement/");
     } else {
-      setFirstName(jwtDecode(token).name);
-      setLastName(jwtDecode(token).familyName);
-      console.log(jwtDecode(token));
-      // setUserID(jwtDecode(token).id);
-      dispatch(setUserID(jwtDecode(token).id));
+      const decodedToken = jwtDecode(token) as JwtPayload & {
+        name: string;
+        familyName: string;
+        id: string;
+      };
+      setFirstName(decodedToken.name);
+      setLastName(decodedToken.familyName);
+      dispatch(setUserID(decodedToken.id));
     }
   }, [token, navigate, isLoginPage, dispatch]);
 
@@ -88,8 +98,7 @@ function App() {
         clearInterval(interval);
       };
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [getRemainingTime, isActive, remaining, token]);
+  }, [getRemainingTime, isActive, token, logoutHandler]);
 
   // CLEAR THE PERSONNEL GRID WHEN USERS NAVIGATE TO OTHER ROUTES
   useEffect(() => {

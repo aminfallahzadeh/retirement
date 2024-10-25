@@ -10,7 +10,7 @@ import { setNewCredentials, logout } from "./authSlice";
 import { Mutex } from "async-mutex";
 
 // TYPES
-import { RefreshResultType } from "@/types/TokenDataTypes";
+import { RefreshResultType } from "@/types/tokenDataTypes";
 
 // CONSTANTS
 import { BASE_URL, USERS_URL_HTTPS } from "@/constants/urls";
@@ -74,14 +74,14 @@ const baseQueryWithReauth: BaseQueryFn<
               ? {
                   url: args,
                   headers: {
-                    "Authorization": `Bearer ${refreshResult.data.itemList[0].token}`,
+                    Authorization: `Bearer ${refreshResult.data.itemList[0].token}`,
                   },
                 }
               : {
                   ...args,
                   headers: {
                     ...args.headers,
-                    "Authorization": `Bearer ${refreshResult.data.itemList[0].token}`,
+                    Authorization: `Bearer ${refreshResult.data.itemList[0].token}`,
                   },
                 },
             api,

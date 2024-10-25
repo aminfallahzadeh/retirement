@@ -2,7 +2,7 @@
 import { useMemo } from "react";
 
 // TYPES
-import { UseCreateColumnsProps } from "@/types/GridTypes";
+import { UseCreateColumnsProps } from "@/types/grid-types/gridTypes";
 
 function useCreateColumns({
   columnDefs,
@@ -19,7 +19,7 @@ function useCreateColumns({
         Cell: customCell ?? undefined,
       };
     });
-  }, [...dependencies]);
+  }, [columnDefs, customCellRenderers, ...dependencies]);
 
   return columns;
 }

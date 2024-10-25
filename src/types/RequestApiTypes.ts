@@ -11,3 +11,19 @@ export type GetRequestParams = {
   RequestDateFrom?: string;
   RequestDateTo?: string;
 };
+
+export type RequestItem = {
+  requestID: string;
+  requestNO: string;
+  requestTypeID: string;
+  personID: string;
+  requestTypeNameFa: string;
+  personFirstName: string;
+  personLastName: string;
+  requestDate: string;
+  requestText: string;
+};
+
+export type GetRequestReponse = {
+  itemList: RequestItem[];
+};

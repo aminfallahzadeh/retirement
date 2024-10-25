@@ -8,7 +8,7 @@ import { useGetRequestQuery } from "@/slices/requestApiSlice";
 import Grid from "@/components/Grid";
 
 // TYPES
-import { RequestType } from "@/types/RequestTypes";
+import { RequestType } from "@/types/requestTypes";
 
 // LIBRARIES
 import { toast } from "react-toastify";

@@ -2,9 +2,10 @@
 import { useCallback, useEffect, useState } from "react";
 
 // TYPES
-import { ApiError } from "@/types/ApiErrorTypes";
-import { RoleDataType } from "@/types/RoleDataType";
-import { RequestType } from "@/types/RequestTypes";
+import { ApiError } from "@/types/apiErrorTypes";
+import { RoleDataType } from "@/types/roleDataTypes";
+import { RequestItem } from "@/types/requestApiTypes";
+import { RequestData } from "@/types/grid-types/requestGridDataTypes";
 
 // REDUX
 import { setSelectedRole } from "@/slices/roleDataSlice";
@@ -32,7 +33,7 @@ import { requestGridActionsRenderer } from "@/data/grid-actions/requestGridActio
 
 function CartableScreen() {
   // MAIN STATE
-  const [requestTableData, setRequestTableData] = useState<any>([]);
+  const [requestTableData, setRequestTableData] = useState<RequestData[]>([]);
 
   const dispatch = useDispatch();
   const [allRoles, setAllRoles] = useState<RoleDataType["itemList"]>([]);
@@ -71,9 +72,9 @@ function CartableScreen() {
   const fetchRequests = useCallback(
     async (Role: string) => {
       try {
-        const res = (await getRequests({ Role }).unwrap()) as any;
+        const res = await getRequests({ Role }).unwrap();
         const mappedData = res?.itemList.map(
-          (item: RequestType, index: number) => ({
+          (item: RequestItem, index: number) => ({
             id: item.requestID,
             requestRowNum: index + 1,
             requestNO: item.requestNO || "-",
@@ -117,7 +118,9 @@ function CartableScreen() {
 
   // HANDLERS
   const handleRefresh = () => {
-    fetchRequests(selectedRole?.value);
+    if (selectedRole) {
+      fetchRequests(selectedRole?.value);
+    }
   };
 
   const customCellRenderers = requestCellRenderer(selectedRole);
@@ -157,7 +160,7 @@ function CartableScreen() {
           />
         </div>
       ) : (
-        <Grid
+        <Grid<RequestData>
           columns={columns}
           data={requestTableData}
           topBarActions={topBarActions}
