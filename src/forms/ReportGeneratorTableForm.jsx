@@ -206,6 +206,7 @@ function ReportGeneratorTableForm() {
     setConditionText("");
     setDisableAddButton(false);
     setDisableOperators(true);
+    setData({ ...data, condition: "" });
   };
 
   const addConditionElement = (element) => {
@@ -309,6 +310,7 @@ function ReportGeneratorTableForm() {
               <input
                 type="text"
                 className="inputBox__form--input"
+                value={data.condition}
                 id="condition"
                 name="condition"
                 onChange={handleDataChange}

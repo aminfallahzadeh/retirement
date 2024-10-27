@@ -36,7 +36,7 @@ import CreatePayItemForm from "../forms/CreatePayItemForm.jsx";
 import useGetFinancialItems from "../hooks/useGetFinancialItems";
 
 // HELPS
-import { convertToPersianNumber } from "../helper.js";
+import { convertToPersianNumber, separateByThousands } from "../helper.js";
 
 // UTILS
 import { defaultTableOptions } from "../utils.js";
@@ -120,6 +120,16 @@ function PayItemSearchGrid() {
         accessorKey: "payItemTypeName",
         header: "نام آیتم",
         size: 20,
+      },
+      {
+        accessorKey: "payItemAmount",
+        header: "مبلغ",
+        size: 20,
+        Cell: ({ renderedCellValue }) => (
+          <span>
+            {separateByThousands(convertToPersianNumber(renderedCellValue))}
+          </span>
+        ),
       },
       {
         accessorKey: "editPayItem",

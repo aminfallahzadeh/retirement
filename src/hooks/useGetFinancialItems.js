@@ -22,6 +22,7 @@ function useGetFinancialItems() {
         financialItemRowNum: index + 1,
         payItemTypeID: item.payItemTypeID || "-",
         payItemTypeName: item.payItemTypeName || "-",
+        payItemAmount: item.financialItemAmount || "-",
       }));
       dispatch(setFinancialTableData(mappedData));
       dispatch(setPayPersonID(personID));
