@@ -57,6 +57,9 @@ import {
   findById,
 } from "../helper";
 
+// ASSETS
+import excelImage from "@images/excel-icon.png";
+
 // utils
 import {
   selectStyles,
@@ -856,7 +859,7 @@ function FractionForm() {
                   <Tooltip title={excelFile.name}>
                     <span className="excel__name">{excelFile.name}</span>
                   </Tooltip>
-                  <img src="./images/excel-icon.png" className="excel__image" />
+                  <img src={excelImage} className="excel__image" />
                 </div>
               )}
 

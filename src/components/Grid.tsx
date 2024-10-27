@@ -2,7 +2,7 @@
 import { useState, ReactNode } from "react";
 
 // TYPES
-import { GridProps } from "@/types/grid-types/gridTypes";
+// import { GridProps } from "@/types/grid-types/gridTypes";
 import { GridColumnProps } from "@/types/grid-types/gridTypes";
 
 // MUI

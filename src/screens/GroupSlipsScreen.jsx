@@ -10,7 +10,7 @@ import {
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 
 // COMPONENTS
-import GroupSlipsForm from "../forms/GroupSlipsForm";
+import GroupSlipsForm from "@/forms/GroupSlipsForm";
 import SlipsPreviewGrid from "../grids/SlipsPreviewGrid";
 import CompareSalaryReportForm from "../forms/CompareSalaryReportForm";
 import CompareSalaryReportGrid from "../grids/CompareSalaryReportGrid";

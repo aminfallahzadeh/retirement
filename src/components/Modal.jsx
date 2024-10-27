@@ -1,4 +1,4 @@
-// mui imports
+// MUI
 import { IconButton } from "@mui/material";
 import { CloseOutlined as CloseIcon } from "@mui/icons-material";
 

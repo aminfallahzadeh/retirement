@@ -65,6 +65,30 @@ export const payApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+
+    insertPayExcel: builder.mutation({
+      query: ({ data, type }) => {
+        let url;
+
+        switch (type) {
+          case "C":
+            url = `${PAY_URL_HTTPS}/GetFinancialItemListFromExcel`;
+            break;
+          case "E":
+            url = `${PAY_URL_HTTPS}/GetFicheListFromExcel`;
+            break;
+
+          default:
+            throw new Error(`Unsupported type: ${type}`);
+        }
+
+        return {
+          url,
+          method: "POST",
+          body: data,
+        };
+      },
+    }),
   }),
 });
 
@@ -77,4 +101,5 @@ export const {
   useInsertPayMutation,
   useRemovePayItemMutation,
   useInsertPayItemMutation,
+  useInsertPayExcelMutation,
 } = payApiSlice;

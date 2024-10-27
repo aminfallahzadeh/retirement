@@ -15,18 +15,21 @@ import { useAppSelector } from "@/hooks/usePreTypesHooks";
 
 // MUI
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import Button from "@mui/material/Button";
 
 // LIBRARIES
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { useIdleTimer } from "react-idle-timer";
 import { jwtDecode } from "jwt-decode";
+import { CiSearch } from "react-icons/ci";
 
 // TYPES
 import { JwtPayload } from "jwt-decode";
 
 // COMPONENTS
 import Header from "@/components/Header";
+import SearchScreen from "@/screens/SearchScreen";
 
 function App() {
   const dispatch = useDispatch();
@@ -43,6 +46,7 @@ function App() {
   const [remaining, setRemaining] = useState(0);
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState("");
+  const [search, setSearch] = useState(false);
 
   const { token } = useAppSelector((state) => state.auth);
   const { navPanelOpen } = useAppSelector((state) => state.themeData);
@@ -114,6 +118,10 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
 
+  const handleSearchClick = () => {
+    setSearch(true);
+  };
+
   return (
     <ThemeProvider theme={theme}>
       {!isLoginPage && <Header firstName={firstName} lastName={lastName} />}
@@ -126,10 +134,32 @@ function App() {
               : !navPanelOpen && !isLoginPage
               ? "170px"
               : "0px",
+          overflowY: search ? "hidden" : "visible",
         }}
       >
         <Outlet />
       </main>
+      {search ? (
+        <div
+          style={{
+            position: "fixed",
+            top: "0",
+            left: "0",
+            bottom: "0",
+            width: "100%",
+            height: "100%",
+            backgroundColor: "white",
+            zIndex: "9999",
+          }}
+        >
+          <SearchScreen setSearch={setSearch} />
+        </div>
+      ) : !isLoginPage ? (
+        <div onClick={handleSearchClick} className="search-btn">
+          <CiSearch />
+        </div>
+      ) : null}
+
       <ToastContainer />
     </ThemeProvider>
   );
