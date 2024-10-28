@@ -88,7 +88,7 @@ function RequestInfoForm() {
           role: Role,
           requestTypeID,
         });
-        navigate("/retirement-organization/cartable");
+        navigate("/retirement/cartable");
         toast.success(sendRes.data.message, {
           autoClose: 2000,
         });

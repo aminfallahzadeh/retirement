@@ -83,7 +83,7 @@ function CreateRequestForm() {
         requestFrom: 1,
         nationalCode,
       }).unwrap();
-      navigate("/retirement-organization/cartable");
+      navigate("/retirement/cartable");
       toast.success(insertRes.message, {
         autoClose: 2000,
       });
