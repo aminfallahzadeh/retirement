@@ -82,7 +82,7 @@ function PersonnelGrid() {
             title={`${row.original.personFirstName} ${row.original.personLastName}`}
           >
             <Link
-              to={`/retirement-organization/personnel-statements/info?personID=${row.id}&personDeathDate=${row.original.personDeathDate}`}
+              to={`/retirement/personnel-statements/info?personID=${row.id}&personDeathDate=${row.original.personDeathDate}`}
             >
               <IconButton color="primary" sx={{ padding: "0" }}>
                 <EyeIcon />
