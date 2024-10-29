@@ -13,10 +13,14 @@ export const reportApiSlice = apiSlice.injectEndpoints({
         applicantTypeIsRetired,
         organizationID,
       }) => {
-        let url = `${REPORT_HTTPS}/DashboardReport?startDate=${startDate}&finishDate=${finishDate}&organizationID=${organizationID}`;
+        let url = `${REPORT_HTTPS}/DashboardReport?startDate=${startDate}&finishDate=${finishDate}`;
 
         if (applicantTypeIsRetired) {
           url += `&applicantTypeIsRetired=${applicantTypeIsRetired}`;
+        }
+
+        if (organizationID) {
+          url += `&organizationID=${organizationID}`;
         }
 
         return {

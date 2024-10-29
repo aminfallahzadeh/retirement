@@ -355,7 +355,8 @@ function DashboardForm() {
           data.applicantTypeIsRetired === "null"
             ? null
             : data.applicantTypeIsRetired,
-        organizationID: data.organizationID,
+        organizationID:
+          data.organizationID === "null" ? null : data.organizationID,
       }).unwrap();
       console.log(res.itemList);
       console.log(sumTableKeys);
