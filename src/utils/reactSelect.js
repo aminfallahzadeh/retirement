@@ -5,7 +5,7 @@ export const selectStyles = {
     position: "relative",
     height: "100%",
   }),
-  control: (base) => ({
+  control: (base, state) => ({
     ...base,
     fontFamily: "IranYekan",
     cursor: "pointer",
@@ -16,6 +16,7 @@ export const selectStyles = {
     overflow: "auto",
     textOverflow: "ellipsis",
     position: "relative",
+    borderColor: "var(--color-input-border)",
   }),
   menu: (base) => ({
     ...base,
