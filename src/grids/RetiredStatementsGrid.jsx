@@ -41,7 +41,7 @@ import {
 
 // components
 import Modal from "../components/Modal";
-import GenerateStatementForm from "../forms/GenerateStatementForm.jsx";
+import GenerateStatementForm from "@/forms/GenerateStatementForm";
 import RetiredStatementTemplate from "../components/RetiredStatementTemplate.jsx";
 
 // library imports

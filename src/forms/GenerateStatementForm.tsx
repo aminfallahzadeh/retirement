@@ -1,12 +1,15 @@
 // REACT IMPORTS
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 
 // RRD
 import { useLocation } from "react-router-dom";
 
 // REDUX
-import { useGenerateNewRetirementStatementMutation } from "../slices/retirementStatementApiSlice.js";
+import {
+  useGenerateNewRetirementStatementMutation,
+  useGetRecommendRunDateQuery,
+} from "../slices/retirementStatementApiSlice.js";
 
 // MUI
 import { LoadingButton } from "@mui/lab";
@@ -16,8 +19,9 @@ import {
 } from "@mui/icons-material";
 
 // HOOKS
-import { useFetchRetirementStatementTypes } from "../hooks/useFetchLookUpData";
-import { useCloseCalender } from "../hooks/useCloseCalender";
+import { useFetchRetirementStatementTypes } from "../hooks/useFetchLookUpData.js";
+import { useCloseCalender } from "../hooks/useCloseCalender.js";
+import useHanldeError from "@/hooks/useHandleError";
 
 // LIBRARIES
 import { toast } from "react-toastify";
@@ -27,11 +31,21 @@ import Select from "react-select";
 import makeAnimated from "react-select/animated";
 
 // HELPERS
-import { convertToPersianNumber, convertToEnglishNumber } from "../helper";
+import {
+  convertToPersianNumber,
+  convertToEnglishNumber,
+  convertToPersianDate,
+} from "../helper.js";
 
 // UTILS
-import { selectSettings, optionsGenerator } from "../utils/reactSelect";
-import { datePickerStyles, datePickerWrapperStyles } from "../utils/datePicker";
+import { selectSettings, optionsGenerator } from "../utils/reactSelect.js";
+import {
+  datePickerStyles,
+  datePickerWrapperStyles,
+} from "../utils/datePicker.js";
+
+// DATA
+import { baseSalaryOptions } from "@/data/control";
 
 function GenerateStatementForm({
   setShowGenerateStatementModal,
@@ -67,28 +81,16 @@ function GenerateStatementForm({
   const [generateNewRetirementStatement, { isLoading: isGenerating }] =
     useGenerateNewRetirementStatementMutation();
 
+  // GET RECOMMENDED RUN DATA
+  const {
+    data: recommendedRunDate,
+    isSuccess: recommendedRunDateIsSuccess,
+    error: recommendedRunDateError,
+  } = useGetRecommendRunDateQuery(personID);
+
   // GET LOOK UP DATA
   const { statementTypes, statementTypesIsFetching, statementTypesIsLoading } =
     useFetchRetirementStatementTypes();
-
-  const baseSalaryOptions = [
-    "100",
-    "11",
-    "14",
-    "16",
-    "36",
-    "37",
-    "38",
-    "39",
-    "69",
-    "5",
-    "57",
-    "6",
-    "65",
-    "96",
-    "97",
-    "98",
-  ];
 
   // SELECT OPTIONS
   const statementTypeOptions = optionsGenerator(
@@ -106,6 +108,13 @@ function GenerateStatementForm({
     setSelectedRunDate(date);
     setIsRunDateCalenderOpen(false);
   };
+
+  // FETCH RECOMMENDED DATE
+  useEffect(() => {
+    if (recommendedRunDateIsSuccess) {
+      setSelectedRunDate(convertToPersianDate(recommendedRunDate));
+    }
+  }, [recommendedRunDateIsSuccess, recommendedRunDate]);
 
   const onSubmit = async () => {
     try {

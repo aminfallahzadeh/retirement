@@ -146,6 +146,12 @@ export const retirementStatementApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+
+    getRecommendRunDate: builder.query({
+      query: (personID) => ({
+        url: `${RETIREMENT_STATEMENT_URL_HTTPS}/RecommendRunDate?PersonID=${personID}`,
+      }),
+    }),
   }),
 });
 
@@ -163,4 +169,5 @@ export const {
   useGenerateGroupStatementMutation,
   useConfirmRetirementStatementMutation,
   useUpdateRetirementStatementAmountMutation,
+  useGetRecommendRunDateQuery,
 } = retirementStatementApiSlice;
