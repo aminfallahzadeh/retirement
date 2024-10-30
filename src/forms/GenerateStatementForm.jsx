@@ -94,7 +94,7 @@ function GenerateStatementForm({
   const statementTypeOptions = optionsGenerator(
     statementTypes,
     "retirementStatementTypeID",
-    "retirementStatementTypeName",
+    "retirementStatementTypeName"
   );
 
   // CHANGE HANDLERS
@@ -113,7 +113,7 @@ function GenerateStatementForm({
       const retirementStatementRunDate = new Date(selectedRunDate);
       retirementStatementRunDate.setMinutes(
         retirementStatementRunDate.getMinutes() -
-          retirementStatementRunDate.getTimezoneOffset(),
+          retirementStatementRunDate.getTimezoneOffset()
       );
       const generateRes = await generateNewRetirementStatement({
         ...form_data,
@@ -183,7 +183,7 @@ function GenerateStatementForm({
                   options={statementTypeOptions}
                   onChange={(val) => onChange(val ? val.value : null)}
                   value={statementTypeOptions.find(
-                    (c) => c.value === form_data?.retirementStatementTypeID,
+                    (c) => c.value === form_data?.retirementStatementTypeID
                   )}
                   name="retirementStatementTypeID"
                   isClearable={true}
@@ -264,7 +264,6 @@ function GenerateStatementForm({
                   name="newAmount"
                   value={convertToPersianNumber(form_data?.newAmount) || ""}
                   id="newAmount"
-                  required
                   {...register("newAmount", {
                     pattern: {
                       value: /^[۰-۹0-9]+$/,
@@ -286,8 +285,7 @@ function GenerateStatementForm({
                   name="newSup"
                   value={convertToPersianNumber(form_data?.newSup) || ""}
                   id="newSup"
-                  required
-                  {...register("newAmount", {
+                  {...register("newSup", {
                     pattern: {
                       value: /^[۰-۹0-9]+$/,
                       message: "از اعداد استفاده کنید",
