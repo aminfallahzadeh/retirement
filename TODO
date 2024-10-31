@@ -1,57 +1,77 @@
-Login:
-  [ ] complete the responsive and full design
-  [ ] add enter key functionality to submit the form
+Fractions:
+  ✔ change the layout to tabs @done(24-10-31 11:53)
+  □ add second tab layout
+
+Report Generator:
+  □ check the grid after report is not showing
+  □ change the layout of fields
+  ✔ add save button @started(24-10-31 12:05) @done(24-10-31 12:40) @lasted(35m28s)
+  ✔ change the layout to two tabs @started(24-10-31 12:41) @done(24-10-31 12:45) @lasted(4m9s)
+    ✔ first tab: گزارش ساز فعلی @done(24-10-31 13:03)
+    □ second tab: check email file
+
+Personnel Statement:
+  □ fill the form od statement @files
 
 Forms:
-  [ ] transfer all forms into react-hook-form (form control)
+  □ add enter key functionality to submit forms
+  □ remove control pattern in description fields @critical
 
-Grids:
-  [ ] add multiselection on bottom grids
-  [ ] change grids theme
 
-Refacoring:
-  [ ] move personID and pensionaryID to params in retired screen
+General:
+  □ refactor the whole code in typescript
+  □ add dynamic form support
+  □ refactor folder structure
+  □ refactor file names
+  □ implement barrels
+  
+// NOTES
 
+excel link = https://docs.google.com/spreadsheets/d/1WHvddz4M9fIvHAP-AnyNdOTKTp6Q9fNhSM0e384FAiI/edit?gid=523953748#gid=523953748
+  
+RetirementStatementID=1E1D29DC-77C5-49FE-A74D-2F3BF154A8CF
+sodoore fish ID: 62A54585-F331-434A-9027-C9F3060F683A
 
 Archive:
-  [+] set rtl align globally @done(24-03-09 15:36) @project(HTML)
-  [-] implement refresh token handler globally @cancelled(24-03-06 20:31) @project(Authentication)
-  [+] reset captcha on invalid input submit @done(24-03-05 22:59) @project(Captcha)
-  [+] add validation check with proper messages @done(24-03-18 18:59) @project(Login)
-  [+] disbale button when any field is empty @started(24-03-18 19:00) @done(24-03-18 19:00) @lasted(3s) @project(Login)
-  [+] reset everything on wrong password @done(24-03-18 19:00) @project(Login)
-  [+] bring the forms in retirement sidebar button @done(24-03-09 22:49) @project(Forms)
-  [-] add search form on top of the other forms @cancelled(24-03-18 19:00) @project(Forms)
-  [+] implement the text areas @done(24-03-18 19:00) @project(Forms)
-  [+] work on respnsiveness for demonstration @done(24-03-18 19:00) @project(Forms)
-  [+] add stars for required fields @done(24-03-18 19:00) @project(Forms)
-  [+] implement the user page grids @done(24-03-18 19:01) @project(Grids)
-  [+] fix the row number issue @done(24-03-18 19:01) @project(Grids)
-  [+] complete the move functionality in groups grids page @done(24-03-18 19:01) @project(Grids)
-  [+] remove circle selections on top grids @done(24-03-18 19:01) @project(Grids)
-  [+] replace pagination with scrolling @done(24-04-26 14:13) @project(Grids)
-  [+] implement multi selection for sub grids @done(24-04-26 14:13) @project(Grids)
-  [+] move all grids from components folder to grids folder @done(24-03-28 19:48) @project(Grids)
-  [+] add roles combo box to cartable screen @done(24-03-28 19:48) @project(Cartable Screen)
-  [+] add request grid to the bottom of roles grid @done(24-03-28 19:48) @project(Cartable Screen)
-  [+] request grid send request to based on first role as default for initial data @done(24-03-28 19:48) @project(Cartable Screen)
-  [+] change request grid data based on role selection @done(24-03-28 19:48) @project(Cartable Screen)
-  [+] implement create new user screen @done(24-03-28 19:49) @project(Users Screen)
-  [+] add request tab for other retired requests @done(24-04-26 14:13) @project(Retired Screen)
-  [-] split queries in relavant files @cancelled(24-03-18 19:01) @project(Queries)
-  [+] add refresh token handler to all queries @done(24-04-01 18:41) @project(Queries)
-  [+] date time on the left side @done(24-03-18 19:02) @project(Navbar)
-  [+] banner on the mid @done(24-03-18 19:02) @project(Navbar)
-  [+] kartabl top of the page on dashboard open @done(24-03-18 19:02) @project(NewForms)
-  [+] eleteatbazneshaste under the 3 forms @done(24-03-18 19:02) @project(NewForms)
-  [+] refactor and fix routing system @done(24-03-18 19:03) @project(Routing)
-  [+] add error page to routs @done(24-03-27 15:27) @project(Routing)
-  [+] change bootstrap button with mui buttons @done(24-04-01 19:13) @project(UI)
-  [+] remove bootstrap css and library completely @done(24-04-01 19:13) @project(UI)
-  [-] apply 62.5% font size to html globally and fix all the font sizes @cancelled(24-04-02 02:59) @project(UI)
-  [+] find and replace modern color palette @done(24-04-26 14:13) @project(UI)
-  [+] refactor code imports @done(24-04-02 02:59) @project(Refacoring)
-
-
-  // NOTES
-
+  ✔ transfer all forms into react-hook-form (form control) @done(24-10-30 21:54) @project(Forms)
+  ✔ add multiselection on bottom grids @done(24-10-30 21:54) @project(Grids)
+  ✔ change grids theme @done(24-10-30 21:54) @project(Grids)
+  ✔ move personID and pensionaryID to params in retired screen @done(24-10-30 21:54) @project(Refacoring)
+    [+] set rtl align globally @done(24-03-09 15:36) @project(HTML)
+    [-] implement refresh token handler globally @cancelled(24-03-06 20:31) @project(Authentication)
+    [+] reset captcha on invalid input submit @done(24-03-05 22:59) @project(Captcha)
+    [+] add validation check with proper messages @done(24-03-18 18:59) @project(Login)
+    [+] disbale button when any field is empty @started(24-03-18 19:00) @done(24-03-18 19:00) @lasted(3s) @project(Login)
+    [+] reset everything on wrong password @done(24-03-18 19:00) @project(Login)
+    [+] bring the forms in retirement sidebar button @done(24-03-09 22:49) @project(Forms)
+    [-] add search form on top of the other forms @cancelled(24-03-18 19:00) @project(Forms)
+    [+] implement the text areas @done(24-03-18 19:00) @project(Forms)
+    [+] work on respnsiveness for demonstration @done(24-03-18 19:00) @project(Forms)
+    [+] add stars for required fields @done(24-03-18 19:00) @project(Forms)
+    [+] implement the user page grids @done(24-03-18 19:01) @project(Grids)
+    [+] fix the row number issue @done(24-03-18 19:01) @project(Grids)
+    [+] complete the move functionality in groups grids page @done(24-03-18 19:01) @project(Grids)
+    [+] remove circle selections on top grids @done(24-03-18 19:01) @project(Grids)
+    [+] replace pagination with scrolling @done(24-04-26 14:13) @project(Grids)
+    [+] implement multi selection for sub grids @done(24-04-26 14:13) @project(Grids)
+    [+] move all grids from components folder to grids folder @done(24-03-28 19:48) @project(Grids)
+    [+] add roles combo box to cartable screen @done(24-03-28 19:48) @project(Cartable Screen)
+    [+] add request grid to the bottom of roles grid @done(24-03-28 19:48) @project(Cartable Screen)
+    [+] request grid send request to based on first role as default for initial data @done(24-03-28 19:48) @project(Cartable Screen)
+    [+] change request grid data based on role selection @done(24-03-28 19:48) @project(Cartable Screen)
+    [+] implement create new user screen @done(24-03-28 19:49) @project(Users Screen)
+    [+] add request tab for other retired requests @done(24-04-26 14:13) @project(Retired Screen)
+    [-] split queries in relavant files @cancelled(24-03-18 19:01) @project(Queries)
+    [+] add refresh token handler to all queries @done(24-04-01 18:41) @project(Queries)
+    [+] date time on the left side @done(24-03-18 19:02) @project(Navbar)
+    [+] banner on the mid @done(24-03-18 19:02) @project(Navbar)
+    [+] kartabl top of the page on dashboard open @done(24-03-18 19:02) @project(NewForms)
+    [+] eleteatbazneshaste under the 3 forms @done(24-03-18 19:02) @project(NewForms)
+    [+] refactor and fix routing system @done(24-03-18 19:03) @project(Routing)
+    [+] add error page to routs @done(24-03-27 15:27) @project(Routing)
+    [+] change bootstrap button with mui buttons @done(24-04-01 19:13) @project(UI)
+    [+] remove bootstrap css and library completely @done(24-04-01 19:13) @project(UI)
+    [-] apply 62.5% font size to html globally and fix all the font sizes @cancelled(24-04-02 02:59) @project(UI)
+    [+] find and replace modern color palette @done(24-04-26 14:13) @project(UI)
+    [+] refactor code imports @done(24-04-02 02:59) @project(Refacoring)
+  

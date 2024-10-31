@@ -26,6 +26,9 @@ import {
   removeSeparators,
 } from "../helper";
 
+// ASSETS
+import slipLogo from "@images/logo-slip.png";
+
 // LIBRARY IMPROTS
 import generatePDF from "react-to-pdf";
 import { toast } from "react-toastify";
@@ -79,8 +82,8 @@ function RetiredStatementTemplate({ statementID, setShowStatementModal }) {
       const filteredAmounts = statement?.retirementStatementAmountList?.filter(
         (item) =>
           ["1001", "1002", "2001", "2002"].includes(
-            item.retirementStatementItemID,
-          ),
+            item.retirementStatementItemID
+          )
       );
 
       const amountsArray = filteredAmounts.map((item) => ({
@@ -129,11 +132,11 @@ function RetiredStatementTemplate({ statementID, setShowStatementModal }) {
           ? {
               ...item,
               retirementStatementItemAmount: Number(
-                convertToEnglishNumber(removeSeparators(e.target.value)),
+                convertToEnglishNumber(removeSeparators(e.target.value))
               ),
             }
-          : item,
-      ),
+          : item
+      )
     );
   };
 
@@ -178,10 +181,7 @@ function RetiredStatementTemplate({ statementID, setShowStatementModal }) {
         <div className="slip-container">
           <div className="slip-container" ref={targetRef}>
             <div className="slip-container__logo">
-              <img
-                src="./images/logo-slip.png"
-                className="slip-container__logo--img"
-              />
+              <img src={slipLogo} className="slip-container__logo--img" />
               <p className="slip-container__logo--sub">
                 سازمان بازنشستگی شهرداری تهران
               </p>
@@ -194,7 +194,7 @@ function RetiredStatementTemplate({ statementID, setShowStatementModal }) {
                 سریال حکم :{" "}
                 <span>
                   {convertToPersianNumber(
-                    statementInfo?.retirementStatementSerial,
+                    statementInfo?.retirementStatementSerial
                   )}
                 </span>
               </p>
@@ -222,7 +222,9 @@ function RetiredStatementTemplate({ statementID, setShowStatementModal }) {
                     retiredInfo?.personLastName || "-"
                   }`}</th>
 
-                  <th>{`شماره بازنشستگی : ${convertToPersianNumber(retiredInfo?.retiredID) || "-"}`}</th>
+                  <th>{`شماره بازنشستگی : ${
+                    convertToPersianNumber(retiredInfo?.retiredID) || "-"
+                  }`}</th>
                 </tr>
                 <tr>
                   <th>{`شماره شناسنامه : ${
@@ -232,7 +234,7 @@ function RetiredStatementTemplate({ statementID, setShowStatementModal }) {
                   <th>{`نام پدر : ${retiredInfo?.personFatherName || "-"}`}</th>
                   <th>{`تاریخ تولد : ${
                     convertToPersianDateFormatted(
-                      retiredInfo?.personBirthDate,
+                      retiredInfo?.personBirthDate
                     ) || "-"
                   }`}</th>
                   <th>{`محل تولد : ${
@@ -244,12 +246,12 @@ function RetiredStatementTemplate({ statementID, setShowStatementModal }) {
                   <th>{`جنسیت : ${retiredInfo?.genderName || "-"}`}</th>
                   <th>{`تعداد فرزندان : ${
                     convertToPersianNumber(
-                      statementInfo?.retirementStatementChildrenCount,
+                      statementInfo?.retirementStatementChildrenCount
                     ) ?? "-"
                   }`}</th>
                   <th>{`تعداد افراد تحت تکفل : ${
                     convertToPersianNumber(
-                      statementInfo?.retirementStatementChildrenCount,
+                      statementInfo?.retirementStatementChildrenCount
                     ) ?? "-"
                   }`}</th>
                   <th>{`کد درمانی : ${
@@ -371,7 +373,7 @@ function RetiredStatementTemplate({ statementID, setShowStatementModal }) {
                 <tr>
                   <th>{`تاریخ بازنشستگی : ${
                     convertToPersianDateFormatted(
-                      retiredInfo?.retirementDate,
+                      retiredInfo?.retirementDate
                     ) || "-"
                   }`}</th>
                   <th>{`آخرین پست سازمانی : ${
@@ -387,11 +389,23 @@ function RetiredStatementTemplate({ statementID, setShowStatementModal }) {
                   <th>
                     {`سنوات خدمت واقعی : `}
                     <br />
-                    {`روز : ${convertToPersianNumber(retiredInfo?.retiredRealDurationDAY) || "-"}`}
+                    {`روز : ${
+                      convertToPersianNumber(
+                        retiredInfo?.retiredRealDurationDAY
+                      ) || "-"
+                    }`}
                     &nbsp;&nbsp;&nbsp;
-                    {`ماه : ${convertToPersianNumber(retiredInfo?.retiredRealDurationMONTH) || "-"}`}
+                    {`ماه : ${
+                      convertToPersianNumber(
+                        retiredInfo?.retiredRealDurationMONTH
+                      ) || "-"
+                    }`}
                     &nbsp;&nbsp;&nbsp;
-                    {`سال : ${convertToPersianNumber(retiredInfo?.retiredRealDurationYEAR) || "-"}`}
+                    {`سال : ${
+                      convertToPersianNumber(
+                        retiredInfo?.retiredRealDurationYEAR
+                      ) || "-"
+                    }`}
                   </th>
                   <th>{`سنوات ارفاقی : ${
                     convertToPersianNumber(retiredInfo?.retiredGrantDuration) ||
@@ -419,7 +433,7 @@ function RetiredStatementTemplate({ statementID, setShowStatementModal }) {
                   <th>{`عنوان شغل : ${"-"}`}</th>
                   <th>{`تاریخ فوت : ${
                     convertToPersianDateFormatted(
-                      retiredInfo?.personDeathDate,
+                      retiredInfo?.personDeathDate
                     ) || "-"
                   }`}</th>
                 </tr>
@@ -466,27 +480,27 @@ function RetiredStatementTemplate({ statementID, setShowStatementModal }) {
 
                         <td>
                           {convertToPersianNumber(
-                            separateByThousands(item.heirRight),
+                            separateByThousands(item.heirRight)
                           ) || "-"}
                         </td>
                         <td>
                           {convertToPersianNumber(
-                            separateByThousands(item.supplementaryRight),
+                            separateByThousands(item.supplementaryRight)
                           ) || "-"}
                         </td>
                         <td>
                           {" "}
                           {convertToPersianNumber(
-                            separateByThousands(item.maritalRight),
+                            separateByThousands(item.maritalRight)
                           ) || "-"}
                         </td>
                         <td>
                           {convertToPersianNumber(
-                            separateByThousands(item.childRight),
+                            separateByThousands(item.childRight)
                           ) || "-"}
                         </td>
                       </tr>
-                    ),
+                    )
                   )}
                 </tbody>
               </table>
@@ -524,7 +538,7 @@ function RetiredStatementTemplate({ statementID, setShowStatementModal }) {
                           {convertToPersianDateFormatted(item.personBirthDate)}
                         </td>
                       </tr>
-                    ),
+                    )
                   )}
                 </tbody>
               </table>
@@ -542,7 +556,7 @@ function RetiredStatementTemplate({ statementID, setShowStatementModal }) {
                   <tr>
                     <td style={{ verticalAlign: "top" }}>
                       {convertToPersianNumber(
-                        statementInfo?.retirementStatementDesc,
+                        statementInfo?.retirementStatementDesc
                       ) || "-"}
                     </td>
                   </tr>
@@ -578,9 +592,9 @@ function RetiredStatementTemplate({ statementID, setShowStatementModal }) {
                                 updatedAmount.find(
                                   (amountObj) =>
                                     amountObj.retirementStatementItemID ===
-                                    item.retirementStatementItemID,
-                                )?.retirementStatementItemAmount || "",
-                              ),
+                                    item.retirementStatementItemID
+                                )?.retirementStatementItemAmount || ""
+                              )
                             )}
                             style={{
                               textAlign: "center",
@@ -591,7 +605,7 @@ function RetiredStatementTemplate({ statementID, setShowStatementModal }) {
                             onChange={(e) =>
                               handleAmountChange(
                                 e,
-                                item.retirementStatementItemID,
+                                item.retirementStatementItemID
                               )
                             }
                           />
@@ -600,8 +614,8 @@ function RetiredStatementTemplate({ statementID, setShowStatementModal }) {
                         <td>
                           {convertToPersianNumber(
                             separateByThousands(
-                              item.retirementStatementItemAmount,
-                            ),
+                              item.retirementStatementItemAmount
+                            )
                           )}
                         </td>
                       )}
@@ -616,8 +630,8 @@ function RetiredStatementTemplate({ statementID, setShowStatementModal }) {
                       {"جمع کل به ریال : "}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       {convertToPersianNumber(
                         separateByThousands(
-                          statementInfo?.sumRetirementStatementAmount,
-                        ),
+                          statementInfo?.sumRetirementStatementAmount
+                        )
                       ) ?? "-"}
                     </td>
                   </tr>
@@ -630,17 +644,17 @@ function RetiredStatementTemplate({ statementID, setShowStatementModal }) {
                 <tr>
                   <th>{`ناریخ اجرا : ${
                     convertToPersianDateFormatted(
-                      statementInfo?.retirementStatementRunDate,
+                      statementInfo?.retirementStatementRunDate
                     ) || "-"
                   }`}</th>
                   <th>{`تاریخ صدور : ${
                     convertToPersianDateFormatted(
-                      statementInfo?.retirementStatementIssueDate,
+                      statementInfo?.retirementStatementIssueDate
                     ) || "-"
                   }`}</th>
                   <th>{`شماره صدور : ${
                     convertToPersianNumber(
-                      statementInfo?.retirementStatementNo,
+                      statementInfo?.retirementStatementNo
                     ) || "-"
                   }`}</th>
                 </tr>

@@ -216,10 +216,6 @@ function ReportGeneratorTableForm() {
     setDisableOperators(true);
   };
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
   const content = (
     <section className="formContainer flex-col">
       <form method="POST" className="flex-col">
@@ -253,6 +249,20 @@ function ReportGeneratorTableForm() {
               }
             >
               جدول
+            </label>
+          </div>
+          <div className="inputBox__form">
+            <input
+              type="text"
+              id="reportName"
+              name="reportName"
+              onChange={handleDataChange}
+              value={data.reportName || ""}
+              className="inputBox__form--input"
+              required
+            />
+            <label htmlFor="reportName" className="inputBox__form--label">
+              نام گزارش
             </label>
           </div>
         </div>
@@ -454,6 +464,7 @@ function ReportGeneratorTableForm() {
         isColsLoading={isColsLoading}
         isColsFetching={isColsFetching}
         tableName={data.TableName}
+        reportName={data.reportName}
       />
     </section>
   );

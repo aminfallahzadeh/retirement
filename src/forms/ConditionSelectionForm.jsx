@@ -1,28 +1,29 @@
-// react imports
+// REACT IMPORTS
 import { useState, useEffect } from "react";
 
-// redux imports
+// REDUX
 import { useSelector } from "react-redux";
 import { useLazyGenerateReportQuery } from "../slices/reportGeneratorsApiSlice";
 
-// mui imports
+// MUI
 import { Button, Box, CircularProgress } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import {
   PlayArrowOutlined as PlayIcon,
   GetAppOutlined as DownloadIcon,
+  Done as DoneIcon,
 } from "@mui/icons-material";
 
-// library imports
+// LIBRARIES
 import { toast } from "react-toastify";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import * as XLSX from "xlsx";
 
-// utils
+// UTILS
 import { selectStyles, selectSettings } from "../utils/reactSelect";
 
-// components
+// COMPONENTS
 import ReportGeneratorGrid from "../grids/ReportGeneratorGrid";
 import Modal from "../components/Modal";
 
@@ -31,6 +32,7 @@ function ConditionSelectionForm({
   isColsLoading,
   isColsFetching,
   tableName,
+  reportName,
 }) {
   // MAIN STATE
   const [data, setData] = useState({});
@@ -73,13 +75,14 @@ function ConditionSelectionForm({
     }
   };
 
-  const generateReportHandler = async () => {
+  const generateReportHandler = async (save) => {
     try {
       const res = await generateReport({
         ...data,
         txtSelectPart: selectIDs,
         ConditionsCode: queryCondi,
-        ForSave: false,
+        ForSave: save,
+        ReportName: reportName,
       }).unwrap();
       const resData = JSON.parse(res.noneobject);
       setTableData(resData);
@@ -388,11 +391,23 @@ function ConditionSelectionForm({
               <LoadingButton
                 dir="ltr"
                 variant="contained"
-                endIcon={<PlayIcon />}
-                onClick={generateReportHandler}
+                endIcon={<DoneIcon />}
+                onClick={() => generateReportHandler(true)}
                 loading={isGenerating || isGenerateFetching}
                 color="success"
-                sx={{ fontFamily: "sahel" }}
+                sx={{ fontFamily: "IranYekan" }}
+              >
+                <span>ذخیره</span>
+              </LoadingButton>
+
+              <LoadingButton
+                dir="ltr"
+                variant="contained"
+                endIcon={<PlayIcon />}
+                onClick={() => generateReportHandler(false)}
+                loading={isGenerating || isGenerateFetching}
+                color="primary"
+                sx={{ fontFamily: "IranYekan" }}
               >
                 <span>اجرای گزارش</span>
               </LoadingButton>
@@ -403,8 +418,8 @@ function ConditionSelectionForm({
                 variant="contained"
                 disabled={exportDisable}
                 onClick={handleExport}
-                color="success"
-                sx={{ fontFamily: "sahel" }}
+                color="warning"
+                sx={{ fontFamily: "IranYekan" }}
               >
                 <span>خروجی اکسل</span>
               </Button>

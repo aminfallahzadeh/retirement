@@ -45,6 +45,7 @@ export const reportGeneratorApiSlice = apiSlice.injectEndpoints({
         cmbGroupFunction2,
         cmbGroupFunction3,
         ForSave,
+        ReportName,
       }) => {
         // Ensure default values
         cmbGroupField0 = cmbGroupField0 ?? "1000";
@@ -59,7 +60,7 @@ export const reportGeneratorApiSlice = apiSlice.injectEndpoints({
         cmbGroupField3 = cmbGroupField3 ?? "1000";
         cmbGroupFunction3 = cmbGroupFunction3 ?? "none";
 
-        let url = `${REPORT_GENERATOR_HTTPS}/GenerateReport?txtSelectPart=${txtSelectPart}&ConditionsCode=${ConditionsCode}&cmbGroupField0=${cmbGroupField0}&cmbGroupFunction0=${cmbGroupFunction0}&cmbGroupField1=${cmbGroupField1}&cmbGroupFunction1=${cmbGroupFunction1}&cmbGroupField2=${cmbGroupField2}&cmbGroupFunction2=${cmbGroupFunction2}&cmbGroupField3=${cmbGroupField3}&cmbGroupFunction3=${cmbGroupFunction3}&ForSave=${ForSave}`;
+        let url = `${REPORT_GENERATOR_HTTPS}/GenerateReport?txtSelectPart=${txtSelectPart}&ConditionsCode=${ConditionsCode}&cmbGroupField0=${cmbGroupField0}&cmbGroupFunction0=${cmbGroupFunction0}&cmbGroupField1=${cmbGroupField1}&cmbGroupFunction1=${cmbGroupFunction1}&cmbGroupField2=${cmbGroupField2}&cmbGroupFunction2=${cmbGroupFunction2}&cmbGroupField3=${cmbGroupField3}&cmbGroupFunction3=${cmbGroupFunction3}&ForSave=${ForSave}&ReportName=${ReportName}`;
 
         return {
           url,
