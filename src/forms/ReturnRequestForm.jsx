@@ -81,7 +81,7 @@ function ReturnRequestForm({ setShowModal, value }) {
       toast.success(sendRes.data.message, {
         autoClose: 2000,
       });
-      navigate("/retirement-organization/cartable");
+      navigate("/retirement/cartable");
     } catch (err) {
       console.log(err);
       toast.error(err?.data?.message || err.error, {
