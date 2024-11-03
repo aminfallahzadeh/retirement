@@ -8,7 +8,7 @@ import { useLocation } from "react-router-dom";
 import {
   useGetRequestAttachmentQuery,
   useDeleteRequestAttachmentMutation,
-} from "../slices/requestApiSlice.js";
+} from "@/slices/requestApiSlice";
 
 // components
 import Modal from "../components/Modal";

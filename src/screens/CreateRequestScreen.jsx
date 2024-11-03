@@ -1,5 +1,5 @@
 // components
-import CreateRequestForm from "../forms/CreateRequestForm";
+import CreateRequestForm from "@/forms/CreateRequestForm";
 
 function CreateRequestScreen() {
   const content = (

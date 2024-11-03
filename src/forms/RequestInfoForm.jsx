@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import {
   useGetRequestQuery,
   useSendRequestToNextStateMutation,
-} from "../slices/requestApiSlice";
+} from "@/slices/requestApiSlice";
 
 // MUI
 import { Box, CircularProgress, Button } from "@mui/material";

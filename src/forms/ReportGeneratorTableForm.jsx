@@ -219,7 +219,29 @@ function ReportGeneratorTableForm() {
   const content = (
     <section className="formContainer flex-col">
       <form method="POST" className="flex-col">
-        <div className="grid grid--col-4">
+        <div
+          className="grid grid--col-4"
+          style={{
+            border: "1px solid #ddd",
+            padding: "10px",
+            borderRadius: "5px",
+          }}
+        >
+          <div className="inputBox__form">
+            <input
+              type="text"
+              id="reportName"
+              name="reportName"
+              onChange={handleDataChange}
+              value={data.reportName || ""}
+              className="inputBox__form--input"
+              required
+            />
+            <label htmlFor="reportName" className="inputBox__form--label">
+              نام گزارش
+            </label>
+          </div>
+
           <div className="inputBox__form">
             <Select
               closeMenuOnSelect={true}
@@ -251,179 +273,7 @@ function ReportGeneratorTableForm() {
               جدول
             </label>
           </div>
-          <div className="inputBox__form">
-            <input
-              type="text"
-              id="reportName"
-              name="reportName"
-              onChange={handleDataChange}
-              value={data.reportName || ""}
-              className="inputBox__form--input"
-              required
-            />
-            <label htmlFor="reportName" className="inputBox__form--label">
-              نام گزارش
-            </label>
-          </div>
-        </div>
 
-        <div className="grid grid--col-4-mid-sm-last-sm">
-          <div className="inputBox__form">
-            <Select
-              closeMenuOnSelect={true}
-              components={animatedComponents}
-              options={fetureOptions}
-              onChange={handleSelectOptionChange}
-              value={fetureOptions.find(
-                (item) => item.value === data?.columnid
-              )}
-              name="columnid"
-              isClearable={true}
-              placeholder={
-                <div className="react-select-placeholder">خصوصیت</div>
-              }
-              noOptionsMessage={selectSettings.noOptionsMessage}
-              loadingMessage={selectSettings.loadingMessage}
-              styles={selectStyles}
-              isLoading={isColsLoading || isColsFetching}
-              isDisabled={isColsLoading || isColsFetching || !data.TableName}
-            />
-
-            <label
-              className={
-                data?.columnid
-                  ? "inputBox__form--readOnly-label"
-                  : "inputBox__form--readOnly-label-hidden"
-              }
-            >
-              خصوصیت
-            </label>
-          </div>
-
-          <Select
-            closeMenuOnSelect={true}
-            components={animatedComponents}
-            options={operatorOptions}
-            onChange={handleSelectOptionChange}
-            value={operatorOptions.find(
-              (item) => item.value === data?.operator
-            )}
-            name="operator"
-            isClearable={false}
-            noOptionsMessage={selectSettings.noOptionsMessage}
-            loadingMessage={selectSettings.loadingMessage}
-            styles={selectStyles}
-          />
-
-          {data.columnid && !isLookup && (
-            <div className="inputBox__form">
-              <input
-                type="text"
-                className="inputBox__form--input"
-                value={data.condition}
-                id="condition"
-                name="condition"
-                onChange={handleDataChange}
-                required
-              />
-
-              <label className="inputBox__form--label" htmlFor="condition">
-                شرط
-              </label>
-            </div>
-          )}
-
-          {data.columnid && isLookup && (
-            <div className="inputBox__form">
-              <Select
-                closeMenuOnSelect={true}
-                components={animatedComponents}
-                options={conditionOptions}
-                onChange={handleSelectOptionChange}
-                value={fetureOptions.find(
-                  (item) => item.value === data?.condition
-                )}
-                name="condition"
-                isClearable={true}
-                placeholder={
-                  <div className="react-select-placeholder">شرط</div>
-                }
-                noOptionsMessage={selectSettings.noOptionsMessage}
-                loadingMessage={selectSettings.loadingMessage}
-                styles={selectStyles}
-                isLoading={isLookupFetching || isLookupLoading}
-              />
-
-              <label
-                className={
-                  data?.condition
-                    ? "inputBox__form--readOnly-label"
-                    : "inputBox__form--readOnly-label-hidden"
-                }
-              >
-                شرط
-              </label>
-            </div>
-          )}
-
-          <div>
-            <Tooltip title="افزودن شرط">
-              <span>
-                <IconButton
-                  color="success"
-                  onClick={() =>
-                    addConditionHandler(
-                      data.columnid,
-                      data.operator,
-                      data.condition
-                    )
-                  }
-                  disabled={
-                    !data.TableName ||
-                    !data.operator ||
-                    !data.columnid ||
-                    !data.condition ||
-                    disabaleAddButton
-                  }
-                >
-                  <AddIcon />
-                </IconButton>
-              </span>
-            </Tooltip>
-
-            <Tooltip title="پاک کردن تمامی شروط">
-              <span>
-                <IconButton color="error" onClick={handleDeleteAllconditions}>
-                  <RemoveIcon />
-                </IconButton>
-              </span>
-            </Tooltip>
-          </div>
-        </div>
-
-        <div className="grid grid--col-2-first-sm">
-          <div className="grid grid--col-2">
-            {["or", "and", "(", ")", "null", "%"].map((element) => (
-              <Button
-                key={element}
-                dir="ltr"
-                variant="contained"
-                color="info"
-                disabled={disableOperators}
-                onClick={() => addConditionElement(element)}
-                sx={{ fontFamily: "sahel" }}
-              >
-                <span>{element.toUpperCase()}</span>
-              </Button>
-            ))}
-          </div>
-          <div className="condition__box row-span-3">
-            <h4 className="condition__box--title">شروط انتخاب شده:</h4>
-            <p>{conditionText}</p>
-          </div>
-        </div>
-
-        <div className="grid grid--col-3">
           <div className="inputBox__form">
             <Select
               closeMenuOnSelect={true}
@@ -437,7 +287,9 @@ function ReportGeneratorTableForm() {
               isMulti
               isClearable={true}
               placeholder={
-                <div className="react-select-placeholder">خصوصیات جدول</div>
+                <div className="react-select-placeholder">
+                  انتخاب ستون های خروجی
+                </div>
               }
               noOptionsMessage={selectSettings.noOptionsMessage}
               loadingMessage={selectSettings.loadingMessage}
@@ -453,8 +305,175 @@ function ReportGeneratorTableForm() {
                   : "inputBox__form--readOnly-label-hidden"
               }
             >
-              خصوصیات جدول
+              انتخاب ستون های خروجی
             </label>
+          </div>
+        </div>
+
+        <div
+          className="flex-col"
+          style={{
+            border: "1px solid #ddd",
+            padding: "10px",
+            borderRadius: "5px",
+          }}
+        >
+          <div className="grid grid--col-4-mid-sm-last-sm">
+            <div className="inputBox__form">
+              <Select
+                closeMenuOnSelect={true}
+                components={animatedComponents}
+                options={fetureOptions}
+                onChange={handleSelectOptionChange}
+                value={fetureOptions.find(
+                  (item) => item.value === data?.columnid
+                )}
+                name="columnid"
+                isClearable={true}
+                placeholder={
+                  <div className="react-select-placeholder">
+                    خصوصیت شرط پذیر
+                  </div>
+                }
+                noOptionsMessage={selectSettings.noOptionsMessage}
+                loadingMessage={selectSettings.loadingMessage}
+                styles={selectStyles}
+                isLoading={isColsLoading || isColsFetching}
+                isDisabled={isColsLoading || isColsFetching || !data.TableName}
+              />
+
+              <label
+                className={
+                  data?.columnid
+                    ? "inputBox__form--readOnly-label"
+                    : "inputBox__form--readOnly-label-hidden"
+                }
+              >
+                خصوصیت شرط پذیر
+              </label>
+            </div>
+
+            <Select
+              closeMenuOnSelect={true}
+              components={animatedComponents}
+              options={operatorOptions}
+              onChange={handleSelectOptionChange}
+              value={operatorOptions.find(
+                (item) => item.value === data?.operator
+              )}
+              name="operator"
+              isClearable={false}
+              noOptionsMessage={selectSettings.noOptionsMessage}
+              loadingMessage={selectSettings.loadingMessage}
+              styles={selectStyles}
+            />
+
+            {data.columnid && !isLookup && (
+              <div className="inputBox__form">
+                <input
+                  type="text"
+                  className="inputBox__form--input"
+                  value={data.condition}
+                  id="condition"
+                  name="condition"
+                  onChange={handleDataChange}
+                  required
+                />
+
+                <label className="inputBox__form--label" htmlFor="condition">
+                  شرط
+                </label>
+              </div>
+            )}
+
+            {data.columnid && isLookup && (
+              <div className="inputBox__form">
+                <Select
+                  closeMenuOnSelect={true}
+                  components={animatedComponents}
+                  options={conditionOptions}
+                  onChange={handleSelectOptionChange}
+                  value={fetureOptions.find(
+                    (item) => item.value === data?.condition
+                  )}
+                  name="condition"
+                  isClearable={true}
+                  placeholder={
+                    <div className="react-select-placeholder">شرط</div>
+                  }
+                  noOptionsMessage={selectSettings.noOptionsMessage}
+                  loadingMessage={selectSettings.loadingMessage}
+                  styles={selectStyles}
+                  isLoading={isLookupFetching || isLookupLoading}
+                />
+
+                <label
+                  className={
+                    data?.condition
+                      ? "inputBox__form--readOnly-label"
+                      : "inputBox__form--readOnly-label-hidden"
+                  }
+                >
+                  شرط
+                </label>
+              </div>
+            )}
+
+            <div>
+              <Tooltip title="افزودن شرط">
+                <span>
+                  <IconButton
+                    color="success"
+                    onClick={() =>
+                      addConditionHandler(
+                        data.columnid,
+                        data.operator,
+                        data.condition
+                      )
+                    }
+                    disabled={
+                      !data.TableName ||
+                      !data.operator ||
+                      !data.columnid ||
+                      !data.condition ||
+                      disabaleAddButton
+                    }
+                  >
+                    <AddIcon />
+                  </IconButton>
+                </span>
+              </Tooltip>
+
+              <Tooltip title="پاک کردن تمامی شروط">
+                <span>
+                  <IconButton color="error" onClick={handleDeleteAllconditions}>
+                    <RemoveIcon />
+                  </IconButton>
+                </span>
+              </Tooltip>
+            </div>
+          </div>
+
+          <div className="grid grid--col-2-first-sm">
+            <div className="grid grid--col-2">
+              {["or", "and", "(", ")", "null", "%"].map((element) => (
+                <Button
+                  key={element}
+                  dir="ltr"
+                  variant="contained"
+                  color="info"
+                  disabled={disableOperators}
+                  onClick={() => addConditionElement(element)}
+                  sx={{ fontFamily: "sahel" }}
+                >
+                  <span>{element.toUpperCase()}</span>
+                </Button>
+              ))}
+            </div>
+            <div className="condition__box row-span-3">
+              <h4 className="condition__box--title">شروط انتخاب شده:</h4>
+              <p>{conditionText}</p>
+            </div>
           </div>
         </div>
       </form>

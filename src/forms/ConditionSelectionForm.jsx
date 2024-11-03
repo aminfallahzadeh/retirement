@@ -127,263 +127,272 @@ function ConditionSelectionForm({
       <section className="formContainer">
         <form method="POST" className="flex-col">
           <div className="flex-col">
-            <h4 className="condition__box--title">دسته بندی:</h4>
+            <div
+              className="flex-col"
+              style={{
+                border: "1px solid #ddd",
+                padding: "10px",
+                borderRadius: "5px",
+              }}
+            >
+              <h4 className="condition__box--title">دسته بندی:</h4>
 
-            <div className="grid grid--col-4">
-              <div className="inputBox__form">
-                <Select
-                  closeMenuOnSelect={true}
-                  components={animatedComponents}
-                  options={fetureOptions}
-                  onChange={handleSelectOptionChange}
-                  value={fetureOptions.find(
-                    (item) => item.value === data?.cmbGroupField0
-                  )}
-                  name="cmbGroupField0"
-                  isClearable={true}
-                  placeholder={
-                    <div className="react-select-placeholder">ستون</div>
-                  }
-                  noOptionsMessage={selectSettings.noOptionsMessage}
-                  loadingMessage={selectSettings.loadingMessage}
-                  styles={selectStyles}
-                  isLoading={isColsLoading || isColsFetching}
-                  isDisabled={!tableName}
-                />
+              <div className="grid grid--col-4">
+                <div className="inputBox__form">
+                  <Select
+                    closeMenuOnSelect={true}
+                    components={animatedComponents}
+                    options={fetureOptions}
+                    onChange={handleSelectOptionChange}
+                    value={fetureOptions.find(
+                      (item) => item.value === data?.cmbGroupField0
+                    )}
+                    name="cmbGroupField0"
+                    isClearable={true}
+                    placeholder={
+                      <div className="react-select-placeholder">ستون</div>
+                    }
+                    noOptionsMessage={selectSettings.noOptionsMessage}
+                    loadingMessage={selectSettings.loadingMessage}
+                    styles={selectStyles}
+                    isLoading={isColsLoading || isColsFetching}
+                    isDisabled={!tableName}
+                  />
 
-                <label
-                  className={
-                    data?.cmbGroupField0
-                      ? "inputBox__form--readOnly-label"
-                      : "inputBox__form--readOnly-label-hidden"
-                  }
-                >
-                  ستون
-                </label>
-              </div>
+                  <label
+                    className={
+                      data?.cmbGroupField0
+                        ? "inputBox__form--readOnly-label"
+                        : "inputBox__form--readOnly-label-hidden"
+                    }
+                  >
+                    ستون
+                  </label>
+                </div>
 
-              <div className="inputBox__form">
-                <Select
-                  closeMenuOnSelect={true}
-                  components={animatedComponents}
-                  options={aggrefateOptions}
-                  onChange={handleSelectOptionChange}
-                  value={fetureOptions.find(
-                    (item) => item.value === data?.cmbGroupFunction0
-                  )}
-                  name="cmbGroupFunction0"
-                  isClearable={true}
-                  placeholder={
-                    <div className="react-select-placeholder">تجمیع</div>
-                  }
-                  noOptionsMessage={selectSettings.noOptionsMessage}
-                  loadingMessage={selectSettings.loadingMessage}
-                  styles={selectStyles}
-                  isLoading={isColsLoading || isColsFetching}
-                  isDisabled={!tableName || !data.cmbGroupField0}
-                />
+                <div className="inputBox__form">
+                  <Select
+                    closeMenuOnSelect={true}
+                    components={animatedComponents}
+                    options={aggrefateOptions}
+                    onChange={handleSelectOptionChange}
+                    value={fetureOptions.find(
+                      (item) => item.value === data?.cmbGroupFunction0
+                    )}
+                    name="cmbGroupFunction0"
+                    isClearable={true}
+                    placeholder={
+                      <div className="react-select-placeholder">تجمیع</div>
+                    }
+                    noOptionsMessage={selectSettings.noOptionsMessage}
+                    loadingMessage={selectSettings.loadingMessage}
+                    styles={selectStyles}
+                    isLoading={isColsLoading || isColsFetching}
+                    isDisabled={!tableName || !data.cmbGroupField0}
+                  />
 
-                <label
-                  className={
-                    data?.cmbGroupFunction0
-                      ? "inputBox__form--readOnly-label"
-                      : "inputBox__form--readOnly-label-hidden"
-                  }
-                >
-                  تجمیع
-                </label>
-              </div>
+                  <label
+                    className={
+                      data?.cmbGroupFunction0
+                        ? "inputBox__form--readOnly-label"
+                        : "inputBox__form--readOnly-label-hidden"
+                    }
+                  >
+                    تجمیع
+                  </label>
+                </div>
 
-              <div className="inputBox__form">
-                <Select
-                  closeMenuOnSelect={true}
-                  components={animatedComponents}
-                  options={fetureOptions}
-                  onChange={handleSelectOptionChange}
-                  value={fetureOptions.find(
-                    (item) => item.value === data?.cmbGroupField1
-                  )}
-                  name="cmbGroupField1"
-                  isClearable={true}
-                  placeholder={
-                    <div className="react-select-placeholder">ستون</div>
-                  }
-                  noOptionsMessage={selectSettings.noOptionsMessage}
-                  loadingMessage={selectSettings.loadingMessage}
-                  styles={selectStyles}
-                  isLoading={isColsLoading || isColsFetching}
-                  isDisabled={!tableName}
-                />
+                <div className="inputBox__form">
+                  <Select
+                    closeMenuOnSelect={true}
+                    components={animatedComponents}
+                    options={fetureOptions}
+                    onChange={handleSelectOptionChange}
+                    value={fetureOptions.find(
+                      (item) => item.value === data?.cmbGroupField1
+                    )}
+                    name="cmbGroupField1"
+                    isClearable={true}
+                    placeholder={
+                      <div className="react-select-placeholder">ستون</div>
+                    }
+                    noOptionsMessage={selectSettings.noOptionsMessage}
+                    loadingMessage={selectSettings.loadingMessage}
+                    styles={selectStyles}
+                    isLoading={isColsLoading || isColsFetching}
+                    isDisabled={!tableName}
+                  />
 
-                <label
-                  className={
-                    data?.cmbGroupField1
-                      ? "inputBox__form--readOnly-label"
-                      : "inputBox__form--readOnly-label-hidden"
-                  }
-                >
-                  ستون
-                </label>
-              </div>
+                  <label
+                    className={
+                      data?.cmbGroupField1
+                        ? "inputBox__form--readOnly-label"
+                        : "inputBox__form--readOnly-label-hidden"
+                    }
+                  >
+                    ستون
+                  </label>
+                </div>
 
-              <div className="inputBox__form">
-                <Select
-                  closeMenuOnSelect={true}
-                  components={animatedComponents}
-                  options={aggrefateOptions}
-                  onChange={handleSelectOptionChange}
-                  value={fetureOptions.find(
-                    (item) => item.value === data?.cmbGroupFunction1
-                  )}
-                  name="cmbGroupFunction1"
-                  isClearable={true}
-                  placeholder={
-                    <div className="react-select-placeholder">تجمیع</div>
-                  }
-                  noOptionsMessage={selectSettings.noOptionsMessage}
-                  loadingMessage={selectSettings.loadingMessage}
-                  styles={selectStyles}
-                  isLoading={isColsLoading || isColsFetching}
-                  isDisabled={!tableName || !data.cmbGroupField1}
-                />
+                <div className="inputBox__form">
+                  <Select
+                    closeMenuOnSelect={true}
+                    components={animatedComponents}
+                    options={aggrefateOptions}
+                    onChange={handleSelectOptionChange}
+                    value={fetureOptions.find(
+                      (item) => item.value === data?.cmbGroupFunction1
+                    )}
+                    name="cmbGroupFunction1"
+                    isClearable={true}
+                    placeholder={
+                      <div className="react-select-placeholder">تجمیع</div>
+                    }
+                    noOptionsMessage={selectSettings.noOptionsMessage}
+                    loadingMessage={selectSettings.loadingMessage}
+                    styles={selectStyles}
+                    isLoading={isColsLoading || isColsFetching}
+                    isDisabled={!tableName || !data.cmbGroupField1}
+                  />
 
-                <label
-                  className={
-                    data?.cmbGroupFunction1
-                      ? "inputBox__form--readOnly-label"
-                      : "inputBox__form--readOnly-label-hidden"
-                  }
-                >
-                  تجمیع
-                </label>
-              </div>
+                  <label
+                    className={
+                      data?.cmbGroupFunction1
+                        ? "inputBox__form--readOnly-label"
+                        : "inputBox__form--readOnly-label-hidden"
+                    }
+                  >
+                    تجمیع
+                  </label>
+                </div>
 
-              <div className="inputBox__form">
-                <Select
-                  closeMenuOnSelect={true}
-                  components={animatedComponents}
-                  options={fetureOptions}
-                  onChange={handleSelectOptionChange}
-                  value={fetureOptions.find(
-                    (item) => item.value === data?.cmbGroupField2
-                  )}
-                  name="cmbGroupField2"
-                  isClearable={true}
-                  placeholder={
-                    <div className="react-select-placeholder">ستون</div>
-                  }
-                  noOptionsMessage={selectSettings.noOptionsMessage}
-                  loadingMessage={selectSettings.loadingMessage}
-                  styles={selectStyles}
-                  isLoading={isColsLoading || isColsFetching}
-                  isDisabled={!tableName}
-                />
+                <div className="inputBox__form">
+                  <Select
+                    closeMenuOnSelect={true}
+                    components={animatedComponents}
+                    options={fetureOptions}
+                    onChange={handleSelectOptionChange}
+                    value={fetureOptions.find(
+                      (item) => item.value === data?.cmbGroupField2
+                    )}
+                    name="cmbGroupField2"
+                    isClearable={true}
+                    placeholder={
+                      <div className="react-select-placeholder">ستون</div>
+                    }
+                    noOptionsMessage={selectSettings.noOptionsMessage}
+                    loadingMessage={selectSettings.loadingMessage}
+                    styles={selectStyles}
+                    isLoading={isColsLoading || isColsFetching}
+                    isDisabled={!tableName}
+                  />
 
-                <label
-                  className={
-                    data?.cmbGroupField2
-                      ? "inputBox__form--readOnly-label"
-                      : "inputBox__form--readOnly-label-hidden"
-                  }
-                >
-                  ستون
-                </label>
-              </div>
+                  <label
+                    className={
+                      data?.cmbGroupField2
+                        ? "inputBox__form--readOnly-label"
+                        : "inputBox__form--readOnly-label-hidden"
+                    }
+                  >
+                    ستون
+                  </label>
+                </div>
 
-              <div className="inputBox__form">
-                <Select
-                  closeMenuOnSelect={true}
-                  components={animatedComponents}
-                  options={aggrefateOptions}
-                  onChange={handleSelectOptionChange}
-                  value={fetureOptions.find(
-                    (item) => item.value === data?.cmbGroupFunction2
-                  )}
-                  name="cmbGroupFunction2"
-                  isClearable={true}
-                  placeholder={
-                    <div className="react-select-placeholder">تجمیع</div>
-                  }
-                  noOptionsMessage={selectSettings.noOptionsMessage}
-                  loadingMessage={selectSettings.loadingMessage}
-                  styles={selectStyles}
-                  isLoading={isColsLoading || isColsFetching}
-                  isDisabled={!tableName || !data.cmbGroupField2}
-                />
+                <div className="inputBox__form">
+                  <Select
+                    closeMenuOnSelect={true}
+                    components={animatedComponents}
+                    options={aggrefateOptions}
+                    onChange={handleSelectOptionChange}
+                    value={fetureOptions.find(
+                      (item) => item.value === data?.cmbGroupFunction2
+                    )}
+                    name="cmbGroupFunction2"
+                    isClearable={true}
+                    placeholder={
+                      <div className="react-select-placeholder">تجمیع</div>
+                    }
+                    noOptionsMessage={selectSettings.noOptionsMessage}
+                    loadingMessage={selectSettings.loadingMessage}
+                    styles={selectStyles}
+                    isLoading={isColsLoading || isColsFetching}
+                    isDisabled={!tableName || !data.cmbGroupField2}
+                  />
 
-                <label
-                  className={
-                    data?.cmbGroupFunction2
-                      ? "inputBox__form--readOnly-label"
-                      : "inputBox__form--readOnly-label-hidden"
-                  }
-                >
-                  تجمیع
-                </label>
-              </div>
+                  <label
+                    className={
+                      data?.cmbGroupFunction2
+                        ? "inputBox__form--readOnly-label"
+                        : "inputBox__form--readOnly-label-hidden"
+                    }
+                  >
+                    تجمیع
+                  </label>
+                </div>
 
-              <div className="inputBox__form">
-                <Select
-                  closeMenuOnSelect={true}
-                  components={animatedComponents}
-                  options={fetureOptions}
-                  onChange={handleSelectOptionChange}
-                  value={fetureOptions.find(
-                    (item) => item.value === data?.cmbGroupField3
-                  )}
-                  name="cmbGroupField3"
-                  isClearable={true}
-                  placeholder={
-                    <div className="react-select-placeholder">ستون</div>
-                  }
-                  noOptionsMessage={selectSettings.noOptionsMessage}
-                  loadingMessage={selectSettings.loadingMessage}
-                  styles={selectStyles}
-                  isLoading={isColsLoading || isColsFetching}
-                  isDisabled={!tableName}
-                />
+                <div className="inputBox__form">
+                  <Select
+                    closeMenuOnSelect={true}
+                    components={animatedComponents}
+                    options={fetureOptions}
+                    onChange={handleSelectOptionChange}
+                    value={fetureOptions.find(
+                      (item) => item.value === data?.cmbGroupField3
+                    )}
+                    name="cmbGroupField3"
+                    isClearable={true}
+                    placeholder={
+                      <div className="react-select-placeholder">ستون</div>
+                    }
+                    noOptionsMessage={selectSettings.noOptionsMessage}
+                    loadingMessage={selectSettings.loadingMessage}
+                    styles={selectStyles}
+                    isLoading={isColsLoading || isColsFetching}
+                    isDisabled={!tableName}
+                  />
 
-                <label
-                  className={
-                    data?.cmbGroupField3
-                      ? "inputBox__form--readOnly-label"
-                      : "inputBox__form--readOnly-label-hidden"
-                  }
-                >
-                  ستون
-                </label>
-              </div>
+                  <label
+                    className={
+                      data?.cmbGroupField3
+                        ? "inputBox__form--readOnly-label"
+                        : "inputBox__form--readOnly-label-hidden"
+                    }
+                  >
+                    ستون
+                  </label>
+                </div>
 
-              <div className="inputBox__form">
-                <Select
-                  closeMenuOnSelect={true}
-                  components={animatedComponents}
-                  options={aggrefateOptions}
-                  onChange={handleSelectOptionChange}
-                  value={fetureOptions.find(
-                    (item) => item.value === data?.cmbGroupFunction3
-                  )}
-                  name="cmbGroupFunction3"
-                  isClearable={true}
-                  placeholder={
-                    <div className="react-select-placeholder">تجمیع</div>
-                  }
-                  noOptionsMessage={selectSettings.noOptionsMessage}
-                  loadingMessage={selectSettings.loadingMessage}
-                  styles={selectStyles}
-                  isLoading={isColsLoading || isColsFetching}
-                  isDisabled={!tableName || !data.cmbGroupField3}
-                />
+                <div className="inputBox__form">
+                  <Select
+                    closeMenuOnSelect={true}
+                    components={animatedComponents}
+                    options={aggrefateOptions}
+                    onChange={handleSelectOptionChange}
+                    value={fetureOptions.find(
+                      (item) => item.value === data?.cmbGroupFunction3
+                    )}
+                    name="cmbGroupFunction3"
+                    isClearable={true}
+                    placeholder={
+                      <div className="react-select-placeholder">تجمیع</div>
+                    }
+                    noOptionsMessage={selectSettings.noOptionsMessage}
+                    loadingMessage={selectSettings.loadingMessage}
+                    styles={selectStyles}
+                    isLoading={isColsLoading || isColsFetching}
+                    isDisabled={!tableName || !data.cmbGroupField3}
+                  />
 
-                <label
-                  className={
-                    data?.cmbGroupFunction3
-                      ? "inputBox__form--readOnly-label"
-                      : "inputBox__form--readOnly-label-hidden"
-                  }
-                >
-                  تجمیع
-                </label>
+                  <label
+                    className={
+                      data?.cmbGroupFunction3
+                        ? "inputBox__form--readOnly-label"
+                        : "inputBox__form--readOnly-label-hidden"
+                    }
+                  >
+                    تجمیع
+                  </label>
+                </div>
               </div>
             </div>
 

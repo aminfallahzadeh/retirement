@@ -1,5 +1,5 @@
 // CONSTANTS
-import { REQUEST_URL_HTTPS } from "../constants";
+import { REQUEST_URL_HTTPS } from "@/constants";
 
 // SLICES
 import { apiSlice } from "./apiSlice";
@@ -65,9 +65,16 @@ export const requestApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
-    getRequestType: builder.query({
-      query: () => ({
-        url: `${REQUEST_URL_HTTPS}/GetRequestType`,
+
+    // getRequestType: builder.query({
+    //   query: () => ({
+    //     url: `${REQUEST_URL_HTTPS}/GetRequestType?Role=FinancialDeputy`,
+    //   }),
+    // }),
+
+    getRequestTypes: builder.query({
+      query: (role) => ({
+        url: `${REQUEST_URL_HTTPS}/GetRequestType?Role=${role}`,
       }),
     }),
 
@@ -125,7 +132,7 @@ export const {
   useLazyGetRoleQuery,
   useGetExpertQuery,
   useGetRequestQuery,
-  useGetRequestTypeQuery,
+  // useGetRequestTypeQuery,
   useInsertRequestMutation,
   useSendRequestToNextStateMutation,
   useGetRequestHistoryQuery,
@@ -134,4 +141,5 @@ export const {
   useGetRequestTypeAttachmentQuery,
   useDeleteRequestAttachmentMutation,
   useInsertRequestByNationalCodeMutation,
+  useLazyGetRequestTypesQuery,
 } = requestApiSlice;

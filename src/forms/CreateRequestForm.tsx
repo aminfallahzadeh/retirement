@@ -1,18 +1,19 @@
 // REACT IMPORTS
-import { useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
 // RRD
 import { useNavigate } from "react-router-dom";
 
 // REDUX
-import { useInsertRequestByNationalCodeMutation } from "../slices/requestApiSlice";
+import {
+  useLazyGetRequestTypesQuery,
+  useInsertRequestByNationalCodeMutation,
+} from "@/slices/requestApiSlice";
+import { useLazyGetRoleQuery } from "@/api/request";
 
 // MUI
 import { LoadingButton } from "@mui/lab";
 import { ArrowUpwardOutlined as SendIcon } from "@mui/icons-material";
-
-// HOOKS
-import { useFetchRequestType } from "../hooks/useFetchLookUpData";
 
 // LIBRARIES
 import { toast } from "react-toastify";
@@ -27,12 +28,65 @@ import {
   selectStyles,
   selectSettings,
   optionsGenerator,
-} from "../utils/reactSelect";
+} from "../utils/reactSelect.js";
 
 // HELPERS
 import { convertToPersianNumber, convertToEnglishNumber } from "../helper.js";
 
 function CreateRequestForm() {
+  const [role, setRole] = useState(null);
+  const [requestTypeOptions, setRequestTypeOptions] = useState([]);
+
+  // ACCESS QUERIES
+  const [getRoles, { isLoading: isRolesLoading, isFetching: isRolesFetching }] =
+    useLazyGetRoleQuery();
+
+  const [
+    getRequestTypes,
+    { isLoading: isRequestTypesLoading, isFetching: isRequestTypesFetching },
+  ] = useLazyGetRequestTypesQuery();
+
+  // FETCH LOGICS
+  const fetchRoles = useCallback(async () => {
+    try {
+      const res = await getRoles().unwrap();
+      setRole(res?.itemList[0].url);
+    } catch (error) {
+      console.log(error);
+      const apiError = error;
+      toast.error(apiError.data?.message || apiError.error, {
+        autoClose: 2000,
+      });
+    }
+  }, [getRoles]);
+
+  const fetchRequestTypes = useCallback(async () => {
+    try {
+      console.log("ROLE BEFORE REQUEST:", role);
+      const res = await getRequestTypes(role).unwrap();
+      const data = optionsGenerator(res.itemList, "requestTypeID", "name");
+      setRequestTypeOptions(data);
+    } catch (error) {
+      console.log(error);
+      // const apiError = error;
+      // toast.error(apiError.data?.message || apiError.error, {
+      //   autoClose: 2000,
+      // });
+    }
+  }, [getRequestTypes, role]);
+
+  // SIDE EFFECTS
+  useEffect(() => {
+    fetchRoles();
+  }, [fetchRoles]);
+
+  useEffect(() => {
+    if (role) {
+      console.log(role);
+      fetchRequestTypes();
+    }
+  }, [role, fetchRequestTypes]);
+
   const [insertRequest, { isLoading: isInserting }] =
     useInsertRequestByNationalCodeMutation();
 
@@ -41,17 +95,6 @@ function CreateRequestForm() {
 
   // REQUEST OBJECT STATE
   const [requestObject, setRequestObject] = useState({});
-
-  // GET LOOK UP DATA
-  const { requestTypes, requestTypesIsLoading, requestTypesIsFetching } =
-    useFetchRequestType();
-
-  // SELECT OPTIONS
-  const requestTypeOptions = optionsGenerator(
-    requestTypes,
-    "requestTypeID",
-    "name"
-  );
 
   // HANDLE REQUEST OBJECT CHANGE
   const handleRequestObjectChange = (e) => {
@@ -121,7 +164,7 @@ function CreateRequestForm() {
             noOptionsMessage={selectSettings.noOptionsMessage}
             loadingMessage={selectSettings.loadingMessage}
             styles={selectStyles}
-            isLoading={requestTypesIsLoading || requestTypesIsFetching}
+            isLoading={isRequestTypesLoading || isRequestTypesFetching}
           />
 
           <label
