@@ -9,11 +9,11 @@ import {
   useGetStatementListFromExcelMutation,
 } from "../slices/retirementStatementApiSlice";
 
-// hooks
+// HOOKS
 import {
   useFetchPensionaryStatus,
   useFetchLookUpData,
-} from "../hooks/useFetchLookUpData";
+} from "@/hooks/useFetchLookUpData";
 
 // mui imports
 import { Switch, LinearProgress, Box, IconButton } from "@mui/material";

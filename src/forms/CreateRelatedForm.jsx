@@ -13,7 +13,7 @@ import {
   useFetchLookUpData,
   useFetchPensionaryStatus,
   useFetchRelationship,
-} from "../hooks/useFetchLookUpData";
+} from "@/hooks/useFetchLookUpData";
 import { useCloseCalender } from "../hooks/useCloseCalender";
 
 // mui imports

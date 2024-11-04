@@ -2,10 +2,10 @@
 import { useState, useEffect, useRef } from "react";
 
 // redux imports
-import { useInsertRequestAttachmentMutation } from "../slices/requestApiSlice";
+import { useInsertRequestAttachmentMutation } from "@/api/request";
 
 // hooks
-import { useFetchRequestAttachmentTypes } from "../hooks/useFetchLookUpData";
+import { useFetchRequestAttachmentTypes } from "@/hooks/useFetchLookUpData";
 
 // mui imports
 import { LoadingButton } from "@mui/lab";

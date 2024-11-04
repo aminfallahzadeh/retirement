@@ -14,7 +14,7 @@ import {
   useFetchOrganizations,
   useFetchFractionType,
   useFetchPersonnelStatementOffType,
-} from "../hooks/useFetchLookUpData";
+} from "@/hooks/useFetchLookUpData";
 
 // mui imports
 import {

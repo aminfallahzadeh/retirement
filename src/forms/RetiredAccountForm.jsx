@@ -11,7 +11,7 @@ import { useGetRetiredAccountQuery } from "../slices/retiredApiSlice";
 import { useUpdateRetiredAccountMutation } from "../slices/retiredApiSlice";
 
 // HOOKS
-import { useFetchLookUpData } from "../hooks/useFetchLookUpData";
+import { useFetchLookUpData } from "@/hooks/useFetchLookUpData";
 
 // MUI
 import { Button, Box, CircularProgress } from "@mui/material";

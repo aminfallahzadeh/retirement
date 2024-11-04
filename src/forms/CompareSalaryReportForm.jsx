@@ -16,7 +16,7 @@ import Select from "react-select";
 import makeAnimated from "react-select/animated";
 
 // HOOKS
-import { useFetchPayItemType } from "../hooks/useFetchLookUpData";
+import { useFetchPayItemType } from "@/hooks/useFetchLookUpData";
 
 // DATA
 import { pensionaryTypeOptions } from "../data/retiredData";

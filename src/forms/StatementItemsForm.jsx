@@ -10,7 +10,7 @@ import {
 } from "../slices/retirementStatementApiSlice.js";
 
 // hooks
-import { useFetchRetirementStatementTypes } from "../hooks/useFetchLookUpData.js";
+import { useFetchRetirementStatementTypes } from "@/hooks/useFetchLookUpData";
 import { useCloseCalender } from "../hooks/useCloseCalender";
 
 // mui imports

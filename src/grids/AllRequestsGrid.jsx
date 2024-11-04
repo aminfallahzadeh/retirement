@@ -5,7 +5,7 @@ import { useMemo, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 // redux imports
-import { useGetRequestQuery } from "../slices/requestApiSlice";
+import { useGetRequestQuery } from "@/api/request";
 
 // mui imports
 import {

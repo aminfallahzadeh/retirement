@@ -19,7 +19,7 @@ import {
 } from "@mui/icons-material";
 
 // HOOKS
-import { useFetchRetirementStatementTypes } from "../hooks/useFetchLookUpData.js";
+import { useFetchRetirementStatementTypes } from "@/hooks/useFetchLookUpData";
 import { useCloseCalender } from "../hooks/useCloseCalender.js";
 import useHanldeError from "@/hooks/useHandleError";
 

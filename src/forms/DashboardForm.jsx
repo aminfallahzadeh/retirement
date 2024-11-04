@@ -14,7 +14,7 @@ import {
 
 // hooks
 import { useCloseCalender } from "../hooks/useCloseCalender";
-import { useFetchOrganizations } from "../hooks/useFetchLookUpData";
+import { useFetchOrganizations } from "@/hooks/useFetchLookUpData";
 
 // library imports
 import { toast } from "react-toastify";

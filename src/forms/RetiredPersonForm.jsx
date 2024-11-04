@@ -11,7 +11,7 @@ import { setPersonDeathDate } from "../slices/retiredStateSlice.js";
 import { useDispatch } from "react-redux";
 
 // HOOKS
-import { useFetchLookUpData } from "../hooks/useFetchLookUpData.js";
+import { useFetchLookUpData } from "@/hooks/useFetchLookUpData";
 import { useCloseCalender } from "../hooks/useCloseCalender";
 
 // mui imports

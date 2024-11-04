@@ -24,7 +24,7 @@ export const requestApiSlice = apiSlice.injectEndpoints({
         RequestDateFrom,
         RequestDateTo,
       }) => {
-        let url = `${REQUEST_URL_HTTPS}/GetRequest?Role=${Role}`;
+        let url = `${REQUEST_URL_HTTPS}/GetRequest?Role`;
 
         if (personID) {
           url += `&personID=${personID}`;

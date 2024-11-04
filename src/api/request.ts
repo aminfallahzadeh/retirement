@@ -74,8 +74,8 @@ export const requestApiSlice = apiSlice.injectEndpoints({
       }),
     }),
     getRequestType: builder.query({
-      query: () => ({
-        url: `${REQUEST_URL_HTTPS}/GetRequestType`,
+      query: (role) => ({
+        url: `${REQUEST_URL_HTTPS}/GetRequestType?role=${role}`,
       }),
     }),
 
@@ -143,4 +143,5 @@ export const {
   useGetRequestTypeAttachmentQuery,
   useDeleteRequestAttachmentMutation,
   useInsertRequestByNationalCodeMutation,
+  useLazyGetRequestTypeQuery,
 } = requestApiSlice;

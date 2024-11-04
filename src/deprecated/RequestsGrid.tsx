@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 
 // REDUX
-import { useGetRequestQuery } from "@/slices/requestApiSlice";
+import { useGetRequestQuery } from "@/api/request";
 
 // COMPONENTS
 import Grid from "@/components/Grid";

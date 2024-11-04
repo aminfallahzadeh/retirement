@@ -13,7 +13,7 @@ import {
 } from "../slices/reportGeneratorsApiSlice";
 
 // HOOKS
-import { useFetchReportGeneratorTables } from "../hooks/useFetchLookUpData";
+import { useFetchReportGeneratorTables } from "@/hooks/useFetchLookUpData";
 
 // MUI
 import { IconButton, Tooltip, Button } from "@mui/material";

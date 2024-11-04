@@ -10,12 +10,13 @@ import {
   useGetRetirementStatementTypeQuery,
   useGetPayItemTypeQuery,
 } from "../slices/sharedApiSlice.js";
+import { useGetRequestTypeQuery } from "@/api/request";
 import { useGetPersonnelStatementOffTypeQuery } from "../slices/personnelStatementApiSlice.js";
 import { useGetFractionTypeQuery } from "../slices/fractionApiSlice.js";
 import {
   // useGetRequestTypeQuery,
   useGetRequestTypeAttachmentQuery,
-} from "@/slices/requestApiSlice";
+} from "@/api/request";
 import { useGetTablesQuery } from "../slices/reportGeneratorsApiSlice";
 
 // COMMON LOOK UP DATA LOGIC
@@ -205,38 +206,38 @@ const useFetchOrganizations = ({ organizationID = undefined }) => {
 };
 
 // REQUEST TYPE LOOK UP LOGIC
-// const useFetchRequestType = (selectedRole) => {
-//   const [requestTypes, setRequestTypes] = useState([]);
+const useFetchRequestType = (selectedRole) => {
+  const [requestTypes, setRequestTypes] = useState([]);
 
-//   // GET DATA
-//   const {
-//     data: requestTypesItems,
-//     isSuccess: requestTypesIsSuccess,
-//     isLoading: requestTypesIsLoading,
-//     isFetching: requestTypesIsFetching,
-//     error: requestTypesError,
-//   } = useGetRequestTypeQuery(selectedRole);
+  // GET DATA
+  const {
+    data: requestTypesItems,
+    isSuccess: requestTypesIsSuccess,
+    isLoading: requestTypesIsLoading,
+    isFetching: requestTypesIsFetching,
+    error: requestTypesError,
+  } = useGetRequestTypeQuery(selectedRole);
 
-//   // FETCH DATA
-//   useEffect(() => {
-//     if (requestTypesIsSuccess) {
-//       setRequestTypes(requestTypesItems.itemList);
-//     }
-//   }, [requestTypesIsSuccess, requestTypesItems]);
+  // FETCH DATA
+  useEffect(() => {
+    if (requestTypesIsSuccess) {
+      setRequestTypes(requestTypesItems.itemList);
+    }
+  }, [requestTypesIsSuccess, requestTypesItems]);
 
-//   // HANDLE ERROR
-//   useEffect(() => {
-//     if (requestTypesError) {
-//       console.log(requestTypesError);
-//     }
-//   }, [requestTypesError]);
+  // HANDLE ERROR
+  useEffect(() => {
+    if (requestTypesError) {
+      console.log(requestTypesError);
+    }
+  }, [requestTypesError]);
 
-//   return {
-//     requestTypes,
-//     requestTypesIsLoading,
-//     requestTypesIsFetching,
-//   };
-// };
+  return {
+    requestTypes,
+    requestTypesIsLoading,
+    requestTypesIsFetching,
+  };
+};
 
 // FRACTION TYPE LOOK UP LOGIC
 const useFetchFractionType = () => {
@@ -416,7 +417,7 @@ export {
   useFetchLookUpData,
   useFetchRelationship,
   useFetchOrganizations,
-  // useFetchRequestType,
+  useFetchRequestType,
   useFetchFractionType,
   useFetchPersonnelStatementOffType,
   useFetchReportGeneratorTables,

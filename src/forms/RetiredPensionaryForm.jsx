@@ -15,7 +15,7 @@ import {
   useFetchPensionaryStatus,
   useFetchLookUpData,
   useFetchOrganizations,
-} from "../hooks/useFetchLookUpData.js";
+} from "@/hooks/useFetchLookUpData";
 import { useCloseCalender } from "../hooks/useCloseCalender";
 
 // mui imports

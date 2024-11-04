@@ -5,10 +5,9 @@ import { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 // REDUX
-import {
-  useLazyGetRequestTypesQuery,
-  useInsertRequestByNationalCodeMutation,
-} from "@/slices/requestApiSlice";
+import { useInsertRequestByNationalCodeMutation } from "@/api/request";
+import { useLazyGetRequestTypeQuery } from "@/api/request";
+
 import { useLazyGetRoleQuery } from "@/api/request";
 
 // MUI
@@ -44,7 +43,7 @@ function CreateRequestForm() {
   const [
     getRequestTypes,
     { isLoading: isRequestTypesLoading, isFetching: isRequestTypesFetching },
-  ] = useLazyGetRequestTypesQuery();
+  ] = useLazyGetRequestTypeQuery();
 
   // FETCH LOGICS
   const fetchRoles = useCallback(async () => {
