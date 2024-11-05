@@ -60,7 +60,7 @@ import {
 // ASSETS
 import excelImage from "@images/excel-icon.png";
 
-// utils
+// UTILS
 import {
   selectStyles,
   selectSettings,
@@ -457,7 +457,6 @@ function FractionForm() {
     }
   };
 
-  // FIX CLOSE CALENDER
   useCloseCalender(
     [letterCalenderRef, paymenrCalenderRef],
     [setIsLetterDateCalenderOpen, setIsPaymentCalenderOpen]

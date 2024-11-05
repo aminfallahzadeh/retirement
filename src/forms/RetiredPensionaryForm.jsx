@@ -2,7 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useForm, Controller } from "react-hook-form";
 
-// redux imports
+// REDUX
 import { useSelector } from "react-redux";
 import {
   useUpdateRetiredPensionaryMutation,
@@ -10,7 +10,7 @@ import {
   useGetAllPensionariesQuery,
 } from "../slices/retiredApiSlice.js";
 
-// hooks
+// HOOKS
 import {
   useFetchPensionaryStatus,
   useFetchLookUpData,
@@ -18,7 +18,7 @@ import {
 } from "@/hooks/useFetchLookUpData";
 import { useCloseCalender } from "../hooks/useCloseCalender";
 
-// mui imports
+// MUI
 import { Button, Box, CircularProgress } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import {
@@ -27,24 +27,24 @@ import {
   EditOutlined as EditIcon,
 } from "@mui/icons-material";
 
-// components
+// COMPONENTS
 import PensionaryStatusHistoryGrid from "../grids/PensionaryStatusHistoryGrid";
 
-// helpers
+// HELPERS
 import {
   convertToPersianDate,
   convertToPersianNumber,
   convertToEnglishNumber,
 } from "../helper.js";
 
-// libary imports
+// LIBRARIES
 import { toast } from "react-toastify";
 import "jalaali-react-date-picker/lib/styles/index.css";
 import { InputDatePicker } from "jalaali-react-date-picker";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 
-// utils
+// UTILS
 import {
   selectStyles,
   selectSettings,
@@ -313,7 +313,6 @@ function RetiredPensionaryForm() {
     }
   };
 
-  // FIX CLOSE CALENDER BUG
   useCloseCalender(
     [retirementCalenderRef, changeStatusCalenderRef],
     [setIsRetirementCalenderOpen, setIsChangeStatusCalenderOpen]

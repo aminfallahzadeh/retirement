@@ -11,9 +11,10 @@ import { Box, Tab, IconButton, Tooltip } from "@mui/material";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 
 // COMPONENTS
-import FractionForm from "../forms/FractionForm";
-import FractionPeriodGrid from "../grids/FractionPeriodGrid";
-import CalculateFractionForm from "../forms/CalculateFractionForm";
+import FractionForm from "@/forms/FractionForm";
+import FractionPeriodGrid from "@/grids/FractionPeriodGrid";
+import CalculateFractionForm from "@/forms/CalculateFractionForm";
+import FractionFormSecondTab from "@/forms/FractionFormSecondTab";
 
 function FractionScreen() {
   // TAB STATE
@@ -76,7 +77,9 @@ function FractionScreen() {
             sx={{
               padding: "0",
             }}
-          ></TabPanel>
+          >
+            <FractionFormSecondTab />
+          </TabPanel>
         </TabContext>
       </div>
     </section>

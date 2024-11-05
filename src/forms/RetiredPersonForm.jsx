@@ -1,4 +1,4 @@
-// react imports
+// REACT IMPORTS
 import { useState, useEffect, useRef } from "react";
 import { useForm, Controller } from "react-hook-form";
 
@@ -278,7 +278,6 @@ function RetiredPersonForm() {
     }
   };
 
-  // FIX CLOSE CALENDER BUG
   useCloseCalender(
     [birthDateCalenderRef, deathDateCalenderRef],
     [setIsBirthCalenderOpen, setIsDeathCalenderOpen]
