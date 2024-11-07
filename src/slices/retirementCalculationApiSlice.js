@@ -1,5 +1,5 @@
 // constant imports
-import { RETIREMENT_CALCULATION_URL_HTTPS } from "../constants";
+import { RETIREMENT_CALCULATION_URL_HTTPS } from "@/constants";
 
 // slice imports
 import { apiSlice } from "./apiSlice";
@@ -11,7 +11,7 @@ export const retirementCalculationApiSlice = apiSlice.injectEndpoints({
         url: `${RETIREMENT_CALCULATION_URL_HTTPS}/GenerateRetirementCalculation`,
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       }),
     }),
@@ -22,7 +22,7 @@ export const retirementCalculationApiSlice = apiSlice.injectEndpoints({
         body: data,
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       }),
     }),
@@ -33,7 +33,7 @@ export const retirementCalculationApiSlice = apiSlice.injectEndpoints({
         body: data,
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       }),
     }),
@@ -43,7 +43,7 @@ export const retirementCalculationApiSlice = apiSlice.injectEndpoints({
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       }),
     }),

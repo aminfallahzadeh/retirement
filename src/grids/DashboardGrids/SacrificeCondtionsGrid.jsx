@@ -5,7 +5,7 @@ import { useMemo } from "react";
 import { MRT_Table, useMaterialReactTable } from "material-react-table";
 
 // utils imports
-import { defaultTableOptions } from "../../utils.js";
+import { defaultTableOptions } from "@/config/mrt";
 
 // helpers
 import { convertToPersianNumber } from "../../helper.js";

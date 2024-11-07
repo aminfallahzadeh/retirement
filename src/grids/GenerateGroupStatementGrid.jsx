@@ -19,7 +19,7 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 // utils imports
-import { defaultTableOptions } from "../utils.js";
+import { defaultTableOptions } from "@/config/mrt";
 
 // helpers
 import {

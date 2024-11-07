@@ -1,5 +1,5 @@
 // constant imports
-import { ANNOUNCE_HTTPS } from "../constants";
+import { ANNOUNCE_HTTPS } from "@/constants";
 
 // slice imports
 import { apiSlice } from "./apiSlice";

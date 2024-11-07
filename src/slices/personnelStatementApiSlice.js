@@ -1,5 +1,5 @@
 // constant imports
-import { PERSONNEL_STATEMENT_URL_HTTPS } from "../constants";
+import { PERSONNEL_STATEMENT_URL_HTTPS } from "@/constants";
 
 // slice imports
 import { apiSlice } from "./apiSlice";

@@ -1,5 +1,5 @@
 // constant imports
-import { PAY_URL_HTTPS } from "../constants";
+import { PAY_URL_HTTPS } from "@/constants";
 
 // slice imports
 import { apiSlice } from "./apiSlice";

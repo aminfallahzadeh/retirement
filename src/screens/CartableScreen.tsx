@@ -62,10 +62,10 @@ function CartableScreen() {
       setAllRoles(res?.itemList);
     } catch (error) {
       console.log(error);
-      const apiError = error as ApiError;
-      toast.error(apiError.data?.message || apiError.error, {
-        autoClose: 2000,
-      });
+      // const apiError = error as ApiError;
+      // toast.error(apiError.data?.message || apiError.error, {
+      //   autoClose: 2000,
+      // });
     }
   }, [dispatch, getRoles]);
 

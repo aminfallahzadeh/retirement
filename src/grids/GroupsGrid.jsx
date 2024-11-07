@@ -43,7 +43,7 @@ import {
 import { findById, convertToPersianNumber } from "../helper.js";
 
 // utils imports
-import { defaultTableOptions } from "../utils.js";
+import { defaultTableOptions } from "@/config/mrt";
 
 // components
 import Modal from "../components/Modal";
@@ -99,9 +99,9 @@ function GroupsGrid() {
   const deleteGroupHandler = async () => {
     try {
       const res = await deleteGroup({
-        "id": selectedGroup?.id,
-        "groupName": selectedGroup?.groupName,
-        "isdeleted": true,
+        id: selectedGroup?.id,
+        groupName: selectedGroup?.groupName,
+        isdeleted: true,
       }).unwrap();
       setShowDeleteGroupModal(false);
       refetch();

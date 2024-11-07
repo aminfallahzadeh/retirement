@@ -20,7 +20,7 @@ import {
 } from "@mui/icons-material";
 
 // UTILS
-import { defaultTableOptions } from "@/utils.js";
+import { defaultTableOptions } from "@/config/mrt";
 
 // HELPERS
 import { convertToPersianNumber } from "@/helper.js";

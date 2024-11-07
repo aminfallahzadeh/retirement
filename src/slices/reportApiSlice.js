@@ -1,5 +1,5 @@
 // CONSTANT IMPORTS
-import { REPORT_HTTPS } from "../constants";
+import { REPORT_HTTPS } from "@/constants";
 
 // SLICE IMPORTS
 import { apiSlice } from "./apiSlice";

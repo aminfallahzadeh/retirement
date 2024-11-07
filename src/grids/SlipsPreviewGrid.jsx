@@ -29,7 +29,7 @@ import {
 } from "../helper.js";
 
 // UTILS
-import { defaultTableOptions } from "../utils.js";
+import { defaultTableOptions } from "@/config/mrt";
 
 // COMPONENTS
 import SlipFormTemplate from "../components/SlipFormTemplate";

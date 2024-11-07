@@ -1,5 +1,5 @@
 // CONSTANT
-import { FINANCIAL_URL_HTTPS } from "../constants";
+import { FINANCIAL_URL_HTTPS } from "@/constants";
 
 // SLICES
 import { apiSlice } from "./apiSlice";

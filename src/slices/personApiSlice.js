@@ -1,5 +1,5 @@
 // constant imports
-import { PERSON_URL_HTTPS } from "../constants";
+import { PERSON_URL_HTTPS } from "@/constants";
 
 // slice imports
 import { apiSlice } from "./apiSlice";
@@ -51,7 +51,7 @@ export const personApiSlice = apiSlice.injectEndpoints({
           body: data,
           headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
           },
         }),
       }),
@@ -62,7 +62,7 @@ export const personApiSlice = apiSlice.injectEndpoints({
           body: data,
           headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
           },
         }),
       }),
@@ -72,7 +72,7 @@ export const personApiSlice = apiSlice.injectEndpoints({
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
           },
         }),
       }),

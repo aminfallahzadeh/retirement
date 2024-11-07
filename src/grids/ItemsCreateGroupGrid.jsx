@@ -21,7 +21,7 @@ import {
 import { faIR } from "@mui/material/locale";
 
 // utils imports
-import { defaultTableOptions } from "../utils.js";
+import { defaultTableOptions } from "@/config/mrt";
 
 function ItemsCreateGroupGrid({ setAddedItems }) {
   const theme = useTheme();

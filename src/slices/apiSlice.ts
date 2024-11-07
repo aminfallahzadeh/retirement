@@ -15,6 +15,9 @@ import { RefreshResultType } from "@/types/tokenDataTypes";
 // CONSTANTS
 import { BASE_URL, USERS_URL_HTTPS } from "@/constants/urls";
 
+// CONFIGS
+import { toastConfig } from "@/config/toast/toast-config";
+
 const mutex = new Mutex();
 let isRefreshingToken = false;
 
@@ -49,7 +52,7 @@ const baseQueryWithReauth: BaseQueryFn<
         console.log("sending refresh token");
         const state = api.getState() as RootState;
         const refreshToken = state.auth.refreshToken;
-        const expiredate = state.auth.expiredate;
+        // const expiredate = state.auth.expiredate;
         isRefreshingToken = true;
 
         const refreshResult = (await baseQuery(
@@ -57,10 +60,10 @@ const baseQueryWithReauth: BaseQueryFn<
             url: `${USERS_URL_HTTPS}/RefreshToken`,
             method: "POST",
             body: {
-              token: "<string>",
+              // token: "<string>",
               refreshToken,
-              error: "<string>",
-              expiredate,
+              // error: "<string>",
+              // expiredate,
             },
           },
           api,
@@ -108,6 +111,16 @@ const baseQueryWithReauth: BaseQueryFn<
       result = await baseQuery(args, api, extraOptions);
     }
   }
+
+  if (result.error) {
+    const errorMessage =
+      (result.error.data &&
+        (result.error.data as { message?: string }).message) ||
+      result.error.status ||
+      "An unexpected error occurred";
+    toastConfig.error(`${errorMessage}`);
+  }
+
   return result;
 };
 

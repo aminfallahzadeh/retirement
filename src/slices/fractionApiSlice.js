@@ -1,5 +1,5 @@
 // CONSTANT
-import { FRACTION_URL_HTTPS } from "../constants";
+import { FRACTION_URL_HTTPS } from "@/constants";
 
 // SLICES
 import { apiSlice } from "./apiSlice";

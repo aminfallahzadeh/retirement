@@ -37,7 +37,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { convertToPersianNumber, separateByThousands } from "../helper.js";
 
 // utils imports
-import { defaultTableOptions } from "../utils.js";
+import { defaultTableOptions } from "@/config/mrt";
 
 export const PersonnelFractionGrid = () => {
   const [rowSelection, setRowSelection] = useState({});

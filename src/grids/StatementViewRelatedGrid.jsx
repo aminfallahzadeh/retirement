@@ -22,7 +22,7 @@ import {
 } from "../helper.js";
 
 // utils imports
-import { defaultTableOptions } from "../utils.js";
+import { defaultTableOptions } from "@/config/mrt";
 
 function StatementViewRelatedGrid({ relatedList }) {
   const [tableData, setTableData] = useState([]);

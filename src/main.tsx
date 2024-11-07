@@ -11,6 +11,7 @@ import {
 
 // STYLES
 import "@/assets/styles/main.scss";
+import "./index.css";
 
 // REDUX
 import { Provider } from "react-redux";

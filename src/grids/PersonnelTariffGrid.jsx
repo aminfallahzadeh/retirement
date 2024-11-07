@@ -37,7 +37,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { convertToPersianNumber } from "../helper.js";
 
 // utils imports
-import { defaultTableOptions } from "../utils.js";
+import { defaultTableOptions } from "@/config/mrt";
 
 function PersonnelTariffGrid() {
   const [rowSelection, setRowSelection] = useState({});

@@ -39,7 +39,7 @@ import useGetFinancialItems from "../hooks/useGetFinancialItems";
 import { convertToPersianNumber, separateByThousands } from "../helper.js";
 
 // UTILS
-import { defaultTableOptions } from "../utils.js";
+import { defaultTableOptions } from "@/config/mrt";
 
 function PayItemSearchGrid() {
   const [rowSelection, setRowSelection] = useState({});

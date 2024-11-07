@@ -22,7 +22,7 @@ import {
 import { convertToPersianNumber } from "../helper.js";
 
 // UTILS
-import { defaultTableOptions } from "../utils.js";
+import { defaultTableOptions } from "@/config/mrt";
 
 function CompareSalaryReportGrid() {
   // TRABLE STATES

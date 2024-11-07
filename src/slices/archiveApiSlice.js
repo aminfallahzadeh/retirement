@@ -1,5 +1,5 @@
 // constant imports
-import { USERS_URL_HTTPS } from "../constants";
+import { USERS_URL_HTTPS } from "@/constants";
 
 // slice imports
 import { apiSlice } from "./apiSlice";
@@ -11,7 +11,7 @@ export const archiveApiSlice = apiSlice.injectEndpoints({
         url: `${USERS_URL_HTTPS}/GetArchiveStructure`,
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       }),
     }),
@@ -22,7 +22,7 @@ export const archiveApiSlice = apiSlice.injectEndpoints({
         body: data,
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       }),
     }),
@@ -40,7 +40,7 @@ export const archiveApiSlice = apiSlice.injectEndpoints({
         body: data,
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       }),
     }),

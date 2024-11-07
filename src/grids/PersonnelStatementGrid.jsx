@@ -37,7 +37,7 @@ import {
 } from "../helper.js";
 
 // utils imports
-import { defaultTableOptions } from "../utils.js";
+import { defaultTableOptions } from "@/config/mrt";
 
 // library imports
 import { toast } from "react-toastify";

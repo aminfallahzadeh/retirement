@@ -1,5 +1,5 @@
 // REACT IMPORTS
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 // HOOKS
 import useLogout from "@/hooks/useLogout";
@@ -26,6 +26,9 @@ import { CiSearch } from "react-icons/ci";
 
 // TYPES
 import { JwtPayload } from "jwt-decode";
+
+// CONFIGS
+import { toastConfig } from "@/config/toast/toast-config";
 
 // COMPONENTS
 import Header from "@/components/Header";
@@ -122,6 +125,8 @@ function App() {
     setSearch(true);
   };
 
+  const ToastProvider = useMemo(() => toastConfig.registerProvider, []);
+
   return (
     <ThemeProvider theme={theme}>
       {!isLoginPage && <Header firstName={firstName} lastName={lastName} />}
@@ -160,7 +165,7 @@ function App() {
         </div>
       ) : null}
 
-      <ToastContainer />
+      <ToastProvider />
     </ThemeProvider>
   );
 }

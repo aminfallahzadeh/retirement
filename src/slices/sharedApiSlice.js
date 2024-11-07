@@ -1,5 +1,5 @@
 // constant imports
-import { SHARED_URL_HTTPS } from "../constants";
+import { SHARED_URL_HTTPS } from "@/constants";
 
 // slice imports
 import { apiSlice } from "./apiSlice";

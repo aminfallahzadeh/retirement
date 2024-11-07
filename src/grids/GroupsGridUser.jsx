@@ -24,7 +24,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { findById } from "../helper.js";
 
 // utils imports
-import { defaultTableOptions } from "../utils.js";
+import { defaultTableOptions } from "@/config/mrt";
 
 function GroupsGridUser() {
   const [rowSelection, setRowSelection] = useState({});

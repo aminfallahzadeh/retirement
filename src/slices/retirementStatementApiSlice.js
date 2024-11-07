@@ -1,5 +1,5 @@
 // constant imports
-import { RETIREMENT_STATEMENT_URL_HTTPS } from "../constants";
+import { RETIREMENT_STATEMENT_URL_HTTPS } from "@/constants";
 
 // slice imports
 import { apiSlice } from "./apiSlice";

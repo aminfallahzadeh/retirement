@@ -31,7 +31,7 @@ import {
 } from "material-react-table";
 
 // utils imports
-import { defaultTableOptions } from "../utils.js";
+import { defaultTableOptions } from "@/config/mrt";
 
 // helpers
 import { convertToPersianNumber, findById } from "../helper.js";

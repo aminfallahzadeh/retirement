@@ -56,7 +56,7 @@ import {
 } from "../helper.js";
 
 // UTILS
-import { defaultTableOptions } from "../utils.js";
+import { defaultTableOptions } from "@/config/mrt";
 
 function RetiredRelatedGrid() {
   const [rowSelection, setRowSelection] = useState({});

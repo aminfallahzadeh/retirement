@@ -1,5 +1,5 @@
 // constant imports
-import { HEIR_URL_HTTPS } from "../constants";
+import { HEIR_URL_HTTPS } from "@/constants";
 
 // slice imports
 import { apiSlice } from "./apiSlice";
@@ -37,7 +37,7 @@ export const heirApiSlice = apiSlice.injectEndpoints({
         body: data,
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       }),
     }),

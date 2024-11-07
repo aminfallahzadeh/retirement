@@ -1,5 +1,5 @@
 // constant imports
-import { RETIRED_URL_HTTPS } from "../constants";
+import { RETIRED_URL_HTTPS } from "@/constants";
 
 // slice imports
 import { apiSlice } from "./apiSlice";

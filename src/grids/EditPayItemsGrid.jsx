@@ -43,7 +43,7 @@ import InsertPayItemForm from "../forms/InsertPayItemForm.jsx";
 import { convertToPersianNumber } from "../helper.js";
 
 // UTILS
-import { defaultTableOptions } from "../utils.js";
+import { defaultTableOptions } from "@/config/mrt";
 
 function EditPayItemGrid({ payID, setIsEditModalOpen }) {
   const [tableData, setTableData] = useState([]);

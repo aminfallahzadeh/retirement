@@ -11,6 +11,7 @@ import {
 
 // MUI
 import { LoadingButton } from "@mui/lab";
+import { Box, CircularProgress, Checkbox } from "@mui/material";
 
 // LIBRARIES
 import Select from "react-select";
@@ -35,6 +36,7 @@ interface FractionFormData {
   calcualteType: object;
   oraginaztionName: object;
   fractionPrice: string;
+  isTadiye: boolean;
 }
 
 function FractionFormSecondTab() {
@@ -287,6 +289,51 @@ function FractionFormSecondTab() {
             />
             <label htmlFor="fractionPrice" className="inputBox__form--label">
               <span>*</span> مبلغ مشمول کسور
+            </label>
+          </div>
+
+          <div className="inputBox__form">
+            {errors.fractionPrice && (
+              <span className="error-form">{errors.fractionPrice.message}</span>
+            )}
+            <input
+              type="text"
+              id="fractionPrice"
+              className="inputBox__form--input"
+              value={convertToPersianNumber(form_data?.fractionPrice) ?? ""}
+              required
+              {...register("fractionPrice", {
+                required: "مبلغ مشمول کسور اجباری است",
+                // pattern: {
+                //   value: /^[۰-۹0-9]+$/,
+                //   message: "گروه باید فقط شامل اعداد باشد",
+                // },
+              })}
+            />
+            <label htmlFor="fractionPrice" className="inputBox__form--label">
+              <span>*</span> مبلغ منتقله
+            </label>
+          </div>
+          <div></div>
+          <div></div>
+          <div></div>
+
+          <div
+            className="checkboxContainer__item"
+            style={{ justifySelf: "start", alignSelf: "center" }}
+          >
+            <Checkbox
+              size="small"
+              color="success"
+              checked={!!form_data?.isTadiye}
+              id="isInstallment"
+              sx={{
+                padding: 0.5,
+              }}
+              {...register("isTadiye")}
+            />
+            <label htmlFor="isTadiye" className="checkboxContainer__label">
+              تاخیر و تادیه
             </label>
           </div>
         </div>
