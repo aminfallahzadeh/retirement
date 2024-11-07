@@ -14,7 +14,6 @@ const initialState = {
   expiredate: sessionStorage.getItem("userInfo")
     ? JSON.parse(sessionStorage.getItem("userInfo")).expiredate
     : null,
-
   userID: null,
 };
 

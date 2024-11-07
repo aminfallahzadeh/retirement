@@ -25,7 +25,7 @@ import { defaultTableOptions } from "@/config/mrt";
 import {
   convertToPersianDateFormatted,
   convertToPersianNumber,
-} from "../helper.js";
+} from "@/helper";
 
 function GenerateGroupStatementGrid({
   groupStatementTableData,

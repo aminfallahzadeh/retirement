@@ -42,7 +42,7 @@ import {
   convertToPersianDate,
   convertToPersianDateFormatted,
   convertToEnglishNumber,
-} from "../helper.js";
+} from "@/helper";
 
 // utils
 import {

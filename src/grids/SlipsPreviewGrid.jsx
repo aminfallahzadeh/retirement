@@ -26,7 +26,7 @@ import {
   convertToPersianNumber,
   convertToPersianDateFormatted,
   separateByThousands,
-} from "../helper.js";
+} from "@/helper";
 
 // UTILS
 import { defaultTableOptions } from "@/config/mrt";

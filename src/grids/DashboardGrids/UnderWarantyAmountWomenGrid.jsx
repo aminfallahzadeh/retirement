@@ -8,7 +8,7 @@ import { MRT_Table, useMaterialReactTable } from "material-react-table";
 import { defaultTableOptions } from "@/config/mrt";
 
 // helpers
-import { convertToPersianNumber } from "../../helper.js";
+import { convertToPersianNumber } from "@/helper";
 
 export const UnderWarantyAmountWomenGrid = ({ data, retiredType }) => {
   const columns = useMemo(() => {

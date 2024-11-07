@@ -21,7 +21,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { defaultTableOptions } from "@/config/mrt";
 
 // helpers
-import { convertToPersianNumber, separateByThousands } from "../helper.js";
+import { convertToPersianNumber, separateByThousands } from "@/helper";
 
 function PersonnelStatementViewGrid({ data }) {
   const [rowSelection, setRowSelection] = useState({});

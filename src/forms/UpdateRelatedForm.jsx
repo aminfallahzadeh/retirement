@@ -40,7 +40,7 @@ import {
   convertToPersianNumber,
   convertToPersianDate,
   convertToEnglishNumber,
-} from "../helper.js";
+} from "@/helper";
 
 // utils
 import {

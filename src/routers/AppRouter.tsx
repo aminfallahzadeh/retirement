@@ -1,4 +1,5 @@
-import { RouteInterface, routes } from "@/constants/routes";
+import { RouteInterface } from "./AppRouter.types";
+import { routes } from "./AppRouter.schema";
 import { RouteProtector } from "@/middlewares/RouteProtector";
 import { useCallback } from "react";
 import { useAppSelector } from "@/hooks/usePreTypesHooks";

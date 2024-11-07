@@ -40,7 +40,7 @@ import {
 } from "material-react-table";
 
 // helpers
-import { findById, convertToPersianNumber } from "../helper.js";
+import { findById, convertToPersianNumber } from "@/helper";
 
 // utils imports
 import { defaultTableOptions } from "@/config/mrt";

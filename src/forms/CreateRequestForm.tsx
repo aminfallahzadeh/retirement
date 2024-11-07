@@ -30,7 +30,7 @@ import {
 } from "../utils/reactSelect.js";
 
 // HELPERS
-import { convertToPersianNumber, convertToEnglishNumber } from "../helper.js";
+import { convertToPersianNumber, convertToEnglishNumber } from "@/helper";
 
 function CreateRequestForm() {
   const [role, setRole] = useState(null);

@@ -1,37 +1,20 @@
-// REACT IMPORTS
+// IMPORTS
 import { useCallback, useEffect, useState } from "react";
-
-// TYPES
-import { ApiError } from "@/types/apiErrorTypes";
 import { RoleDataType } from "@/types/roleDataTypes";
 import { RequestItem } from "@/types/requestApiTypes";
 import { RequestData } from "@/types/grid-types/requestGridDataTypes";
-
-// REDUX
 import { setSelectedRole } from "@/slices/roleDataSlice";
 import { useLazyGetRoleQuery, useLazyGetRequestQuery } from "@/api/request";
 import { useDispatch } from "react-redux";
-
-// HOOKS
 import { useAppSelector } from "@/hooks/usePreTypesHooks";
 import useCreateColumns from "@/hooks/useCreateColumns";
-
-// COMPONENTS
-// import RequestsGrid from "@/grids/RequestsGrid";
 import Grid from "@/components/Grid";
-
-// LIBRARIES
-import { toast } from "react-toastify";
 import Skeleton from "react-loading-skeleton";
-
-// SCHEMAS
-import { requestSchema as columnDefs } from "@/schemas/requestSchema.js";
-
-// DATA
+import { cartableGridSchema as columnDefs } from "./Cartable.schema";
 import { requestCellRenderer } from "@/data/grid-cells/requestCellRenderer";
 import { requestGridActionsRenderer } from "@/data/grid-actions/requestGridActions";
 
-function CartableScreen() {
+export const Cartable = () => {
   // MAIN STATE
   const [requestTableData, setRequestTableData] = useState<RequestData[]>([]);
 
@@ -62,10 +45,6 @@ function CartableScreen() {
       setAllRoles(res?.itemList);
     } catch (error) {
       console.log(error);
-      // const apiError = error as ApiError;
-      // toast.error(apiError.data?.message || apiError.error, {
-      //   autoClose: 2000,
-      // });
     }
   }, [dispatch, getRoles]);
 
@@ -90,10 +69,6 @@ function CartableScreen() {
         setRequestTableData(mappedData);
       } catch (error) {
         console.log(error);
-        const apiError = error as ApiError;
-        toast.error(apiError.data?.message || apiError.error, {
-          autoClose: 2000,
-        });
       }
     },
     [getRequests]
@@ -169,6 +144,4 @@ function CartableScreen() {
       )}
     </section>
   );
-}
-
-export default CartableScreen;
+};

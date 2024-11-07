@@ -12,7 +12,7 @@ import {
 import { IconButton, Tooltip } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 // helpers
-import { generateCaptcha } from "../helper.js";
+import { generateCaptcha } from "@/helper";
 
 // redux imports
 import { useDispatch } from "react-redux";

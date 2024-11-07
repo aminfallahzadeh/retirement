@@ -51,7 +51,7 @@ import { RViewer, RViewerTrigger } from "react-viewerjs";
 import { defaultTableOptions } from "@/config/mrt";
 
 // helpers
-import { convertToPersianNumber, findById } from "../helper.js";
+import { convertToPersianNumber, findById } from "@/helper";
 
 function RequestAttachmentsGrid() {
   // CONTOLL STATESS

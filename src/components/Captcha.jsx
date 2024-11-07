@@ -17,7 +17,7 @@ import {
 import { Button } from "@mui/material";
 
 // helpers
-import { generateCaptcha } from "../helper.js";
+import { generateCaptcha } from "@/helper";
 
 function Captcha() {
   const { userInput, captchaText } = useSelector((state) => state.captcha);

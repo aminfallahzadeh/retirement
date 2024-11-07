@@ -33,7 +33,7 @@ import Select from "react-select";
 import makeAnimated from "react-select/animated";
 
 // helpers
-import { convertToPersianNumber, convertToEnglishNumber } from "../helper.js";
+import { convertToPersianNumber, convertToEnglishNumber } from "@/helper";
 
 // utils
 import {

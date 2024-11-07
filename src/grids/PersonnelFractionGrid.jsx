@@ -34,7 +34,7 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 // helper imports
-import { convertToPersianNumber, separateByThousands } from "../helper.js";
+import { convertToPersianNumber, separateByThousands } from "@/helper";
 
 // utils imports
 import { defaultTableOptions } from "@/config/mrt";

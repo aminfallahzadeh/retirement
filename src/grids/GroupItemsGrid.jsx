@@ -2,7 +2,7 @@
 import { useMemo, useState, useEffect } from "react";
 
 // helpers
-import { findById } from "../helper.js";
+import { findById } from "@/helper";
 
 // utils imports
 import { defaultTableOptions } from "@/config/mrt";

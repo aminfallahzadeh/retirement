@@ -39,7 +39,7 @@ import { defaultTableOptions } from "@/config/mrt";
 import {
   convertToPersianNumber,
   convertToPersianDateFormatted,
-} from "../helper.js";
+} from "@/helper";
 
 function RequestHistoryGrid() {
   const [rowSelection, setRowSelection] = useState({});

@@ -53,7 +53,7 @@ import { toast } from "react-toastify";
 import {
   convertToPersianNumber,
   convertToPersianDateFormatted,
-} from "../helper.js";
+} from "@/helper";
 
 // utils imports
 import { defaultTableOptions } from "@/config/mrt";

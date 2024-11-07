@@ -19,7 +19,7 @@ import {
 import { defaultTableOptions } from "@/config/mrt";
 
 // helpers
-import { convertToPersianNumber } from "../../helper.js";
+import { convertToPersianNumber } from "@/helper";
 
 const data = [];
 

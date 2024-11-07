@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import Captcha from "../components/Captcha";
 
 // helpers
-import { generateCaptcha } from "../helper.js";
+import { generateCaptcha } from "@/helper";
 
 // redux imports
 import { useDispatch, useSelector } from "react-redux";

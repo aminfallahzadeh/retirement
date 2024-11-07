@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 
 // HELPERS
-import { convertToPersianNumber } from "../helper.js";
+import { convertToPersianNumber } from "@/helper";
 
 // MUI
 import { LoadingButton } from "@mui/lab";

@@ -34,7 +34,7 @@ import {
 import { defaultTableOptions } from "@/config/mrt";
 
 // helpers
-import { convertToPersianNumber, findById } from "../helper.js";
+import { convertToPersianNumber, findById } from "@/helper";
 
 // components
 import Modal from "../components/Modal";

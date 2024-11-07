@@ -27,7 +27,7 @@ import CreatePeriodForm from "../forms/CreatePeriodForm.jsx";
 import "react-loading-skeleton/dist/skeleton.css";
 
 // helper imports
-import { convertToPersianNumber } from "../helper.js";
+import { convertToPersianNumber } from "@/helper";
 
 // utils imports
 import { defaultTableOptions } from "@/config/mrt";

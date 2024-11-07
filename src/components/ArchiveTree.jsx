@@ -64,7 +64,7 @@ import createCache from "@emotion/cache";
 import { animated, useSpring } from "@react-spring/web";
 
 // helpers
-import { findById, convertToPersianNumber } from "../helper.js";
+import { findById, convertToPersianNumber } from "@/helper";
 
 function DotIcon() {
   return (
@@ -94,13 +94,13 @@ const StyledTreeItemRoot = styled(TreeItem)(({ theme }) => ({
   color: theme.palette.grey[800],
   position: "relative",
   [`& .${treeItemClasses.content}`]: {
-    "flexDirection": "row-reverse",
-    "borderRadius": theme.spacing(0.7),
-    "marginBottom": theme.spacing(0.5),
-    "marginTop": theme.spacing(0.5),
-    "padding": theme.spacing(0.5),
-    "paddingRight": theme.spacing(1),
-    "fontWeight": 500,
+    flexDirection: "row-reverse",
+    borderRadius: theme.spacing(0.7),
+    marginBottom: theme.spacing(0.5),
+    marginTop: theme.spacing(0.5),
+    padding: theme.spacing(0.5),
+    paddingRight: theme.spacing(1),
+    fontWeight: 500,
     [`& .${treeItemClasses.label}`]: {
       fontWeight: "inherit",
     },

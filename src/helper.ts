@@ -51,6 +51,7 @@ export const convertToEnglishNumber = (str) => {
 export const findById = (data, id, fieldName = "id") => {
   return data.find((item) => item[fieldName] === id);
 };
+
 // generate captcha
 export const generateCaptcha = (len) => {
   const characters = "0123456789";

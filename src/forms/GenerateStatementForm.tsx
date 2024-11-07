@@ -35,7 +35,7 @@ import {
   convertToPersianNumber,
   convertToEnglishNumber,
   convertToPersianDate,
-} from "../helper.js";
+} from "@/helper";
 
 // UTILS
 import { selectSettings, optionsGenerator } from "../utils/reactSelect.js";

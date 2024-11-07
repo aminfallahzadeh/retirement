@@ -53,7 +53,7 @@ import {
   convertToPersianNumber,
   convertToPersianDateFormatted,
   findById,
-} from "../helper.js";
+} from "@/helper";
 
 // utils imports
 import { defaultTableOptions } from "@/config/mrt";

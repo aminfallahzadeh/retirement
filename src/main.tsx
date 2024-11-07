@@ -1,31 +1,20 @@
-// REACT IMPORTS
+// IMPORTS
+import React from "react";
 import ReactDOM from "react-dom/client";
-
-// RRD
 import {
   createBrowserRouter,
   Route,
   RouterProvider,
   createRoutesFromElements,
 } from "react-router-dom";
-
-// STYLES
 import "@/assets/styles/main.scss";
 import "./index.css";
-
-// REDUX
 import { Provider } from "react-redux";
 import store from "@/store";
-
-// COMPONENTS
 import App from "@/App";
-
-// PAGES
-import Login from "@/pages/Login.jsx";
-import Error from "@/pages/Error";
-
-// SCREENS
-import CartableScreen from "@/screens/CartableScreen";
+import { Login } from "@/pages/Login";
+import { Error } from "@/pages/Error";
+import { Cartable } from "@/screens/Cartable";
 import CreateGroupScreen from "@/screens/CreateGroupScreen";
 import CreateUserScreen from "@/screens/CreateUserScreen";
 import RetiredScreen from "@/screens/RetiredScreen";
@@ -52,7 +41,7 @@ const router = createBrowserRouter(
       <Route path="/retirement/" element={<App />}>
         <Route index path="/retirement/" element={<Login />} />
 
-        <Route path="/retirement/cartable" element={<CartableScreen />} />
+        <Route path="/retirement/cartable" element={<Cartable />} />
 
         <Route path="/retirement/retired" element={<RetiredScreen />} />
 
@@ -122,7 +111,9 @@ const router = createBrowserRouter(
 );
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <Provider store={store}>
-    <RouterProvider router={router} />
-  </Provider>
+  <React.StrictMode>
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+  </React.StrictMode>
 );

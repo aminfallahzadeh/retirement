@@ -1,4 +1,4 @@
-export const requestSchema = [
+export const cartableGridSchema = [
   {
     accessorKey: "requestRowNum",
     header: "ردیف",

@@ -36,7 +36,7 @@ import {
   convertToPersianNumber,
   convertToEnglishNumber,
   convertToPersianDate,
-} from "../helper.js";
+} from "@/helper";
 
 // utils
 import {

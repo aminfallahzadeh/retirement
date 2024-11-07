@@ -1,34 +1,32 @@
-// RRD
+// IMPORTS
 import { Link } from "react-router-dom";
-
-// MUI
 import { IconButton, Tooltip } from "@mui/material";
-
-// TYPES
 import { RoleType } from "@/types/roleDataTypes.js";
 import { MRT_RowData } from "material-react-table";
 import { CellRendererProps } from "@/types/grid-types/gridTypes";
+import { NumberHelper, DateHelper } from "@/helpers";
 
-// HELPERS
-import {
-  convertToPersianDateFormatted,
-  convertToPersianNumber,
-} from "@/helper.js";
 import {
   VisibilityOutlined as EyeIcon,
   TextSnippetOutlined as CheckIcon,
 } from "@mui/icons-material";
 
+const numberHelper = new NumberHelper("");
+const dateHelper = new DateHelper("");
+
 export const requestCellRenderer = (selectedRole: RoleType) => ({
-  requestRowNum: ({ renderedCellValue }: CellRendererProps) => (
-    <div>{convertToPersianNumber(renderedCellValue)}</div>
-  ),
-  requestNO: ({ renderedCellValue }: CellRendererProps) => (
-    <div>{convertToPersianNumber(renderedCellValue)}</div>
-  ),
-  date: ({ renderedCellValue }: CellRendererProps) => (
-    <div>{convertToPersianDateFormatted(renderedCellValue)}</div>
-  ),
+  requestRowNum: ({ renderedCellValue }: CellRendererProps) => {
+    numberHelper.num = renderedCellValue as string;
+    return <div>{numberHelper.toPersian()}</div>;
+  },
+  requestNO: ({ renderedCellValue }: CellRendererProps) => {
+    numberHelper.num = renderedCellValue as string;
+    return <div>{numberHelper.toPersian()}</div>;
+  },
+  date: ({ renderedCellValue }: CellRendererProps) => {
+    dateHelper.date = renderedCellValue as string;
+    return <div>{dateHelper.toPersianDateFormatted()}</div>;
+  },
   senderInfo: ({ row }: MRT_RowData) => (
     <Tooltip
       title={
@@ -59,17 +57,20 @@ export const requestCellRenderer = (selectedRole: RoleType) => ({
       </Link>
     </Tooltip>
   ),
-  observe: ({ row }: MRT_RowData) => (
-    <Tooltip title={convertToPersianNumber(row.original.requestNO)}>
-      <Link
-        to={`/retirement/request?requestID=${row.id}&Role=${selectedRole?.value}&type=${row.original.requestTypeID}`}
-      >
-        <span>
-          <IconButton sx={{ padding: "0" }} color="info">
-            <EyeIcon color="info" />
-          </IconButton>
-        </span>
-      </Link>
-    </Tooltip>
-  ),
+  observe: ({ row }: MRT_RowData) => {
+    numberHelper.num = row.original.requestNO;
+    return (
+      <Tooltip title={numberHelper.toPersian()}>
+        <Link
+          to={`/retirement/request?requestID=${row.id}&Role=${selectedRole?.value}&type=${row.original.requestTypeID}`}
+        >
+          <span>
+            <IconButton sx={{ padding: "0" }} color="info">
+              <EyeIcon color="info" />
+            </IconButton>
+          </span>
+        </Link>
+      </Tooltip>
+    );
+  },
 });

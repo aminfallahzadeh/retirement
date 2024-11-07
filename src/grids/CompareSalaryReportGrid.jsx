@@ -19,7 +19,7 @@ import {
 } from "material-react-table";
 
 // HELPERS
-import { convertToPersianNumber } from "../helper.js";
+import { convertToPersianNumber } from "@/helper";
 
 // UTILS
 import { defaultTableOptions } from "@/config/mrt";

@@ -36,7 +36,7 @@ import CreatePayItemForm from "../forms/CreatePayItemForm.jsx";
 import useGetFinancialItems from "../hooks/useGetFinancialItems";
 
 // HELPS
-import { convertToPersianNumber, separateByThousands } from "../helper.js";
+import { convertToPersianNumber, separateByThousands } from "@/helper";
 
 // UTILS
 import { defaultTableOptions } from "@/config/mrt";

@@ -21,7 +21,7 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 // helpers
-import { findById } from "../helper.js";
+import { findById } from "@/helper";
 
 // utils imports
 import { defaultTableOptions } from "@/config/mrt";

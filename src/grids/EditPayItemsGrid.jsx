@@ -40,7 +40,7 @@ import Modal from "../components/Modal";
 import InsertPayItemForm from "../forms/InsertPayItemForm.jsx";
 
 // HELPS
-import { convertToPersianNumber } from "../helper.js";
+import { convertToPersianNumber } from "@/helper";
 
 // UTILS
 import { defaultTableOptions } from "@/config/mrt";

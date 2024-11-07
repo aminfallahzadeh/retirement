@@ -35,7 +35,7 @@ import {
   convertToPersianDate,
   convertToPersianNumber,
   convertToEnglishNumber,
-} from "../helper.js";
+} from "@/helper";
 
 // LIBRARIES
 import { toast } from "react-toastify";

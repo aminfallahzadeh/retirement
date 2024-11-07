@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 // REDUX
 import { useDispatch } from "react-redux";
-import { setNavPanelOpen } from "../slices/themeDataSlice";
+import { setNavPanelOpen } from "@/slices/themeDataSlice";
 
 // MUI
 import { Button } from "@mui/material";
@@ -18,7 +18,7 @@ import {
 // ASSETS
 import errorImage from "@images/404.png";
 
-function Error() {
+export const Error = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -58,6 +58,4 @@ function Error() {
       </div>
     </div>
   );
-}
-
-export default Error;
+};

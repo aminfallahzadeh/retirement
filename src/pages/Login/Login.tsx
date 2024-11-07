@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 
 // redux imports
-import { useGetAnnounceQuery } from "../slices/announceApiSlice.js";
+import { useGetAnnounceQuery } from "@/slices/announceApiSlice.js";
 
 // mui imports
 import {
@@ -16,18 +16,18 @@ import { IconButton, Tooltip, Box, CircularProgress } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 
 // helpers
-import { generateCaptcha } from "../helper.js";
+import { generateCaptcha, convertToEnglishNumber } from "@/helper";
 
 // redux imports
 import { useDispatch } from "react-redux";
-import { useLoginMutation } from "../slices/usersApiSlice";
-import { setCredentials } from "../slices/authSlice";
+import { useLoginMutation } from "@/slices/usersApiSlice.js";
+import { setCredentials } from "@/slices/authSlice.js";
 
 // rrd imports
 import { useNavigate } from "react-router-dom";
 
 // components
-import { Logo } from "../components/SVGs.jsx";
+import { Logo } from "@/components/SVGs.jsx";
 
 // library imports
 import { toast } from "react-toastify";
@@ -38,10 +38,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
-// helpers
-import { convertToEnglishNumber } from "../helper.js";
-
-function Login() {
+export const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [captcha, setCaptcha] = useState(false);
   const [captchaText, setCaptchaText] = useState("");
@@ -383,6 +380,6 @@ function Login() {
       </div>
     </div>
   );
-}
+};
 
-export default Login;
+// export default Login;

@@ -44,7 +44,7 @@ import {
   convertToPersianNumber,
   convertToPersianDateFormatted,
   separateByThousands,
-} from "../helper.js";
+} from "@/helper";
 
 function RetiredSlipsGrid() {
   const [rowSelection, setRowSelection] = useState({});

@@ -21,7 +21,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { defaultTableOptions } from "@/config/mrt";
 
 // helpers
-import { convertToPersianNumber } from "../helper.js";
+import { convertToPersianNumber } from "@/helper";
 
 function PersonnelStatementRelatedGrid() {
   const [rowSelection, setRowSelection] = useState({});

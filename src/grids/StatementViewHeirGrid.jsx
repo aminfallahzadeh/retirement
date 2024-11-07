@@ -23,7 +23,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import {
   convertToPersianNumber,
   convertToPersianDateFormatted,
-} from "../helper.js";
+} from "@/helper";
 
 // utils imports
 import { defaultTableOptions } from "@/config/mrt";
