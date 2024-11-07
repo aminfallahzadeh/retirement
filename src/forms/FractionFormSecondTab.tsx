@@ -3,15 +3,12 @@ import { useState, useEffect, useRef } from "react";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 
 // HELPERS
-import {
-  convertToPersianDate,
-  convertToPersianNumber,
-  convertToEnglishNumber,
-} from "../helper.js";
+import { convertToPersianNumber } from "../helper.js";
 
 // MUI
 import { LoadingButton } from "@mui/lab";
-import { Box, CircularProgress, Checkbox } from "@mui/material";
+import { Done as DoneIcon } from "@mui/icons-material";
+import { Checkbox } from "@mui/material";
 
 // LIBRARIES
 import Select from "react-select";
@@ -37,6 +34,7 @@ interface FractionFormData {
   oraginaztionName: object;
   fractionPrice: string;
   isTadiye: boolean;
+  isInstallment: boolean;
 }
 
 function FractionFormSecondTab() {
@@ -318,6 +316,167 @@ function FractionFormSecondTab() {
           <div></div>
           <div></div>
 
+          <h4
+            className="title-quaternary"
+            style={{ justifySelf: "start", alignSelf: "center" }}
+          >
+            سنوات قابل محاسبه :
+          </h4>
+
+          <h4
+            className="title-quaternary"
+            style={{ justifySelf: "start", alignSelf: "center" }}
+          >
+            تاریخ از :
+          </h4>
+
+          <div className="inputBox__form">
+            {errors.fractionPrice && (
+              <span className="error-form">{errors.fractionPrice.message}</span>
+            )}
+            <input
+              type="text"
+              id="fractionPrice"
+              className="inputBox__form--input"
+              value={convertToPersianNumber(form_data?.fractionPrice) ?? ""}
+              required
+              {...register("fractionPrice", {
+                required: "مبلغ مشمول کسور اجباری است",
+                // pattern: {
+                //   value: /^[۰-۹0-9]+$/,
+                //   message: "گروه باید فقط شامل اعداد باشد",
+                // },
+              })}
+            />
+            <label htmlFor="fractionPrice" className="inputBox__form--label">
+              <span>*</span>سال
+            </label>
+          </div>
+
+          <div className="inputBox__form">
+            {errors.fractionPrice && (
+              <span className="error-form">{errors.fractionPrice.message}</span>
+            )}
+            <input
+              type="text"
+              id="fractionPrice"
+              className="inputBox__form--input"
+              value={convertToPersianNumber(form_data?.fractionPrice) ?? ""}
+              required
+              {...register("fractionPrice", {
+                required: "مبلغ مشمول کسور اجباری است",
+                // pattern: {
+                //   value: /^[۰-۹0-9]+$/,
+                //   message: "گروه باید فقط شامل اعداد باشد",
+                // },
+              })}
+            />
+            <label htmlFor="fractionPrice" className="inputBox__form--label">
+              <span>*</span>ماه
+            </label>
+          </div>
+
+          <div className="inputBox__form">
+            {errors.fractionPrice && (
+              <span className="error-form">{errors.fractionPrice.message}</span>
+            )}
+            <input
+              type="text"
+              id="fractionPrice"
+              className="inputBox__form--input"
+              value={convertToPersianNumber(form_data?.fractionPrice) ?? ""}
+              required
+              {...register("fractionPrice", {
+                required: "مبلغ مشمول کسور اجباری است",
+                // pattern: {
+                //   value: /^[۰-۹0-9]+$/,
+                //   message: "گروه باید فقط شامل اعداد باشد",
+                // },
+              })}
+            />
+            <label htmlFor="fractionPrice" className="inputBox__form--label">
+              <span>*</span>روز
+            </label>
+          </div>
+
+          <div></div>
+
+          <h4
+            className="title-quaternary"
+            style={{ justifySelf: "start", alignSelf: "center" }}
+          >
+            تاریخ تا :
+          </h4>
+
+          <div className="inputBox__form">
+            {errors.fractionPrice && (
+              <span className="error-form">{errors.fractionPrice.message}</span>
+            )}
+            <input
+              type="text"
+              id="fractionPrice"
+              className="inputBox__form--input"
+              value={convertToPersianNumber(form_data?.fractionPrice) ?? ""}
+              required
+              {...register("fractionPrice", {
+                required: "مبلغ مشمول کسور اجباری است",
+                // pattern: {
+                //   value: /^[۰-۹0-9]+$/,
+                //   message: "گروه باید فقط شامل اعداد باشد",
+                // },
+              })}
+            />
+            <label htmlFor="fractionPrice" className="inputBox__form--label">
+              <span>*</span>سال
+            </label>
+          </div>
+
+          <div className="inputBox__form">
+            {errors.fractionPrice && (
+              <span className="error-form">{errors.fractionPrice.message}</span>
+            )}
+            <input
+              type="text"
+              id="fractionPrice"
+              className="inputBox__form--input"
+              value={convertToPersianNumber(form_data?.fractionPrice) ?? ""}
+              required
+              {...register("fractionPrice", {
+                required: "مبلغ مشمول کسور اجباری است",
+                // pattern: {
+                //   value: /^[۰-۹0-9]+$/,
+                //   message: "گروه باید فقط شامل اعداد باشد",
+                // },
+              })}
+            />
+            <label htmlFor="fractionPrice" className="inputBox__form--label">
+              <span>*</span>ماه
+            </label>
+          </div>
+
+          <div className="inputBox__form">
+            {errors.fractionPrice && (
+              <span className="error-form">{errors.fractionPrice.message}</span>
+            )}
+            <input
+              type="text"
+              id="fractionPrice"
+              className="inputBox__form--input"
+              value={convertToPersianNumber(form_data?.fractionPrice) ?? ""}
+              required
+              {...register("fractionPrice", {
+                required: "مبلغ مشمول کسور اجباری است",
+                // pattern: {
+                //   value: /^[۰-۹0-9]+$/,
+                //   message: "گروه باید فقط شامل اعداد باشد",
+                // },
+              })}
+            />
+            <label htmlFor="fractionPrice" className="inputBox__form--label">
+              <span>*</span>روز
+            </label>
+          </div>
+
           <div
             className="checkboxContainer__item"
             style={{ justifySelf: "start", alignSelf: "center" }}
@@ -336,6 +495,357 @@ function FractionFormSecondTab() {
               تاخیر و تادیه
             </label>
           </div>
+
+          {form_data.isTadiye && (
+            <>
+              <h4
+                className="title-quaternary"
+                style={{ justifySelf: "start", alignSelf: "center" }}
+              >
+                تاریخ از :
+              </h4>
+
+              <div className="inputBox__form">
+                {errors.fractionPrice && (
+                  <span className="error-form">
+                    {errors.fractionPrice.message}
+                  </span>
+                )}
+                <input
+                  type="text"
+                  id="fractionPrice"
+                  className="inputBox__form--input"
+                  value={convertToPersianNumber(form_data?.fractionPrice) ?? ""}
+                  required
+                  {...register("fractionPrice", {
+                    required: "مبلغ مشمول کسور اجباری است",
+                    // pattern: {
+                    //   value: /^[۰-۹0-9]+$/,
+                    //   message: "گروه باید فقط شامل اعداد باشد",
+                    // },
+                  })}
+                />
+                <label
+                  htmlFor="fractionPrice"
+                  className="inputBox__form--label"
+                >
+                  <span>*</span>سال
+                </label>
+              </div>
+
+              <div className="inputBox__form">
+                {errors.fractionPrice && (
+                  <span className="error-form">
+                    {errors.fractionPrice.message}
+                  </span>
+                )}
+                <input
+                  type="text"
+                  id="fractionPrice"
+                  className="inputBox__form--input"
+                  value={convertToPersianNumber(form_data?.fractionPrice) ?? ""}
+                  required
+                  {...register("fractionPrice", {
+                    required: "مبلغ مشمول کسور اجباری است",
+                    // pattern: {
+                    //   value: /^[۰-۹0-9]+$/,
+                    //   message: "گروه باید فقط شامل اعداد باشد",
+                    // },
+                  })}
+                />
+                <label
+                  htmlFor="fractionPrice"
+                  className="inputBox__form--label"
+                >
+                  <span>*</span>ماه
+                </label>
+              </div>
+
+              <div className="inputBox__form">
+                {errors.fractionPrice && (
+                  <span className="error-form">
+                    {errors.fractionPrice.message}
+                  </span>
+                )}
+                <input
+                  type="text"
+                  id="fractionPrice"
+                  className="inputBox__form--input"
+                  value={convertToPersianNumber(form_data?.fractionPrice) ?? ""}
+                  required
+                  {...register("fractionPrice", {
+                    required: "مبلغ مشمول کسور اجباری است",
+                    // pattern: {
+                    //   value: /^[۰-۹0-9]+$/,
+                    //   message: "گروه باید فقط شامل اعداد باشد",
+                    // },
+                  })}
+                />
+                <label
+                  htmlFor="fractionPrice"
+                  className="inputBox__form--label"
+                >
+                  <span>*</span>روز
+                </label>
+              </div>
+
+              <div></div>
+
+              <h4
+                className="title-quaternary"
+                style={{ justifySelf: "start", alignSelf: "center" }}
+              >
+                تاریخ تا :
+              </h4>
+
+              <div className="inputBox__form">
+                {errors.fractionPrice && (
+                  <span className="error-form">
+                    {errors.fractionPrice.message}
+                  </span>
+                )}
+                <input
+                  type="text"
+                  id="fractionPrice"
+                  className="inputBox__form--input"
+                  value={convertToPersianNumber(form_data?.fractionPrice) ?? ""}
+                  required
+                  {...register("fractionPrice", {
+                    required: "مبلغ مشمول کسور اجباری است",
+                    // pattern: {
+                    //   value: /^[۰-۹0-9]+$/,
+                    //   message: "گروه باید فقط شامل اعداد باشد",
+                    // },
+                  })}
+                />
+                <label
+                  htmlFor="fractionPrice"
+                  className="inputBox__form--label"
+                >
+                  <span>*</span>سال
+                </label>
+              </div>
+
+              <div className="inputBox__form">
+                {errors.fractionPrice && (
+                  <span className="error-form">
+                    {errors.fractionPrice.message}
+                  </span>
+                )}
+                <input
+                  type="text"
+                  id="fractionPrice"
+                  className="inputBox__form--input"
+                  value={convertToPersianNumber(form_data?.fractionPrice) ?? ""}
+                  required
+                  {...register("fractionPrice", {
+                    required: "مبلغ مشمول کسور اجباری است",
+                    // pattern: {
+                    //   value: /^[۰-۹0-9]+$/,
+                    //   message: "گروه باید فقط شامل اعداد باشد",
+                    // },
+                  })}
+                />
+                <label
+                  htmlFor="fractionPrice"
+                  className="inputBox__form--label"
+                >
+                  <span>*</span>ماه
+                </label>
+              </div>
+
+              <div className="inputBox__form">
+                {errors.fractionPrice && (
+                  <span className="error-form">
+                    {errors.fractionPrice.message}
+                  </span>
+                )}
+                <input
+                  type="text"
+                  id="fractionPrice"
+                  className="inputBox__form--input"
+                  value={convertToPersianNumber(form_data?.fractionPrice) ?? ""}
+                  required
+                  {...register("fractionPrice", {
+                    required: "مبلغ مشمول کسور اجباری است",
+                    // pattern: {
+                    //   value: /^[۰-۹0-9]+$/,
+                    //   message: "گروه باید فقط شامل اعداد باشد",
+                    // },
+                  })}
+                />
+                <label
+                  htmlFor="fractionPrice"
+                  className="inputBox__form--label"
+                >
+                  <span>*</span>روز
+                </label>
+              </div>
+            </>
+          )}
+        </div>
+
+        <div style={{ marginRight: "auto" }}>
+          <LoadingButton
+            loading={false}
+            type="submit"
+            endIcon={<MdOutlineCalculate />}
+            variant="contained"
+            color="warning"
+            sx={{ fontFamily: "IranYekan" }}
+          >
+            <span>محاسبه کسور</span>
+          </LoadingButton>
+        </div>
+      </form>
+
+      <div
+        style={{
+          width: "100%",
+          height: "1px",
+          backgroundColor: "#ddd",
+          margin: "10px 0",
+        }}
+      ></div>
+
+      <div className="grid grid--col-5">
+        <p className="fraction-item">
+          جمع مشمول کسور :<span>-</span>
+        </p>
+        <p className="fraction-item">
+          درصد سهم کارفرما : <span>-</span>
+        </p>
+        <p className="fraction-item">
+          درصد سهم کارمند : <span>-</span>
+        </p>
+
+        <div></div>
+        <div></div>
+
+        <p className="fraction-item">
+          مبلغ کسور :<span>-</span>
+        </p>
+
+        <p className="fraction-item">
+          سهم کارفرما : <span>-</span>
+        </p>
+        <p className="fraction-item">
+          سهم کارمند : <span>-</span>
+        </p>
+        <p className="fraction-item">
+          مانده بدهی :<span>-</span>
+        </p>
+        <p className="fraction-item">
+          مانده بستانکاری : <span>-</span>
+        </p>
+      </div>
+
+      <div
+        style={{
+          width: "100%",
+          height: "1px",
+          backgroundColor: "#ddd",
+          margin: "10px 0",
+        }}
+      ></div>
+
+      <form
+        method="POST"
+        className="flex-col"
+        noValidate
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <section className="grid grid--col-5">
+          <div
+            className="checkboxContainer__item"
+            style={{ justifySelf: "start", alignSelf: "center" }}
+          >
+            <Checkbox
+              size="small"
+              color="success"
+              checked={!!form_data?.isInstallment}
+              id="isInstallment"
+              sx={{
+                padding: 0.5,
+              }}
+              {...register("isInstallment")}
+            />
+            <label htmlFor="isInstallment" className="checkboxContainer__label">
+              قسطی
+            </label>
+          </div>
+
+          {form_data.isInstallment && (
+            <>
+              <div className="inputBox__form">
+                {errors.fractionPrice && (
+                  <span className="error-form">
+                    {errors.fractionPrice.message}
+                  </span>
+                )}
+                <input
+                  type="text"
+                  id="fractionPrice"
+                  className="inputBox__form--input"
+                  value={convertToPersianNumber(form_data?.fractionPrice) ?? ""}
+                  required
+                  {...register("fractionPrice", {
+                    required: "مبلغ مشمول کسور اجباری است",
+                    // pattern: {
+                    //   value: /^[۰-۹0-9]+$/,
+                    //   message: "گروه باید فقط شامل اعداد باشد",
+                    // },
+                  })}
+                />
+                <label
+                  htmlFor="fractionPrice"
+                  className="inputBox__form--label"
+                >
+                  <span>*</span>مبلغ قسط
+                </label>
+              </div>
+
+              <div className="inputBox__form">
+                {errors.fractionPrice && (
+                  <span className="error-form">
+                    {errors.fractionPrice.message}
+                  </span>
+                )}
+                <input
+                  type="text"
+                  id="fractionPrice"
+                  className="inputBox__form--input"
+                  value={convertToPersianNumber(form_data?.fractionPrice) ?? ""}
+                  required
+                  {...register("fractionPrice", {
+                    required: "مبلغ مشمول کسور اجباری است",
+                    // pattern: {
+                    //   value: /^[۰-۹0-9]+$/,
+                    //   message: "گروه باید فقط شامل اعداد باشد",
+                    // },
+                  })}
+                />
+                <label
+                  htmlFor="fractionPrice"
+                  className="inputBox__form--label"
+                >
+                  <span>*</span>تعداد قسط
+                </label>
+              </div>
+            </>
+          )}
+        </section>
+        <div style={{ marginRight: "auto" }}>
+          <LoadingButton
+            loading={false}
+            type="submit"
+            endIcon={<DoneIcon />}
+            variant="contained"
+            color="success"
+            sx={{ fontFamily: "IranYekan" }}
+          >
+            <span>ذخیره</span>
+          </LoadingButton>
         </div>
       </form>
     </section>
