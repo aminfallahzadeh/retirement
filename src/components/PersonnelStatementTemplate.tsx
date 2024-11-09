@@ -9,7 +9,11 @@ import { DownloadOutlined as DownloadIcon } from "@mui/icons-material";
 import { useGetPersonnelStatementDetailQuery } from "../slices/personnelStatementApiSlice";
 
 // HELPERS
-import { convertToPersianNumber } from "../helper";
+import {
+  convertToPersianNumber,
+  separateByThousands,
+  convertToPersianDateFormatted,
+} from "../helper";
 import { NumberHelper } from "@/helpers";
 
 // LIBRARY IMPROTS
@@ -302,19 +306,39 @@ function PersonnelStatementTemplate({ statementID }) {
             </table>
 
             <div className="flex justify-center items-start w-full gap-x-1">
-              <table className="slip-container__personnel-statement-table form-table">
-                <tbody>
-                  <tr>
-                    <td style={{ verticalAlign: "top" }}>۲۲- شرح حکم :</td>
-                  </tr>
-
-                  {formData?.description && (
+              <div className="flex flex-col w-full">
+                <table className="slip-container__personnel-statement-table form-table">
+                  <tbody>
                     <tr>
-                      <td>{formData?.description}</td>
+                      <td style={{ verticalAlign: "top" }}>۲۲- شرح حکم :</td>
                     </tr>
-                  )}
-                </tbody>
-              </table>
+
+                    <tr>
+                      <td>{formData?.description || "-"}</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <table className="slip-container__personnel-statement-table form-table">
+                  <tbody>
+                    <tr>
+                      <td>۲۳ - تاریخ اجرای حکم :</td>
+                    </tr>
+                    <tr>
+                      <td>ﺷﻤﺎﺭﻩ ﺣﮑﻢ :</td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        ۲۴- ﺗﺎﺭﯾﺦ ﺻﺪﻭﺭ ﺣﮑﻢ :{" "}
+                        {convertToPersianDateFormatted(formData?.createDate) ||
+                          "-"}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
               <table className="slip-container__personnel-statement-table form-table">
                 <tbody>
                   {itemList?.map((item, index) => {
@@ -327,18 +351,49 @@ function PersonnelStatementTemplate({ statementID }) {
                         <td style={{ verticalAlign: "top" }}>
                           {item.personnelStatementItemTypeName}
                         </td>
-                        <td
-                          style={{ verticalAlign: "top" }}
-                          className="text-center"
-                        >
-                          {separatedNum}
-                        </td>
+                        <td className="text-center">{separatedNum}</td>
                       </tr>
                     );
                   })}
+                  <tr className="font-bold">
+                    <td>جمع مشمول کسور</td>
+                    <td className="text-center">
+                      {separateByThousands(
+                        convertToPersianNumber(formData?.fractionBaseAmount)
+                      )}
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>
+
+            <table className="slip-container__personnel-statement-table form-table">
+              <tbody>
+                <tr>
+                  <th colSpan={6}>۲۵- ﺟﻤﻊ ﺣﻘﻮﻕ ﻭ ﻣﺰﺍﯾﺎ ﺑﻪ ﺣﺮﻭﻑ :</th>
+                </tr>
+
+                <tr>
+                  <td colSpan={3} className="no-border-bottom">
+                    ۲۶- ﻧﺎﻡ ﻭ ﻧﺎﻡ ﺧﺎﻧﻮﺍﺩﮔﯽ ﻣﻘﺎﻡ ﻣﺴﺌﻮﻝ :
+                  </td>
+                  <td colSpan={3} className="no-border-bottom">
+                    ﻧﺴﺨﻪ ﻣﺮﺑﻮﻁ ﺑﻪ :
+                  </td>
+                </tr>
+
+                <tr>
+                  <td colSpan={3} className="no-border-top">
+                    ﻋﻨﻮﺍﻥ ﭘﺴﺖ ﺛﺎﺑﺖ ﺳﺎﺯﻣﺎﻧﯽ :
+                  </td>
+                  <td
+                    colSpan={3}
+                    style={{ justifyContent: "center", textAlign: "center" }}
+                    className="no-border-top"
+                  ></td>
+                </tr>
+              </tbody>
+            </table>
 
             {/* <tr>
                   <td colSpan={3} rowSpan={22} style={{ verticalAlign: "top" }}>
