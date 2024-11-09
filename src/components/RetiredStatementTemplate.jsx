@@ -43,6 +43,7 @@ function RetiredStatementTemplate({ statementID, setShowStatementModal }) {
   // MAIN STATE
   const [retiredInfo, setRetiredInfo] = useState(null);
   const [statementInfo, setStatementInfo] = useState(null);
+  const [signature, setSignature] = useState(null);
 
   const [updatedAmount, setUpdatedAmount] = useState([]);
 
@@ -78,6 +79,7 @@ function RetiredStatementTemplate({ statementID, setShowStatementModal }) {
     statementRefetch();
     if (isStatementSuccess) {
       setStatementInfo(statement);
+      setSignature(statement?.documentSignature);
 
       const filteredAmounts = statement?.retirementStatementAmountList?.filter(
         (item) =>
@@ -157,6 +159,10 @@ function RetiredStatementTemplate({ statementID, setShowStatementModal }) {
       });
     }
   };
+
+  useEffect(() => {
+    console.log("THIS IS THE SIGNATURE", signature);
+  }, [signature]);
 
   const content = (
     <>
@@ -416,7 +422,7 @@ function RetiredStatementTemplate({ statementID, setShowStatementModal }) {
 
                 <tr>
                   <th>{`گروه : ${
-                    convertToPersianNumber(retiredInfo?.retiredGroup) || "-"
+                    convertToPersianNumber(statementInfo?.retiredGroup) || "-"
                   }`}</th>
                   <th>{`مرتبه : ${
                     convertToPersianNumber(retiredInfo?.retiredJobDegree) || "-"
@@ -666,6 +672,11 @@ function RetiredStatementTemplate({ statementID, setShowStatementModal }) {
                     colSpan={3}
                     style={{ textAlign: "left", padding: "20px" }}
                   >
+                    <img
+                      src={signature}
+                      alt="امضا"
+                      className="w-[120px] mr-auto"
+                    />
                     عضو هیات مدیره و مدیرعامل
                   </th>
                 </tr>

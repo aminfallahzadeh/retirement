@@ -27,6 +27,7 @@ function PersonnelInfoForm() {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const personID = searchParams.get("personID");
+  const personDeathDate = searchParams.get("personDeathDate");
 
   // GET MAIN DATA
   const { data: person, isSuccess, error } = useGetPersonsQuery({ personID });
@@ -207,6 +208,17 @@ function PersonnelInfoForm() {
             </div>
           </div>
         </div>
+
+        {personDeathDate !== "null" && (
+          <div className="inputBox__form">
+            <div className="inputBox__form--readOnly-input">
+              <div className="inputBox__form--readOnly-label">تاریخ فوت</div>
+              <div className="inputBox__form--readOnly-content">
+                {convertToPersianDateFormatted(personDeathDate)}
+              </div>
+            </div>
+          </div>
+        )}
       </form>
     </section>
   );

@@ -124,6 +124,7 @@ function RetiredPensionaryForm() {
     if (isStatusHistorySuccess) {
       const mappedData = statusHistory?.itemList.map((item, index) => ({
         id: item.pensionaryID,
+        isActive: item.pensionaryIsActive,
         pensionaryStatusRowNum: index + 1,
         pensionaryStatusName: item.pensionaryStatusName || "-",
         pensionaryStartdate:
@@ -574,7 +575,7 @@ function RetiredPensionaryForm() {
                   }}
                 />
                 <div className="inputBox__form--readOnly-label">
-                  تاریخ تغییر وضعیت
+                  <span>*</span> تاریخ تغییر وضعیت
                 </div>
               </div>
 

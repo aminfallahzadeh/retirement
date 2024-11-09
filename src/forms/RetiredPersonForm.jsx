@@ -111,6 +111,11 @@ function RetiredPersonForm() {
     };
   }, [dispatch, isSuccess, retiredPersonData?.itemList, setValue]);
 
+  // DEBUGGING
+  useEffect(() => {
+    console.log(form_data);
+  }, [form_data]);
+
   // handle error
   useEffect(() => {
     if (error) {
@@ -199,12 +204,12 @@ function RetiredPersonForm() {
   };
 
   const handleBirthDateChange = (date) => {
-    setSelectedBirthDate(date);
+    setValue("personBirthDate", date);
     setIsBirthCalenderOpen(false);
   };
 
   const handleDeathDateChange = (date) => {
-    setSelectedDeathDate(date);
+    setValue("personDeathDate", date);
     setIsDeathCalenderOpen(false);
   };
 
@@ -223,8 +228,8 @@ function RetiredPersonForm() {
       let personDeathDate;
       let personBirthDate;
 
-      if (selectedDeathDate) {
-        personDeathDate = new Date(selectedDeathDate);
+      if (form_data.personDeathDate) {
+        personDeathDate = new Date(form_data.personDeathDate);
         personDeathDate.setMinutes(
           personDeathDate.getMinutes() - personDeathDate.getTimezoneOffset()
         );
@@ -232,8 +237,8 @@ function RetiredPersonForm() {
         personDeathDate = null;
       }
 
-      if (selectedBirthDate) {
-        personBirthDate = new Date(selectedBirthDate);
+      if (form_data.personBirthDate) {
+        personBirthDate = new Date(form_data.personBirthDate);
         personBirthDate.setMinutes(
           personBirthDate.getMinutes() - personBirthDate.getTimezoneOffset()
         );
@@ -520,7 +525,12 @@ function RetiredPersonForm() {
               <div className="inputBox__form">
                 <InputDatePicker
                   disabled={!editable}
-                  value={selectedBirthDate}
+                  // value={selectedBirthDate}
+                  value={
+                    form_data?.personBirthDate
+                      ? convertToPersianDate(form_data.personBirthDate)
+                      : null
+                  }
                   defaultValue={null}
                   format={"jYYYY/jMM/jDD"}
                   onChange={handleBirthDateChange}
@@ -789,14 +799,14 @@ function RetiredPersonForm() {
                       value: /^[۰-۹0-9]+$/,
                       message: "تلفن باید فقط شامل اعداد باشد",
                     },
-                    minLength: {
-                      value: 8,
-                      message: "تلفن باید ۸ رقم باشد",
-                    },
-                    maxLength: {
-                      value: 8,
-                      message: "تلفن باید ۸ رقم باشد",
-                    },
+                    // minLength: {
+                    //   value: 8,
+                    //   message: "تلفن باید ۸ رقم باشد",
+                    // },
+                    // maxLength: {
+                    //   value: 8,
+                    //   message: "تلفن باید ۸ رقم باشد",
+                    // },
                   })}
                 />
                 <label htmlFor="personPhone" className="inputBox__form--label">
@@ -1289,7 +1299,12 @@ function RetiredPersonForm() {
               <div className="inputBox__form">
                 <InputDatePicker
                   disabled={!editable}
-                  value={selectedDeathDate}
+                  // value={selectedDeathDate}
+                  value={
+                    form_data.personDeathDate
+                      ? convertToPersianDate(form_data.personDeathDate)
+                      : null
+                  }
                   format={"jYYYY/jMM/jDD"}
                   onChange={handleDeathDateChange}
                   onOpenChange={handleDeathOpenChange}
@@ -1320,10 +1335,10 @@ function RetiredPersonForm() {
                   className="inputBox__form--input"
                   required
                   {...register("personAddress", {
-                    pattern: {
-                      value: /^[آ-ی۰-۹0-9\s]+$/,
-                      message: "از حروف فارسی استفاده کنید",
-                    },
+                    // pattern: {
+                    //   value: /^[آ-ی۰-۹0-9\s]+$/,
+                    //   message: "از حروف فارسی استفاده کنید",
+                    // },
                   })}
                 ></textarea>
                 <label
@@ -1351,10 +1366,10 @@ function RetiredPersonForm() {
                   className="inputBox__form--input"
                   required
                   {...register("personDescription", {
-                    pattern: {
-                      value: /^[آ-ی۰-۹0-9\s]+$/,
-                      message: "از حروف فارسی استفاده کنید",
-                    },
+                    // pattern: {
+                    //   value: /^[آ-ی۰-۹0-9\s]+$/,
+                    //   message: "از حروف فارسی استفاده کنید",
+                    // },
                   })}
                 ></textarea>
                 <label

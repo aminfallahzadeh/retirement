@@ -132,6 +132,7 @@ function UpdateRelatedForm({
       const mappedData = statusHistory?.itemList.map((item, index) => ({
         id: item.pensionaryID,
         pensionaryStatusRowNum: index + 1,
+        isActive: item.pensionaryIsActive,
         pensionaryStatusName: item.pensionaryStatusName || "-",
         pensionaryStartdate:
           convertToPersianDate(item.pensionaryStartdate) || "-",
@@ -442,7 +443,6 @@ function UpdateRelatedForm({
     }
   };
 
-  // FIX CLOSE CALENDER BUG
   useCloseCalender(
     [
       birthCalenderRef,
@@ -1341,10 +1341,10 @@ function UpdateRelatedForm({
                   id="personAddress1"
                   required
                   {...register("personAddress", {
-                    pattern: {
-                      value: /^[آ-ی\s۰-۹]+$/,
-                      message: "از حروف و اعداد فارسی استفاده کنید",
-                    },
+                    // pattern: {
+                    //   value: /^[آ-ی\s۰-۹]+$/,
+                    //   message: "از حروف و اعداد فارسی استفاده کنید",
+                    // },
                   })}
                 />
                 <label
@@ -1369,10 +1369,10 @@ function UpdateRelatedForm({
                   id="personDescription1"
                   required
                   {...register("personDescription", {
-                    pattern: {
-                      value: /^[آ-ی\s۰-۹]+$/,
-                      message: "از حروف و اعداد فارسی استفاده کنید",
-                    },
+                    // pattern: {
+                    //   value: /^[آ-ی\s۰-۹]+$/,
+                    //   message: "از حروف و اعداد فارسی استفاده کنید",
+                    // },
                   })}
                 ></textarea>
                 <label
@@ -1601,14 +1601,14 @@ function UpdateRelatedForm({
                       value: /^[۰-۹0-9]+$/,
                       message: "تلفن باید فقط شامل اعداد باشد",
                     },
-                    minLength: {
-                      value: 8,
-                      message: "تلفن ثابت باید ۸ رقم باشد",
-                    },
-                    maxLength: {
-                      value: 8,
-                      message: "تلفن ثابت باید ۸ رقم باشد",
-                    },
+                    // minLength: {
+                    //   value: 8,
+                    //   message: "تلفن ثابت باید ۸ رقم باشد",
+                    // },
+                    // maxLength: {
+                    //   value: 8,
+                    //   message: "تلفن ثابت باید ۸ رقم باشد",
+                    // },
                   })}
                 />
                 <label className="inputBox__form--label" htmlFor="backupPhone">

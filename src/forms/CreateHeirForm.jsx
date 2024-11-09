@@ -304,14 +304,13 @@ function CreateHeirForm({ setShowCreateHeirModal, refetch }) {
     }
   };
 
-  // FIX CLOSE CALENDER BUG
   useCloseCalender(
     [birthCalenderRef, endSubCalenderRef],
     [setIsBirthCalenderOpen, setIsBaseFinishDateCalenderOpen]
   );
 
   const content = (
-    <section className="formContainer-transparent flex-col">
+    <section className="formContainer-transparent formContainer--width-lg flex-col">
       <form
         method="POST"
         className="flex-col"
@@ -614,14 +613,14 @@ function CreateHeirForm({ setShowCreateHeirModal, refetch }) {
                   value: /^[۰-۹0-9]+$/,
                   message: "تلفن باید فقط شامل اعداد باشد",
                 },
-                minLength: {
-                  value: 8,
-                  message: "تلفن ثابت باید ۸ رقم باشد",
-                },
-                maxLength: {
-                  value: 8,
-                  message: "تلفن ثابت باید ۸ رقم باشد",
-                },
+                // minLength: {
+                //   value: 8,
+                //   message: "تلفن ثابت باید ۸ رقم باشد",
+                // },
+                // maxLength: {
+                //   value: 8,
+                //   message: "تلفن ثابت باید ۸ رقم باشد",
+                // },
               })}
             />
             <label className="inputBox__form--label" htmlFor="personPhone11">
@@ -898,10 +897,10 @@ function CreateHeirForm({ setShowCreateHeirModal, refetch }) {
               id="personAddress1"
               required
               {...register("personAddress", {
-                pattern: {
-                  value: /^[آ-ی\s۰-۹]+$/,
-                  message: "از حروف و اعداد فارسی استفاده کنید",
-                },
+                // pattern: {
+                //   value: /^[آ-ی\s۰-۹]+$/,
+                //   message: "از حروف و اعداد فارسی استفاده کنید",
+                // },
               })}
             />
             <label className="inputBox__form--label" htmlFor="personAddress1">
@@ -923,10 +922,10 @@ function CreateHeirForm({ setShowCreateHeirModal, refetch }) {
               id="personDescription"
               required
               {...register("personDescription", {
-                pattern: {
-                  value: /^[آ-ی\s۰-۹]+$/,
-                  message: "از حروف و اعداد فارسی استفاده کنید",
-                },
+                // pattern: {
+                //   value: /^[آ-ی\s۰-۹]+$/,
+                //   message: "از حروف و اعداد فارسی استفاده کنید",
+                // },
               })}
             ></textarea>
             <label

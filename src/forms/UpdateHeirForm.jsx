@@ -134,6 +134,7 @@ function UpdateHeirForm({
     if (isStatusHistorySuccess) {
       const mappedData = statusHistory?.itemList.map((item, index) => ({
         id: item.pensionaryID,
+        isActive: item.pensionaryIsActive,
         pensionaryStatusRowNum: index + 1,
         pensionaryStatusName: item.pensionaryStatusName || "-",
         pensionaryStartdate:
@@ -415,7 +416,6 @@ function UpdateHeirForm({
     }
   };
 
-  // FIX CLOSE CALENDER BUG
   useCloseCalender(
     [birthCalenderRef, endSubCalenderRef, changeStatusCalenderRef],
     [
@@ -438,7 +438,7 @@ function UpdateHeirForm({
           <CircularProgress color="primary" />
         </Box>
       ) : (
-        <section className="formContainer-transparent formConmtainer--width-lg flex-col">
+        <section className="formContainer-transparent formContainer--width-lg flex-col">
           <form
             method="POST"
             className="flex-col"
@@ -753,14 +753,14 @@ function UpdateHeirForm({
                       value: /^[۰-۹0-9]+$/,
                       message: "تلفن باید فقط شامل اعداد باشد",
                     },
-                    minLength: {
-                      value: 8,
-                      message: "تلفن ثابت باید ۸ رقم باشد",
-                    },
-                    maxLength: {
-                      value: 8,
-                      message: "تلفن ثابت باید ۸ رقم باشد",
-                    },
+                    // minLength: {
+                    //   value: 8,
+                    //   message: "تلفن ثابت باید ۸ رقم باشد",
+                    // },
+                    // maxLength: {
+                    //   value: 8,
+                    //   message: "تلفن ثابت باید ۸ رقم باشد",
+                    // },
                   })}
                 />
                 <label
@@ -1058,10 +1058,10 @@ function UpdateHeirForm({
                   id="personAddress1"
                   required
                   {...register("personAddress", {
-                    pattern: {
-                      value: /^[آ-ی\s۰-۹]+$/,
-                      message: "از حروف و اعداد فارسی استفاده کنید",
-                    },
+                    // pattern: {
+                    //   value: /^[آ-ی\s۰-۹]+$/,
+                    //   message: "از حروف و اعداد فارسی استفاده کنید",
+                    // },
                   })}
                 />
                 <label
@@ -1088,10 +1088,10 @@ function UpdateHeirForm({
                   id="personDescription"
                   required
                   {...register("personDescription", {
-                    pattern: {
-                      value: /^[آ-ی\s۰-۹]+$/,
-                      message: "از حروف و اعداد فارسی استفاده کنید",
-                    },
+                    // pattern: {
+                    //   value: /^[آ-ی\s۰-۹]+$/,
+                    //   message: "از حروف و اعداد فارسی استفاده کنید",
+                    // },
                   })}
                 ></textarea>
                 <label
@@ -1107,7 +1107,7 @@ function UpdateHeirForm({
               <h4 className="title-secondary"> اطلاعات وظیفه بگیری </h4>
             </div>
 
-            <div className="grid grid--col-4">
+            <div className="grid grid--col-3">
               <div className="inputBox__form">
                 <Controller
                   name="pensionaryStatusID"
@@ -1245,7 +1245,7 @@ function UpdateHeirForm({
             <div className="flex-col flex-center">
               <h4 className="title-secondary"> اطلاعات بانکی وظیفه بگیر </h4>
             </div>
-            <div className="grid grid--col-4">
+            <div className="grid grid--col-3">
               <div className="inputBox__form">
                 <Controller
                   name="bankID"

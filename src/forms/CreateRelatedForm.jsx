@@ -328,7 +328,6 @@ function CreateRelatedForm({ setShowCreateRelatedModal, refetch }) {
     }
   };
 
-  // FIX CLOSE CALENDER BUG
   useCloseCalender(
     [
       birthCalenderRef,
@@ -347,7 +346,7 @@ function CreateRelatedForm({ setShowCreateRelatedModal, refetch }) {
   );
 
   const content = (
-    <section className="formContainer-transparent flex-col">
+    <section className="formContainer-transparent formContainer--width-lg flex-col">
       <form
         method="POST"
         className="flex-col"
@@ -870,14 +869,14 @@ function CreateRelatedForm({ setShowCreateRelatedModal, refetch }) {
                   value: /^[۰-۹0-9]+$/,
                   message: "تلفن باید فقط شامل اعداد باشد",
                 },
-                minLength: {
-                  value: 11,
-                  message: "تلفن همراه باید ۱۱ رقم باشد",
-                },
-                maxLength: {
-                  value: 11,
-                  message: "تلفن همراه باید ۱۱ رقم باشد",
-                },
+                // minLength: {
+                //   value: 11,
+                //   message: "تلفن همراه باید ۱۱ رقم باشد",
+                // },
+                // maxLength: {
+                //   value: 11,
+                //   message: "تلفن همراه باید ۱۱ رقم باشد",
+                // },
               })}
             />
             <label className="inputBox__form--label" htmlFor="personCellPhone1">
@@ -1209,10 +1208,10 @@ function CreateRelatedForm({ setShowCreateRelatedModal, refetch }) {
               value={form_data?.personDescription || ""}
               id="personDescription1"
               {...register("personDescription", {
-                pattern: {
-                  value: /^[آ-ی\s۰-۹]+$/,
-                  message: "از حروف و اعداد فارسی استفاده کنید",
-                },
+                // pattern: {
+                //   value: /^[آ-ی\s۰-۹]+$/,
+                //   message: "از حروف و اعداد فارسی استفاده کنید",
+                // },
               })}
             ></textarea>
             <label
@@ -1470,10 +1469,10 @@ function CreateRelatedForm({ setShowCreateRelatedModal, refetch }) {
               id="backupAddress"
               required
               {...register("backupAddress", {
-                pattern: {
-                  value: /^[آ-ی\s۰-۹]+$/,
-                  message: "از حروف و اعداد فارسی استفاده کنید",
-                },
+                // pattern: {
+                //   value: /^[آ-ی\s۰-۹]+$/,
+                //   message: "از حروف و اعداد فارسی استفاده کنید",
+                // },
               })}
             />
             <label className="inputBox__form--label" htmlFor="backupAddress">

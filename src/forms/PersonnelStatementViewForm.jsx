@@ -22,6 +22,8 @@ function PersonnelStatementViewForm({ statementID }) {
   const [data, setData] = useState({});
   const [gridData, setGridData] = useState([]);
 
+  const searchParams = new URLSearchParams(location.search);
+
   // GET DATA
   const {
     data: personnelStatement,

@@ -72,6 +72,14 @@ function PensionaryStatusHistoryGrid({
           <div>{convertToPersianDateFormatted(renderedCellValue)}</div>
         ),
       },
+      {
+        accessorKey: "isActive",
+        header: "وضعیت",
+        size: 20,
+        Cell: ({ renderedCellValue }) => (
+          <div>{renderedCellValue === true ? "فعال" : "غیرفعال"}</div>
+        ),
+      },
     ],
     []
   );
@@ -85,6 +93,11 @@ function PensionaryStatusHistoryGrid({
         overflow: "none",
       },
     },
+    muiTableBodyRowProps: ({ row }) => ({
+      sx: {
+        backgroundColor: row.original.isActive ? "#00FF00" : "",
+      },
+    }),
     muiTableHeadProps: {
       sx: {
         zIndex: 0,
@@ -127,6 +140,10 @@ function PensionaryStatusHistoryGrid({
           }}
         />
       ),
+    },
+    initialState: {
+      density: "compact",
+      sorting: [{ id: "isActive", desc: true }],
     },
     onPaginationChange: setPagination,
     state: { pagination },
