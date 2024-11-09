@@ -10,6 +10,7 @@ import { useGetPersonnelStatementDetailQuery } from "../slices/personnelStatemen
 
 // HELPERS
 import { convertToPersianNumber } from "../helper";
+import { NumberHelper } from "@/helpers";
 
 // LIBRARY IMPROTS
 import generatePDF from "react-to-pdf";
@@ -23,6 +24,7 @@ function PersonnelStatementTemplate({ statementID }) {
 
   // MAIN STATE
   const [formData, setFormData] = useState(null);
+  const [itemList, setItemList] = useState([]);
 
   // GET DATA
   const {
@@ -39,6 +41,7 @@ function PersonnelStatementTemplate({ statementID }) {
   useEffect(() => {
     if (isSuccess) {
       setFormData(statement.itemList[0]);
+      setItemList(statement.itemList[0].personnelStatementItems);
     }
   }, [isSuccess, statement]);
 
@@ -69,11 +72,11 @@ function PersonnelStatementTemplate({ statementID }) {
 
           <div className="slip-container" ref={targetRef}>
             <div className="slip-container__personnel-statement-header">
-              <p className="slip-container__logo--sub">شهردری تهران</p>
+              <p className="slip-container__logo--sub">شهرداری تهران</p>
 
               <h5>حکم کارگزینی</h5>
               <p className="slip-container__qr--serial">
-                شماره سریال :{" "}
+                شماره سریال :
                 <span>
                   {convertToPersianNumber(formData?.personnelStatementSerial)}
                 </span>
@@ -191,6 +194,7 @@ function PersonnelStatementTemplate({ statementID }) {
                           color="success"
                           name="personIsSacrificedFamily"
                           id="personIsSacrificedFamily"
+                          disabled
                           sx={{
                             padding: 0.5,
                           }}
@@ -206,6 +210,7 @@ function PersonnelStatementTemplate({ statementID }) {
                           color="success"
                           name="personIsValiant"
                           id="personIsValiant"
+                          disabled
                           sx={{
                             padding: 0.5,
                           }}
@@ -218,6 +223,7 @@ function PersonnelStatementTemplate({ statementID }) {
                           size="small"
                           color="success"
                           name="personIsCaptive"
+                          disabled
                           id="personIsCaptive"
                           sx={{
                             padding: 0.5,
@@ -230,6 +236,7 @@ function PersonnelStatementTemplate({ statementID }) {
                         <Checkbox
                           size="small"
                           color="success"
+                          disabled
                           name="personIsWarrior"
                           id="personIsWarrior"
                           sx={{
@@ -244,7 +251,7 @@ function PersonnelStatementTemplate({ statementID }) {
                           size="small"
                           color="success"
                           name="personIsSacrificed"
-                          checked
+                          disabled
                           id="personIsSacrificed"
                           sx={{
                             padding: 0.5,
@@ -257,6 +264,7 @@ function PersonnelStatementTemplate({ statementID }) {
                         <Checkbox
                           size="small"
                           color="success"
+                          disabled
                           name="personIsChildOfSacrificed"
                           id="personIsChildOfSacrificed"
                           sx={{
@@ -290,8 +298,49 @@ function PersonnelStatementTemplate({ statementID }) {
                   <th colSpan={3}>۲۱- نوع حکم :</th>
                   <th colSpan={3}>حقوق و فوق العاده ها به ریال :</th>
                 </tr>
+              </tbody>
+            </table>
 
-                <tr>
+            <div className="flex justify-center items-start w-full gap-x-1">
+              <table className="slip-container__personnel-statement-table form-table">
+                <tbody>
+                  <tr>
+                    <td style={{ verticalAlign: "top" }}>۲۲- شرح حکم :</td>
+                  </tr>
+
+                  {formData?.description && (
+                    <tr>
+                      <td>{formData?.description}</td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+              <table className="slip-container__personnel-statement-table form-table">
+                <tbody>
+                  {itemList?.map((item, index) => {
+                    const helper = new NumberHelper(
+                      item.personnelStatementItemAmount.toString()
+                    );
+                    const separatedNum = helper.toSeparated();
+                    return (
+                      <tr key={index}>
+                        <td style={{ verticalAlign: "top" }}>
+                          {item.personnelStatementItemTypeName}
+                        </td>
+                        <td
+                          style={{ verticalAlign: "top" }}
+                          className="text-center"
+                        >
+                          {separatedNum}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+
+            {/* <tr>
                   <td colSpan={3} rowSpan={22} style={{ verticalAlign: "top" }}>
                     ۲۲- شرح حکم :
                   </td>
@@ -456,17 +505,8 @@ function PersonnelStatementTemplate({ statementID }) {
                     colSpan={3}
                     style={{ justifyContent: "center", textAlign: "center" }}
                     className="no-border-top"
-                  >
-                    ﺍﺩﺍﺭﻩ ﮐﻞ ﺍﻣﻮﺭ ﺍﺟﺮﺍﺋﯽ ﺷﻮﺭﺍﯼ ﺍﺳﻼﻣﯽ ﺷﻬﺮ ﺗﻬﺮﺍﻥ, ﺍﺩﺍﺭﻩ ﮐﻞ ﺍﻣﻮﺭ
-                    ﻣﺎﻟﯽ ﻭ ﺍﻣﻮﺍﻝ, ﺳﺎﺯﻣﺎﻥ ﺑﺎﺯﻧﺸﺴﺘﮕﯽ, ﺳﺎﺯﻣﺎﻥ ﺑﺴﯿﺞ ﺷﻬﺮﺩﺍﺭﯼ ﺗﻬﺮﺍﻥ,
-                    ﺍﺩﺍﺭﻩ ﮐﻞ ﻣﻨﺎﺑﻊ ﺍﻧﺴﺎﻧﯽ, ﺣﺮﺍﺳﺖ ﮐﻞ, ﺣﻮﺯﻩ ﻣﻌﺎﻭﻧﺖ ﺗﻮﺳﻌﻪ ﻣﻨﺎﺑﻊ
-                    ﺍﻧﺴﺎﻧﯽ - ﺷﺮﮐﺖ ﺷﻬﺮ ﺳﺎﻟﻢ, ﺩﻓﺘﺮ ﻫﻤﺎﻫﻨﮕﯽ ﻫﯿﺌﺖ ﻫﺎﯼ ﺭﺳﯿﺪﮔﯽ ﺑﻪ
-                    ﺗﺨﻠﻔﺎﺕ ﺍﺩﺍﺭﯼ, ﺳﺎﺯﻣﺎﻥ ﺑﺎﺯﺭﺳﯽ, ﺍﺩﺍﺭﻩ ﮐﻞ ﺭﻓﺎﻩ ﺗﻌﺎﻭﻥ ﻭ ﺧﺪﻣﺎﺕ
-                    ﺍﺟﺘﻤﺎﻋﯽ
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                  ></td>
+                </tr> */}
 
             <p
               style={{
@@ -476,7 +516,7 @@ function PersonnelStatementTemplate({ statementID }) {
                 width: "100%",
               }}
             >
-              ﮐﺎﺭﺑﺮ : ﺭﺣﻤﺎﻧﻲ ﻫﻨﺰﮐﻲ - ۰۸:۳۴:۵۶-۱۴۰۳/۰۶/۱
+              ﮐﺎﺭﺑﺮ :
             </p>
           </div>
 

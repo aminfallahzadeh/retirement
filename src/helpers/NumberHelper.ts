@@ -5,7 +5,7 @@ export class NumberHelper {
   num: string;
   separator = ",";
 
-  constructor(num: string) {
+  constructor(num: string = "") {
     this.num = num;
   }
 

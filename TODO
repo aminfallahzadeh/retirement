@@ -4,7 +4,7 @@ Fractions:
 
 Report Generator:
   □ check the grid after report is not showing
-  □ change the layout of fields
+  ✔ change the layout of fields @done(24-11-08 17:01)
   ✔ add save button @started(24-10-31 12:05) @done(24-10-31 12:40) @lasted(35m28s)
   ✔ change the layout to two tabs @started(24-10-31 12:41) @done(24-10-31 12:45) @lasted(4m9s)
     ✔ first tab: گزارش ساز فعلی @done(24-10-31 13:03)
