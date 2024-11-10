@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 // component imports
 import RetiredAccountForm from "../../forms/RetiredAccountForm";
 import RetiredPensionaryForm from "../../forms/RetiredPensionaryForm";
-import RetiredPersonForm from "../../forms/RetiredPersonForm";
+import RetiredPersonForm from "@/forms/RetiredPersonForm";
 import ElectronicCaseSection from "./ElectronicCaseSection";
 
 // mui imports

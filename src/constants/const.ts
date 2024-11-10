@@ -32,3 +32,8 @@ export const PERSIAN_NUMBERS = [
   /۸/g,
   /۹/g,
 ];
+
+// FORMS
+export const INPUT_TYPES = {
+  TEXT: "text",
+};

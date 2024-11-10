@@ -207,10 +207,8 @@ function ArchiveTree({ setPreviewImage = undefined }) {
   const searchParams = new URLSearchParams(location.search);
   const personID = searchParams.get("personID");
 
-  const baseInfoPath =
-    location.pathname === "/retirement-organization/electronic-statement";
-  const fractionPath =
-    location.pathname === "/retirement-organization/fraction";
+  const baseInfoPath = location.pathname === "/retirement/electronic-statement";
+  const fractionPath = location.pathname === "/retirement/fraction";
 
   const { archiveStructureData } = useSelector((state) => state.archiveData);
 

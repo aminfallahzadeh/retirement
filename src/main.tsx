@@ -94,7 +94,7 @@ const router = createBrowserRouter(
 
         <Route path="/retirement/base-info" element={<BaseInfoScreen />} />
 
-        <Route path="/retirement/base-info-2" element={<BaseInfoScreen2 />} />
+        <Route path="/retirement/base-info2" element={<BaseInfoScreen2 />} />
 
         <Route
           path="/retirement/insert-announce"

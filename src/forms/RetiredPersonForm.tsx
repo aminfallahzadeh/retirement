@@ -6,19 +6,21 @@ import { useForm, Controller } from "react-hook-form";
 import {
   useUpdateRetiredPersonMutation,
   useGetRetiredPersonQuery,
-} from "../slices/retiredApiSlice.js";
-import { setPersonDeathDate } from "../slices/retiredStateSlice.js";
+} from "@/slices/retiredApiSlice.js";
+import { setPersonDeathDate } from "@/slices/retiredStateSlice";
 import { useDispatch } from "react-redux";
+
+// COMPONETNS
+import { Input } from "@/shared/components/Input";
 
 // HOOKS
 import { useFetchLookUpData } from "@/hooks/useFetchLookUpData";
-import { useCloseCalender } from "../hooks/useCloseCalender";
+import { useCloseCalender } from "@/hooks/useCloseCalender";
 
 // mui imports
 import { Button, Box, CircularProgress, Checkbox } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import {
-  PersonOutlined as PersonOutlinedIcon,
   CalendarTodayOutlined as CalenderIcon,
   Save as SaveIcon,
   EditOutlined as EditIcon,
@@ -43,8 +45,8 @@ import {
   selectStyles,
   selectSettings,
   optionsGenerator,
-} from "../utils/reactSelect";
-import { datePickerStyles, datePickerWrapperStyles } from "../utils/datePicker";
+} from "@/utils/reactSelect";
+import { datePickerStyles, datePickerWrapperStyles } from "@/utils/datePicker";
 
 function RetiredPersonForm() {
   const birthDateCalenderRef = useRef(null);
@@ -55,8 +57,6 @@ function RetiredPersonForm() {
   const animatedComponents = makeAnimated();
 
   // DATE STATES
-  const [selectedBirthDate, setSelectedBirthDate] = useState(null);
-  const [selectedDeathDate, setSelectedDeathDate] = useState(null);
   const [isBirthCalenderOpen, setIsBirthCalenderOpen] = useState(false);
   const [isDeathCalenderOpen, setIsDeathCalenderOpen] = useState(false);
 
@@ -189,15 +189,6 @@ function RetiredPersonForm() {
     "lookUpName"
   );
 
-  // HANDLE DATES
-  useEffect(() => {
-    setSelectedBirthDate(convertToPersianDate(form_data?.personBirthDate));
-  }, [form_data?.personBirthDate]);
-
-  useEffect(() => {
-    setSelectedDeathDate(convertToPersianDate(form_data?.personDeathDate));
-  }, [form_data?.personDeathDate]);
-
   // other handlers
   const handleEditable = () => {
     setEditable(true);
@@ -288,6 +279,11 @@ function RetiredPersonForm() {
     [setIsBirthCalenderOpen, setIsDeathCalenderOpen]
   );
 
+  // DEBUGGING
+  useEffect(() => {
+    console.log(form_data);
+  }, [form_data]);
+
   const content = (
     <>
       {isLoading || isFetching ? (
@@ -309,72 +305,45 @@ function RetiredPersonForm() {
             noValidate
           >
             <div className="grid grid--col-4">
-              <div className="row-span-2 flex-row flex-row--grow-second">
-                <div className="formPic">
-                  <PersonOutlinedIcon sx={{ fontSize: 70, color: "#707070" }} />
-                </div>
+              <Input
+                name="personFirstName"
+                label="نام"
+                register={register}
+                rules={{ required: "نام را وارد کنید" }}
+                errors={errors}
+                required={true}
+                disabled={!editable}
+                type="text"
+              />
 
-                <div className="flex-col flex-center flex-col--grow flex-col--gap-lg">
-                  <div className="inputBox__form">
-                    {errors.personFirstName && (
-                      <span className="error-form">
-                        {errors.personFirstName.message}
-                      </span>
-                    )}
-                    <input
-                      disabled={!editable}
-                      type="text"
-                      name="personFirstName"
-                      id="personFirstName"
-                      className="inputBox__form--input"
-                      value={form_data?.personFirstName || ""}
-                      required
-                      {...register("personFirstName", {
-                        required: "نام را وارد کنید",
-                        pattern: {
-                          value: /^[آ-ی\s]+$/,
-                          message: "از حروف فارسی استفاده کنید",
-                        },
-                      })}
-                    />
-                    <label
-                      htmlFor="personFirstName"
-                      className="inputBox__form--label"
-                    >
-                      <span>*</span> نام
-                    </label>
-                  </div>
-
-                  <div className="inputBox__form">
-                    {errors.personLastName && (
-                      <span className="error-form">
-                        {errors.personLastName.message}
-                      </span>
-                    )}
-                    <input
-                      disabled={!editable}
-                      type="text"
-                      name="personLastName"
-                      id="personLastName"
-                      className="inputBox__form--input"
-                      value={form_data?.personLastName || ""}
-                      required
-                      {...register("personLastName", {
-                        required: "نام خانوادگی را وارد کنید",
-                        pattern: {
-                          value: /^[آ-ی\s]+$/,
-                          message: "از حروف فارسی استفاده کنید",
-                        },
-                      })}
-                    />
-                    <label
-                      htmlFor="personLastName"
-                      className="inputBox__form--label"
-                    >
-                      <span>*</span> نام خانوادگی
-                    </label>
-                  </div>
-                </div>
+              <div className="inputBox__form">
+                {errors.personLastName && (
+                  <span className="error-form">
+                    {errors.personLastName.message}
+                  </span>
+                )}
+                <input
+                  disabled={!editable}
+                  type="text"
+                  name="personLastName"
+                  id="personLastName"
+                  className="inputBox__form--input"
+                  value={form_data?.personLastName || ""}
+                  required
+                  {...register("personLastName", {
+                    required: "نام خانوادگی را وارد کنید",
+                    pattern: {
+                      value: /^[آ-ی\s]+$/,
+                      message: "از حروف فارسی استفاده کنید",
+                    },
+                  })}
+                />
+                <label
+                  htmlFor="personLastName"
+                  className="inputBox__form--label"
+                >
+                  <span>*</span> نام خانوادگی
+                </label>
               </div>
 
               <div className="inputBox__form">
@@ -799,14 +768,6 @@ function RetiredPersonForm() {
                       value: /^[۰-۹0-9]+$/,
                       message: "تلفن باید فقط شامل اعداد باشد",
                     },
-                    // minLength: {
-                    //   value: 8,
-                    //   message: "تلفن باید ۸ رقم باشد",
-                    // },
-                    // maxLength: {
-                    //   value: 8,
-                    //   message: "تلفن باید ۸ رقم باشد",
-                    // },
                   })}
                 />
                 <label htmlFor="personPhone" className="inputBox__form--label">
