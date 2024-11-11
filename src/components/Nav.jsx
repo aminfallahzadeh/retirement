@@ -8,6 +8,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setNavPanelOpen } from "../slices/themeDataSlice";
 import {
+  useGetUserThemeQuery,
   useGetUserQuery,
   useUpdateUserThemeMutation,
   useGetItemAccessQuery,
@@ -39,8 +40,8 @@ function Nav({ firstName, lastName }) {
 
   const shouldFetch = !!userID;
 
-  const { data: user, refetch: userRefetch } = useGetUserQuery(
-    { userID },
+  const { data: user, refetch: userRefetch } = useGetUserThemeQuery(
+    // { userID },
     {
       skip: !shouldFetch,
     }

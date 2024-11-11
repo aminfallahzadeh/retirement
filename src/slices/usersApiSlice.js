@@ -124,6 +124,12 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         url: `${USERS_URL_HTTPS}/GetItemAccess`,
       }),
     }),
+
+    getUserTheme: builder.query({
+      query: () => ({
+        url: `${USERS_URL_HTTPS}/GetUserTheme`,
+      }),
+    }),
   }),
 });
 
@@ -144,4 +150,5 @@ export const {
   useInsertGroupUsersMutation,
   useUpdateUserThemeMutation,
   useGetItemAccessQuery,
+  useGetUserThemeQuery,
 } = usersApiSlice;
