@@ -7,6 +7,7 @@ import { DownloadOutlined as DownloadIcon } from "@mui/icons-material";
 
 // REDUX IMPORTS
 import { useGetPersonnelStatementDetailQuery } from "../slices/personnelStatementApiSlice";
+import { useGetPersonsQuery } from "@/slices/personApiSlice";
 
 // HELPERS
 import {
@@ -26,39 +27,65 @@ function PersonnelStatementTemplate({ statementID }) {
   // DOWNLOAD REF
   const targetRef = useRef();
 
+  const searchParams = new URLSearchParams(location.search);
+  const personID = searchParams.get("personID");
+
   // MAIN STATE
-  const [formData, setFormData] = useState(null);
+  const [statementData, setStatementData] = useState(null);
+  const [personData, setPersonData] = useState(null);
   const [itemList, setItemList] = useState([]);
+  const [birthDate, setBirthDate] = useState([]);
 
   // GET DATA
   const {
     data: statement,
-    isSuccess,
-    isLoading,
-    isFetching,
-    error,
+    isSuccess: isStatementSuccess,
+    isLoading: isStatementLoading,
+    isFetching: isStatementFetching,
   } = useGetPersonnelStatementDetailQuery({
     personnelStatementID: statementID,
   });
 
+  const {
+    data: person,
+    isSuccess: isPersonSuccess,
+    isLoading: isPersonLoading,
+    isFetching: isPersonFetching,
+  } = useGetPersonsQuery({ personID });
+
   // FETCH DATA
   useEffect(() => {
-    if (isSuccess) {
-      setFormData(statement.itemList[0]);
+    if (isStatementSuccess) {
+      setStatementData(statement.itemList[0]);
       setItemList(statement.itemList[0].personnelStatementItems);
     }
-  }, [isSuccess, statement]);
+  }, [isStatementSuccess, statement]);
+
+  useEffect(() => {
+    if (isPersonSuccess) {
+      setPersonData(person.itemList[0]);
+      const date = convertToPersianDateFormatted(
+        person.itemList[0].personBirthDate
+      ).split("/");
+      setBirthDate(date);
+    }
+  }, [isPersonSuccess, person]);
 
   // HANDLE ERROR
-  useEffect(() => {
-    if (error) {
-      console.log(error);
-    }
-  }, [error]);
+  // useEffect(() => {
+  //   if (statementError) {
+  //     console.log(statementError);
+  //   }
+  // }, [statementError]);
 
   const content = (
     <>
-      {isLoading || isFetching || formData === null ? (
+      {isStatementLoading ||
+      isStatementFetching ||
+      isPersonLoading ||
+      isPersonFetching ||
+      statementData === null ||
+      personData === null ? (
         <Modal title={"در حال بارگذاری..."}>
           <Box
             sx={{
@@ -82,7 +109,9 @@ function PersonnelStatementTemplate({ statementID }) {
               <p className="slip-container__qr--serial">
                 شماره سریال :
                 <span>
-                  {convertToPersianNumber(formData?.personnelStatementSerial)}
+                  {convertToPersianNumber(
+                    statementData?.personnelStatementSerial
+                  ) || "-"}
                 </span>
               </p>
             </div>
@@ -94,11 +123,16 @@ function PersonnelStatementTemplate({ statementID }) {
                   <th className="no-border-left">۱- شماره مستخدم :</th>
                   <th className="no-border-right"></th>
                   <th className="no-border-left">۲- شماره ملی : </th>
+
                   <th className="no-border-right">
-                    {convertToPersianNumber(formData?.personNationalCode)}
+                    {convertToPersianNumber(personData?.personNationalCode) ||
+                      "-"}
                   </th>
                   <th className="no-border-left">۳- کد پستی :</th>
-                  <th className="no-border-right"></th>
+                  <th className="no-border-right">
+                    {convertToPersianNumber(personData?.personPostalCode) ||
+                      "-"}
+                  </th>
                 </tr>
               </thead>
 
@@ -106,21 +140,24 @@ function PersonnelStatementTemplate({ statementID }) {
                 <tr>
                   <td className="no-border-left">۴- نام :</td>
                   <td className="no-border-right">
-                    {formData?.personFirstName}
+                    {personData?.personFirstName}
                   </td>
                   <td className="no-border-left">۵- نام خانوادگی :</td>
                   <td className="no-border-right">
-                    {formData?.personLastName}
+                    {personData?.personLastName}
                   </td>
                   <td className="no-border-left">۶- نام پدر :</td>
                   <td className="no-border-right">
-                    {formData?.personFatherName}
+                    {personData?.personFatherName}
                   </td>
                 </tr>
 
                 <tr>
                   <td className="no-border-left">۷- شماره شناسنامه :</td>
-                  <td className="no-border-right"></td>
+                  <td className="no-border-right">
+                    {convertToPersianNumber(personData?.personCertificateNo) ||
+                      "-"}
+                  </td>
                   <td className="no-border-left">۸- محل صدور :‌</td>
                   <td className="no-border-right"></td>
                   <td className="no-border-left">۹- استان :</td>
@@ -132,7 +169,7 @@ function PersonnelStatementTemplate({ statementID }) {
                     ۱۰- تاریخ و محل تولد :
                   </td>
                   <td className="no-border-right no-border-bottom">
-                    {formData?.personBirthPlace}
+                    {statementData?.personBirthPlace}
                   </td>
                   <td className="no-border-bottom" colSpan={3}>
                     ۱۱- بالاترین مدرک و رشته تحصیلی‌ :
@@ -140,11 +177,15 @@ function PersonnelStatementTemplate({ statementID }) {
                 </tr>
 
                 <tr>
-                  <td className="no-border-top no-border-left">روز : </td>
-                  <td className="no-border-top no-border-right no-border-left">
-                    ماه :{" "}
+                  <td className="no-border-top no-border-left">
+                    روز : {birthDate[2]}
                   </td>
-                  <td className="no-border-top no-border-right">سال : </td>
+                  <td className="no-border-top no-border-right no-border-left">
+                    ماه : {birthDate[1]}
+                  </td>
+                  <td className="no-border-top no-border-right">
+                    سال : {birthDate[0]}
+                  </td>
 
                   <td className="no-border-top no-border-left">
                     مقطع تحصیلی :
@@ -159,30 +200,35 @@ function PersonnelStatementTemplate({ statementID }) {
                   <td colSpan={2} className="no-border-left">
                     ۱۲- عنوان پست سازمانی :
                   </td>
-                  <td className="no-border-right no-border-left"></td>
+                  <td className="no-border-right no-border-left">
+                    {statementData?.positionName || "-"}
+                  </td>
                   <td className="no-border-right"></td>
 
                   <td className="no-border-left">شماره پست :</td>
-                  <td className="no-border-right"></td>
+                  <td className="no-border-right">
+                    {convertToPersianNumber(statementData?.positionCode) || "-"}{" "}
+                  </td>
                 </tr>
 
                 <tr>
                   <td className="no-boorder-left" colSpan={2}>
-                    ۱۳- رسته :
+                    ۱۳- رسته : {statementData?.jobName || "-"}
                   </td>
 
                   <td className="no-border-left" colSpan={2}>
                     رشته و طبفه شغلی :
                   </td>
 
-                  <td>کد شغل :</td>
-                  <td>مرتبه :</td>
+                  <td>کد شغل : {statementData?.jobCode || "-"}</td>
+                  <td>مرتبه : {statementData?.jobDegree1 || "-"}</td>
                 </tr>
 
                 <tr>
                   <td>۱۴- گروه :</td>
                   <td colSpan={3} className="no-border-left">
-                    ۱۵- سنوات فابل قبول از نظر بازنشستگی :
+                    ۱۵- سنوات فابل قبول از نظر بازنشستگی :{" "}
+                    {statementData?.retiredRecorded1 || "-"}
                   </td>
 
                   <td colSpan={2}>صندوق بازنشستگی :</td>
@@ -198,6 +244,7 @@ function PersonnelStatementTemplate({ statementID }) {
                           color="success"
                           name="personIsSacrificedFamily"
                           id="personIsSacrificedFamily"
+                          // checked={}
                           disabled
                           sx={{
                             padding: 0.5,
@@ -228,6 +275,7 @@ function PersonnelStatementTemplate({ statementID }) {
                           color="success"
                           name="personIsCaptive"
                           disabled
+                          checked={personData?.isCaptivity}
                           id="personIsCaptive"
                           sx={{
                             padding: 0.5,
@@ -243,6 +291,7 @@ function PersonnelStatementTemplate({ statementID }) {
                           disabled
                           name="personIsWarrior"
                           id="personIsWarrior"
+                          checked={personData?.isWar}
                           sx={{
                             padding: 0.5,
                           }}
@@ -256,6 +305,7 @@ function PersonnelStatementTemplate({ statementID }) {
                           color="success"
                           name="personIsSacrificed"
                           disabled
+                          checked={personData?.isMartyrs}
                           id="personIsSacrificed"
                           sx={{
                             padding: 0.5,
@@ -285,13 +335,15 @@ function PersonnelStatementTemplate({ statementID }) {
 
                 <tr>
                   <td colSpan={3}>۱۷- واحد سازمانی :</td>
-                  <td colSpan={3}>۱۸- محل خدمت</td>
+                  <td colSpan={3}>
+                    ۱۸- محل خدمت : {statementData?.costCenter || "-"}
+                  </td>
                 </tr>
 
                 <tr>
                   <td className="no-border-left">۱۹- وضعیت تاهل :</td>
                   <td className="no-border-right">
-                    {formData?.maritalStatusIDName}
+                    {statementData?.maritalStatusIDName}
                   </td>
                   <td>تعداد فرزندان :</td>
 
@@ -299,7 +351,9 @@ function PersonnelStatementTemplate({ statementID }) {
                 </tr>
 
                 <tr>
-                  <th colSpan={3}>۲۱- نوع حکم :</th>
+                  <th colSpan={3}>
+                    ۲۱- نوع حکم : {statementData?.orderType || "-"}
+                  </th>
                   <th colSpan={3}>حقوق و فوق العاده ها به ریال :</th>
                 </tr>
               </tbody>
@@ -314,7 +368,7 @@ function PersonnelStatementTemplate({ statementID }) {
                     </tr>
 
                     <tr>
-                      <td>{formData?.description || "-"}</td>
+                      <td>{statementData?.description || "-"}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -331,8 +385,9 @@ function PersonnelStatementTemplate({ statementID }) {
                     <tr>
                       <td>
                         ۲۴- ﺗﺎﺭﯾﺦ ﺻﺪﻭﺭ ﺣﮑﻢ :{" "}
-                        {convertToPersianDateFormatted(formData?.createDate) ||
-                          "-"}
+                        {convertToPersianDateFormatted(
+                          statementData?.createDate
+                        ) || "-"}
                       </td>
                     </tr>
                   </tbody>
@@ -359,7 +414,9 @@ function PersonnelStatementTemplate({ statementID }) {
                     <td>جمع مشمول کسور</td>
                     <td className="text-center">
                       {separateByThousands(
-                        convertToPersianNumber(formData?.fractionBaseAmount)
+                        convertToPersianNumber(
+                          statementData?.fractionBaseAmount
+                        )
                       )}
                     </td>
                   </tr>
@@ -394,174 +451,6 @@ function PersonnelStatementTemplate({ statementID }) {
                 </tr>
               </tbody>
             </table>
-
-            {/* <tr>
-                  <td colSpan={3} rowSpan={22} style={{ verticalAlign: "top" }}>
-                    ۲۲- شرح حکم :
-                  </td>
-                  <td colSpan={2}>حقوق مبنا :</td>
-                  <td></td>
-                </tr>
-
-                <tr>
-                  <td colSpan={2}>افزایش سنواتی :</td>
-                  <td></td>
-                </tr>
-
-                <tr>
-                  <td colSpan={2}>فوق العاده شغل :</td>
-                  <td></td>
-                </tr>
-
-                <tr>
-                  <td colSpan={2}>ﻓﻮﻕ‌ﺍﻟﻌﺎﺩﻩ ﺍﺭﺯﺷﯿﺎﺑﯽ ﺳﺎﻟﯿﺎﻧﻪ :</td>
-                  <td></td>
-                </tr>
-
-                <tr>
-                  <td colSpan={2}>ﺗﻔﺎﻭﺕ ﺣﺪﺍﻗﻞ ﺣﻘﻮﻕ :</td>
-                  <td></td>
-                </tr>
-
-                <tr>
-                  <td colSpan={2}>ﺗﻔﺎﻭﺕ ﺣﺪﺍﻗﻞ ﺣﻘﻮﻕ ﻣﺎﺩﻩ (۶) :</td>
-                  <td></td>
-                </tr>
-
-                <tr>
-                  <td colSpan={2} style={{ fontSize: "12px" }}>
-                    ﺗﻔﺎﻭﺕ ﺑﻨﺪ ﯼ ﻭ ﺗﻔﺎﻭﺕ ﺟﺰ ﯾﮏ ﺑﻨﺪ ﺍﻟﻒ ﺗﺒﺼﺮﻩ ۱۲ :
-                  </td>
-                  <td></td>
-                </tr>
-
-                <tr>
-                  <td colSpan={2}>ﺣﻖ ﺟﺬﺏ :</td>
-                  <td></td>
-                </tr>
-
-                <tr>
-                  <td colSpan={2}>ﺷﺮﺍﯾﻂ ﻣﺤﯿﻂ ﮐﺎﺭ :</td>
-                  <td></td>
-                </tr>
-
-                <tr>
-                  <td colSpan={2}>ﻓﻮﻕ‌ﺍﻟﻌﺎﺩﻩ ﻭﯾﮋﻩ ﮐﺎﺭﺷﻨﺎﺳﯽ :</td>
-                  <td></td>
-                </tr>
-
-                <tr>
-                  <td colSpan={2}>ﺍﻟﻒ- ﻓﻮﻕ‌ﺍﻟﻌﺎﺩﻩ ﺣﺮﺍﺳﺖ :</td>
-                  <td></td>
-                </tr>
-
-                <tr>
-                  <td colSpan={2}>ﺏ- ﻓﻮﻕ‌ﺍﻟﻌﺎﺩﻩ ﮔﺰﯾﻨﺶ :</td>
-                  <td></td>
-                </tr>
-
-                <tr>
-                  <td colSpan={2}>ﺝ- ﻓﻮﻕ‌ﺍﻟﻌﺎﺩﻩ ﺗﺨﻠﻔﺎﺕ ﺍﺩﺍﺭﯼ :</td>
-                  <td></td>
-                </tr>
-
-                <tr>
-                  <td colSpan={2}>د- فوق العاده صعوبت شغل :</td>
-                  <td></td>
-                </tr>
-
-                <tr>
-                  <td colSpan={2}>ﻓﻮﻕ‌ﺍﻟﻌﺎﺩﻩ ﺍﯾﺜﺎﺭﮔﺮﯼ</td>
-                  <td></td>
-                </tr>
-
-                <tr>
-                  <td colSpan={2}>ﺣﻖ ﺟﺬﺏ ﻏﯿﺮﻣﺴﺘﻤﺮ</td>
-                  <td></td>
-                </tr>
-
-                <tr>
-                  <td colSpan={2}>ﺗﻔﺎﻭﺕ ﺗﻄﺒﯿﻖ</td>
-                  <td></td>
-                </tr>
-
-                <tr>
-                  <td colSpan={2}>ﮐﻤﮏ ﻫﺰﯾﻨﻪ ﻋﺎﺋﻠﻪ‌ﻣﻨﺪﯼ</td>
-                  <td></td>
-                </tr>
-
-                <tr>
-                  <td colSpan={2}>ﮐﻤﮏ ﻫﺰﯾﻨﻪ ﺍﻭﻻﺩ</td>
-                  <td></td>
-                </tr>
-
-                <tr>
-                  <td colSpan={2}>ﻣﺎﺑﻪ‌ﺍﻟﺘﻔﺎﻭﺕ ﻫﻤﺘﺮﺍﺯﯼ</td>
-                  <td></td>
-                </tr>
-
-                <tr>
-                  <td colSpan={2} style={{ fontSize: "10px" }}>
-                    ﺗﻔﺎﻭﺕ ﺗﻄﺒﯿﻖ ﺟﺰ(۱) ﺑﻨﺪ ﺍﻟﻒ ﺗﺒﺼﺮﻩ(۱۲) ﻗﺎﻧﻮﻥ ﺑﻮﺩﺟﻪ ﺳﺎﻝ
-                  </td>
-                  <td></td>
-                </tr>
-
-                <tr>
-                  <td colSpan={2}>ﺗﺮﻣﯿﻢ ﺣﻘﻮﻕ</td>
-                  <td></td>
-                </tr>
-
-                <tr>
-                  <td colSpan={2} className="no-border-left">
-                    ۲۳- ﺗﺎﺭﯾﺦ ﺍﺟﺮﺍﯼ ﺣﮑﻢ :
-                  </td>
-                  <td className="no-border-right"></td>
-                  <td colSpan={2}>ﻓﻮﻕ‌ﺍﻟﻌﺎﺩﻩ ﺟﺬﺏ ﻭﯾﮋﻩ</td>
-                  <td></td>
-                </tr>
-
-                <tr>
-                  <td colSpan={2} className="no-border-left">
-                    ﺷﻤﺎﺭﻩ ﺣﮑﻢ :
-                  </td>
-                  <td className="no-border-right"></td>
-
-                  <td colSpan={3} rowSpan={2} style={{ verticalAlign: "top" }}>
-                    ﺟﻤﻊ :
-                  </td>
-                </tr>
-
-                <tr>
-                  <td colSpan={2} className="no-border-left">
-                    ۲۴- ﺗﺎﺭﯾﺦ ﺻﺪﻭﺭ ﺣﮑﻢ :
-                  </td>
-                  <td className="no-border-right"></td>
-                </tr>
-
-                <tr>
-                  <th colSpan={6}>۲۵- ﺟﻤﻊ ﺣﻘﻮﻕ ﻭ ﻣﺰﺍﯾﺎ ﺑﻪ ﺣﺮﻭﻑ :</th>
-                </tr>
-
-                <tr>
-                  <td colSpan={3} className="no-border-bottom">
-                    ۲۶- ﻧﺎﻡ ﻭ ﻧﺎﻡ ﺧﺎﻧﻮﺍﺩﮔﯽ ﻣﻘﺎﻡ ﻣﺴﺌﻮﻝ :
-                  </td>
-                  <td colSpan={3} className="no-border-bottom">
-                    ﻧﺴﺨﻪ ﻣﺮﺑﻮﻁ ﺑﻪ :
-                  </td>
-                </tr>
-
-                <tr>
-                  <td colSpan={3} className="no-border-top">
-                    ﻋﻨﻮﺍﻥ ﭘﺴﺖ ﺛﺎﺑﺖ ﺳﺎﺯﻣﺎﻧﯽ :
-                  </td>
-                  <td
-                    colSpan={3}
-                    style={{ justifyContent: "center", textAlign: "center" }}
-                    className="no-border-top"
-                  ></td>
-                </tr> */}
 
             <p
               style={{
