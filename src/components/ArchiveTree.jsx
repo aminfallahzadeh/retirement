@@ -49,11 +49,12 @@ import { SimpleTreeView } from "@mui/x-tree-view/SimpleTreeView";
 import { TreeItem, treeItemClasses } from "@mui/x-tree-view/TreeItem";
 import { LoadingButton } from "@mui/lab";
 
-// components
+// COMPONENTS
 import Modal from "./Modal";
 import CreateArchiveStructureForm from "../forms/CreateArchiveStructureForm";
 import EditArchiveStructureForm from "../forms/EditArchiveStructureForm";
 import InsertArchiveForm from "../forms/InsertArchiveForm.jsx";
+import DeleteArchiveFrom from "../forms/DeleteArchiveForm";
 
 // library imports
 import { toast } from "react-toastify";
@@ -299,29 +300,29 @@ function ArchiveTree({ setPreviewImage = undefined }) {
   };
 
   // DELETE ARCHIVE IMAGE HANDLER
-  const handleDeleteImage = async () => {
-    try {
-      const deleteImgRes = await deleteArchive({
-        id: selectedImageData.id,
-        attachment: "",
-        contentType: "",
-        archiveStructureID: "",
-        insertUserID: "",
-        documentID: "",
-        personID: "",
-      }).unwrap();
-      setShowDeleteImageModal(false);
-      if (!fractionPath) setPreviewImage(null);
-      toast.success(deleteImgRes.message, {
-        autoClose: 2000,
-      });
-    } catch (err) {
-      console.log(err);
-      toast.error(err?.data?.message || err.error, {
-        autoClose: 2000,
-      });
-    }
-  };
+  // const handleDeleteImage = async () => {
+  //   try {
+  //     const deleteImgRes = await deleteArchive({
+  //       id: selectedImageData.id,
+  //       attachment: "",
+  //       contentType: "",
+  //       archiveStructureID: "",
+  //       insertUserID: "",
+  //       documentID: "",
+  //       personID: "",
+  //     }).unwrap();
+  //     setShowDeleteImageModal(false);
+  //     if (!fractionPath) setPreviewImage(null);
+  //     toast.success(deleteImgRes.message, {
+  //       autoClose: 2000,
+  //     });
+  //   } catch (err) {
+  //     console.log(err);
+  //     toast.error(err?.data?.message || err.error, {
+  //       autoClose: 2000,
+  //     });
+  //   }
+  // };
 
   // fetch archive structure data
   useEffect(() => {
@@ -509,6 +510,34 @@ function ArchiveTree({ setPreviewImage = undefined }) {
                       </IconButton>
                     </span>
                   </Tooltip>
+                  <Tooltip title="اضافه کردن برگه">
+                    <span>
+                      <IconButton
+                        aria-label="addFile"
+                        color="success"
+                        onClick={handleAddImageModalChange}
+                        disabled={
+                          selectedArchiveData.parentID === "0" ||
+                          selectedArchiveData.length === 0
+                        }
+                      >
+                        <AddFileIcon />
+                      </IconButton>
+                    </span>
+                  </Tooltip>
+
+                  <Tooltip title="حذف برگه">
+                    <span>
+                      <IconButton
+                        aria-label="delete"
+                        color="error"
+                        onClick={handleDeleteImageModalChange}
+                        disabled={selectedImageData.length === 0}
+                      >
+                        <DeleteFileIcon />
+                      </IconButton>
+                    </span>
+                  </Tooltip>
                 </>
               ) : (
                 <>
@@ -625,7 +654,13 @@ function ArchiveTree({ setPreviewImage = undefined }) {
           closeModal={() => setShowDeleteImageModal(false)}
         >
           <p className="paragraph-primary">آیا از حذف برگه اطمینان دارید؟</p>
-          <div className="flex-row flex-center">
+
+          <DeleteArchiveFrom
+            setShowDeleteImageModal={setShowDeleteImageModal}
+            setPreviewImage={setPreviewImage}
+            selectedImageData={selectedImageData}
+          />
+          {/* <div className="flex-row flex-center">
             <LoadingButton
               dir="ltr"
               endIcon={<DoneIcon />}
@@ -647,7 +682,7 @@ function ArchiveTree({ setPreviewImage = undefined }) {
             >
               <span>خیر</span>
             </Button>
-          </div>
+          </div> */}
         </Modal>
       )}
     </>

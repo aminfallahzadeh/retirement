@@ -110,7 +110,7 @@ function InsertArchiveForm({ setShowAddImageModal }) {
             required
           />
           <label className="inputBox__form--label" htmlFor="documentID">
-            شماره سند
+            <span>*</span> شماره سند
           </label>
         </div>
       </form>
@@ -126,6 +126,7 @@ function InsertArchiveForm({ setShowAddImageModal }) {
           loading={isInsertingImage}
           variant="contained"
           color="primary"
+          disabled
           sx={{ fontFamily: "sahel" }}
         >
           <span>اسکن</span>
@@ -136,7 +137,7 @@ function InsertArchiveForm({ setShowAddImageModal }) {
           ref={inputFileRef}
           style={{ display: "none" }}
           onChange={handleImageChange}
-          accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps"
+          accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps,image/tiff,image/jpeg"
         />
 
         <LoadingButton
@@ -146,6 +147,7 @@ function InsertArchiveForm({ setShowAddImageModal }) {
           aria-label="upload"
           onClick={handleUploadButtonClick}
           variant="contained"
+          disabled={!documentID || !documentID === ""}
           color="primary"
           sx={{ fontFamily: "sahel" }}
         >
