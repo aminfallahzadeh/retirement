@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 
 // redux imports
-import { useUpdateGroupMutation } from "../slices/usersApiSlice";
+import { useUpdateGroupMutation } from "@/features/user/userApi";
 
 // library imports
 import { toast } from "react-toastify";
@@ -31,8 +31,8 @@ function UpdateGroupForm({ setShowEditModal, selectedGroup }) {
   const updateGroupHandler = async () => {
     try {
       const res = await updateGroup({
-        "id": selectedGroup.id,
-        "groupName": groupName,
+        id: selectedGroup.id,
+        groupName: groupName,
       }).unwrap();
       setShowEditModal(false);
       toast.success(res.message, {

@@ -3,7 +3,7 @@ import { useMemo, useState, useEffect } from "react";
 
 // redux imports
 import { useSelector, useDispatch } from "react-redux";
-import { useGetItemsQuery } from "../slices/usersApiSlice";
+import { useGetItemsQuery } from "@/features/user/userApi";
 import { setItemsTableData } from "../slices/itemsDataSlice";
 
 // library imports

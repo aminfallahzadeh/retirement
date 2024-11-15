@@ -9,7 +9,7 @@ import { useLocation } from "react-router-dom";
 import {
   useGenerateNewRetirementStatementMutation,
   useGetRecommendRunDateQuery,
-} from "../slices/retirementStatementApiSlice.js";
+} from "@/features/statement/statementApi";
 
 // MUI
 import { LoadingButton } from "@mui/lab";

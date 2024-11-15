@@ -2,7 +2,7 @@
 import { useMemo, useState, useEffect } from "react";
 
 // redux imports
-import { useGetGroupQuery } from "../slices/usersApiSlice";
+import { useGetGroupQuery } from "@/features/user/userApi";
 // import { setGroupsTableData } from "../slices/groupsDataSlice";
 
 // library imports

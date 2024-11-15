@@ -3,7 +3,7 @@ import { RouteInterface } from "./AppRouter.types";
 import { AppLayout } from "@/layouts/AppLayout";
 import { Cartable } from "@/screens/Cartable";
 import { Login, Error } from "@/pages";
-import { APP_LAYOUT, CARTABLE, LOGIN, ERROR } from "@/constants/const";
+import { APP_LAYOUT, CARTABLE, LOGIN, ERROR } from "@/constants/urls/const";
 
 export const routes: RouteInterface[] = [
   {

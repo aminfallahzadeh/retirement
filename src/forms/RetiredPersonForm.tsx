@@ -6,7 +6,7 @@ import { useForm, Controller } from "react-hook-form";
 import {
   useUpdateRetiredPersonMutation,
   useGetRetiredPersonQuery,
-} from "@/slices/retiredApiSlice.js";
+} from "@/features/retired/retiredApi";
 import { setPersonDeathDate } from "@/slices/retiredStateSlice";
 import { useDispatch } from "react-redux";
 

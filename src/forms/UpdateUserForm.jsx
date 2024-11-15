@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import {
   useUpdateUserMutation,
   useGetUserQuery,
-} from "../slices/usersApiSlice";
+} from "@/features/user/userApi";
 
 // library imports
 import { toast } from "react-toastify";

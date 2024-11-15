@@ -1,6 +1,6 @@
 // redux imports
 import { useSelector, useDispatch } from "react-redux";
-import { useInsertGroupUsersMutation } from "../slices/usersApiSlice";
+import { useInsertGroupUsersMutation } from "@/features/user/userApi";
 
 // library imports
 import { toast } from "react-toastify";
@@ -37,10 +37,10 @@ function ArrowButtonsUsers({ userID, setShowEditUserGroupsModal }) {
   const saveChangesHandler = async () => {
     try {
       const data = userGroupsTableData.map((item) => ({
-        "id": "",
+        id: "",
         userID,
-        "groupID": item.id,
-        "groupName": "",
+        groupID: item.id,
+        groupName: "",
       }));
       const insertRes = await insertGroupUsers(data).unwrap();
       setShowEditUserGroupsModal(false);

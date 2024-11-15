@@ -3,7 +3,7 @@ import { useMemo, useState, useEffect } from "react";
 
 // redux imports
 import { useSelector, useDispatch } from "react-redux";
-import { useGetGroupQuery } from "../slices/usersApiSlice";
+import { useGetGroupQuery } from "@/features/user/userApi";
 import {
   setGroupsUserTableData,
   setSelectedGroupUserData,

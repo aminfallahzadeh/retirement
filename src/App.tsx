@@ -1,36 +1,18 @@
-// REACT IMPORTS
+// IMPORTS
 import { useState, useEffect, useMemo } from "react";
-
-// HOOKS
 import useLogout from "@/hooks/useLogout";
-
-// RRD
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-
-// REDUX
 import { useDispatch } from "react-redux";
 import { setPersonTableData } from "@/slices/personDataSlice";
-import { setUserID } from "@/slices/authSlice";
+import { setUserID } from "@/features/auth/authSlice";
 import { useAppSelector } from "@/hooks/usePreTypesHooks";
-
-// MUI
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import Button from "@mui/material/Button";
-
-// LIBRARIES
 import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer } from "react-toastify";
 import { useIdleTimer } from "react-idle-timer";
 import { jwtDecode } from "jwt-decode";
 import { CiSearch } from "react-icons/ci";
-
-// TYPES
 import { JwtPayload } from "jwt-decode";
-
-// CONFIGS
 import { toastConfig } from "@/config/toast/toast-config";
-
-// COMPONENTS
 import Header from "@/components/Header";
 import SearchScreen from "@/screens/SearchScreen";
 

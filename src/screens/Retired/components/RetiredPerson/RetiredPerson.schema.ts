@@ -1,12 +1,12 @@
 // IMPORTS
 import { FormStructure } from "@/shared/types/form";
-import { NAME, FAMILY_NAME } from "@/constants/fields";
+import { NAME, FAMILY_NAME } from "@/constants/urls/fields";
 import {
   REQUIRED_MESSAGE,
   PERSIAN_LETTERS_MESSAGE,
-} from "@/constants/messages";
-import { PERSIAN_LETTERS_VALIDATION_REGEX } from "@/constants/regex";
-import { INPUT_TYPES } from "@/constants/const";
+} from "@/constants/urls/messages";
+import { PERSIAN_LETTERS_VALIDATION_REGEX } from "@/constants/urls/regex";
+import { INPUT_TYPES } from "@/constants/urls/const";
 
 export const RetiredPersonSchema: FormStructure[] = [
   {

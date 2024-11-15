@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 // redux imports
 import { useSelector, useDispatch } from "react-redux";
-import { useInsertGroupItemMutation } from "../slices/usersApiSlice";
+import { useInsertGroupItemMutation } from "@/features/user/userApi";
 
 // library imports
 import { toast } from "react-toastify";
@@ -48,9 +48,9 @@ function ArrowButtonsGroups({ selectedGroup, setShowEditItemsModal }) {
     try {
       // const groupID = selectedGroup?.id;
       const data = groupItemsTableData.map((item) => ({
-        "id": "",
-        "itemID": item.id,
-        "itemName": "",
+        id: "",
+        itemID: item.id,
+        itemName: "",
         groupID,
       }));
       const insertRes = await insertGroupItem(data).unwrap();

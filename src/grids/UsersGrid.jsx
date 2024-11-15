@@ -5,7 +5,7 @@ import { useMemo, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 // redux imports
-import { useGetUserQuery } from "../slices/usersApiSlice";
+import { useGetUserQuery } from "@/features/user/userApi";
 
 // mui imports
 import {

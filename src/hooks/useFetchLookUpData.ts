@@ -9,15 +9,15 @@ import {
   useGetRetiredOrganizationQuery,
   useGetRetirementStatementTypeQuery,
   useGetPayItemTypeQuery,
-} from "../slices/sharedApiSlice.js";
-import { useGetRequestTypeQuery } from "@/api/request";
-import { useGetPersonnelStatementOffTypeQuery } from "../slices/personnelStatementApiSlice.js";
-import { useGetFractionTypeQuery } from "../slices/fractionApiSlice.js";
+} from "@/features/shared/sharedApi";
+import { useGetRequestTypeQuery } from "@/features/request/requestApi";
+import { useGetPersonnelStatementOffTypeQuery } from "@/features/personnel/personnelApi";
+import { useGetFractionTypeQuery } from "@/features/fraction/fractionApi";
 import {
   // useGetRequestTypeQuery,
   useGetRequestTypeAttachmentQuery,
-} from "@/api/request";
-import { useGetTablesQuery } from "../slices/reportGeneratorsApiSlice";
+} from "@/features/request/requestApi";
+import { useGetTablesQuery } from "@/features/report-generator/reportGeneratorApi";
 
 // COMMON LOOK UP DATA LOGIC
 /**

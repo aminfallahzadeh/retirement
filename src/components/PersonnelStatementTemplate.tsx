@@ -6,8 +6,8 @@ import { Box, CircularProgress, Button, Checkbox } from "@mui/material";
 import { DownloadOutlined as DownloadIcon } from "@mui/icons-material";
 
 // REDUX IMPORTS
-import { useGetPersonnelStatementDetailQuery } from "../slices/personnelStatementApiSlice";
-import { useGetPersonsQuery } from "@/slices/personApiSlice";
+import { useGetPersonnelStatementDetailQuery } from "@/features/personnel/personnelApi";
+import { useGetPersonsQuery } from "@/features/person/personApi";
 
 // HELPERS
 import {

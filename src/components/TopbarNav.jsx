@@ -8,7 +8,7 @@ import { Link, useLocation } from "react-router-dom";
 import {
   useGetUserQuery,
   useUpdateUserThemeMutation,
-} from "../slices/usersApiSlice";
+} from "@/features/user/userApi";
 
 // component imports
 import ProfilePicure from "./ProfilePicture";

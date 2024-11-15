@@ -1,4 +1,4 @@
-import { RouteInterface } from "@/constants/routes";
+import { RouteInterface } from "@/constants/urls/routes";
 import { Navigate, Route } from "react-router-dom";
 
 /**

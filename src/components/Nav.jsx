@@ -9,10 +9,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { setNavPanelOpen } from "../slices/themeDataSlice";
 import {
   useGetUserThemeQuery,
-  useGetUserQuery,
   useUpdateUserThemeMutation,
   useGetItemAccessQuery,
-} from "../slices/usersApiSlice";
+} from "@/features/user/userApi";
 import { setUserPermissionsData } from "../slices/userPermissionsDataSlice";
 
 // components
@@ -21,7 +20,7 @@ import DigitalClock from "./DigitalClock";
 import Date from "./Date";
 
 // hooks
-import useLogout from "../hooks/useLogout";
+import useLogout from "@/hooks/useLogout";
 
 // mui iomports
 import { LoadingButton } from "@mui/lab";

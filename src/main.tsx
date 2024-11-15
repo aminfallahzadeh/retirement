@@ -10,7 +10,7 @@ import {
 import "@/assets/styles/main.scss";
 import "./index.css";
 import { Provider } from "react-redux";
-import store from "@/store";
+import store from "@/config/redux/store";
 import App from "@/App";
 import { Login } from "@/pages/Login";
 import { Error } from "@/pages/Error";
@@ -28,12 +28,12 @@ import CreateRequestScreen from "@/screens/CreateRequestScreen";
 import PersonnelInfoScreen from "@/screens/PersonnelInfoScreen";
 import FractionScreen from "@/screens/FractionScreen";
 import ReportGeneratorScreen from "@/screens/ReportGeneratorScreen";
-import BaseInfoScreen from "@/screens/BaseInfoScreen.jsx";
+import BaseInfoScreen from "@/screens/BaseInfoScreen";
 import BaseInfoScreen2 from "@/screens/BaseInfoScreen2.jsx";
-import InsertAnnounceScreen from "@/screens/InsertAnnounceScreen.jsx";
-import DashboardScreen from "@/screens/DashboardScreen.jsx";
-import GroupSlipsScreen from "@/screens/GroupSlipsScreen.jsx";
-import SalaryScreen from "@/screens/SalaryScreen.jsx";
+import InsertAnnounceScreen from "@/screens/InsertAnnounceScreen";
+import DashboardScreen from "@/screens/DashboardScreen";
+import GroupSlipsScreen from "@/screens/GroupSlipsScreen";
+import SalaryScreen from "@/screens/SalaryScreen";
 
 const router = createBrowserRouter(
   createRoutesFromElements(

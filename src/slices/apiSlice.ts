@@ -6,7 +6,7 @@ import type {
   FetchArgs,
   FetchBaseQueryError,
 } from "@reduxjs/toolkit/query";
-import { setNewCredentials, logout } from "./authSlice";
+import { setNewCredentials, logout } from "@/features/auth/authSlice";
 import { Mutex } from "async-mutex";
 
 // TYPES
@@ -25,7 +25,6 @@ const baseQuery = fetchBaseQuery({
   baseUrl: BASE_URL,
   credentials: "same-origin",
   prepareHeaders: (headers, { getState, endpoint }) => {
-    // const token = getState().auth.token;
     const state = getState() as { auth: { token: string | null } };
     const token = state.auth.token;
     if (token && !isRefreshingToken && endpoint !== "login") {
@@ -52,7 +51,6 @@ const baseQueryWithReauth: BaseQueryFn<
         console.log("sending refresh token");
         const state = api.getState() as RootState;
         const refreshToken = state.auth.refreshToken;
-        // const expiredate = state.auth.expiredate;
         isRefreshingToken = true;
 
         const refreshResult = (await baseQuery(
@@ -60,10 +58,7 @@ const baseQueryWithReauth: BaseQueryFn<
             url: `${USERS_URL_HTTPS}/RefreshToken`,
             method: "POST",
             body: {
-              // token: "<string>",
               refreshToken,
-              // error: "<string>",
-              // expiredate,
             },
           },
           api,
@@ -90,16 +85,6 @@ const baseQueryWithReauth: BaseQueryFn<
             api,
             extraOptions
           );
-          // result = await baseQuery(
-          //   {
-          //     ...args,
-          //     headers: {
-          //       "Authorization": `Bearer ${refreshResult.data.itemList[0].token}`,
-          //     },
-          //   },
-          //   api,
-          //   extraOptions
-          // );
         } else {
           api.dispatch(logout());
         }
@@ -117,7 +102,7 @@ const baseQueryWithReauth: BaseQueryFn<
       (result.error.data &&
         (result.error.data as { message?: string }).message) ||
       result.error.status ||
-      "An unexpected error occurred";
+      "خطایی رخ داده است";
     toastConfig.error(`${errorMessage}`);
   }
 

@@ -2,7 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 
 // redux imports
-import { useInsertRequestAttachmentMutation } from "@/api/request";
+import { useInsertRequestAttachmentMutation } from "@/features/request/requestApi";
 
 // hooks
 import { useFetchRequestAttachmentTypes } from "@/hooks/useFetchLookUpData";

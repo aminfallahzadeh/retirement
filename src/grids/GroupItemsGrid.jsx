@@ -9,7 +9,7 @@ import { defaultTableOptions } from "@/config/mrt";
 
 // redux imports
 import { useSelector, useDispatch } from "react-redux";
-import { useGetGroupItemsQuery } from "../slices/usersApiSlice";
+import { useGetGroupItemsQuery } from "@/features/user/userApi";
 import {
   setGroupItemsTableData,
   setSelectedGroupItemData,

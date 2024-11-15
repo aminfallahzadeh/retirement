@@ -1,0 +1,16 @@
+export const ANNOUNCE_END = "/Announce";
+export const USER_END = "/User";
+export const REQUEST_END = "/Request";
+export const ARCHIVE_END = "/Archive";
+export const REPORT_END = "/Report";
+export const FINANCIAL_END = "/FinancialItem";
+export const FRACTION_END = "/Fraction";
+export const HEIR_END = "/Heir";
+export const PAY_END = "/Pay";
+export const PERSON_END = "/Person";
+export const PERSONNEL_END = "/PersonnelStatement";
+export const RELATED_END = "/Related";
+export const REPORT_GENERATOR_END = "/ReportGenerator";
+export const RETIRED_END = "/Retired";
+export const STATEMENT_END = "/RetirementStatement";
+export const SHARED_END = "/Shared";

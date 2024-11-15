@@ -10,7 +10,7 @@ import {
   useIssuePayMutation,
   useInsertPayMutation,
   useInsertPayExcelMutation,
-} from "@/slices/payApiSlice";
+} from "@/features/pay/payApi";
 import { setSlipsTableData } from "@/slices/slipsDataSlice";
 
 // MUI

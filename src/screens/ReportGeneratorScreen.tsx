@@ -6,7 +6,7 @@ import { Box, Tab, IconButton, Tooltip } from "@mui/material";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 
 // COMPONETNS
-import ReportGeneratorTableForm from "../forms/ReportGeneratorTableForm";
+import ReportGeneratorTableForm from "@/forms/ReportGeneratorTableForm";
 
 function ReportGeneratorScreen() {
   // TAB STATE

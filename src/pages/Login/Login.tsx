@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 
 // redux imports
-import { useGetAnnounceQuery } from "@/slices/announceApiSlice.js";
+import { useGetAnnounceQuery } from "@/features/announce/announceApi";
 
 // mui imports
 import {
@@ -20,8 +20,8 @@ import { generateCaptcha, convertToEnglishNumber } from "@/helper";
 
 // redux imports
 import { useDispatch } from "react-redux";
-import { useLoginMutation } from "@/slices/usersApiSlice.js";
-import { setCredentials } from "@/slices/authSlice.js";
+import { useLoginMutation } from "@/features/auth/authApi";
+import { setCredentials } from "@/features/auth/authSlice";
 
 // rrd imports
 import { useNavigate } from "react-router-dom";

@@ -5,7 +5,7 @@ import { useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
 
 // REDUX
-import { useDeleteArchiveMutation } from "../slices/archiveApiSlice";
+import { useDeleteArchiveMutation } from "@/features/archive/archiveApi";
 // MUI
 import { Button } from "@mui/material";
 import { LoadingButton } from "@mui/lab";

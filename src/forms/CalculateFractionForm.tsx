@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 // redux imports
-import { useCalculateFractionMutation } from "../slices/fractionApiSlice";
+import { useCalculateFractionMutation } from "@/features/fraction/fractionApi";
 import { useSelector } from "react-redux";
 
 // mui import

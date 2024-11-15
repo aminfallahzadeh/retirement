@@ -4,7 +4,10 @@ import { RoleDataType } from "@/types/roleDataTypes";
 import { RequestItem } from "@/types/requestApiTypes";
 import { RequestData } from "@/types/grid-types/requestGridDataTypes";
 import { setSelectedRole } from "@/slices/roleDataSlice";
-import { useLazyGetRoleQuery, useLazyGetRequestQuery } from "@/api/request";
+import {
+  useLazyGetRoleQuery,
+  useLazyGetRequestQuery,
+} from "@/features/request/requestApi";
 import { useDispatch } from "react-redux";
 import { useAppSelector } from "@/hooks/usePreTypesHooks";
 import useCreateColumns from "@/hooks/useCreateColumns";

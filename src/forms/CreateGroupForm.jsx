@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import {
   useInsertGroupMutation,
   useInsertGroupItemMutation,
-} from "../slices/usersApiSlice";
+} from "@/features/user/userApi";
 
 // mui imports
 import { LoadingButton } from "@mui/lab";
@@ -43,9 +43,9 @@ function CreateGroupForm({ addedItems }) {
         try {
           const groupID = createGroupRes.itemList[0].id;
           const data = addedItems.map((item) => ({
-            "id": "",
-            "itemID": item.id,
-            "itemName": "",
+            id: "",
+            itemID: item.id,
+            itemName: "",
             groupID,
           }));
           const insertRes = await insertGroupItem(data).unwrap();
