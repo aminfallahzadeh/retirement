@@ -37,11 +37,11 @@ import { defaultTableOptions } from "@/config/mrt";
 import { convertToPersianNumber, findById } from "@/helper";
 
 // components
-import Modal from "../components/Modal";
+import Modal from "@/components/Modal";
 import UpdateUserForm from "../forms/UpdateUserForm";
 import GroupsGridUser from "../grids/GroupsGridUser";
 import UserGroupsGrid from "../grids/UserGroupsGrid";
-import ArrowButtonsUsers from "../components/ArrowButtonsUsers";
+import ArrowButtonsUsers from "@/components/ArrowButtonsUsers";
 
 // library imports
 import { toast } from "react-toastify";

@@ -1,6 +1,6 @@
 // IMPORTS
 import { TestInput } from "../TestInput";
-import { FormFieldProps } from "./FormField.types";
+import { FormFieldProps } from "./types";
 import { SelectInput } from "../SelectInput";
 
 export const FormField = () => {};

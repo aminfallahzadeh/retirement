@@ -1,5 +1,5 @@
-// components
-import UsersGrid from "../grids/UsersGrid";
+// IMPORTS
+import UsersGrid from "@/grids/UsersGrid";
 
 function UsersScreen() {
   return (

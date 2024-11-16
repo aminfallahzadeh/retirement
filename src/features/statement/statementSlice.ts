@@ -5,8 +5,8 @@ const initialState = {
   isDataRecieved: false,
 };
 
-const batchStatementsDataSlice = createSlice({
-  name: "batchStatementsData",
+const statementSlice = createSlice({
+  name: "statementSlice",
   initialState,
   reducers: {
     setFilteredPersonsTableData: (state, action) => {
@@ -15,6 +15,6 @@ const batchStatementsDataSlice = createSlice({
   },
 });
 
-export const { setFilteredPersonsTableData } = batchStatementsDataSlice.actions;
+export const { setFilteredPersonsTableData } = statementSlice.actions;
 
-export default batchStatementsDataSlice.reducer;
+export default statementSlice.reducer;

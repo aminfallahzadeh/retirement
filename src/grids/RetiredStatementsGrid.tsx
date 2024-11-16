@@ -40,7 +40,7 @@ import {
 } from "material-react-table";
 
 // components
-import Modal from "../components/Modal";
+import Modal from "@/components/Modal";
 import GenerateStatementForm from "@/forms/GenerateStatementForm";
 import RetiredStatementTemplate from "@/components/RetiredStatementTemplate";
 

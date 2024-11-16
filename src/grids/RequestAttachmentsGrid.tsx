@@ -11,7 +11,7 @@ import {
 } from "@/features/request/requestApi";
 
 // components
-import Modal from "../components/Modal";
+import Modal from "@/components/Modal";
 import RequestAttachmentForm from "../forms/RequestAttachmentForm.jsx";
 
 // mui imports

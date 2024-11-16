@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setFinancialTableData } from "@/slices/financialDataSlice";
 
 // COMPONENTS
-import Modal from "../components/Modal";
+import Modal from "@/components/Modal";
 
 // HOOKS
 import useGetFinancialItems from "@/hooks/useGetFinancialItems";

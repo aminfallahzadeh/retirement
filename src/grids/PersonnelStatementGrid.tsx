@@ -25,7 +25,7 @@ import {
 } from "material-react-table";
 
 // components
-import Modal from "../components/Modal";
+import Modal from "@/components/Modal";
 import PersonnelStatementViewForm from "../forms/PersonnelStatementViewForm";
 import PersonnelStatementTemplate from "@/components/PersonnelStatementTemplate";
 

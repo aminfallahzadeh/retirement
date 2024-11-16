@@ -36,7 +36,7 @@ import {
 import { toast } from "react-toastify";
 
 // components
-import Modal from "../components/Modal.jsx";
+import Modal from "@/components/Modal.jsx";
 
 // helpers
 import {

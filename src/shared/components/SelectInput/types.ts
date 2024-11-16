@@ -2,11 +2,15 @@
 import { StylesConfig, ActionMeta } from "react-select";
 
 type option = {
-  label: string;
   value: string;
+  label: string;
 };
 
 export type SelectInputProps = {
+  label: string;
+  name: string;
+  required: boolean;
+  defaultValue?: string;
   isMulti?: boolean;
   options: option[];
   onChange?: (newValue: unknown, actionMeta: ActionMeta<unknown>) => void;

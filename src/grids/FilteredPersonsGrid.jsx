@@ -27,7 +27,7 @@ function FilteredPersonsGrid() {
   const [rowSelection, setRowSelection] = useState({});
 
   const { filteredPersonsTableData } = useSelector(
-    (state) => state.batchStatementsData
+    (state) => state.statementSlice
   );
 
   const columns = useMemo(

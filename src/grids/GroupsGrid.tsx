@@ -46,11 +46,11 @@ import { findById, convertToPersianNumber } from "@/helper";
 import { defaultTableOptions } from "@/config/mrt";
 
 // components
-import Modal from "../components/Modal";
+import Modal from "@/components/Modal";
 import UpdateGroupForm from "../forms/UpdateGroupForm";
 import ItemsGrid from "../grids/ItemsGrid";
 import GroupItemsGrid from "../grids/GroupItemsGrid";
-import ArrowButtonsGroups from "../components/ArrowButtonsGroups";
+import ArrowButtonsGroups from "@/components/ArrowButtonsGroups";
 
 // library imports
 import Skeleton from "react-loading-skeleton";

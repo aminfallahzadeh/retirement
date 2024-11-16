@@ -39,7 +39,7 @@ import {
 } from "material-react-table";
 
 // components
-import Modal from "../components/Modal";
+import Modal from "@/components/Modal";
 import UpdateHeirForm from "@/forms/UpdateHeirForm";
 import CreateHeirForm from "@/forms/CreateHeirForm";
 

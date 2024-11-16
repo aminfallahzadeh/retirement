@@ -28,7 +28,7 @@ import {
 import { toast } from "react-toastify";
 
 // COMPONENTS
-import Modal from "../components/Modal";
+import Modal from "@/components/Modal";
 import ViewPayItemForm from "@/forms/ViewPayItemForm";
 import CreatePayItemForm from "@/forms/CreatePayItemForm";
 

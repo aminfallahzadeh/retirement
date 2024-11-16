@@ -36,7 +36,7 @@ import {
 import { toast } from "react-toastify";
 
 // COMPONENTS
-import Modal from "../components/Modal";
+import Modal from "@/components/Modal";
 import InsertPayItemForm from "@/forms/InsertPayItemForm";
 
 // HELPS

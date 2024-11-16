@@ -24,7 +24,7 @@ import Select from "react-select";
 import makeAnimated from "react-select/animated";
 
 // components
-import Modal from "../components/Modal";
+import Modal from "@/components/Modal";
 import DashboardSumGrid from "../grids/DashboardGrids/DashboardSumGrid";
 import DashboardHouseRightGrid from "../grids/DashboardGrids/DashboardHouseRightGrid";
 import UnderWarantyAmountMenGrid from "../grids/DashboardGrids/UnderWarantyAmountMenGrid";

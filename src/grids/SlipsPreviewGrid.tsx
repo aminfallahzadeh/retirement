@@ -33,7 +33,7 @@ import { defaultTableOptions } from "@/config/mrt";
 
 // COMPONENTS
 import SlipFormTemplate from "@/components/SlipFormTemplate";
-import Modal from "../components/Modal";
+import Modal from "@/components/Modal";
 import EditPayItemsGrid from "./EditPayItemsGrid";
 
 function PersonnelStatementGrid() {

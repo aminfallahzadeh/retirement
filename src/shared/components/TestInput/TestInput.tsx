@@ -1,6 +1,6 @@
 // IMPORTS
 import { FC } from "react";
-import { TestInputProps } from "./TestInput.types";
+import { TestInputProps } from "./types";
 
 export const TestInput: FC<TestInputProps> = ({
   item,

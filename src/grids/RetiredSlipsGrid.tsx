@@ -37,7 +37,7 @@ import { defaultTableOptions } from "@/config/mrt";
 
 // components
 import SlipFormTemplate from "../components/SlipFormTemplate";
-import Modal from "../components/Modal";
+import Modal from "@/components/Modal";
 
 // helpers
 import {

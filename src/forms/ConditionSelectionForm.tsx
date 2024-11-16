@@ -25,7 +25,7 @@ import { selectStyles, selectSettings } from "../utils/reactSelect";
 
 // COMPONENTS
 import ReportGeneratorGrid from "../grids/ReportGeneratorGrid";
-import Modal from "../components/Modal";
+import Modal from "@/components/Modal";
 
 function ConditionSelectionForm({
   fetureOptions,

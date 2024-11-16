@@ -10,12 +10,12 @@ import itemsDataSliceReducer from "@/slices/itemsDataSlice";
 import groupItemsDataSliceReducer from "@/slices/groupItemsDataSlice";
 import userGroupsDataSliceReducer from "@/slices/userGroupsDataSlice";
 import groupsUserDataSliceReducer from "@/slices/groupsUserDataSlice";
-import archiveDataSliceReducer from "@/slices/archiveDataSlice";
+import archiveDataSliceReducer from "@/features/archive/archiveSlice";
 import heirDataSliceReducer from "@/slices/heirDataSlice";
 import personDataSliceReducer from "@/slices/personDataSlice";
 import themeDataSliceReducer from "@/slices/themeDataSlice";
 import slipsDataSliceReducer from "@/slices/slipsDataSlice";
-import batchStatementsDataSliceReducer from "@/slices/batchStatementsDataSlice";
+import statementSliceReducer from "@/features/statement/statementSlice";
 import fractionDataSliceReducer from "@/slices/fractionDataSlice";
 import calculateFractionDataSliceReducer from "@/slices/calculateFractionDataSlice";
 import reportGeneratorDataSliceReducer from "@/slices/reportGeneratorDataSlice";
@@ -39,7 +39,7 @@ const store = configureStore({
     personData: personDataSliceReducer,
     themeData: themeDataSliceReducer,
     slipsData: slipsDataSliceReducer,
-    batchStatementsData: batchStatementsDataSliceReducer,
+    statementSlice: statementSliceReducer,
     fractionData: fractionDataSliceReducer,
     calculateFractionData: calculateFractionDataSliceReducer,
     reportGeneratorData: reportGeneratorDataSliceReducer,

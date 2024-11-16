@@ -10,7 +10,7 @@ import {
   setArchiveStructureData,
   setSelectedArchiveData,
   setSelectedImageData,
-} from "../slices/archiveDataSlice.js";
+} from "@/features/archive/archiveSlice";
 import {
   useGetArchiveStructureQuery,
   useDeleteArchiveStructureMutation,
@@ -50,7 +50,7 @@ import { TreeItem, treeItemClasses } from "@mui/x-tree-view/TreeItem";
 import { LoadingButton } from "@mui/lab";
 
 // COMPONENTS
-import Modal from "./Modal.jsx";
+import Modal from "./Modal";
 import CreateArchiveStructureForm from "@/forms/CreateArchiveStructureForm";
 import EditArchiveStructureForm from "@/forms/EditArchiveStructureForm";
 import InsertArchiveForm from "@/forms/InsertArchiveForm";

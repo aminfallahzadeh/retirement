@@ -3,7 +3,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 
 // redux imports
 import { useDispatch } from "react-redux";
-import { setFilteredPersonsTableData } from "../slices/batchStatementsDataSlice";
+import { setFilteredPersonsTableData } from "@/features/statement/statementSlice";
 import {
   useGetStatementListFromFiltersMutation,
   useGetStatementListFromExcelMutation,
