@@ -1,6 +1,6 @@
 // IMPORTS
 import { fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { RootState } from "@/store";
+import { RootState } from "./store";
 import type {
   BaseQueryFn,
   FetchArgs,
@@ -8,26 +8,38 @@ import type {
 } from "@reduxjs/toolkit/query";
 import { setNewCredentials, logout } from "@/features/auth/authSlice";
 import { Mutex } from "async-mutex";
-import { RefreshResultType } from "@/types/tokenDataTypes";
-import { BASE_API_URL, USERS_URL_HTTPS } from "@/constants/urls";
+import { RefreshResultType } from "@/shared/types/tokenDataTypes";
+import { USERS_URL_HTTPS } from "@/constants/urls";
 import { toastConfig } from "@/config/toast/toast-config";
 
 const mutex = new Mutex();
 let isRefreshingToken = false;
 
-const baseQuery = fetchBaseQuery({
-  baseUrl: BASE_API_URL,
-  credentials: "same-origin",
-  prepareHeaders: (headers, { getState, endpoint }) => {
-    const state = getState() as { auth: { token: string | null } };
-    const token = state.auth.token;
-    if (token && !isRefreshingToken && endpoint !== "login") {
-      headers.set("Authorization", `Bearer ${token}`);
-      headers.set("Content-Type", "application/json");
-    }
-    return headers;
-  },
-});
+const baseQuery: BaseQueryFn<
+  string | FetchArgs,
+  unknown,
+  FetchBaseQueryError
+> = async (args, api, extraOptions) => {
+  const { getState } = api;
+  const state = getState() as RootState;
+  const baseUrl = state.config.apiBaseUrl;
+
+  const dynamicBaseQuery = fetchBaseQuery({
+    baseUrl,
+    credentials: "same-origin",
+    prepareHeaders: (headers, { getState, endpoint }) => {
+      const state = getState() as { auth: { token: string | null } };
+      const token = state.auth.token;
+      if (token && !isRefreshingToken && endpoint !== "login") {
+        headers.set("Authorization", `Bearer ${token}`);
+        headers.set("Content-Type", "application/json");
+      }
+      return headers;
+    },
+  });
+
+  return dynamicBaseQuery(args, api, extraOptions);
+};
 
 // HADNLE AUTO REFRESH TOKEN
 export const baseQueryWithReauth: BaseQueryFn<

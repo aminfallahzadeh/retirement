@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { toast } from "react-toastify";
 
 // TYPES
-import { ApiError } from "@/types/apiErrorTypes";
+import { ApiError } from "@/shared/types/apiErrorTypes";
 
 const useErrorHandling = (error: ApiError) => {
   useEffect(() => {

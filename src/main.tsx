@@ -1,6 +1,7 @@
 // IMPORTS
 import React from "react";
 import ReactDOM from "react-dom/client";
+
 import {
   createBrowserRouter,
   Route,
@@ -34,6 +35,17 @@ import InsertAnnounceScreen from "@/screens/InsertAnnounceScreen";
 import DashboardScreen from "@/screens/DashboardScreen";
 import GroupSlipsScreen from "@/screens/GroupSlipsScreen";
 import SalaryScreen from "@/screens/SalaryScreen";
+import { setConfig } from "@/features/api/configSlice";
+
+const loadConfig = async (): Promise<void> => {
+  try {
+    const response = await fetch("./config.json");
+    const config = await response.json();
+    store.dispatch(setConfig(config));
+  } catch (error) {
+    console.error("Failed to load configuration:", error);
+  }
+};
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -110,10 +122,17 @@ const router = createBrowserRouter(
   )
 );
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <RouterProvider router={router} />
-    </Provider>
-  </React.StrictMode>
-);
+(async () => {
+  await loadConfig();
+  const root = ReactDOM.createRoot(
+    document.getElementById("root") as HTMLElement
+  );
+
+  root.render(
+    <React.StrictMode>
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
+    </React.StrictMode>
+  );
+})();

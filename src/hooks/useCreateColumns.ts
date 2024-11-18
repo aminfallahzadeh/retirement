@@ -5,12 +5,12 @@ import { useMemo } from "react";
 import { UseCreateColumnsProps } from "@/types/grid-types/gridTypes";
 
 function useCreateColumns({
-  columnDefs,
+  schema,
   customCellRenderers = {},
   dependencies = [],
 }: UseCreateColumnsProps) {
   const columns = useMemo(() => {
-    return columnDefs.map((col) => {
+    return schema.map((col) => {
       // IF CUSOTOM CELL AVAILBALE APPLY OTHERWISE DEFAULT
       const customCell = customCellRenderers[col.accessorKey];
 
@@ -19,7 +19,7 @@ function useCreateColumns({
         Cell: customCell ?? undefined,
       };
     });
-  }, [columnDefs, customCellRenderers, ...dependencies]);
+  }, [schema, customCellRenderers, ...dependencies]);
 
   return columns;
 }

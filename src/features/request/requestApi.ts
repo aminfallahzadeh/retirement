@@ -1,14 +1,7 @@
 // IMPORTS
 import { apiSlice } from "../api/apiSlice";
 import { REQUEST_END } from "../api/endpoints";
-
-// TYPES
-import {
-  GetExpertParams,
-  GetRequestParams,
-  GetRequestReponse,
-} from "@/types/requestApiTypes";
-import { RoleDataType } from "@/types/roleDataTypes";
+import { RoleDataType } from "@/shared/types/role";
 
 export const requestApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -17,12 +10,12 @@ export const requestApi = apiSlice.injectEndpoints({
         url: `${REQUEST_END}/GetRole`,
       }),
     }),
-    getExpert: builder.query<void, GetExpertParams>({
+    getExpert: builder.query({
       query: ({ RequestID, conditionValue, Role }) => ({
         url: `${REQUEST_END}/GetExpert?Requestid=${RequestID}&conditionValue=${conditionValue}&Role=${Role}`,
       }),
     }),
-    getRequest: builder.query<GetRequestReponse, GetRequestParams>({
+    getRequest: builder.query({
       query: ({
         Role,
         personID,

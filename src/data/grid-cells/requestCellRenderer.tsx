@@ -1,11 +1,9 @@
 // IMPORTS
 import { Link } from "react-router-dom";
 import { IconButton, Tooltip } from "@mui/material";
-import { RoleType } from "@/types/roleDataTypes.js";
+import { RoleType } from "@/shared/types/role";
 import { MRT_RowData } from "material-react-table";
-import { CellRendererProps } from "@/types/grid-types/gridTypes";
 import { NumberHelper, DateHelper } from "@/helpers";
-
 import {
   VisibilityOutlined as EyeIcon,
   TextSnippetOutlined as CheckIcon,
@@ -15,15 +13,15 @@ const numberHelper = new NumberHelper("");
 const dateHelper = new DateHelper("");
 
 export const requestCellRenderer = (selectedRole: RoleType) => ({
-  requestRowNum: ({ renderedCellValue }: CellRendererProps) => {
+  requestRowNum: ({ renderedCellValue }: { renderedCellValue: string }) => {
     numberHelper.num = renderedCellValue as string;
     return <div>{numberHelper.toPersian()}</div>;
   },
-  requestNO: ({ renderedCellValue }: CellRendererProps) => {
+  requestNO: ({ renderedCellValue }: { renderedCellValue: string }) => {
     numberHelper.num = renderedCellValue as string;
     return <div>{numberHelper.toPersian()}</div>;
   },
-  date: ({ renderedCellValue }: CellRendererProps) => {
+  date: ({ renderedCellValue }: { renderedCellValue: string }) => {
     dateHelper.date = renderedCellValue as string;
     return <div>{dateHelper.toPersianDateFormatted()}</div>;
   },

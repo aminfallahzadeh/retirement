@@ -21,10 +21,12 @@ import calculateFractionDataSliceReducer from "@/slices/calculateFractionDataSli
 import reportGeneratorDataSliceReducer from "@/slices/reportGeneratorDataSlice";
 import payCompareDataSliceReducer from "@/slices/payCompareDataSlice";
 import financialDataSliceReducer from "@/slices/financialDataSlice";
+import configReducer from "@/features/api/configSlice";
 
 const store = configureStore({
   reducer: {
     [apiSlice.reducerPath]: apiSlice.reducer,
+    config: configReducer,
     auth: authSliceReducer,
     roleData: roleDataReducer,
     userPermissionsData: userPermissionsDataSliceReducer,

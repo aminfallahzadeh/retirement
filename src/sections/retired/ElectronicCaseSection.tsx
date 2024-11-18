@@ -62,6 +62,12 @@ function ElectronicCaseSection() {
         case 0x424d: // BMP
           mimeType = "image/bmp";
           break;
+        case 0x4949: // TIFF (Little-endian)
+          mimeType = "image/tiff";
+          break;
+        case 0x4d4d: // TIFF (Big-endian)
+          mimeType = "image/tiff";
+          break;
         default:
           console.error("Unsupported image type.");
           return;

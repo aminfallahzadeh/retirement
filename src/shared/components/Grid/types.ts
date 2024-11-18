@@ -1,4 +1,5 @@
 // REACT TYPES
+import { MRT_ColumnDef } from "material-react-table";
 import { ReactNode } from "react";
 
 export type CellRendererProps = {
@@ -15,11 +16,8 @@ export type GridColumnProps = {
   muiTableBodyCellProps?: object;
 };
 
-export type UseCreateColumnsProps = {
-  columnDefs: GridColumnProps[];
-  customCellRenderers?: Record<
-    string,
-    (element: CellRendererProps) => ReactNode
-  >;
+export type UseCreateColumnsProps<T> = {
+  schema: MRT_ColumnDef<T[]>[];
+  customCellRenderers?: any;
   dependencies: unknown[];
 };
