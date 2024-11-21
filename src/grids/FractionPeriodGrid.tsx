@@ -21,7 +21,7 @@ import {
 } from "material-react-table";
 
 // components
-import CreatePeriodForm from "../forms/CreatePeriodForm.jsx";
+import CreatePeriodForm from "@/forms/CreatePeriodForm.jsx";
 
 // library imports
 import "react-loading-skeleton/dist/skeleton.css";

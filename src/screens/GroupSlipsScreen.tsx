@@ -9,7 +9,7 @@ import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import GroupSlipsForm from "@/forms/GroupSlipsForm";
 import SlipsPreviewGrid from "@/grids/SlipsPreviewGrid";
 import CompareSalaryReportForm from "@/forms/CompareSalaryReportForm";
-import CompareSalaryReportGrid from "../grids/CompareSalaryReportGrid";
+import CompareSalaryReportGrid from "@/grids/CompareSalaryReportGrid";
 import PersonnelStatementForm from "@/forms/PersonnelStatementForm";
 import PersonnelPayGrid from "@/grids/PersonnelPayGrid";
 import PayItemSearchGrid from "@/grids/PayItemSearchGrid";

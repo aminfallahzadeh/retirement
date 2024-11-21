@@ -9,7 +9,7 @@ import { LoadingButton } from "@mui/lab";
 import { Save as SaveIcon } from "@mui/icons-material";
 
 // components
-import BaseFamilyRelationGrid from "../../grids/BaseInfoGrids/BaseFamilyRelationGrid";
+import BaseFamilyRelationGrid from "@/grids/BaseInfoGrids/BaseFamilyRelationGrid";
 
 function BaseFamilyRelationForm() {
   // LOOK UP STATES

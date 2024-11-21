@@ -1,3 +1,5 @@
+// IMPORTS
+import { useState } from "react";
 import Select, { StylesConfig } from "react-select";
 import { FC } from "react";
 import makeAnimated from "react-select/animated";
@@ -9,13 +11,17 @@ export const SelectInput: FC<SelectInputProps> = ({
   label,
   required,
   isDisabled,
+  isClearable,
   onChange,
   placeholder,
   options,
   isMulti,
   customStyles,
   defaultValue,
+  // errors,
 }) => {
+  const [hasValue, setHasValue] = useState(!!defaultValue);
+
   const selectStyles: StylesConfig = {
     container: (base) => ({
       ...base,
@@ -54,13 +60,18 @@ export const SelectInput: FC<SelectInputProps> = ({
   const animatedComponents = makeAnimated();
   const mergedStyles = merge({}, selectStyles, customStyles);
 
+  const handleSelectChange = (value: unknown) => {
+    setHasValue(!!value);
+    onChange?.(value);
+  };
+
   return (
-    <>
+    <div className="relative w-full h-full">
       <Select
         components={animatedComponents}
-        isClearable={!isDisabled}
+        isClearable={isClearable}
         isDisabled={isDisabled}
-        onChange={onChange}
+        onChange={handleSelectChange}
         placeholder={placeholder}
         options={options}
         defaultValue={defaultValue}
@@ -71,17 +82,11 @@ export const SelectInput: FC<SelectInputProps> = ({
         loadingMessage={() => LOADING_MESSAGE}
       />
 
-      <label
-      // className={
-      //   form_data?.genderID
-      //     ? "inputBox__form--readOnly-label"
-      //     : "inputBox__form--readOnly-label-hidden"
-      // }
-      >
-        {/* {required && <span>*</span>} {label} */}
+      <label className={hasValue ? "label--selected" : "label--unselected"}>
+        {required && <span>*</span>} {label}
       </label>
 
       {/* {errors.genderID && <span className="error-form"> جنسیت اجباری است</span>} */}
-    </>
+    </div>
   );
 };

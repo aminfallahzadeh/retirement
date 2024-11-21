@@ -3,7 +3,7 @@ import { LoadingButton } from "@mui/lab";
 import { Save as SaveIcon } from "@mui/icons-material";
 
 // components
-import BaseJobOrderGrid from "../../grids/BaseInfoGrids/BaseJobOrderGrid";
+import BaseJobOrderGrid from "@/grids/BaseInfoGrids/BaseJobOrderGrid";
 
 function BaseJobOrderForm() {
   const content = (

@@ -3,7 +3,7 @@ import { LoadingButton } from "@mui/lab";
 import { Save as SaveIcon } from "@mui/icons-material";
 
 // components
-import BaseYearsCoefGrid from "../../grids/BaseInfoGrids/BaseYearsCoefGrid";
+import BaseYearsCoefGrid from "@/grids/BaseInfoGrids/BaseYearsCoefGrid";
 
 function BaseYearsCoefForm() {
   const content = (

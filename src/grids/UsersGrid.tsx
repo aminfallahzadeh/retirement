@@ -1,13 +1,7 @@
-// react imports
+// IMPORTS
 import { useMemo, useState, useEffect } from "react";
-
-// rrd imports
 import { Link } from "react-router-dom";
-
-// redux imports
 import { useGetUserQuery } from "@/features/user/userApi";
-
-// mui imports
 import {
   IconButton,
   Box,
@@ -29,21 +23,13 @@ import {
   MaterialReactTable,
   useMaterialReactTable,
 } from "material-react-table";
-
-// utils imports
 import { defaultTableOptions } from "@/config/mrt";
-
-// helpers
 import { convertToPersianNumber, findById } from "@/helper";
-
-// components
 import Modal from "@/components/Modal";
-import UpdateUserForm from "../forms/UpdateUserForm";
-import GroupsGridUser from "../grids/GroupsGridUser";
-import UserGroupsGrid from "../grids/UserGroupsGrid";
+import UpdateUserForm from "@/forms/UpdateUserForm";
+import GroupsGridUser from "@/grids/GroupsGridUser";
+import UserGroupsGrid from "@/grids/UserGroupsGrid";
 import ArrowButtonsUsers from "@/components/ArrowButtonsUsers";
-
-// library imports
 import { toast } from "react-toastify";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";

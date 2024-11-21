@@ -3,7 +3,7 @@ import { LoadingButton } from "@mui/lab";
 import { Save as SaveIcon } from "@mui/icons-material";
 
 // components
-import BaseFractionMoveTypeGrid from "../../grids/BaseInfoGrids/BaseFractionMoveTypeGrid";
+import BaseFractionMoveTypeGrid from "@/grids/BaseInfoGrids/BaseFractionMoveTypeGrid";
 
 function BaseFractionMoveTypeForm() {
   const content = (

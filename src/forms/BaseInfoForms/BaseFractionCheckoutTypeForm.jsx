@@ -3,7 +3,7 @@ import { LoadingButton } from "@mui/lab";
 import { Save as SaveIcon } from "@mui/icons-material";
 
 // components
-import BaseFractionCheckoutTypeGrid from "../../grids/BaseInfoGrids/BaseFractionCheckoutTypeGrid";
+import BaseFractionCheckoutTypeGrid from "@/grids/BaseInfoGrids/BaseFractionCheckoutTypeGrid";
 
 function BaseFractionCheckoutTypeFrom() {
   const content = (

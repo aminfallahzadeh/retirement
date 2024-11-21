@@ -1,22 +1,16 @@
-// react imports
+// IMPORTS
 import { useState, useRef, useEffect } from "react";
-
-// redux imports
 import { useDispatch, useSelector } from "react-redux";
-import { setFractionType } from "../slices/fractionDataSlice";
-import { setData } from "../slices/calculateFractionDataSlice";
+import { setFractionType } from "@/slices/fractionDataSlice";
+import { setData } from "@/slices/calculateFractionDataSlice";
 import { useInsertFractionExcelMutation } from "@/features/fraction/fractionApi";
 import { useLazyGetPersonsQuery } from "@/features/person/personApi";
-
-// hooks
-import { useCloseCalender } from "../hooks/useCloseCalender";
+import { useCloseCalender } from "@/hooks/useCloseCalender";
 import {
   useFetchOrganizations,
   useFetchFractionType,
   useFetchPersonnelStatementOffType,
 } from "@/hooks/useFetchLookUpData";
-
-// mui imports
 import {
   CalendarTodayOutlined as CalenderIcon,
   FactCheckOutlined as CheckIcon,
@@ -37,36 +31,26 @@ import {
   Close as CloseIcon,
   Done as DoneIcon,
 } from "@mui/icons-material";
-
-// components
 import ArchiveTree from "@/components/ArchiveTree";
 import Modal from "@/components/Modal";
-
-// library imports
 import { toast } from "react-toastify";
 import "jalaali-react-date-picker/lib/styles/index.css";
 import { InputDatePicker } from "jalaali-react-date-picker";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import * as XLSX from "xlsx";
-
-// helpers
 import {
   convertToPersianNumber,
   convertToEnglishNumber,
   findById,
 } from "../helper";
-
-// ASSETS
 import excelImage from "@images/excel-icon.png";
-
-// UTILS
 import {
   selectStyles,
   selectSettings,
   optionsGenerator,
-} from "../utils/reactSelect";
-import { datePickerStyles, datePickerWrapperStyles } from "../utils/datePicker";
+} from "@/utils/reactSelect";
+import { datePickerStyles, datePickerWrapperStyles } from "@/utils/datePicker";
 
 function FractionForm() {
   // EXCEL FILE UPLOAD REF

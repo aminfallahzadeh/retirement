@@ -3,7 +3,7 @@ import { LoadingButton } from "@mui/lab";
 import { Save as SaveIcon } from "@mui/icons-material";
 
 // components
-import BaseOrganizationGrid from "../../grids/BaseInfoGrids/BaseOrganizationGrid";
+import BaseOrganizationGrid from "@/grids/BaseInfoGrids/BaseOrganizationGrid";
 
 function BaseOrganizationForm() {
   const content = (

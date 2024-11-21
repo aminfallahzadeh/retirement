@@ -24,7 +24,7 @@ import * as XLSX from "xlsx";
 import { selectStyles, selectSettings } from "../utils/reactSelect";
 
 // COMPONENTS
-import ReportGeneratorGrid from "../grids/ReportGeneratorGrid";
+import ReportGeneratorGrid from "@/grids/ReportGeneratorGrid";
 import Modal from "@/components/Modal";
 
 function ConditionSelectionForm({

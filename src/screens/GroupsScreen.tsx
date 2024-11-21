@@ -1,4 +1,4 @@
-// components
+// IMPORTS
 import GroupsGrid from "@/grids/GroupsGrid";
 
 function GroupsScreen() {

@@ -1,18 +1,12 @@
-// react imports
+// IMPORTS
 import { useState } from "react";
-
-// redux imports
 import { useSelector } from "react-redux";
-
-// mui imports
 import { Box, Tab } from "@mui/material";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
-
-// component imports
 import RetiredRelatedGrid from "@/grids/RetiredRelatedGrid";
 import RetiredStatementsGrid from "@/grids/RetiredStatementsGrid";
 import RetiredHeirGrid from "@/grids/RetiredHeirGrid";
-import AllRequestsGrid from "../../grids/AllRequestsGrid";
+import AllRequestsGrid from "@/grids/AllRequestsGrid";
 import RetiredSlipsGrid from "@/grids/RetiredSlipsGrid";
 
 function RelatedInfoSection() {

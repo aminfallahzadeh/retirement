@@ -22,7 +22,7 @@ import { toast } from "react-toastify";
 
 // COMPONETNS
 import Modal from "@/components/Modal";
-import ReturnRequestForm from "../forms/ReturnRequestForm";
+import ReturnRequestForm from "@/forms/ReturnRequestForm";
 
 // HELPERS
 import {

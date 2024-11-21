@@ -1,15 +1,9 @@
-// react imports
+// IMPORTS
 import { useState } from "react";
-
-// rrd imports
 import { useNavigate } from "react-router-dom";
-
-// mui imports
 import { IconButton } from "@mui/material";
 import { ArrowBack as BackIcon } from "@mui/icons-material";
-
-// components
-import GroupsCreateUserGrid from "../grids/GroupsCreateUserGrid";
+import GroupsCreateUserGrid from "@/grids/GroupsCreateUserGrid";
 import CreateUserForm from "@/forms/CreateUserForm";
 
 function CreateUserScreen() {

@@ -1,23 +1,21 @@
-// mui imports
+// IMPORTS
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import { ArrowDropDown as ArrowDropDownIcon } from "@mui/icons-material";
-
-// components
-import BaseOrganizationForm from "../forms/BaseInfoForms/BaseOrganizationForm";
-import BaseFractionForm from "../forms/BaseInfoForms/BaseFractionForm";
-import BaseBankBranchForm from "../forms/BaseInfoForms/BaseBankBranchForm";
-import BaseJobForm from "../forms/BaseInfoForms/BaseJobForm";
-import BaseYearsCoefForm from "../forms/BaseInfoForms/BaseYearsCoefForm";
-import BaseJobOrderForm from "../forms/BaseInfoForms/BaseJobOrderForm";
-import BaseRetirementBenefitsForm from "../forms/BaseInfoForms/BaseRetirementBenefitsForm";
-import BaseLegalDocumentForm from "../forms/BaseInfoForms/BaseLegalDocumentForm";
-import BaseFractionMoveTypeForm from "../forms/BaseInfoForms/BaseFractionMoveTypeForm";
-import BaseFractionCheckoutTypeFrom from "../forms/BaseInfoForms/BaseFractionCheckoutTypeForm";
+import BaseOrganizationForm from "@/forms/BaseInfoForms/BaseOrganizationForm";
+import BaseFractionForm from "@/forms/BaseInfoForms/BaseFractionForm";
+import BaseBankBranchForm from "@/forms/BaseInfoForms/BaseBankBranchForm";
+import BaseJobForm from "@/forms/BaseInfoForms/BaseJobForm";
+import BaseYearsCoefForm from "@/forms/BaseInfoForms/BaseYearsCoefForm";
+import BaseJobOrderForm from "@/forms/BaseInfoForms/BaseJobOrderForm";
+import BaseRetirementBenefitsForm from "@/forms/BaseInfoForms/BaseRetirementBenefitsForm";
+import BaseLegalDocumentForm from "@/forms/BaseInfoForms/BaseLegalDocumentForm";
+import BaseFractionMoveTypeForm from "@/forms/BaseInfoForms/BaseFractionMoveTypeForm";
+import BaseFractionCheckoutTypeFrom from "@/forms/BaseInfoForms/BaseFractionCheckoutTypeForm";
 import BaseFamilyRelationForm from "@/forms/BaseInfoForms/BaseFamilyRelationForm";
-import BaseRetiredConditionForm from "../forms/BaseInfoForms/BaseRetiredConditionForm";
-import BaseRelatedConditionForm from "../forms/BaseInfoForms/BaseRelatedConditionForm";
-import BaseHeirConditionForm from "../forms/BaseInfoForms/BaseHeirConditionForm";
-import BaseFixedAmountForm from "../forms/BaseInfoForms/BaseFixedAmountForm";
+import BaseRetiredConditionForm from "@/forms/BaseInfoForms/BaseRetiredConditionForm";
+import BaseRelatedConditionForm from "@/forms/BaseInfoForms/BaseRelatedConditionForm";
+import BaseHeirConditionForm from "@/forms/BaseInfoForms/BaseHeirConditionForm";
+import BaseFixedAmountForm from "@/forms/BaseInfoForms/BaseFixedAmountForm";
 
 function BaseInfoScreen() {
   const content = (

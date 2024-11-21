@@ -1,18 +1,29 @@
 // IMPORTS
 import { setSelectedRole } from "@/slices/roleDataSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { optionsGenerator } from "@/utils/reactSelect";
+import { selectOptionsGenerator } from "@/helpers/selectOptionsGenerator";
 import { SelectInput } from "@/shared/components/SelectInput";
+import { RoleDataType } from "@/shared/types/role";
+import { useAppDispatch, useAppSelector } from "@/hooks/usePreTypesHooks";
 
-function RoleSelectionForm({ isLoading, roles }) {
-  const dispatch = useDispatch();
+function RoleSelectionForm({
+  isLoading,
+  roles,
+}: {
+  isLoading: boolean;
+  roles: RoleDataType["itemList"];
+}) {
+  const dispatch = useAppDispatch();
 
-  const { selectedRole } = useSelector((state) => state.roleData);
+  const { selectedRole } = useAppSelector((state) => state.roleData);
 
   // SELECT OPTIONS
-  const rolesOptions = optionsGenerator(roles, "url", "itemName");
+  const rolesOptions = selectOptionsGenerator<RoleDataType["itemList"][number]>(
+    roles,
+    "url",
+    "itemName"
+  );
 
-  const handleSelectOptionChange = (selectedOption) => {
+  const handleSelectOptionChange = (selectedOption: unknown) => {
     if (selectedOption) {
       dispatch(setSelectedRole(selectedOption));
     } else {

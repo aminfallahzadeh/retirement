@@ -1,18 +1,12 @@
-// react imports
+// IMPORTS
 import { useState } from "react";
-
-// rrd imports
 import { useNavigate } from "react-router-dom";
-
-// mui imports
 import { Box, Tab, IconButton, Tooltip } from "@mui/material";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import { ArrowBack as BackIcon } from "@mui/icons-material";
-
-// components
 import RequestAttachmentsGrid from "@/grids/RequestAttachmentsGrid";
 import RequestInfoForm from "@/forms/RequestInfoForm";
-import RequestHistoryGrid from "../grids/RequestHistoryGrid";
+import RequestHistoryGrid from "@/grids/RequestHistoryGrid";
 
 function RequestScreen() {
   const [value, setValue] = useState("1");

@@ -1,7 +1,5 @@
-// components
-import BaseInfoForm2 from "../forms/BaseInfoForms2/BaseInfoForm2";
-
-// libnrary imports
+// IMPROTS
+import BaseInfoForm2 from "@/forms/BaseInfoForms2/BaseInfoForm2";
 import Select from "react-select";
 
 function BaseInfoScreen2() {

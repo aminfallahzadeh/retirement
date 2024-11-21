@@ -1,7 +1,5 @@
-// components
+// IMPORTS
 import DashboardForm from "@/forms/DashboardForm";
-
-// mui imports
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import { ArrowDropDown as ArrowDropDownIcon } from "@mui/icons-material";
 

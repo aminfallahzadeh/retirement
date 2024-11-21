@@ -3,7 +3,7 @@ import { LoadingButton } from "@mui/lab";
 import { Save as SaveIcon } from "@mui/icons-material";
 
 // components
-import BaseHeirConditionGrid from "../../grids/BaseInfoGrids/BaseHeirConditionGrid";
+import BaseHeirConditionGrid from "@/grids/BaseInfoGrids/BaseHeirConditionGrid";
 
 function BaseHeirConditionForm() {
   const content = (

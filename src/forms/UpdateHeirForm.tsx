@@ -16,7 +16,7 @@ import {
   useFetchPensionaryStatus,
   useFetchRelationship,
 } from "@/hooks/useFetchLookUpData";
-import { useCloseCalender } from "../hooks/useCloseCalender";
+import { useCloseCalender } from "@/hooks/useCloseCalender";
 
 // mui imports
 import { Box, CircularProgress } from "@mui/material";
@@ -27,7 +27,7 @@ import {
 } from "@mui/icons-material";
 
 // components
-import PensionaryStatusHistoryGrid from "../grids/PensionaryStatusHistoryGrid";
+import PensionaryStatusHistoryGrid from "@/grids/PensionaryStatusHistoryGrid";
 
 // libary imports
 import { toast } from "react-toastify";

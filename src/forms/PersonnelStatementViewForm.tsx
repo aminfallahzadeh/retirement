@@ -8,8 +8,8 @@ import { useGetPersonnelStatementQuery } from "../slices/personnelStatementApiSl
 import { CircularProgress, Box } from "@mui/material";
 
 // components
-import PersonnelStatementViewGrid from "../grids/PersonnelStatementViewGrid";
-import PersonnelStatementRelatedGrid from "../grids/PersonnelStatementRelatedGrid";
+import PersonnelStatementViewGrid from "@/grids/PersonnelStatementViewGrid";
+import PersonnelStatementRelatedGrid from "@/grids/PersonnelStatementRelatedGrid";
 
 // helpers
 import { convertToPersianNumber } from "../helper";

@@ -30,7 +30,7 @@ import PersonnelInfoScreen from "@/screens/PersonnelInfoScreen";
 import FractionScreen from "@/screens/FractionScreen";
 import ReportGeneratorScreen from "@/screens/ReportGeneratorScreen";
 import BaseInfoScreen from "@/screens/BaseInfoScreen";
-import BaseInfoScreen2 from "@/screens/BaseInfoScreen2.jsx";
+import BaseInfoScreen2 from "@/screens/BaseInfoScreen2";
 import InsertAnnounceScreen from "@/screens/InsertAnnounceScreen";
 import DashboardScreen from "@/screens/DashboardScreen";
 import GroupSlipsScreen from "@/screens/GroupSlipsScreen";

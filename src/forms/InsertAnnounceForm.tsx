@@ -5,7 +5,7 @@ import { useState, useRef } from "react";
 import { useInsertAnnounceMutation } from "@/features/announce/announceApi";
 
 // hooks
-import { useCloseCalender } from "../hooks/useCloseCalender";
+import { useCloseCalender } from "@/hooks/useCloseCalender";
 
 // mui imports
 import { LoadingButton } from "@mui/lab";

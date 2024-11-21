@@ -12,7 +12,7 @@ import { Save as SaveIcon } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
 
 // components
-import NumberInput from "../components/NumberInput.jsx";
+import NumberInput from "@/components/NumberInput";
 
 // helpers
 import { convertToPersianNumber, separateByThousands } from "../helper";

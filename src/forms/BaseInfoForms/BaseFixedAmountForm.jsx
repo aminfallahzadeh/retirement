@@ -3,7 +3,7 @@ import { LoadingButton } from "@mui/lab";
 import { Save as SaveIcon } from "@mui/icons-material";
 
 // components
-import BaseFixedAmountGrid from "../../grids/BaseInfoGrids/BaseFixedAmountGrid";
+import BaseFixedAmountGrid from "@/grids/BaseInfoGrids/BaseFixedAmountGrid";
 
 function BaseFixedAmountForm() {
   const content = (

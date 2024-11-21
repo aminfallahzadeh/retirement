@@ -16,8 +16,8 @@ import {
 import { Box, CircularProgress } from "@mui/material";
 
 // components
-import StatementViewRelatedGrid from "../grids/StatementViewRelatedGrid";
-import StatementViewHeirGrid from "../grids/StatementViewHeirGrid";
+import StatementViewRelatedGrid from "@/grids/StatementViewRelatedGrid";
+import StatementViewHeirGrid from "@/grids/StatementViewHeirGrid";
 
 // library imports
 import { toast } from "react-toastify";

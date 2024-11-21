@@ -13,7 +13,7 @@ import {
 } from "@mui/icons-material";
 
 // hooks
-import { useCloseCalender } from "../hooks/useCloseCalender";
+import { useCloseCalender } from "@/hooks/useCloseCalender";
 import { useFetchOrganizations } from "@/hooks/useFetchLookUpData";
 
 // library imports
@@ -25,16 +25,16 @@ import makeAnimated from "react-select/animated";
 
 // components
 import Modal from "@/components/Modal";
-import DashboardSumGrid from "../grids/DashboardGrids/DashboardSumGrid";
-import DashboardHouseRightGrid from "../grids/DashboardGrids/DashboardHouseRightGrid";
-import UnderWarantyAmountMenGrid from "../grids/DashboardGrids/UnderWarantyAmountMenGrid";
-import UnderWarantyAmountWomenGrid from "../grids/DashboardGrids/UnderWarantyAmountWomenGrid";
-import RelatedRightMenGrid from "../grids/DashboardGrids/RelatedRightMenGrid";
-import RelatedRightWomenGrid from "../grids/DashboardGrids/RelatedRightWomenGrid";
-import SupplementaryGrid from "../grids/DashboardGrids/SupplementaryGrid";
-import SacrificeCondtionsGrid from "../grids/DashboardGrids/SacrificeCondtionsGrid";
-import SacrificeAmountGrid from "../grids/DashboardGrids/SacrificeAmountGrid";
-import MinSalaryGrid from "../grids/DashboardGrids/MinSalaryGrid";
+import DashboardSumGrid from "@/grids/DashboardGrids/DashboardSumGrid";
+import DashboardHouseRightGrid from "@/grids/DashboardGrids/DashboardHouseRightGrid";
+import UnderWarantyAmountMenGrid from "@/grids/DashboardGrids/UnderWarantyAmountMenGrid";
+import UnderWarantyAmountWomenGrid from "@/grids/DashboardGrids/UnderWarantyAmountWomenGrid";
+import RelatedRightMenGrid from "@/grids/DashboardGrids/RelatedRightMenGrid";
+import RelatedRightWomenGrid from "@/grids/DashboardGrids/RelatedRightWomenGrid";
+import SupplementaryGrid from "@/grids/DashboardGrids/SupplementaryGrid";
+import SacrificeCondtionsGrid from "@/grids/DashboardGrids/SacrificeCondtionsGrid";
+import SacrificeAmountGrid from "@/grids/DashboardGrids/SacrificeAmountGrid";
+import MinSalaryGrid from "@/grids/DashboardGrids/MinSalaryGrid";
 
 // utils
 import {

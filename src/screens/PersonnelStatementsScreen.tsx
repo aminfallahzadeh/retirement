@@ -1,6 +1,6 @@
-// components
+// IMPROTS
 import PersonnelStatementForm from "@/forms/PersonnelStatementForm";
-import PersonnelGrid from "../grids/PersonnelGrid";
+import PersonnelGrid from "@/grids/PersonnelGrid";
 
 function PersonnelStatementsScreen() {
   const content = (

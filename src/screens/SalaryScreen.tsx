@@ -1,17 +1,13 @@
-// RRD
+// IMPORTS
 import { useNavigate } from "react-router-dom";
-
-// MUI
 import { IconButton, Tooltip } from "@mui/material";
 import {
   ArrowBack as BackIcon,
   ArrowDropDown as ArrowDropDownIcon,
 } from "@mui/icons-material";
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
-
-// COMPONENTS
 import CompareSalaryReportForm from "@/forms/CompareSalaryReportForm";
-import CompareSalaryReportGrid from "../grids/CompareSalaryReportGrid";
+import CompareSalaryReportGrid from "@/grids/CompareSalaryReportGrid";
 import PersonnelStatementForm from "@/forms/PersonnelStatementForm";
 import PersonnelPayGrid from "@/grids/PersonnelPayGrid";
 import PayItemSearchGrid from "@/grids/PayItemSearchGrid";

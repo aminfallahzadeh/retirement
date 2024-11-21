@@ -3,7 +3,7 @@ import { LoadingButton } from "@mui/lab";
 import { Save as SaveIcon } from "@mui/icons-material";
 
 // components
-import BaseBankBranchGrid from "../../grids/BaseInfoGrids/BaseBankBranchGrid";
+import BaseBankBranchGrid from "@/grids/BaseInfoGrids/BaseBankBranchGrid";
 
 function BaseBankBranchForm() {
   const content = (

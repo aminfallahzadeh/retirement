@@ -1,7 +1,7 @@
 // IMPORTS
 import { StylesConfig, ActionMeta } from "react-select";
 
-type option = {
+export type Option = {
   value: string;
   label: string;
 };
@@ -12,11 +12,12 @@ export type SelectInputProps = {
   required: boolean;
   defaultValue?: string;
   isMulti?: boolean;
-  options: option[];
-  onChange?: (newValue: unknown, actionMeta: ActionMeta<unknown>) => void;
+  options: Option[];
+  onChange?: (newValue: unknown, actionMeta?: ActionMeta<unknown>) => void;
   isDisabled?: boolean;
   value?: string;
   placeholder?: JSX.Element;
   customStyles?: StylesConfig;
   isLoading?: boolean;
+  isClearable?: boolean;
 };

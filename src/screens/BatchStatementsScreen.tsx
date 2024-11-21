@@ -1,11 +1,6 @@
-// react imports
-// rrd imports
+// IMPORTS
 import { useNavigate } from "react-router-dom";
-
-// componsnets
 import BatchStatementsForm from "@/forms/BatchStatementsForm";
-
-// mui imports
 import { Tooltip, IconButton } from "@mui/material";
 import { ArrowBack as BackIcon } from "@mui/icons-material";
 

@@ -1,16 +1,10 @@
-// REACT IMPORTS
+// IMPORTS
 import { useEffect, useState } from "react";
-
-// redux imports
 import { useSelector, useDispatch } from "react-redux";
-import { setPeriodsTableData } from "../slices/fractionDataSlice";
-import { setData } from "../slices/calculateFractionDataSlice";
-
-// MUI
+import { setPeriodsTableData } from "@/slices/fractionDataSlice";
+import { setData } from "@/slices/calculateFractionDataSlice";
 import { Box, Tab, IconButton, Tooltip } from "@mui/material";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
-
-// COMPONENTS
 import FractionForm from "@/forms/FractionForm";
 import FractionPeriodGrid from "@/grids/FractionPeriodGrid";
 import CalculateFractionForm from "@/forms/CalculateFractionForm";

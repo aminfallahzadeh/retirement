@@ -1,23 +1,15 @@
-// REACT IMPORTS
+// IMPORTS
 import { useState, useEffect, useRef } from "react";
 import { useForm, Controller } from "react-hook-form";
-
-// reduxt imports
 import {
   useUpdateRetiredPersonMutation,
   useGetRetiredPersonQuery,
 } from "@/features/retired/retiredApi";
 import { setPersonDeathDate } from "@/slices/retiredStateSlice";
 import { useDispatch } from "react-redux";
-
-// COMPONETNS
 import { Input } from "@/shared/components/Input";
-
-// HOOKS
 import { useFetchLookUpData } from "@/hooks/useFetchLookUpData";
 import { useCloseCalender } from "@/hooks/useCloseCalender";
-
-// mui imports
 import { Button, Box, CircularProgress, Checkbox } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import {
@@ -25,22 +17,16 @@ import {
   Save as SaveIcon,
   EditOutlined as EditIcon,
 } from "@mui/icons-material";
-
-// libary imports
 import { toast } from "react-toastify";
 import "jalaali-react-date-picker/lib/styles/index.css";
 import { InputDatePicker } from "jalaali-react-date-picker";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
-
-// helpers
 import {
   convertToPersianNumber,
   convertToEnglishNumber,
   convertToPersianDate,
 } from "@/helper";
-
-// utils
 import {
   selectStyles,
   selectSettings,

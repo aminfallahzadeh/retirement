@@ -11,7 +11,7 @@ import {
 
 // hooks
 import { useFetchRetirementStatementTypes } from "@/hooks/useFetchLookUpData";
-import { useCloseCalender } from "../hooks/useCloseCalender";
+import { useCloseCalender } from "@/hooks/useCloseCalender";
 
 // mui imports
 import {
@@ -32,7 +32,7 @@ import makeAnimated from "react-select/animated";
 
 // components
 import GroupFormulaForm from "./GroupFormulaForm";
-import GenerateGroupStatementGrid from "../grids/GenerateGroupStatementGrid.jsx";
+import GenerateGroupStatementGrid from "@/grids/GenerateGroupStatementGrid.jsx";
 
 // utils
 import {

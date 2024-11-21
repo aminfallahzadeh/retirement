@@ -1,21 +1,13 @@
-// react imports
+// IMPORTS
 import { useState, useEffect } from "react";
-
-// redux imports
 import {
   useUpdateUserMutation,
   useGetUserQuery,
 } from "@/features/user/userApi";
-
-// library imports
 import { toast } from "react-toastify";
-
-// mui imports
 import { Box, CircularProgress } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { Save as SaveIcon } from "@mui/icons-material";
-
-// helpers
 import { convertToPersianNumber, convertToEnglishNumber } from "../helper";
 
 function UpdateUserForm({ setShowEditUserModal, userID }) {

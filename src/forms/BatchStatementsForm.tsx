@@ -1,21 +1,15 @@
-// react imports
+// IMPORTS
 import { useState, useEffect, useRef, useCallback } from "react";
-
-// redux imports
 import { useDispatch } from "react-redux";
 import { setFilteredPersonsTableData } from "@/features/statement/statementSlice";
 import {
   useGetStatementListFromFiltersMutation,
   useGetStatementListFromExcelMutation,
 } from "@/features/statement/statementApi";
-
-// HOOKS
 import {
   useFetchPensionaryStatus,
   useFetchLookUpData,
 } from "@/hooks/useFetchLookUpData";
-
-// mui imports
 import { Switch, LinearProgress, Box, IconButton } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import {
@@ -23,25 +17,17 @@ import {
   UploadRounded as UploadIcon,
   DeleteOutline as RemoveIcon,
 } from "@mui/icons-material";
-
-// components
-import FilteredPersonsGrid from "../grids/FilteredPersonsGrid";
+import FilteredPersonsGrid from "@/grids/FilteredPersonsGrid";
 import StatementItemsForm from "./StatementItemsForm";
-
-// library imports
 import { toast } from "react-toastify";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import * as XLSX from "xlsx";
-
-// utils
 import {
   selectStyles,
   selectSettings,
   optionsGenerator,
-} from "../utils/reactSelect";
-
-// helpers
+} from "@/utils/reactSelect";
 import { convertToEnglishNumber } from "../helper";
 
 function BatchStatementsForm() {

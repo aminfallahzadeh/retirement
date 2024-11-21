@@ -1,7 +1,5 @@
-// react imports
+// IMPORTS
 import { useState } from "react";
-
-// components
 import InsertAnnounceForm from "@/forms/InsertAnnounceForm";
 import AnnounceGrid from "@/grids/AnnounceGrid";
 

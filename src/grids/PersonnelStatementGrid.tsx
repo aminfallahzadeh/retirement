@@ -26,7 +26,7 @@ import {
 
 // components
 import Modal from "@/components/Modal";
-import PersonnelStatementViewForm from "../forms/PersonnelStatementViewForm";
+import PersonnelStatementViewForm from "@/forms/PersonnelStatementViewForm";
 import PersonnelStatementTemplate from "@/components/PersonnelStatementTemplate";
 
 // helper imports

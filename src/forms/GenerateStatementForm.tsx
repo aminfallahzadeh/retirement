@@ -20,7 +20,7 @@ import {
 
 // HOOKS
 import { useFetchRetirementStatementTypes } from "@/hooks/useFetchLookUpData";
-import { useCloseCalender } from "../hooks/useCloseCalender.js";
+import { useCloseCalender } from "@/hooks/useCloseCalender.js";
 import useHanldeError from "@/hooks/useHandleError";
 
 // LIBRARIES

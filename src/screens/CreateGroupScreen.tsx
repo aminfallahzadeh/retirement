@@ -1,16 +1,10 @@
-// react imports
+// IMPORTS
 import { useState } from "react";
-
-// rrd imports
 import { useNavigate } from "react-router-dom";
-
-// mui imports
 import { IconButton, Tooltip } from "@mui/material";
 import { ArrowBack as BackIcon } from "@mui/icons-material";
-
-// components
-import ItemsCreateGroupGrid from "../grids/ItemsCreateGroupGrid";
-import CreateGroupForm from "../forms/CreateGroupForm";
+import ItemsCreateGroupGrid from "@/grids/ItemsCreateGroupGrid";
+import CreateGroupForm from "@/forms/CreateGroupForm";
 
 function CreateGroupScreen() {
   const [addedItems, setAddedItems] = useState([]);

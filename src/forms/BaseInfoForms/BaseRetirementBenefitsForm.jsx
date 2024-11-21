@@ -3,7 +3,7 @@ import { LoadingButton } from "@mui/lab";
 import { Save as SaveIcon } from "@mui/icons-material";
 
 // components
-import BaseRetirementBenefitsGrid from "../../grids/BaseInfoGrids/BaseRetirementBenefitsGrid";
+import BaseRetirementBenefitsGrid from "@/grids/BaseInfoGrids/BaseRetirementBenefitsGrid";
 
 function BaseRetirementBenefitsForm() {
   const content = (

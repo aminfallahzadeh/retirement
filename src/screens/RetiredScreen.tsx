@@ -1,11 +1,7 @@
-// rrd imports
+// IMPROTS
 import { useNavigate } from "react-router-dom";
-
-// mui imports
 import { IconButton, Tooltip } from "@mui/material";
 import { ArrowBack as BackIcon } from "@mui/icons-material";
-
-// components
 import IndividualInfoSection from "@/sections/retired/IndividualInfoSection";
 import RelatedInfoSection from "@/sections/retired/RelatedInfoSection";
 

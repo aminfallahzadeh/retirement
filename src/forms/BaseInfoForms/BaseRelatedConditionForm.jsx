@@ -3,7 +3,7 @@ import { LoadingButton } from "@mui/lab";
 import { Save as SaveIcon } from "@mui/icons-material";
 
 // components
-import BaseRelatedConditionGrid from "../../grids/BaseInfoGrids/BaseRelatedConditionGrid";
+import BaseRelatedConditionGrid from "@/grids/BaseInfoGrids/BaseRelatedConditionGrid";
 
 function BaseRelatedConditionForm() {
   const content = (

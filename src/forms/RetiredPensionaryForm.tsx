@@ -16,7 +16,7 @@ import {
   useFetchLookUpData,
   useFetchOrganizations,
 } from "@/hooks/useFetchLookUpData";
-import { useCloseCalender } from "../hooks/useCloseCalender";
+import { useCloseCalender } from "@/hooks/useCloseCalender";
 
 // MUI
 import { Button, Box, CircularProgress } from "@mui/material";
@@ -28,7 +28,7 @@ import {
 } from "@mui/icons-material";
 
 // COMPONENTS
-import PensionaryStatusHistoryGrid from "../grids/PensionaryStatusHistoryGrid";
+import PensionaryStatusHistoryGrid from "@/grids/PensionaryStatusHistoryGrid";
 
 // HELPERS
 import {

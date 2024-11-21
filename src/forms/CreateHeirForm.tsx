@@ -16,7 +16,7 @@ import {
   useFetchPensionaryStatus,
   useFetchRelationship,
 } from "@/hooks/useFetchLookUpData";
-import { useCloseCalender } from "../hooks/useCloseCalender";
+import { useCloseCalender } from "@/hooks/useCloseCalender";
 
 // mui imports
 import { LoadingButton } from "@mui/lab";

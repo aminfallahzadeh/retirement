@@ -3,7 +3,7 @@ import { LoadingButton } from "@mui/lab";
 import { Save as SaveIcon } from "@mui/icons-material";
 
 // components
-import BaseLegalDocumentGrid from "../../grids/BaseInfoGrids/BaseLegalDocumentGrid";
+import BaseLegalDocumentGrid from "@/grids/BaseInfoGrids/BaseLegalDocumentGrid";
 
 function BaseLegalDocumentForm() {
   const content = (
