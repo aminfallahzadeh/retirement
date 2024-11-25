@@ -1,10 +1,11 @@
 // IMPORTS
 import { apiSlice } from "../api/apiSlice";
 import { USER_END } from "../api/endpoints";
+import { ArchiveStructureData } from "@/shared/types/archive";
 
 export const archiveApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getArchiveStructure: builder.query({
+    getArchiveStructure: builder.query<ArchiveStructureData, void>({
       query: (token) => ({
         url: `${USER_END}/GetArchiveStructure`,
         headers: {

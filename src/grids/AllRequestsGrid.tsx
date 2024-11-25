@@ -135,7 +135,7 @@ function AllRequestsGrid() {
         Cell: ({ row }) => (
           <Tooltip title={convertToPersianNumber(row.original.requestNO)}>
             <Link
-              to={`/retirement-organization/request?requestID=${row.id}&Role=${Role}&type=${row.original.type}`}
+              to={`/retirement/request?requestID=${row.id}&Role=${Role}&type=${row.original.type}`}
             >
               <IconButton color="primary" sx={{ padding: "0" }}>
                 <RemoveRedEyeIcon />

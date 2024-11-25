@@ -1,10 +1,6 @@
-// react imports
+// IMPORTS
 import React, { useEffect, useState } from "react";
-
-// rrd imports
 import { useLocation } from "react-router-dom";
-
-// REDUX
 import { useSelector, useDispatch } from "react-redux";
 import {
   setArchiveStructureData,
@@ -17,8 +13,6 @@ import {
   useGetArchiveQuery,
   useDeleteArchiveMutation,
 } from "@/features/archive/archiveApi";
-
-// mui imports
 import {
   styled,
   alpha,
@@ -48,23 +42,17 @@ import {
 import { SimpleTreeView } from "@mui/x-tree-view/SimpleTreeView";
 import { TreeItem, treeItemClasses } from "@mui/x-tree-view/TreeItem";
 import { LoadingButton } from "@mui/lab";
-
-// COMPONENTS
 import Modal from "./Modal";
 import CreateArchiveStructureForm from "@/forms/CreateArchiveStructureForm";
 import EditArchiveStructureForm from "@/forms/EditArchiveStructureForm";
 import InsertArchiveForm from "@/forms/InsertArchiveForm";
 import DeleteArchiveFrom from "@/forms/DeleteArchiveForm";
-
-// library imports
 import { toast } from "react-toastify";
 import rtlPlugin from "stylis-plugin-rtl";
 import { prefixer } from "stylis";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 import { animated, useSpring } from "@react-spring/web";
-
-// helpers
 import { findById, convertToPersianNumber } from "@/helper";
 
 function DotIcon() {
@@ -298,31 +286,6 @@ function ArchiveTree({ setPreviewImage = undefined }) {
       });
     }
   };
-
-  // DELETE ARCHIVE IMAGE HANDLER
-  // const handleDeleteImage = async () => {
-  //   try {
-  //     const deleteImgRes = await deleteArchive({
-  //       id: selectedImageData.id,
-  //       attachment: "",
-  //       contentType: "",
-  //       archiveStructureID: "",
-  //       insertUserID: "",
-  //       documentID: "",
-  //       personID: "",
-  //     }).unwrap();
-  //     setShowDeleteImageModal(false);
-  //     if (!fractionPath) setPreviewImage(null);
-  //     toast.success(deleteImgRes.message, {
-  //       autoClose: 2000,
-  //     });
-  //   } catch (err) {
-  //     console.log(err);
-  //     toast.error(err?.data?.message || err.error, {
-  //       autoClose: 2000,
-  //     });
-  //   }
-  // };
 
   // fetch archive structure data
   useEffect(() => {

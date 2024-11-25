@@ -214,7 +214,7 @@ function UsersGrid() {
             </span>
           </Tooltip>
         )}
-        <Link to={"/retirement-organization/create-user"}>
+        <Link to={"/retirement/create-user"}>
           {isFetching ? (
             <IconButton aria-label="refresh" color="info" disabled>
               <CircularProgress size={20} value={100} color={"success"} />

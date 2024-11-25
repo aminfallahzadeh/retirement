@@ -37,3 +37,20 @@ export const PERSIAN_NUMBERS = [
 export const INPUT_TYPES = {
   TEXT: "text",
 };
+
+// GENERAL
+export const NAVIGATE_BACK = "بازگشت";
+export const RELATEDS = "وابستگان";
+export const HEIRS = "موظفین";
+export const STATEMENTS = "احکام";
+export const PAYSLIP = "فیش حقوقی";
+export const REQUESTS = "درخواست ها";
+
+// RETIRED
+export const RETIRED_INFO = "اطلاعات بازنشسته";
+export const RETIRED_PERSON_INFO = "اطلاعات فردی";
+export const RETIRES_PENSIONARY_INFO = "اطلاعات پرسونلی";
+export const RETIRED_ADDITIONAL_INFO = "اطلاعات تکمیلی";
+
+// ARCHIVE
+export const ELECTRONIC_CASE = "پرونده الکترونیک";

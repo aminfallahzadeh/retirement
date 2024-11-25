@@ -108,7 +108,7 @@ export const columnsRenderer = ({
     Cell: ({ row }: MRT_RowData) => (
       <Tooltip title={convertToPersianNumber(row.original.requestNO)}>
         <Link
-          to={`/retirement-organization/request?requestID=${row.id}&Role=${selectedRole?.value}&type=${row.original.requestTypeID}`}
+          to={`/retirement/request?requestID=${row.id}&Role=${selectedRole?.value}&type=${row.original.requestTypeID}`}
         >
           <span>
             <IconButton sx={{ padding: "0" }} color="info">

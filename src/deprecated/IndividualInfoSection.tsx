@@ -12,7 +12,7 @@ import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import { ArrowDropDown as ArrowDropDownIcon } from "@mui/icons-material";
 
 function IndividualInfoSection() {
-  const [theme, setTheme] = useState("default"); // State variable to hold the theme
+  const [theme, setTheme] = useState("default");
 
   useEffect(() => {
     const colorScheme = document.documentElement.getAttribute("color-scheme");

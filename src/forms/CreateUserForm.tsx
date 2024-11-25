@@ -50,7 +50,7 @@ function CreateUserForm({ addedGroups }) {
         toast.success(createUserRes.message, {
           autoClose: 2000,
         });
-        navigate("/retirement-organization/users");
+        navigate("/retirement/users");
       } catch (err) {
         console.log(err);
         toast.error(err?.data?.message || err.error, {
@@ -80,7 +80,7 @@ function CreateUserForm({ addedGroups }) {
           toast.success(insertRes.message, {
             autoClose: 2000,
           });
-          navigate("/retirement-organization/users");
+          navigate("/retirement/users");
         } catch (err) {
           console.log(err);
           toast.error(err?.data?.message || err.error, {

@@ -36,8 +36,7 @@ function TopbarNav({ userName, userID }) {
   const logoutHandler = useLogout();
   const location = useLocation();
 
-  const cartablePath =
-    location.pathname === "/retirement-organization/dashboard";
+  const cartablePath = location.pathname === "/retirement/dashboard";
 
   const [updateUserTheme, { isLoading }] = useUpdateUserThemeMutation();
 
@@ -87,7 +86,7 @@ function TopbarNav({ userName, userID }) {
             </li>
             <li className={cartablePath ? "topnav__active" : ""}>
               <Link
-                to={"/retirement-organization/dashboard"}
+                to={"/retirement/dashboard"}
                 style={{
                   display: "flex",
                   alignItems: "center",

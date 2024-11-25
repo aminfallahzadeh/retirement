@@ -21,23 +21,22 @@ import {
 function SidebarNav() {
   const location = useLocation();
 
-  const groupsPath = location.pathname === "/retirement-organization/groups";
-  const userPath = location.pathname === "/retirement-organization/users";
+  const groupsPath = location.pathname === "/retirement/groups";
+  const userPath = location.pathname === "/retirement/users";
   const batchStatementsPath =
-    location.pathname === "/retirement-organization/batch-statements";
+    location.pathname === "/retirement/batch-statements";
   const personnelStatementsPath = location.pathname.startsWith(
-    "/retirement-organization/personnel-statements"
+    "/retirement/personnel-statements"
   );
   const electronicStatementPath =
-    location.pathname === "/retirement-organization/electronic-statement";
-  const createRequestPath =
-    location.pathname === "/retirement-organization/create-request";
+    location.pathname === "/retirement/electronic-statement";
+  const createRequestPath = location.pathname === "/retirement/create-request";
 
   const content = (
     <Sidebar rtl={true}>
       <Menu>
         <MenuItem
-          component={<Link to={"/retirement-organization/create-request"} />}
+          component={<Link to={"/retirement/create-request"} />}
           active={createRequestPath}
           icon={<RequestIcon sx={{ color: "#ff6700" }} />}
         >
@@ -48,9 +47,7 @@ function SidebarNav() {
           icon={<PersonOutlinedIcon sx={{ color: "#ff6700" }} />}
         >
           <MenuItem
-            component={
-              <Link to={"/retirement-organization/batch-statements"} />
-            }
+            component={<Link to={"/retirement/batch-statements"} />}
             active={batchStatementsPath}
           >
             {" "}
@@ -64,9 +61,7 @@ function SidebarNav() {
           icon={<GroupOutlinedIcon sx={{ color: "#ff6700" }} />}
         >
           <MenuItem
-            component={
-              <Link to={"/retirement-organization/personnel-statements"} />
-            }
+            component={<Link to={"/retirement/personnel-statements"} />}
             active={personnelStatementsPath}
           >
             احکام کارمندان
@@ -109,21 +104,19 @@ function SidebarNav() {
           icon={<LightbulbOutlinedIcon sx={{ color: "#ff6700" }} />}
         >
           <MenuItem
-            component={<Link to="/retirement-organization/groups" />}
+            component={<Link to="/retirement/groups" />}
             active={groupsPath}
           >
             گروه ها
           </MenuItem>
           <MenuItem
-            component={<Link to="/retirement-organization/users" />}
+            component={<Link to="/retirement/users" />}
             active={userPath}
           >
             کاربران
           </MenuItem>
           <MenuItem
-            component={
-              <Link to="/retirement-organization/electronic-statement" />
-            }
+            component={<Link to="/retirement/electronic-statement" />}
             active={electronicStatementPath}
           >
             پرونده الکترونیک

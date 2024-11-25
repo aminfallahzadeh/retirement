@@ -238,9 +238,7 @@ function RetiredStatementsGrid() {
       },
     ];
 
-    if (
-      location.pathname !== "/retirement-organization/personnel-statements/info"
-    ) {
+    if (location.pathname !== "/retirement/personnel-statements/info") {
       baseColumns.push({
         accessorKey: "removeStatement",
         header: "حذف حکم",

@@ -53,7 +53,7 @@ function CreateGroupForm({ addedItems }) {
           toast.success(insertRes.message, {
             autoClose: 2000,
           });
-          navigate("/retirement-organization/groups");
+          navigate("/retirement/groups");
         } catch (err) {
           console.log(err);
           toast.error(err?.data?.message || err.error, {

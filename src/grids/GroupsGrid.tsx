@@ -253,7 +253,7 @@ function GroupsGrid() {
             </span>
           </Tooltip>
         )}
-        <Link to={"/retirement-organization/create-group"}>
+        <Link to={"/retirement/create-group"}>
           {isFetching ? (
             <IconButton aria-label="refresh" color="info" disabled>
               <CircularProgress size={20} value={100} color={"success"} />

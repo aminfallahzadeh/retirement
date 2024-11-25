@@ -37,7 +37,7 @@ export const Error = () => {
         <Button
           dir="ltr"
           endIcon={<HomeIcon />}
-          onClick={() => navigate("/retirement-organization/cartable")}
+          onClick={() => navigate("/retirement/cartable")}
           variant="contained"
           color="primary"
           sx={{ fontFamily: "sahel" }}

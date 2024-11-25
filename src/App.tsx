@@ -28,7 +28,7 @@ function App() {
   // LOGOUT USER AFTER 30mins OF INACTIVITY
   // USER ACTIVITY STATES
   const [isActive, setIsActive] = useState(true);
-  const [remaining, setRemaining] = useState(0);
+  const [, setRemaining] = useState(0);
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState("");
   const [search, setSearch] = useState(false);

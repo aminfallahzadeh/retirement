@@ -2,38 +2,40 @@
 <html lang="fa" dir="rtl">
 
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/x-icon" href="./favicon.png">
-  <!-- fix image loading in nested routes -->
-  <base href="/retirement/">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta property="og:title" content="Retirement Organization" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://aminfallahzadeh.github.io/retirement/" />
-  <meta property="og:image:url" content="/public/banner.png" />
-  <meta property="og:description" content="Official Website for Retirement Organization" />
-  <title>Retirement Organization System</title>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="./favicon.png">
+    <!-- fix image loading in nested routes -->
+    <base href="/retirement/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:title" content="Retirement Organization" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://aminfallahzadeh.github.io/retirement/" />
+    <meta property="og:image:url" content="/public/banner.png" />
+    <meta property="og:description" content="Official Website for Retirement Organization" />
 
-  <script type="text/javascript">
-    (function (l) {
-      if (l.search[1] === "/") {
-        var decoded = l.search
-          .slice(1)
-          .split("&")
-          .map(function (s) {
-            return s.replace(/~and~/g, "&");
-          })
-          .join("?");
-        window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
-      }
-    })(window.location);
-  </script>
+    <title>Retirement
+        Organization System</title>
+
+    <script type="text/javascript">
+        (function (l) {
+            if (l.search[1] === "/") {
+                var decoded = l.search
+                    .slice(1)
+                    .split("&")
+                    .map(function (s) {
+                        return s.replace(/~and~/g, "&");
+                    })
+                    .join("?");
+                window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
+            }
+        })(window.location);
+    </script>
 
 </head>
 
 <body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.tsx"></script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
 </body>
 
 </html>

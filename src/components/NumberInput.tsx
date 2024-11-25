@@ -1,10 +1,6 @@
-// react imports
+// IMPORTS
 import { useState } from "react";
-
-// helpers
 import { convertToEnglishNumber, removeSeparators } from "../helper";
-
-// mui imports
 import { IconButton } from "@mui/material";
 import {
   AddRounded as AddIcon,

@@ -13,12 +13,12 @@ import "./index.css";
 import { Provider } from "react-redux";
 import store from "@/config/redux/store";
 import App from "@/App";
-import { Login } from "@/pages/Login";
-import { Error } from "@/pages/Error";
-import { Cartable } from "@/screens/Cartable";
+import { Login } from "./pages/Login";
+import { Error } from "./pages/Error";
+import { Cartable } from "./screens/Cartable";
+import { Retired } from "./screens/Retired";
 import CreateGroupScreen from "@/screens/CreateGroupScreen";
 import CreateUserScreen from "@/screens/CreateUserScreen";
-import RetiredScreen from "@/screens/RetiredScreen";
 import GroupsScreen from "@/screens/GroupsScreen";
 import UsersScreen from "@/screens/UsersScreen";
 import RequestScreen from "@/screens/RequestScreen";
@@ -36,6 +36,7 @@ import DashboardScreen from "@/screens/DashboardScreen";
 import GroupSlipsScreen from "@/screens/GroupSlipsScreen";
 import SalaryScreen from "@/screens/SalaryScreen";
 import { setConfig } from "@/features/api/configSlice";
+import TestPage from "./pages/TestPage";
 
 const loadConfig = async (): Promise<void> => {
   try {
@@ -54,8 +55,9 @@ const router = createBrowserRouter(
         <Route index path="/retirement/" element={<Login />} />
 
         <Route path="/retirement/cartable" element={<Cartable />} />
+        <Route path="/retirement/test" element={<TestPage />} />
 
-        <Route path="/retirement/retired" element={<RetiredScreen />} />
+        <Route path="/retirement/retired" element={<Retired />} />
 
         <Route path="/retirement/groups" element={<GroupsScreen />} />
 
