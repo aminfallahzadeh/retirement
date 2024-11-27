@@ -46,6 +46,13 @@ export const STATEMENTS = "احکام";
 export const PAYSLIP = "فیش حقوقی";
 export const REQUESTS = "درخواست ها";
 
+// BUTTONS
+export const YES = "بله";
+export const NO = "خیر";
+export const SCAN = "اسکن";
+export const SAVE = "ذخیره";
+export const UPLOAD = "بارگذاری";
+
 // RETIRED
 export const RETIRED_INFO = "اطلاعات بازنشسته";
 export const RETIRED_PERSON_INFO = "اطلاعات فردی";
@@ -53,4 +60,12 @@ export const RETIRES_PENSIONARY_INFO = "اطلاعات پرسونلی";
 export const RETIRED_ADDITIONAL_INFO = "اطلاعات تکمیلی";
 
 // ARCHIVE
+export const FOLDER_NAME = "نام پوشه";
 export const ELECTRONIC_CASE = "پرونده الکترونیک";
+export const EDIT_FOLDER_NAME = "ویرایش نام پوشه";
+export const CREATE_NEW_FOLDER = "ایجاد پوشه جدید";
+export const DELETE_FOLDER = "حذف پوشه";
+export const ADD_NEW_IMAGE = "افزودن برگه جدید";
+export const DELETE_IMAGE = "حذف برگه";
+export const OBSERVE_FILE = "مشاهده برگه";
+export const PARENT_FOLDER_ID = "97134493291b473f9b3bf8c4c15b27a0";

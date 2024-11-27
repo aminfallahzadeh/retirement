@@ -6,23 +6,15 @@ import { ArchiveStructureData } from "@/shared/types/archive";
 export const archiveApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getArchiveStructure: builder.query<ArchiveStructureData, void>({
-      query: (token) => ({
+      query: () => ({
         url: `${USER_END}/GetArchiveStructure`,
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
       }),
     }),
     insertArchiveStructure: builder.mutation({
-      query: ({ token, data }) => ({
+      query: (data) => ({
         url: `${USER_END}/InsertArchiveStructure`,
         method: "POST",
         body: data,
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
       }),
     }),
     deleteArchiveStructure: builder.mutation({
@@ -33,14 +25,10 @@ export const archiveApiSlice = apiSlice.injectEndpoints({
       }),
     }),
     updateArchiveStructure: builder.mutation({
-      query: ({ token, data }) => ({
+      query: (data) => ({
         url: `${USER_END}/UpdateArchiveStructure`,
         method: "POST",
         body: data,
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
       }),
     }),
     insertArchive: builder.mutation({

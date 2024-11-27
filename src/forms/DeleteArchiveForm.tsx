@@ -91,7 +91,7 @@ function DeleteArchiveForm({
           variant="contained"
           color="success"
           disabled={!deleteDesc || deleteDesc === ""}
-          sx={{ fontFamily: "sahel" }}
+          sx={{ fontFamily: "IranYekan" }}
         >
           <span>بله</span>
         </LoadingButton>
@@ -101,7 +101,7 @@ function DeleteArchiveForm({
           onClick={() => setShowDeleteImageModal(false)}
           variant="contained"
           color="error"
-          sx={{ fontFamily: "sahel" }}
+          sx={{ fontFamily: "IranYekan" }}
         >
           <span>خیر</span>
         </Button>

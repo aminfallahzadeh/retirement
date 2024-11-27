@@ -1,5 +1,5 @@
 // IMPORTS
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { FileTree } from "@/shared/components/FileTree";
 import { ArchiveStructure, Archive } from "@/shared/types/archive";
 import {
@@ -22,35 +22,42 @@ export const Electronic = () => {
     data: archiveStructure,
     isLoading: isArchiveStructureLoading,
     isSuccess: isArchiveStructureSuccess,
+    refetch: structureRefetch,
   } = useGetArchiveStructureQuery();
 
   const {
     data: archiveFiles,
     isLoading: isArchiveFilesLoading,
     isSuccess: isArchiveFilesSuccess,
+    refetch: filesRefetch,
   } = useGetArchiveQuery(personID);
 
   useEffect(() => {
     if (isArchiveFilesSuccess) {
-      console.log("FILES:", archiveFiles);
       setFiles(archiveFiles.itemList);
     }
   }, [isArchiveFilesSuccess, archiveFiles]);
 
   useEffect(() => {
     if (isArchiveStructureSuccess) {
-      console.log("BEFORE CREATE TREE:", archiveStructure);
       const tree = createTree(archiveStructure.itemList);
-      console.log("AFRET CREATE TREE:", tree);
       setStructure(tree);
     }
   }, [isArchiveStructureSuccess, archiveStructure]);
+
+  // HANDLERS
+  const handleRefetch = useCallback(() => {
+    structureRefetch();
+    filesRefetch();
+  }, [structureRefetch, filesRefetch]);
 
   return (
     <FileTree
       structure={structure}
       files={files}
       isLoading={isArchiveStructureLoading || isArchiveFilesLoading}
+      refetch={handleRefetch}
+      access="all"
     />
   );
 };

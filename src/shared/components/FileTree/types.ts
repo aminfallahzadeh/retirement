@@ -1,6 +1,7 @@
 // IMPORTS
 import { ReactNode, ElementType } from "react";
 import { UseTreeItem2Parameters } from "@mui/x-tree-view/useTreeItem2";
+import { ArchiveStructure, Archive } from "@/shared/types/archive";
 
 export type FileType =
   | "image"
@@ -10,6 +11,24 @@ export type FileType =
   | "folder"
   | "pinned"
   | "trash";
+
+export type Access = "files" | "folders" | "all";
+
+export type FileTreeProps = {
+  structure: ArchiveStructure[];
+  files?: Archive[];
+  isLoading: boolean;
+  access: Access;
+  refetch: () => void;
+};
+
+export type SelectedItem = {
+  fileType: FileType;
+  id: string;
+  label: string;
+  attatchment?: string;
+  children?: TreeFolder[] | TreeFile[];
+} | null;
 
 export type TreeFile = {
   fileType: FileType;
@@ -26,14 +45,6 @@ export type TreeFolder = {
 };
 
 export type Tree = TreeFolder | TreeFile;
-
-export type ExtendedTreeItemProps = {
-  fileType: FileType;
-  id: string;
-  label: string;
-  attachment?: string;
-  children?: ExtendedTreeItemProps[];
-};
 
 export interface CustomLabelProps {
   children: ReactNode;

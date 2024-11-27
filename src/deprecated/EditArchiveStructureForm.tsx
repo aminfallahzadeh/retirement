@@ -59,9 +59,9 @@ function EditArchiveStructureForm({ setShowEditArchiveStructureModal }) {
           value={name}
           onChange={handleNameChange}
         />
-        <lable htmlFor="archiveName" className="inputBox__form--label">
+        <label htmlFor="archiveName" className="inputBox__form--label">
           نام دسته
-        </lable>
+        </label>
       </form>
 
       <LoadingButton

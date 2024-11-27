@@ -42,6 +42,7 @@ import { Tree, FileType } from "./types";
  *   { id: "3", label: "History", fileType: "folder" },
  *   { id: "4", label: "Trash", fileType: "trash" },
  * ];
+ *
  */
 
 export const generateTreeSchema = (

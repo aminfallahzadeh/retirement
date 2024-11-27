@@ -43,9 +43,9 @@ import { SimpleTreeView } from "@mui/x-tree-view/SimpleTreeView";
 import { TreeItem, treeItemClasses } from "@mui/x-tree-view/TreeItem";
 import { LoadingButton } from "@mui/lab";
 import Modal from "./Modal";
-import CreateArchiveStructureForm from "@/forms/CreateArchiveStructureForm";
-import EditArchiveStructureForm from "@/forms/EditArchiveStructureForm";
-import InsertArchiveForm from "@/forms/InsertArchiveForm";
+// import CreateArchiveStructureForm from "@/forms/CreateArchiveStructureForm";
+// import EditArchiveStructureForm from "@/forms/EditArchiveStructureForm";
+// import InsertArchiveForm from "@/forms/InsertArchiveForm";
 import DeleteArchiveFrom from "@/forms/DeleteArchiveForm";
 import { toast } from "react-toastify";
 import rtlPlugin from "stylis-plugin-rtl";
@@ -546,9 +546,9 @@ function ArchiveTree({ setPreviewImage = undefined }) {
           title="افزودن پوشه جدید"
           closeModal={() => setShowCreateArchiveStructureModal(false)}
         >
-          <CreateArchiveStructureForm
+          {/* <CreateArchiveStructureForm
             setShowNewArchiveModal={setShowCreateArchiveStructureModal}
-          />
+          /> */}
         </Modal>
       )}
 
@@ -592,9 +592,9 @@ function ArchiveTree({ setPreviewImage = undefined }) {
           title="ویرایش نام پوشه"
           closeModal={() => setShowEditArchiveStructureModal(false)}
         >
-          <EditArchiveStructureForm
+          {/* <EditArchiveStructureForm
             setShowEditArchiveStructureModal={setShowEditArchiveStructureModal}
-          />
+          /> */}
         </Modal>
       )}
 
