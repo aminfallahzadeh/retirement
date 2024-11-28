@@ -37,12 +37,12 @@ const options = {
     stop: false,
   },
 
-  title: (imageData) =>
+  title: (imageData: { naturalWidth: number; naturalHeight: number }) =>
     `(${imageData.naturalWidth} × ${imageData.naturalHeight})`,
 
-  viewed() {
-    this.viewer.scale(1.2);
-  },
+  //   viewed() {
+  //     this.viewer.scale(1.2);
+  //   },
 };
 
 /**
@@ -152,12 +152,12 @@ const actionRenderers = (
   observeFile: (
     <Tooltip title={OBSERVE_FILE} key="observeFile">
       <span>
-        <RViewer options={options} imageUrls={fixedImage}>
+        <RViewer options={options} imageUrls={fixedImage ? [fixedImage] : ""}>
           <RViewerTrigger>
             <IconButton
               aria-label="observe"
               color="primary"
-              disabled={!item?.id || item?.fileType !== "image"}
+              disabled={!item?.id || item?.fileType !== "image" || !fixedImage}
             >
               <EyeIcon />
             </IconButton>
@@ -197,7 +197,11 @@ export const Actions = ({
   // EFFECTS
   useEffect(() => {
     const fixed = fixAttachment(item?.attachment);
-    setFixedImage(fixed);
+    if (!fixed?.startsWith("data:image/tiff")) {
+      setFixedImage(fixed);
+    } else {
+      setFixedImage(null);
+    }
   }, [item?.attachment]);
 
   // Render actions based on access type

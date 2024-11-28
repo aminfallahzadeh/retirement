@@ -3,8 +3,6 @@ import RetiredAccountForm from "@/forms/RetiredAccountForm";
 import RetiredPensionaryForm from "@/forms/RetiredPensionaryForm";
 import RetiredPersonForm from "@/forms/RetiredPersonForm";
 import { Electronic } from "./components/Electronic";
-import IndividualInfoSection from "@/sections/retired/IndividualInfoSection";
-import RelatedInfoSection from "@/sections/retired/RelatedInfoSection";
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import { ArrowDropDown as ArrowDropDownIcon } from "@mui/icons-material";
 import { NavigateBack } from "@/shared/components/NavigateBack";
@@ -35,7 +33,7 @@ export const Retired = () => {
 
   const { personDeathDate } = useAppSelector((state) => state.retiredState);
 
-  const handleChange = (event, newValue) => {
+  const handleChange = (_: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
 
@@ -92,7 +90,6 @@ export const Retired = () => {
             {ELECTRONIC_CASE}
           </AccordionSummary>
           <AccordionDetails>
-            {/* <ElectronicCaseSection /> */}
             <Electronic />
           </AccordionDetails>
         </Accordion>

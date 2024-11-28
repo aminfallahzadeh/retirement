@@ -24,7 +24,7 @@ import UsersScreen from "@/screens/UsersScreen";
 import RequestScreen from "@/screens/RequestScreen";
 import BatchStatementsScreen from "@/screens/BatchStatementsScreen";
 import PersonnelStatementsScreen from "@/screens/PersonnelStatementsScreen";
-import ElectronicStatementScreen from "@/screens/ElectronicStatementScreen";
+import { ElectronicStatement } from "@/screens/ElectronicStatement";
 import CreateRequestScreen from "@/screens/CreateRequestScreen";
 import PersonnelInfoScreen from "@/screens/PersonnelInfoScreen";
 import FractionScreen from "@/screens/FractionScreen";
@@ -91,7 +91,7 @@ const router = createBrowserRouter(
 
         <Route
           path="/retirement/electronic-statement"
-          element={<ElectronicStatementScreen />}
+          element={<ElectronicStatement />}
         />
 
         <Route

@@ -57,7 +57,7 @@ export const Electronic = () => {
       files={files}
       isLoading={isArchiveStructureLoading || isArchiveFilesLoading}
       refetch={handleRefetch}
-      access="all"
+      access="files"
     />
   );
 };
