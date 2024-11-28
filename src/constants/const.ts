@@ -38,14 +38,6 @@ export const INPUT_TYPES = {
   TEXT: "text",
 };
 
-// GENERAL
-export const NAVIGATE_BACK = "بازگشت";
-export const RELATEDS = "وابستگان";
-export const HEIRS = "موظفین";
-export const STATEMENTS = "احکام";
-export const PAYSLIP = "فیش حقوقی";
-export const REQUESTS = "درخواست ها";
-
 // BUTTONS
 export const YES = "بله";
 export const NO = "خیر";
@@ -69,3 +61,12 @@ export const ADD_NEW_IMAGE = "افزودن برگه جدید";
 export const DELETE_IMAGE = "حذف برگه";
 export const OBSERVE_FILE = "مشاهده برگه";
 export const PARENT_FOLDER_ID = "97134493291b473f9b3bf8c4c15b27a0";
+
+// GENERAL
+export const NAVIGATE_BACK = "بازگشت";
+export const RELATEDS = "وابستگان";
+export const HEIRS = "موظفین";
+export const STATEMENTS = "احکام";
+export const PAYSLIP = "فیش حقوقی";
+export const REQUESTS = "درخواست ها";
+export const PREVIEW = "پیش نمایش";

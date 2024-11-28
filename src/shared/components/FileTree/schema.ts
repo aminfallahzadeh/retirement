@@ -56,7 +56,7 @@ export const generateTreeSchema = (
       .map((file) => ({
         id: file.id,
         label: file.documentID || "فاقد شماره",
-        attatchment: file.attachment,
+        attachment: file.attachment,
         fileType: "image" as FileType,
       }));
 

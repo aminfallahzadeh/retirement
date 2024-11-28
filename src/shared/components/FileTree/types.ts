@@ -26,7 +26,7 @@ export type SelectedItem = {
   fileType: FileType;
   id: string;
   label: string;
-  attatchment?: string;
+  attachment?: string;
   children?: TreeFolder[] | TreeFile[];
 } | null;
 
@@ -34,7 +34,7 @@ export type TreeFile = {
   fileType: FileType;
   id: string;
   label: string;
-  attatchment: string;
+  attachment: string;
 };
 
 export type TreeFolder = {

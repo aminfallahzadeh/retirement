@@ -1,8 +1,10 @@
 // IMPORTS
-import { useReducer, useEffect } from "react";
+import { useReducer, useState, useEffect } from "react";
 import { actionsReducer } from "./Actions.reducer";
 import { TreeModalAction } from "./Actions.reducer";
 import { IconButton, Tooltip } from "@mui/material";
+import { fixAttachment } from "@/utils/fixAttachment";
+import { RViewer, RViewerTrigger } from "react-viewerjs";
 import {
   CreateNewFolderOutlined as AddFolderIcon,
   FolderDeleteOutlined as DeleteFolderIcon,
@@ -27,12 +29,29 @@ import {
   OBSERVE_FILE,
 } from "@/constants/const";
 
+const options = {
+  toolbar: {
+    prev: false,
+    next: false,
+    play: false,
+    stop: false,
+  },
+
+  title: (imageData) =>
+    `(${imageData.naturalWidth} × ${imageData.naturalHeight})`,
+
+  viewed() {
+    this.viewer.scale(1.2);
+  },
+};
+
 /**
  * renders actions based on given access type
  */
 const actionRenderers = (
   dispatch: React.Dispatch<TreeModalAction>,
-  item: SelectedItem
+  item: SelectedItem,
+  fixedImage: string | null
 ): { [key: string]: JSX.Element } => ({
   editFolder: (
     <Tooltip title={EDIT_FOLDER_NAME} key="editFolder">
@@ -133,13 +152,17 @@ const actionRenderers = (
   observeFile: (
     <Tooltip title={OBSERVE_FILE} key="observeFile">
       <span>
-        <IconButton
-          aria-label="observe"
-          color="primary"
-          disabled={!item?.id || item?.fileType !== "image"}
-        >
-          <EyeIcon />
-        </IconButton>
+        <RViewer options={options} imageUrls={fixedImage}>
+          <RViewerTrigger>
+            <IconButton
+              aria-label="observe"
+              color="primary"
+              disabled={!item?.id || item?.fileType !== "image"}
+            >
+              <EyeIcon />
+            </IconButton>
+          </RViewerTrigger>
+        </RViewer>
       </span>
     </Tooltip>
   ),
@@ -167,17 +190,20 @@ export const Actions = ({
   item: SelectedItem;
   refetch: () => void;
 }) => {
+  // STATES
+  const [fixedImage, setFixedImage] = useState<string | null>(null);
   const [state, dispatch] = useReducer(actionsReducer, { modalType: null });
 
-  // DEBUG
+  // EFFECTS
   useEffect(() => {
-    console.log(item);
-  }, [item]);
+    const fixed = fixAttachment(item?.attachment);
+    setFixedImage(fixed);
+  }, [item?.attachment]);
 
   // Render actions based on access type
   const renderActions = (access: Access) => {
     const actions = accessMap[access] || [];
-    const renderers = actionRenderers(dispatch, item);
+    const renderers = actionRenderers(dispatch, item, fixedImage);
     return actions.map((action) => renderers[action]);
   };
 
