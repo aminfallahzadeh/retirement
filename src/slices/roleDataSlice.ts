@@ -1,7 +1,5 @@
-// SLICES
+// IMPORTS
 import { createSlice } from "@reduxjs/toolkit";
-
-// TYPEs
 import { RequestType } from "@/shared/types/requestTypes";
 import { RoleType } from "@/shared/types/role";
 

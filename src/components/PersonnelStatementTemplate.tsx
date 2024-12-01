@@ -1,26 +1,16 @@
-// REACT IMPORTS
+// IMPORTS
 import { useState, useEffect, useRef } from "react";
-
-// MUI IMPORTS
 import { Box, CircularProgress, Button, Checkbox } from "@mui/material";
 import { DownloadOutlined as DownloadIcon } from "@mui/icons-material";
-
-// REDUX IMPORTS
 import { useGetPersonnelStatementDetailQuery } from "@/features/personnel/personnelApi";
 import { useGetPersonsQuery } from "@/features/person/personApi";
-
-// HELPERS
 import {
   convertToPersianNumber,
   separateByThousands,
   convertToPersianDateFormatted,
 } from "../helper";
 import { NumberHelper } from "@/helpers";
-
-// LIBRARY IMPROTS
 import generatePDF from "react-to-pdf";
-
-// COMPONENTS
 import Modal from "./Modal";
 
 function PersonnelStatementTemplate({ statementID }) {
@@ -35,6 +25,7 @@ function PersonnelStatementTemplate({ statementID }) {
   const [personData, setPersonData] = useState(null);
   const [itemList, setItemList] = useState([]);
   const [birthDate, setBirthDate] = useState([]);
+  const [acceptedSanavat, setAcceptedSanavat] = useState([]);
 
   // GET DATA
   const {
@@ -56,6 +47,9 @@ function PersonnelStatementTemplate({ statementID }) {
   // FETCH DATA
   useEffect(() => {
     if (isStatementSuccess) {
+      const clearedSanavat = statement?.itemList[0]?.retiredRecorded1.trim();
+      const sanavat = clearedSanavat.match(/.{1,2}/g);
+      setAcceptedSanavat(sanavat);
       setStatementData(statement.itemList[0]);
       setItemList(statement.itemList[0].personnelStatementItems);
     }
@@ -70,13 +64,6 @@ function PersonnelStatementTemplate({ statementID }) {
       setBirthDate(date);
     }
   }, [isPersonSuccess, person]);
-
-  // HANDLE ERROR
-  // useEffect(() => {
-  //   if (statementError) {
-  //     console.log(statementError);
-  //   }
-  // }, [statementError]);
 
   const content = (
     <>
@@ -120,8 +107,10 @@ function PersonnelStatementTemplate({ statementID }) {
             <table className="slip-container__personnel-statement-table form-table">
               <thead>
                 <tr>
-                  <th className="no-border-left">۱- شماره مستخدم :</th>
-                  <th className="no-border-right"></th>
+                  <th className="no-border-left">۱- شماره مستخدم : </th>
+                  <th className="no-border-right">
+                    {convertToPersianNumber(statementData?.personnelID)}
+                  </th>
                   <th className="no-border-left">۲- شماره ملی : </th>
 
                   <th className="no-border-right">
@@ -188,12 +177,14 @@ function PersonnelStatementTemplate({ statementID }) {
                   </td>
 
                   <td className="no-border-top no-border-left">
-                    مقطع تحصیلی :
+                    مقطع تحصیلی : {statementData?.educationLicence || "-"}
                   </td>
                   <td className="no-border-top no-border-right no-border-left">
-                    رشته :
+                    رشته : {statementData?.eduBranch || "-"}
                   </td>
-                  <td className="no-border-top no-border-right">گرایش :</td>
+                  <td className="no-border-top no-border-right">
+                    گرایش : {statementData?.eduBranchArea || "-"}
+                  </td>
                 </tr>
 
                 <tr>
@@ -212,12 +203,12 @@ function PersonnelStatementTemplate({ statementID }) {
                 </tr>
 
                 <tr>
-                  <td className="no-boorder-left" colSpan={2}>
-                    ۱۳- رسته : {statementData?.jobName || "-"}
+                  <td className="no-border-left" colSpan={2}>
+                    ۱۳- رسته :
                   </td>
 
                   <td className="no-border-left" colSpan={2}>
-                    رشته و طبفه شغلی :
+                    رشته و طبفه شغلی : {statementData?.jobName}
                   </td>
 
                   <td>کد شغل : {statementData?.jobCode || "-"}</td>
@@ -227,11 +218,25 @@ function PersonnelStatementTemplate({ statementID }) {
                 <tr>
                   <td>۱۴- گروه :</td>
                   <td colSpan={3} className="no-border-left">
-                    ۱۵- سنوات فابل قبول از نظر بازنشستگی :{" "}
-                    {statementData?.retiredRecorded1 || "-"}
+                    ۱۵- سنوات فابل قبول از نظر بازنشستگی : <br />
+                    <div className="w-full flex justify-between items-center px-10 mt-1">
+                      <span>
+                        روز : {convertToPersianNumber(acceptedSanavat[2])}
+                      </span>
+
+                      <span>
+                        ماه : {convertToPersianNumber(acceptedSanavat[1])}
+                      </span>
+
+                      <span>
+                        سال : {convertToPersianNumber(acceptedSanavat[0])}
+                      </span>
+                    </div>
                   </td>
 
-                  <td colSpan={2}>صندوق بازنشستگی :</td>
+                  <td colSpan={2}>
+                    صندوق بازنشستگی : {statementData?.payLocation}
+                  </td>
                 </tr>
 
                 <tr>
@@ -311,32 +316,18 @@ function PersonnelStatementTemplate({ statementID }) {
                             padding: 0.5,
                           }}
                         />
-                        <label htmlFor="personIsSacrificed">شهید</label>
-                      </div>
-
-                      <div>
-                        <Checkbox
-                          size="small"
-                          color="success"
-                          disabled
-                          name="personIsChildOfSacrificed"
-                          id="personIsChildOfSacrificed"
-                          sx={{
-                            padding: 0.5,
-                          }}
-                        />
-                        <label htmlFor="personIsChildOfSacrificed">
-                          فرزند شهید
-                        </label>
+                        <label htmlFor="personIsSacrificed">سایر</label>
                       </div>
                     </div>
                   </td>
                 </tr>
 
                 <tr>
-                  <td colSpan={3}>۱۷- واحد سازمانی :</td>
                   <td colSpan={3}>
-                    ۱۸- محل خدمت : {statementData?.costCenter || "-"}
+                    ۱۷- واحد سازمانی : {statementData?.organizationUnit}
+                  </td>
+                  <td colSpan={3}>
+                    ۱۸- محل خدمت : {statementData?.workPlace || "-"}
                   </td>
                 </tr>
 
@@ -345,7 +336,10 @@ function PersonnelStatementTemplate({ statementID }) {
                   <td className="no-border-right">
                     {statementData?.maritalStatusIDName}
                   </td>
-                  <td>تعداد فرزندان :</td>
+                  <td>
+                    تعداد فرزندان :{" "}
+                    {convertToPersianNumber(statementData?.childCount)}
+                  </td>
 
                   <td colSpan={3}>۲۰- ضریب افزایش سنواتی :</td>
                 </tr>
@@ -376,17 +370,25 @@ function PersonnelStatementTemplate({ statementID }) {
                 <table className="slip-container__personnel-statement-table form-table">
                   <tbody>
                     <tr>
-                      <td>۲۳ - تاریخ اجرای حکم :</td>
+                      <td>
+                        ۲۳ - تاریخ اجرای حکم :{" "}
+                        {convertToPersianDateFormatted(
+                          statementData?.personnelStatementRunDate
+                        )}
+                      </td>
                     </tr>
                     <tr>
-                      <td>ﺷﻤﺎﺭﻩ ﺣﮑﻢ :</td>
+                      <td>
+                        ﺷﻤﺎﺭﻩ ﺣﮑﻢ :{" "}
+                        {convertToPersianNumber(statementData?.code)}
+                      </td>
                     </tr>
 
                     <tr>
                       <td>
                         ۲۴- ﺗﺎﺭﯾﺦ ﺻﺪﻭﺭ ﺣﮑﻢ :{" "}
                         {convertToPersianDateFormatted(
-                          statementData?.createDate
+                          statementData?.registerDate
                         ) || "-"}
                       </td>
                     </tr>

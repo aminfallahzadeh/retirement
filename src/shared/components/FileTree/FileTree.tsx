@@ -58,7 +58,7 @@ export const FileTree = ({
     }
   };
 
-  // PREVIEW SIDE EFFETC
+  // PREVIEW SIDE EFFECT
   useEffect(() => {
     if (selectedItem && selectedItem.attachment) {
       const image = fixAttachment(selectedItem.attachment);

@@ -1,5 +1,4 @@
 // IMPORTS
-import React from "react";
 import ReactDOM from "react-dom/client";
 
 import {
@@ -131,10 +130,10 @@ const router = createBrowserRouter(
   );
 
   root.render(
-    <React.StrictMode>
-      <Provider store={store}>
-        <RouterProvider router={router} />
-      </Provider>
-    </React.StrictMode>
+    // <React.StrictMode>
+    // </React.StrictMode>
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   );
 })();

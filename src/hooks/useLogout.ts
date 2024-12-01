@@ -1,34 +1,20 @@
-// library imports
-import { toast } from "react-toastify";
-
-// redux import
+// IMPORTS
 import { logout } from "@/features/auth/authSlice";
 import { useLogoutMutation } from "@/features/auth/authApi";
-import { useSelector, useDispatch } from "react-redux";
+import { useAppSelector, useAppDispatch } from "./usePreTypesHooks";
+import { toastConfig } from "@/config/toast";
 
 const useLogout = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [logoutApiCall, { isLoading: logoutLoading }] = useLogoutMutation();
-  const { refreshToken, expDate } = useSelector((state) => state.auth);
+  const { refreshToken } = useAppSelector((state) => state.auth);
   const logoutHandler = async () => {
-    try {
-      const res = await logoutApiCall({
-        token: "<string>",
-        refreshToken,
-        error: "<string>",
-        expiredate: expDate,
-      });
-      dispatch(logout());
-      toast.success(res.data.message, {
-        fontSize: "18px",
-        autoClose: 2000,
-      });
-    } catch (err) {
-      toast.error(err?.data?.message || err.error, {
-        fontSize: "18px",
-        autoClose: 2000,
-      });
-    }
+    const res = await logoutApiCall({
+      refreshToken,
+    });
+    dispatch(logout());
+    console.log("LOGOUT response:", res);
+    toastConfig.success(res.data.message);
   };
 
   return { logoutHandler, logoutLoading };

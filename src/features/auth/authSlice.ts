@@ -1,19 +1,24 @@
-// redux imports
+// IMPORTS
 import { createSlice } from "@reduxjs/toolkit";
+import { storageHelper } from "@/helpers/storageHelper";
 
-const initialState = {
-  token: sessionStorage.getItem("userInfo")
-    ? JSON.parse(sessionStorage.getItem("userInfo")).token
-    : null,
-  refreshToken: sessionStorage.getItem("userInfo")
-    ? JSON.parse(sessionStorage.getItem("userInfo")).refreshToken
-    : null,
-  error: sessionStorage.getItem("userInfo")
-    ? JSON.parse(sessionStorage.getItem("userInfo")).error
-    : null,
-  expiredate: sessionStorage.getItem("userInfo")
-    ? JSON.parse(sessionStorage.getItem("userInfo")).expiredate
-    : null,
+// CONSTS
+const storage = storageHelper("session");
+
+const initialState: {
+  token: string | null;
+  refreshToken: string | null;
+  userID: string | null;
+} = {
+  token: (() => {
+    const userInfo = storage.get("userInfo");
+    return userInfo ? JSON.parse(userInfo).token : null;
+  })(),
+  refreshToken: (() => {
+    const userInfo = storage.get("userInfo");
+    return userInfo ? JSON.parse(userInfo).refreshToken : null;
+  })(),
+
   userID: null,
 };
 
@@ -22,40 +27,32 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     setCredentials: (state, action) => {
-      const { token, refreshToken, error, expiredate } =
-        action.payload.itemList[0];
+      const { token, refreshToken } = action.payload.itemList[0];
       state.token = token;
       state.refreshToken = refreshToken;
-      state.error = error;
-      state.expiredate = expiredate;
       sessionStorage.setItem(
         "userInfo",
         JSON.stringify({
           token,
           refreshToken,
-          error,
-          expiredate,
         })
       );
     },
 
     setNewCredentials: (state, action) => {
-      const { token, expiredate } = action.payload.itemList[0];
-      const oldCredentials = JSON.parse(sessionStorage.getItem("userInfo"));
+      const { token } = action.payload.itemList[0];
+      const oldCredentials = JSON.parse(storage.get("userInfo"));
       state.token = token;
-      state.expiredate = expiredate;
       sessionStorage.clear();
       sessionStorage.setItem(
         "userInfo",
-        JSON.stringify({ ...oldCredentials, token, expiredate })
+        JSON.stringify({ ...oldCredentials, token })
       );
     },
 
     logout: (state) => {
       state.token = null;
       state.refreshToken = null;
-      state.error = null;
-      state.expiredate = null;
       sessionStorage.removeItem("userInfo");
       sessionStorage.removeItem("permissions");
     },

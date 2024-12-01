@@ -8,8 +8,6 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "compile": "node-sass sass/main.scss src/index.css -w",
-    "cun": "concurrently \"npm run dev\" \"npm run compile\"",
     "preview": "vite preview"
   },
   "dependencies": {

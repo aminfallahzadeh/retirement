@@ -1,30 +1,21 @@
-// react imports
+// IMPORTS
 import { useState, useEffect } from "react";
-
-// rrd imports
 import { Link, useLocation } from "react-router-dom";
-
-// redux imports
-import { useDispatch, useSelector } from "react-redux";
-import { setNavPanelOpen } from "../slices/themeDataSlice";
+import { logout } from "@/features/auth/authSlice";
+import { useLogoutMutation } from "@/features/auth/authApi";
+import { useAppDispatch, useAppSelector } from "@/hooks/usePreTypesHooks";
+import { setNavPanelOpen } from "@/slices/themeDataSlice";
 import {
   useGetUserThemeQuery,
   useUpdateUserThemeMutation,
   useGetItemAccessQuery,
 } from "@/features/user/userApi";
-import { setUserPermissionsData } from "../slices/userPermissionsDataSlice";
-
-// components
-import Modal from "./Modal";
+import { setUserPermissionsData } from "@/slices/userPermissionsDataSlice";
+import { CustomModal } from "@/shared/components/CustomModal";
 import DigitalClock from "./DigitalClock";
 import Date from "./Date";
-
-// hooks
-import useLogout from "@/hooks/useLogout";
-
-// mui iomports
 import { LoadingButton } from "@mui/lab";
-import { Box, Tooltip, Button } from "@mui/material";
+import { Box, Tooltip } from "@mui/material";
 import {
   Logout as LogoutIcon,
   ColorLensRounded as ThemeIcon,
@@ -32,12 +23,14 @@ import {
   Close as CloseIcon,
   ArrowLeftOutlined as ArrowIcon,
 } from "@mui/icons-material";
-import { toast } from "react-toastify";
+import { toastConfig } from "@/config/toast/toast-config";
 
 function Nav({ firstName, lastName }) {
-  const { userID } = useSelector((state) => state.auth);
-
+  // CONSTS
+  const { userID } = useAppSelector((state) => state.auth);
   const shouldFetch = !!userID;
+  const [logoutApi, { isLoading: logoutLoading }] = useLogoutMutation();
+  const { refreshToken } = useAppSelector((state) => state.auth);
 
   const { data: user, refetch: userRefetch } = useGetUserThemeQuery(
     // { userID },
@@ -46,27 +39,33 @@ function Nav({ firstName, lastName }) {
     }
   );
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  // GET THEME WHENEVERN PAGE LOADS
+  // GET THEME WHENEVER PAGE LOADS
   useEffect(() => {
     if (shouldFetch) {
       userRefetch();
     }
   }, [userRefetch, shouldFetch]);
 
+  // STATES
   const [activePanel, setActivePanel] = useState(null);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [theme, setTheme] = useState("default");
   const [itemList, setItemList] = useState([]);
 
-  const { logoutHandler, logoutLoading } = useLogout();
+  //   const { logoutHandler, logoutLoading } = useLogout();
   const location = useLocation();
 
   const [updateUserTheme] = useUpdateUserThemeMutation();
 
-  // ACCESS PERMISSIONS FROM REDUX STORE
-  // const { permissions } = useSelector((state) => state.userPermissionsData);
+  // LOGOUT FUNCTION
+  const logoutHandler = async () => {
+    const res = await logoutApi({ refreshToken });
+    dispatch(logout());
+    console.log("LOGOUT response:", res);
+    toastConfig.success(res.data.message);
+  };
 
   // FUNCTION TO CREATE DATA TREE
   const createTree = (items) => {
@@ -114,7 +113,7 @@ function Nav({ firstName, lastName }) {
   };
 
   const baseURL = "/retirement/";
-  const isActivePath = (path) => location.pathname === baseURL + path;
+  const isActivePath = (path: string) => location.pathname === baseURL + path;
 
   const {
     data: permissionsList,
@@ -138,9 +137,9 @@ function Nav({ firstName, lastName }) {
   useEffect(() => {
     if (isPermissionError) {
       console.log(isPermissionError);
-      toast.error(isPermissionError?.data?.message || isPermissionError.error, {
-        autoClose: 2000,
-      });
+      toastConfig.error(
+        isPermissionError?.data?.message || isPermissionError.error
+      );
     }
   }, [isPermissionError]);
 
@@ -168,9 +167,8 @@ function Nav({ firstName, lastName }) {
         theme: selectedTheme,
       }).unwrap();
     } catch (err) {
-      toast.error(err?.data?.message || err.error, {
-        autoClose: 2000,
-      });
+      toastConfig.error(err?.data?.message || err.error);
+
       console.log(err);
     }
   };
@@ -187,40 +185,46 @@ function Nav({ firstName, lastName }) {
 
   return (
     <>
-      {showLogoutModal && (
-        <Modal onClose={() => setShowLogoutModal(false)} title="خروج">
-          <p className="paragraph-primary">آیا از خروج اطمینان دارید؟</p>
+      <CustomModal
+        open={showLogoutModal}
+        onClose={() => setShowLogoutModal(false)}
+        title="خروج"
+      >
+        <p className="paragraph-primary text-center m-5">
+          آیا از خروج اطمینان دارید؟
+        </p>
 
-          <div className="flex-row flex-center">
-            <LoadingButton
-              dir="ltr"
-              endIcon={<DoneIcon />}
-              loading={logoutLoading}
-              onClick={logoutHandler}
-              variant="contained"
-              color="success"
-              sx={{ fontFamily: "sahel" }}
-            >
-              <span>بله</span>
-            </LoadingButton>
-            <Button
-              dir="ltr"
-              endIcon={<CloseIcon />}
-              onClick={() => setShowLogoutModal(false)}
-              variant="contained"
-              color="error"
-              sx={{ fontFamily: "sahel" }}
-            >
-              <span>خیر</span>
-            </Button>
-          </div>
-        </Modal>
-      )}
+        <div className="flex-row flex-center">
+          <LoadingButton
+            dir="ltr"
+            endIcon={<DoneIcon />}
+            loading={logoutLoading}
+            onClick={logoutHandler}
+            variant="contained"
+            color="success"
+            sx={{ fontFamily: "sahel" }}
+          >
+            <span>بله</span>
+          </LoadingButton>
+          <LoadingButton
+            dir="ltr"
+            endIcon={<CloseIcon />}
+            onClick={() => setShowLogoutModal(false)}
+            variant="contained"
+            loading={logoutLoading}
+            color="error"
+            sx={{ fontFamily: "sahel" }}
+          >
+            <span>خیر</span>
+          </LoadingButton>
+        </div>
+      </CustomModal>
+
       <nav className="nav">
         <div className="nav__links">
           <>
             {isPermissionsLoading || isPermissionsFetching ? (
-              <div className="nav__links--loading">در حال بارگزاری ...</div>
+              <div className="nav__links--loading">در حال بارگذاری ...</div>
             ) : (
               <ul className="nav__links--list">
                 {itemList.map((item) =>

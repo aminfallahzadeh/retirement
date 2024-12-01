@@ -9,7 +9,7 @@ import type {
 import { setNewCredentials, logout } from "@/features/auth/authSlice";
 import { Mutex } from "async-mutex";
 import { RefreshResultType } from "@/shared/types/tokenDataTypes";
-import { USERS_URL_HTTPS } from "@/constants/urls";
+import { USER_END } from "@/features/api/endpoints";
 import { toastConfig } from "@/config/toast/toast-config";
 
 const mutex = new Mutex();
@@ -41,7 +41,7 @@ const baseQuery: BaseQueryFn<
   return dynamicBaseQuery(args, api, extraOptions);
 };
 
-// HADNLE AUTO REFRESH TOKEN
+// HANDLE AUTO REFRESH TOKEN
 export const baseQueryWithReauth: BaseQueryFn<
   string | FetchArgs,
   unknown,
@@ -61,7 +61,7 @@ export const baseQueryWithReauth: BaseQueryFn<
 
         const refreshResult = (await baseQuery(
           {
-            url: `${USERS_URL_HTTPS}/RefreshToken`,
+            url: `${USER_END}/RefreshToken`,
             method: "POST",
             body: {
               refreshToken,

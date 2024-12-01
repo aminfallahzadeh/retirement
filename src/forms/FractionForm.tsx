@@ -31,7 +31,6 @@ import {
   Close as CloseIcon,
   Done as DoneIcon,
 } from "@mui/icons-material";
-import ArchiveTree from "@/components/ArchiveTree";
 import Modal from "@/components/Modal";
 import { toast } from "react-toastify";
 import "jalaali-react-date-picker/lib/styles/index.css";
@@ -56,13 +55,12 @@ function FractionForm() {
   // EXCEL FILE UPLOAD REF
   const excelFileUploadRef = useRef(null);
 
-  // CONTROLL STATES
+  // CONTROL STATES
   const [isPeronIDAvailable, setIsPersonIDAvailable] = useState(false);
-  const [isArchiveOpen, setIsArchiveOpen] = useState(false);
   const [showResultModal, setShowResultModal] = useState(false);
   const [savedDataLength, setSavedDataLength] = useState(0);
 
-  // CALENEDER REF
+  // CALENDER REF
   const letterCalenderRef = useRef(null);
   const paymenrCalenderRef = useRef(null);
 
@@ -136,7 +134,7 @@ function FractionForm() {
     { value: "39363fd7-5dc7-4195-89f0-5eb62c667127", label: "فیش" },
   ];
 
-  // EXTRACT COEFS
+  // EXTRACT CO-EFS
   useEffect(() => {
     if (data.personnelStatementOffTypeID) {
       const selected = findById(
@@ -282,19 +280,6 @@ function FractionForm() {
         return;
       }
 
-      // if (searchRes.itemList.length === 0) {
-      //   toast.error("نتیجه ای یافت نشد", {
-      //     autoClose: 2000,
-      //   });
-      //   return;
-      // } else if (searchRes.itemList.length > 1) {
-      //   toast.error("! کد ملی معتبر نمیباشد", {
-      //     autoClose: 2000,
-      //   });
-      //   return;
-      // }
-      // const personID = searchRes.itemList[1].personID;
-
       const personWithE = searchRes.itemList.find((person) =>
         person.personID.startsWith("E")
       );
@@ -302,7 +287,7 @@ function FractionForm() {
       const selectedPerson = personWithE || searchRes.itemList[1];
 
       if (!selectedPerson) {
-        toast.error("! کد ملی معتبر نمیباشد", {
+        toast.error("!کد ملی معتبر نمی باشد", {
           autoClose: 2000,
         });
         return;
@@ -318,15 +303,6 @@ function FractionForm() {
           personID: selectedPerson.personID,
         })
       );
-
-      // dispatch(
-      //   setData({
-      //     ...data,
-      //     personFirstName: searchRes.itemList[1].personFirstName,
-      //     personLastName: searchRes.itemList[1].personLastName,
-      //     personID: searchRes.itemList[1].personID,
-      //   })
-      // );
 
       // Update URL params
       const params = new URLSearchParams(window.location.search);
@@ -353,10 +329,6 @@ function FractionForm() {
   const handleRemoveExcelFile = () => {
     setExcelFile(null);
     setUploadProgress(0);
-  };
-
-  const handleArchiveModalOpenChange = () => {
-    setIsArchiveOpen(!isArchiveOpen);
   };
 
   const handleCloseModal = () => {
@@ -792,7 +764,7 @@ function FractionForm() {
             <div className="inputBox__form--readOnly-label">تاریخ پرداخت</div>
           </div>
         </form>
-        {frMode === "group" ? (
+        {frMode === "group" && (
           <div style={{ marginRight: "auto" }} className="flex-row flex-center">
             <div style={{ position: "relative" }}>
               <input
@@ -869,30 +841,6 @@ function FractionForm() {
                 </span>
               </Box>
             </div>
-          </div>
-        ) : (
-          <div style={{ marginRight: "auto" }}>
-            <Button
-              dir="ltr"
-              endIcon={isArchiveOpen ? <CloseIcon /> : <ArchiveIcon />}
-              variant="contained"
-              disabled={!isPeronIDAvailable}
-              color={isArchiveOpen ? "error" : "primary"}
-              onClick={handleArchiveModalOpenChange}
-              sx={{ fontFamily: "sahel" }}
-            >
-              {isArchiveOpen ? (
-                <span>بستن آوشیو</span>
-              ) : (
-                <span>آرشیو مستندات</span>
-              )}
-            </Button>
-          </div>
-        )}
-
-        {isArchiveOpen && (
-          <div className="flex-row flex-center">
-            <ArchiveTree />
           </div>
         )}
       </section>

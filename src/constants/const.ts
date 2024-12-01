@@ -48,7 +48,7 @@ export const UPLOAD = "بارگذاری";
 // RETIRED
 export const RETIRED_INFO = "اطلاعات بازنشسته";
 export const RETIRED_PERSON_INFO = "اطلاعات فردی";
-export const RETIRES_PENSIONARY_INFO = "اطلاعات پرسونلی";
+export const RETIRES_PENSIONARY_INFO = "اطلاعات پرسنلی";
 export const RETIRED_ADDITIONAL_INFO = "اطلاعات تکمیلی";
 
 // ARCHIVE

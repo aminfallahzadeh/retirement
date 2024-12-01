@@ -13,6 +13,7 @@ export const convertToPersianNumber = (num) => {
 };
 
 // convert to english number
+
 export const convertToEnglishNumber = (str) => {
   let persianNumbers = [
       /۰/g,

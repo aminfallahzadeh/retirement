@@ -1,11 +1,10 @@
 // IMPORTS
-import { useState, useEffect, useMemo } from "react";
-import useLogout from "@/hooks/useLogout";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { setPersonTableData } from "@/slices/personDataSlice";
-import { setUserID } from "@/features/auth/authSlice";
-import { useAppSelector } from "@/hooks/usePreTypesHooks";
+import { useLogoutMutation } from "@/features/auth/authApi";
+import { setUserID, logout } from "@/features/auth/authSlice";
+import { useAppSelector, useAppDispatch } from "@/hooks/usePreTypesHooks";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import "react-toastify/dist/ReactToastify.css";
 import { useIdleTimer } from "react-idle-timer";
@@ -17,7 +16,7 @@ import Header from "@/components/Header";
 import SearchScreen from "@/screens/SearchScreen";
 
 function App() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const theme = createTheme({
     typography: {
@@ -33,6 +32,9 @@ function App() {
   const [lastName, setLastName] = useState("");
   const [search, setSearch] = useState(false);
 
+  // CONSTS
+  const [logoutApi] = useLogoutMutation();
+  const { refreshToken } = useAppSelector((state) => state.auth);
   const { token } = useAppSelector((state) => state.auth);
   const { navPanelOpen } = useAppSelector((state) => state.themeData);
 
@@ -42,7 +44,7 @@ function App() {
   const isLoginPage =
     location.pathname === "/retirement/" ||
     location.pathname === "/retirement/login";
-  const { logoutHandler } = useLogout();
+  //   const { logoutHandler } = useLogout();
 
   const onIdle = () => {
     setIsActive(false);
@@ -52,11 +54,19 @@ function App() {
     setIsActive(true);
   };
 
+  // LOGOUT FUNCTION
+  const logoutHandler = useCallback(async () => {
+    const res = await logoutApi({ refreshToken });
+    dispatch(logout());
+    console.log("LOGOUT response:", res);
+    toastConfig.success(res.data.message);
+  }, [refreshToken, dispatch, logoutApi]);
+
   const { getRemainingTime } = useIdleTimer({
     onIdle,
     onActive,
     timeout: 1000 * 60 * 30,
-    // timeout: 1000,
+    // timeout: 10000,
     throttle: 500,
   });
 
@@ -78,7 +88,7 @@ function App() {
   useEffect(() => {
     if (token) {
       const interval = setInterval(() => {
-        setRemaining(Math.ceil(getRemainingTime() / 1000));
+        setRemaining(Math.ceil(getRemainingTime() / 2000));
       }, 500);
       if (!isActive) {
         logoutHandler();
@@ -87,7 +97,7 @@ function App() {
         clearInterval(interval);
       };
     }
-  }, [getRemainingTime, isActive, token, logoutHandler]);
+  }, [getRemainingTime, isActive, logoutHandler, token]);
 
   // CLEAR THE PERSONNEL GRID WHEN USERS NAVIGATE TO OTHER ROUTES
   useEffect(() => {
