@@ -1,6 +1,8 @@
-// IMPORTS
+// // IMPORTS
 import { useState } from "react";
-import Select, { StylesConfig } from "react-select";
+import Select, { StylesConfig, SingleValue } from "react-select";
+import { OptionType } from "./types";
+import { Controller } from "react-hook-form";
 import { FC } from "react";
 import makeAnimated from "react-select/animated";
 import { SelectInputProps } from "./types";
@@ -8,17 +10,19 @@ import merge from "lodash.merge";
 import { NO_OPTION_MESSAGE, LOADING_MESSAGE } from "@/constants/messages";
 
 export const SelectInput: FC<SelectInputProps> = ({
+  name,
   label,
   required,
   isDisabled,
   isClearable,
-  onChange,
-  placeholder,
   options,
-  isMulti,
+  isMulti = false,
   customStyles,
   defaultValue,
-  // errors,
+  rules,
+  control,
+  onValueChange,
+  errors,
 }) => {
   const [hasValue, setHasValue] = useState(!!defaultValue);
 
@@ -60,33 +64,45 @@ export const SelectInput: FC<SelectInputProps> = ({
   const animatedComponents = makeAnimated();
   const mergedStyles = merge({}, selectStyles, customStyles);
 
-  const handleSelectChange = (value: unknown) => {
-    setHasValue(!!value);
-    onChange?.(value);
-  };
-
   return (
     <div className="relative w-full h-full">
-      <Select
-        components={animatedComponents}
-        isClearable={isClearable}
-        isDisabled={isDisabled}
-        onChange={handleSelectChange}
-        placeholder={placeholder}
-        options={options}
-        defaultValue={defaultValue}
-        isMulti={isMulti}
-        closeMenuOnSelect={isMulti}
-        styles={mergedStyles}
-        noOptionsMessage={() => NO_OPTION_MESSAGE}
-        loadingMessage={() => LOADING_MESSAGE}
+      <Controller
+        name={name}
+        rules={rules}
+        control={control}
+        render={({ field: { onChange } }) => (
+          <Select
+            components={animatedComponents}
+            isClearable={isClearable}
+            isDisabled={isDisabled}
+            onChange={(val) => {
+              setHasValue(!!val);
+              onValueChange?.(val as SingleValue<OptionType>);
+              onChange(val);
+            }}
+            placeholder={
+              <div className="react-select-placeholder">
+                {required && <span>*</span>} {label}
+              </div>
+            }
+            options={options}
+            defaultValue={defaultValue}
+            isMulti={isMulti}
+            closeMenuOnSelect={!isMulti}
+            styles={mergedStyles}
+            noOptionsMessage={() => NO_OPTION_MESSAGE}
+            loadingMessage={() => LOADING_MESSAGE}
+          />
+        )}
       />
 
       <label className={hasValue ? "label--selected" : "label--unselected"}>
         {required && <span>*</span>} {label}
       </label>
 
-      {/* {errors.genderID && <span className="error-form"> جنسیت اجباری است</span>} */}
+      {errors && (
+        <span className="error-form">{errors?.[name]?.message as string}</span>
+      )}
     </div>
   );
 };

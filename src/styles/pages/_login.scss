@@ -48,10 +48,10 @@
                 top: 50%;
                 right: -15px;
                 width: 50px;
-                height: 64px;
+                height: 58px;
                 transform: translateY(-50%);
                 background-color: $color-login-bg;
-                clip-path: polygon(38% 0, 58% 0, 20% 100%, 0% 100%);
+                clip-path: polygon(40% 0, 58% 0, 20% 100%, 0% 100%);
             }
 
             &::after {
@@ -60,7 +60,7 @@
                 top: 50%;
                 right: -30px;
                 width: 50px;
-                height: 64px;
+                height: 58px;
                 transform: translateY(-50%);
                 background-color: $color-login-bg;
                 clip-path: polygon(38% 0, 58% 0, 20% 100%, 0% 100%);
@@ -78,7 +78,7 @@
                     font-family: IranYekan;
                     font-size: 25px;
                     text-align: center;
-                    font-weight: 100;
+                    font-weight: 300;
                 }
             }
         }
@@ -103,6 +103,9 @@
         }
 
         &--icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             position: absolute;
             left: 10px;
             top: 50%;
@@ -115,14 +118,14 @@
                 font-family: IranYekan;
                 font-size: 25px;
                 text-align: center;
-                font-weight: 100;
+                font-weight: 300;
             }
         }
 
         &--form {
             display: flex;
             flex-direction: column;
-            row-gap: 15px;
+            row-gap: 20px;
             padding: 15px 15px;
             margin-top: 10px;
         }
@@ -142,11 +145,16 @@
                     0 0 8px rgba(229, 103, 23, 0.6);
                 outline: 0 none;
             }
+
+            &::placeholder {
+                font-weight: 200;
+                font-size: 14px;
+            }
         }
 
         &--label {
             font-size: 12px;
-            font-family: IranYekan;
+            font-weight: 200;
         }
 
         &--captcha {
@@ -173,8 +181,8 @@
                 color: $color-login-forgot;
                 text-align: center;
                 cursor: pointer;
-                font-weight: 100;
-                font-family: IranYekan;
+                font-weight: 200;
+                font-size: 15px;
                 transition: all 1s;
 
                 &:hover {

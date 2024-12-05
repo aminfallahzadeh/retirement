@@ -1,7 +1,7 @@
-// IMPROTS
+// IMPORTS
 import { Box, IconButton, Tooltip, CircularProgress } from "@mui/material";
 import { Refresh as RefreshIcon } from "@mui/icons-material";
-import RoleSelectionForm from "@/forms/RoleSelectionForm";
+import { RoleSelectionBox } from "../RoleSelectionBox";
 import { RoleDataType } from "@/shared/types/role";
 
 export const topBarActionsProvider = ({
@@ -37,6 +37,6 @@ export const topBarActionsProvider = ({
       </Tooltip>
     )}
 
-    <RoleSelectionForm isLoading={isLoading} roles={roles} />
+    <RoleSelectionBox isLoading={isLoading} roles={roles} />
   </Box>
 );

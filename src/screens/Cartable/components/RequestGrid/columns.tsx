@@ -15,9 +15,9 @@ import {
 } from "@/helper";
 
 export const columnsRenderer = ({
-  selectedRole,
+  role,
 }: {
-  selectedRole: RoleType;
+  role: RoleType;
 }): RequestColumn => [
   {
     accessorKey: "requestRowNum",
@@ -84,7 +84,7 @@ export const columnsRenderer = ({
               : row.original.requestTypeID ===
                 "6E7BA26E-A1DC-4A5E-9700-17820A36158D"
               ? `/retirement/batch-statements?requestID=${row.original.id}`
-              : `/retirement/retired?personID=${row.original.personID}&Role=${selectedRole?.value}&requestID=${row.original.id}`
+              : `/retirement/retired?personID=${row.original.personID}&Role=${role?.value}&requestID=${row.original.id}`
           }
         >
           <span>
@@ -108,7 +108,7 @@ export const columnsRenderer = ({
     Cell: ({ row }: MRT_RowData) => (
       <Tooltip title={convertToPersianNumber(row.original.requestNO)}>
         <Link
-          to={`/retirement/request?requestID=${row.id}&Role=${selectedRole?.value}&type=${row.original.requestTypeID}`}
+          to={`/retirement/request?requestID=${row.id}&Role=${role?.value}&type=${row.original.requestTypeID}`}
         >
           <span>
             <IconButton sx={{ padding: "0" }} color="info">

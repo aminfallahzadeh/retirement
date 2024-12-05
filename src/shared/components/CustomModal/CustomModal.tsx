@@ -5,13 +5,14 @@ import { CustomModalProps } from "./types";
 
 const styles = {
   container: {
+    outline: "none",
+    border: "none",
     position: "absolute",
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
     width: 400,
     bgcolor: "var(--color-bg-primary)",
-    border: "1px solid var(--color-bg-secondary)",
     boxShadow: 24,
     borderRadius: 1,
     px: 4,

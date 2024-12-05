@@ -2,7 +2,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { RoleDataType } from "@/shared/types/role";
 import { Request, RequestTableData } from "./types";
-import { setSelectedRole } from "@/slices/roleDataSlice";
+import { setRole } from "@/features/request/roleSlice";
 import {
   useLazyGetRoleQuery,
   useLazyGetRequestQuery,
@@ -15,31 +15,28 @@ import { columnsRenderer } from "./columns";
 import { topBarActionsProvider } from "./actions";
 
 export const RequestGrid = () => {
-  // MAIN STATE
+  // STATES
   const [requestTableData, setRequestTableData] = useState<RequestTableData>(
     []
   );
-
-  const dispatch = useDispatch();
   const [allRoles, setAllRoles] = useState<RoleDataType["itemList"]>([]);
 
-  const { selectedRole } = useAppSelector((state) => state.roleData);
-
-  // ACCESS QUERIES
+  // CONSTS
+  const dispatch = useDispatch();
+  const { role } = useAppSelector((state) => state.role);
   const [getRoles, { isLoading: isRolesLoading, isFetching: isRolesFetching }] =
     useLazyGetRoleQuery();
   const [
     getRequests,
-
     { isLoading: isRequestsLoading, isFetching: isRequestsFetching },
   ] = useLazyGetRequestQuery();
 
-  // FETCH LOGICS
+  // FETCH DATA
   const fetchRoles = useCallback(async () => {
     try {
       const res = await getRoles().unwrap();
       dispatch(
-        setSelectedRole({
+        setRole({
           value: res?.itemList[0].url,
           label: res?.itemList[0].itemName,
         })
@@ -83,20 +80,20 @@ export const RequestGrid = () => {
 
   useEffect(() => {
     return () => {
-      dispatch(setSelectedRole(null));
+      dispatch(setRole(null));
     };
   }, [dispatch]);
 
   useEffect(() => {
-    if (selectedRole) {
-      fetchRequests(selectedRole?.value);
+    if (role) {
+      fetchRequests(role?.value);
     }
-  }, [selectedRole, fetchRequests]);
+  }, [role, fetchRequests]);
 
   // HANDLERS
   const handleRefresh = () => {
-    if (selectedRole) {
-      fetchRequests(selectedRole?.value);
+    if (role) {
+      fetchRequests(role?.value);
     }
   };
 
@@ -108,7 +105,7 @@ export const RequestGrid = () => {
   });
 
   const columns = columnsRenderer({
-    selectedRole,
+    role,
   });
 
   const content = (

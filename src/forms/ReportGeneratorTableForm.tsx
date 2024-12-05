@@ -1,38 +1,25 @@
-// REACT IMPORTS
+// IMPORTS
 import { useState, useEffect, useCallback } from "react";
-
-// REDUX
 import {
   setSelectIDs,
   setQueryCondi,
 } from "../slices/reportGeneratorDataSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { useAppSelector } from "@/hooks/usePreTypesHooks";
 import {
   useLazyGetColsQuery,
   useLazyGetLookupValueQuery,
 } from "@/features/report-generator/reportGeneratorApi";
-
-// HOOKS
 import { useFetchReportGeneratorTables } from "@/hooks/useFetchLookUpData";
-
-// MUI
 import { IconButton, Tooltip, Button } from "@mui/material";
 import {
   DeleteOutline as RemoveIcon,
   Add as AddIcon,
 } from "@mui/icons-material";
-
-// COMPONENTS
 import ConditionSelectionForm from "./ConditionSelectionForm";
-
-// LIBRARIES
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
-
-// HELPERS
 import { findById } from "../helper";
-
-// UTILS
 import {
   selectStyles,
   selectSettings,
@@ -65,15 +52,15 @@ function ReportGeneratorTableForm() {
   const animatedComponents = makeAnimated();
   const dispatch = useDispatch();
 
-  const { queryCondi } = useSelector((state) => state.reportGeneratorData);
-  const { selectedRole } = useSelector((state) => state.roleData);
+  const { queryCondi } = useAppSelector((state) => state.reportGeneratorData);
+  const { role } = useAppSelector((state) => state.role);
 
   // GET LOOK UP DATA
   const {
     reportGeneratorTables,
     reportGeneratorTablesIsLoading,
     reportGeneratorTablesIsFetching,
-  } = useFetchReportGeneratorTables(selectedRole?.value);
+  } = useFetchReportGeneratorTables(role?.value);
 
   // SELECT OPTIONS
   const tableOptions = optionsGenerator(

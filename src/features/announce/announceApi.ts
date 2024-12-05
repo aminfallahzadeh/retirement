@@ -1,10 +1,11 @@
 // IMPORTS
 import { apiSlice } from "@/features/api/apiSlice";
 import { ANNOUNCE_END } from "../api/endpoints";
+import { AnnounceData } from "@/shared/types/announce";
 
 export const announceApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getAnnounce: builder.query({
+    getAnnounce: builder.query<AnnounceData, void>({
       query: () => ({
         url: `${ANNOUNCE_END}/GetAnnounce`,
       }),

@@ -8,13 +8,6 @@ declare module "*.css" {
   export default content;
 }
 
-// declare module "react" {
-//   interface CSSProperties {
-//     "--tree-view-color"?: string;
-//     "--tree-view-bg-color"?: string;
-//   }
-// }
-
 declare module "react-viewerjs" {
   import { ReactNode } from "react";
 

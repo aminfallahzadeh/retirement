@@ -13,12 +13,6 @@ export const REQUEST_DATE = createFields("date", "تاریخ درخواست");
 export const REQUEST_SENDER_INFO = createFields("senderInfo", "بررسی درخواست");
 export const REQUEST_ACTION_OBSERVE = createFields("observe", "مشاهده درخواست");
 
-// APP ROUTES
-export const APP_LAYOUT = "AppLayout";
-export const CARTABLE = "Cartable";
-export const LOGIN = "Login";
-export const ERROR = "Error";
-
 // ARRAYS
 export const PERSIAN_NUMBERS = [
   /۰/g,
@@ -44,6 +38,7 @@ export const NO = "خیر";
 export const SCAN = "اسکن";
 export const SAVE = "ذخیره";
 export const UPLOAD = "بارگذاری";
+export const LOGIN = "ورود";
 
 // RETIRED
 export const RETIRED_INFO = "اطلاعات بازنشسته";

@@ -1,7 +1,5 @@
-// react imports
+// IMPORTS
 import { useState, useEffect } from "react";
-
-// redux imports
 import {
   useGetLookupDataQuery,
   useGetPensionaryStatusQuery,
@@ -13,10 +11,7 @@ import {
 import { useGetRequestTypeQuery } from "@/features/request/requestApi";
 import { useGetPersonnelStatementOffTypeQuery } from "@/features/personnel/personnelApi";
 import { useGetFractionTypeQuery } from "@/features/fraction/fractionApi";
-import {
-  // useGetRequestTypeQuery,
-  useGetRequestTypeAttachmentQuery,
-} from "@/features/request/requestApi";
+import { useGetRequestTypeAttachmentQuery } from "@/features/request/requestApi";
 import { useGetTablesQuery } from "@/features/report-generator/reportGeneratorApi";
 
 // COMMON LOOK UP DATA LOGIC
@@ -206,7 +201,7 @@ const useFetchOrganizations = ({ organizationID = undefined }) => {
 };
 
 // REQUEST TYPE LOOK UP LOGIC
-const useFetchRequestType = (selectedRole) => {
+const useFetchRequestType = (role: string) => {
   const [requestTypes, setRequestTypes] = useState([]);
 
   // GET DATA
@@ -216,7 +211,7 @@ const useFetchRequestType = (selectedRole) => {
     isLoading: requestTypesIsLoading,
     isFetching: requestTypesIsFetching,
     error: requestTypesError,
-  } = useGetRequestTypeQuery(selectedRole);
+  } = useGetRequestTypeQuery(role);
 
   // FETCH DATA
   useEffect(() => {

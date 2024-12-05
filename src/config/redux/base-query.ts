@@ -50,6 +50,8 @@ export const baseQueryWithReauth: BaseQueryFn<
   await mutex.waitForUnlock();
   let result = await baseQuery(args, api, extraOptions);
 
+  console.log("ERROR RESULT", result.error);
+
   if (result.error && result.error.status === "FETCH_ERROR") {
     if (!mutex.isLocked()) {
       const release = await mutex.acquire();

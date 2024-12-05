@@ -1,22 +1,24 @@
 // IMPORTS
-import { setSelectedRole } from "@/slices/roleDataSlice";
+import { setRole } from "@/features/request/roleSlice";
+import { useForm } from "react-hook-form";
 import { selectOptionsGenerator } from "@/helpers/selectOptionsGenerator";
 import { SelectInput } from "@/shared/components/SelectInput";
 import { RoleDataType } from "@/shared/types/role";
 import { useAppDispatch, useAppSelector } from "@/hooks/usePreTypesHooks";
 
-function RoleSelectionForm({
+export const RoleSelectionBox = ({
   isLoading,
   roles,
 }: {
   isLoading: boolean;
   roles: RoleDataType["itemList"];
-}) {
+}) => {
+  // STATES
   const dispatch = useAppDispatch();
+  const { role } = useAppSelector((state) => state.role);
 
-  const { selectedRole } = useAppSelector((state) => state.roleData);
-
-  // SELECT OPTIONS
+  // CONSTS
+  const { control } = useForm();
   const rolesOptions = selectOptionsGenerator<RoleDataType["itemList"][number]>(
     roles,
     "url",
@@ -25,26 +27,24 @@ function RoleSelectionForm({
 
   const handleSelectOptionChange = (selectedOption: unknown) => {
     if (selectedOption) {
-      dispatch(setSelectedRole(selectedOption));
+      dispatch(setRole(selectedOption));
     } else {
-      dispatch(setSelectedRole(null));
+      dispatch(setRole(null));
     }
   };
 
   return (
     <div style={{ width: "300px", height: "40px", margin: "10px auto" }}>
       <SelectInput
+        control={control}
         options={rolesOptions}
-        defaultValue={selectedRole}
+        defaultValue={role ? role : undefined}
         isLoading={isLoading}
-        onChange={handleSelectOptionChange}
-        placeholder={<div className="react-select-placeholder">نقش</div>}
-        name="selectedRole"
+        onValueChange={handleSelectOptionChange}
+        name="role"
         label="نقش"
         required={false}
       />
     </div>
   );
-}
-
-export default RoleSelectionForm;
+};

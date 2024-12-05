@@ -1,12 +1,14 @@
 // IMPORTS
-import { useState, useEffect, useRef } from "react";
-import { useForm } from "react-hook-form";
+import { useState, useEffect, useRef, ChangeEvent } from "react";
+import { useForm, FieldValues } from "react-hook-form";
 import { useGetAnnounceQuery } from "@/features/announce/announceApi";
+import { Announce } from "@/shared/types/announce";
 import {
   Login as LoginIcon,
   VisibilityOutlined as EyeOpenIcon,
   VisibilityOffOutlined as EyeCloseIcon,
   Refresh as RefreshIcon,
+  Close as CloseIcon,
 } from "@mui/icons-material";
 import { IconButton, Tooltip, Box, CircularProgress } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
@@ -19,49 +21,49 @@ import { Logo } from "@/components/SVGs";
 import { toast } from "react-toastify";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
+import { LOGIN } from "@/constants/const";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
 export const Login = () => {
+  //STATES
   const [showPassword, setShowPassword] = useState(false);
   const [captcha, setCaptcha] = useState(false);
   const [captchaText, setCaptchaText] = useState("");
   const [userInputCaptcha, setUserInputCaptcha] = useState("");
   const [isRotated, setIsRotated] = useState(false);
+  const [announceitems, setAnnounceItems] = useState<Announce[]>([]);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  // ANNOUNCE STATE\
-  const [announceitems, setAnnounceItems] = useState([]);
-
+  // CONSTS
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const canvasRef = useRef(null);
-
   const {
     register,
     handleSubmit,
     formState: { errors },
     setValue,
+    watch,
   } = useForm();
+  const form_data = watch();
 
   const [login, { isLoading }] = useLoginMutation();
 
-  // GET NEWS
+  // GET ANNOUNCES
   const {
     data: announces,
     isSuccess: isAnnounceSuccess,
     isLoading: isAnnounceLoading,
     isFetching: isAnnounceFetching,
-    error: isAnnounceError,
     refetch,
   } = useGetAnnounceQuery();
 
   // FETCH ANNOUNCES
-
   useEffect(() => {
     const today = new Date();
-    refetch;
+    refetch();
     if (isAnnounceSuccess) {
       const filteredAnnounces = announces.itemList.filter((item) => {
         const runDate = new Date(item.runDate);
@@ -71,13 +73,6 @@ export const Login = () => {
     }
   }, [isAnnounceSuccess, announces, refetch]);
 
-  // HANDLE ERROR
-  useEffect(() => {
-    if (isAnnounceError) {
-      console.log(isAnnounceError);
-    }
-  }, [isAnnounceError]);
-
   // CHECK IF USER IS ALREADY LOGGED IN
   useEffect(() => {
     if (sessionStorage.getItem("userInfo")) {
@@ -85,9 +80,8 @@ export const Login = () => {
     }
   }, [navigate]);
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: FieldValues) => {
     // user authentication logic
-
     if (captcha) {
       try {
         const res = await login(data).unwrap();
@@ -98,17 +92,13 @@ export const Login = () => {
         toast.success(res.message, {
           autoClose: 2000,
         });
-      } catch (err) {
+      } catch {
         setCaptchaText(generateCaptcha(4));
         setUserInputCaptcha("");
         setValue("username", "");
         setValue("password", "");
-        toast.error(err?.data?.message || err.error, {
-          autoClose: 2000,
-        });
       }
     } else {
-      //  reset captcha after invalid input
       setCaptchaText(generateCaptcha(4));
       setUserInputCaptcha("");
       setCaptcha(false);
@@ -124,8 +114,7 @@ export const Login = () => {
     setShowPassword(!showPassword);
   };
 
-  const refreshCaptcha = (e) => {
-    e.preventDefault();
+  const refreshCaptcha = () => {
     setCaptchaText(generateCaptcha(4));
     setUserInputCaptcha("");
     setCaptcha(false);
@@ -135,15 +124,19 @@ export const Login = () => {
   // CAPTCHA CREATOR
   useEffect(() => {
     const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d", { willReadFrequently: true });
+    if (!canvas) return;
 
-    function addNoise(ctx) {
+    const ctx = canvas.getContext("2d", { willReadFrequently: true });
+    if (!ctx) return;
+
+    function addNoise(ctx: CanvasRenderingContext2D) {
+      if (!canvas) return;
       const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
       const pixels = imageData.data;
       for (let i = 0; i < pixels.length; i += 1) {
-        // Rnadom noise color
+        // Random noise color
         // let color = Math.random() > 0.5 ? 255 : 0;
-        let color = Math.random() > 0.5 ? 225 : 0;
+        const color = Math.random() > 0.5 ? 225 : 0;
         pixels[i] = pixels[i + 1] = pixels[i + 2] = color;
       }
       ctx.putImageData(imageData, 0, 0);
@@ -173,7 +166,7 @@ export const Login = () => {
     setCaptcha(false);
   }, []);
 
-  function handleCaptchaInputChange(e) {
+  function handleCaptchaInputChange(e: ChangeEvent<HTMLInputElement>) {
     const input = e.target.value;
     setUserInputCaptcha(input);
 
@@ -186,6 +179,7 @@ export const Login = () => {
 
   return (
     <div className="login__main">
+      {/* ANNOUNCES */}
       <div className="login__info">
         <div className="login__info--title">
           <div className="title-wrapper">
@@ -223,6 +217,8 @@ export const Login = () => {
             </Swiper>
           )}
         </div>
+
+        {/* CREDENTIALS */}
         <div className="login__credentials">
           <div className="login__credentials--title">
             <h1>ورود به سامانه</h1>
@@ -230,99 +226,90 @@ export const Login = () => {
 
           <form
             method="POST"
-            onSubmit={handleSubmit(onSubmit)}
             className="login__credentials--form"
+            onSubmit={handleSubmit(onSubmit)}
             noValidate
           >
-            <label htmlFor="username" className="login__credentials--label">
-              نام کاربری
-            </label>
-            <div className="login__credentials--wrapper">
-              {errors.username && (
-                <span className="error-form">{errors.username.message}</span>
-              )}
-              <input
-                type="text"
-                placeholder="نام کاربری خود را وارد نمایید..."
-                {...register("username", {
-                  required: "نام کاربری را وارد کنید",
-                })}
-                id="username"
-                className="login__credentials--input"
-                disabled={isLoading}
-              />
-            </div>
-
-            <label htmlFor="psw" className="login__credentials--label">
-              رمز عبور
-            </label>
-            <div className="login__credentials--wrapper">
-              {errors.password && (
-                <span className="error-form">{errors.password.message}</span>
-              )}
-              <input
-                type={showPassword ? "text" : "password"}
-                placeholder=" رمز عبور خود را وارد نمایید..."
-                {...register("password", {
-                  required: "رمز عبور را وارد کنید",
-                })}
-                id="psw"
-                className="login__credentials--input"
-                disabled={isLoading}
-              />
-              <div className="login__credentials--icon">
-                <Tooltip title={showPassword ? "مخفی کردن رمز" : "نمایش رمز"}>
-                  <span>
+            <div>
+              <label htmlFor="username" className="login__credentials--label">
+                نام کاربری
+              </label>
+              <div className="login__credentials--wrapper">
+                {errors.username && (
+                  <span className="error-form">
+                    {errors.username.message as string}
+                  </span>
+                )}
+                <input
+                  type="text"
+                  placeholder="نام کاربری خود را وارد نمایید..."
+                  {...register("username", {
+                    required: "نام کاربری را وارد کنید",
+                  })}
+                  id="username"
+                  className="login__credentials--input"
+                  disabled={isLoading}
+                />
+                {form_data.username || form_data.username !== "" ? (
+                  <div className="login__credentials--icon">
                     <IconButton
-                      onClick={handleShowPasswordChange}
-                      color="primary"
+                      onClick={() => {
+                        setValue("username", "");
+                      }}
+                      color="default"
                       size="small"
                     >
-                      {showPassword ? <EyeOpenIcon /> : <EyeCloseIcon />}
+                      <CloseIcon fontSize="small" />
                     </IconButton>
-                  </span>
-                </Tooltip>
+                  </div>
+                ) : null}
               </div>
             </div>
 
-            <label htmlFor="captcha" className="login__credentials--label">
-              کد امنیتی
-            </label>
-            <div className="login__credentials--wrapper">
-              <input
-                type="text"
-                placeholder="کد روبرو را وارد کنید"
-                id="captcha"
-                className="login__credentials--input"
-                onChange={handleCaptchaInputChange}
-                value={userInputCaptcha}
-              />
-              <div className="login__credentials--captcha">
-                <canvas
-                  ref={canvasRef}
-                  width="130"
-                  height="43"
-                  className="login__credentials--captcha-canvas"
-                >
-                  {captchaText}
-                </canvas>
-
-                <div className="login__credentials--captcha-icon">
-                  <Tooltip title="کد جدید">
+            <div>
+              <label htmlFor="psw" className="login__credentials--label">
+                رمز عبور
+              </label>
+              <div className="login__credentials--wrapper">
+                {errors.password && (
+                  <span className="error-form">
+                    {errors.password.message as string}
+                  </span>
+                )}
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder=" رمز عبور خود را وارد نمایید..."
+                  {...register("password", {
+                    required: "رمز عبور را وارد کنید",
+                  })}
+                  id="psw"
+                  className="login__credentials--input"
+                  disabled={isLoading}
+                />
+                <div className="login__credentials--icon">
+                  {form_data.password || form_data.password !== "" ? (
+                    <IconButton
+                      onClick={() => {
+                        setValue("password", "");
+                      }}
+                      color="default"
+                      size="small"
+                    >
+                      <CloseIcon fontSize="small" />
+                    </IconButton>
+                  ) : null}
+                  <Tooltip title={showPassword ? "مخفی کردن رمز" : "نمایش رمز"}>
                     <span>
                       <IconButton
-                        onClick={refreshCaptcha}
+                        onClick={handleShowPasswordChange}
                         color="primary"
                         size="small"
-                        onAnimationEnd={() => setIsRotated(false)}
                       >
-                        <div
-                          className={`${
-                            isRotated ? "rotate" : ""
-                          } flex-row flex-center`}
-                        >
-                          <RefreshIcon />
-                        </div>
+                        {showPassword ? (
+                          <EyeOpenIcon fontSize="small" />
+                        ) : (
+                          <EyeCloseIcon fontSize="small" />
+                        )}
                       </IconButton>
                     </span>
                   </Tooltip>
@@ -330,19 +317,63 @@ export const Login = () => {
               </div>
             </div>
 
-            <div></div>
+            <div>
+              <label htmlFor="captcha" className="login__credentials--label">
+                کد امنیتی
+              </label>
+              <div className="login__credentials--wrapper">
+                <input
+                  type="text"
+                  placeholder="کد روبرو را وارد کنید"
+                  id="captcha"
+                  className="login__credentials--input"
+                  onChange={handleCaptchaInputChange}
+                  value={userInputCaptcha}
+                />
+                <div className="login__credentials--captcha">
+                  <canvas
+                    ref={canvasRef}
+                    width="130"
+                    height="43"
+                    className="login__credentials--captcha-canvas"
+                  >
+                    {captchaText}
+                  </canvas>
+
+                  <div className="login__credentials--captcha-icon">
+                    <Tooltip title="کد جدید">
+                      <span>
+                        <IconButton
+                          onClick={refreshCaptcha}
+                          color="primary"
+                          size="small"
+                          onAnimationEnd={() => setIsRotated(false)}
+                        >
+                          <div
+                            className={`${
+                              isRotated ? "rotate" : ""
+                            } flex-row flex-center`}
+                          >
+                            <RefreshIcon />
+                          </div>
+                        </IconButton>
+                      </span>
+                    </Tooltip>
+                  </div>
+                </div>
+              </div>
+            </div>
 
             <LoadingButton
               dir="ltr"
-              onClick={handleSubmit}
-              type="submit"
               endIcon={<LoginIcon />}
+              //   onClick={handleSubmit(onSubmit)}
+              type="submit"
               loading={isLoading}
               variant="contained"
               color="primary"
-              sx={{ width: "100%", fontFamily: "IranYekan" }}
             >
-              <span>ورود</span>
+              <span>{LOGIN}</span>
             </LoadingButton>
 
             <div className="login__credentials--forgot">
@@ -367,5 +398,3 @@ export const Login = () => {
     </div>
   );
 };
-
-// export default Login;

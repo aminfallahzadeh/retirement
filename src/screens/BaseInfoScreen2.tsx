@@ -1,4 +1,4 @@
-// IMPROTS
+// IMPORTS
 import BaseInfoForm2 from "@/forms/BaseInfoForms2/BaseInfoForm2";
 import Select from "react-select";
 

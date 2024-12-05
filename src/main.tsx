@@ -1,18 +1,18 @@
 // IMPORTS
+import React from "react";
 import ReactDOM from "react-dom/client";
-
 import {
   createBrowserRouter,
   Route,
   RouterProvider,
   createRoutesFromElements,
 } from "react-router-dom";
-import "@/assets/styles/main.scss";
+import "./styles/main.scss";
 import "./index.css";
 import { Provider } from "react-redux";
 import store from "@/config/redux/store";
 import App from "@/App";
-import { Login } from "./pages/Login";
+import { Auth } from "./pages/Auth";
 import { Error } from "./pages/Error";
 import { Cartable } from "./screens/Cartable";
 import { Retired } from "./screens/Retired";
@@ -29,13 +29,12 @@ import PersonnelInfoScreen from "@/screens/PersonnelInfoScreen";
 import FractionScreen from "@/screens/FractionScreen";
 import ReportGeneratorScreen from "@/screens/ReportGeneratorScreen";
 import BaseInfoScreen from "@/screens/BaseInfoScreen";
-import BaseInfoScreen2 from "@/screens/BaseInfoScreen2";
+import { BaseInfo2 } from "./screens/BaseInfo2";
 import InsertAnnounceScreen from "@/screens/InsertAnnounceScreen";
 import DashboardScreen from "@/screens/DashboardScreen";
 import GroupSlipsScreen from "@/screens/GroupSlipsScreen";
 import SalaryScreen from "@/screens/SalaryScreen";
 import { setConfig } from "@/features/api/configSlice";
-import TestPage from "./pages/TestPage";
 
 const loadConfig = async (): Promise<void> => {
   try {
@@ -51,10 +50,9 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/retirement/" element={<App />}>
-        <Route index path="/retirement/" element={<Login />} />
+        <Route index path="/retirement/" element={<Auth />} />
 
         <Route path="/retirement/cartable" element={<Cartable />} />
-        <Route path="/retirement/test" element={<TestPage />} />
 
         <Route path="/retirement/retired" element={<Retired />} />
 
@@ -107,7 +105,7 @@ const router = createBrowserRouter(
 
         <Route path="/retirement/base-info" element={<BaseInfoScreen />} />
 
-        <Route path="/retirement/base-info2" element={<BaseInfoScreen2 />} />
+        <Route path="/retirement/base-info2" element={<BaseInfo2 />} />
 
         <Route
           path="/retirement/insert-announce"
@@ -130,10 +128,10 @@ const router = createBrowserRouter(
   );
 
   root.render(
-    // <React.StrictMode>
-    // </React.StrictMode>
-    <Provider store={store}>
-      <RouterProvider router={router} />
-    </Provider>
+    <React.StrictMode>
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
+    </React.StrictMode>
   );
 })();

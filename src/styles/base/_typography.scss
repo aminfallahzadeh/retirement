@@ -1,43 +1,92 @@
 @use "../abstracts" as *;
 
-@font-face {
-    font-family: sahel;
-    src:
-        url("../../fonts/Sahel.eot") format("embedded-opentype"),
-        url("../../fonts/Sahel.ttf") format("truetype"),
-        url("../../fonts/Sahel.woff") format("woff"),
-        url("../../fonts/Sahel.woff2") format("woff2");
-}
+/* FONTS DEFINITIONS */
+// @font-face {
+//     font-family: sahel;
+//     src:
+//         url("@/fonts/Sahel.eot") format("embedded-opentype"),
+//         url("@/fonts/Sahel.ttf") format("truetype"),
+//         url("@/fonts/Sahel.woff") format("woff"),
+//         url("@/fonts/Sahel.woff2") format("woff2");
+// }
+
+// @font-face {
+//     font-family: Vazir;
+//     src:
+//         url("@/fonts/Vazir.eot") format("embedded-opentype"),
+//         url("@/fonts/Vazir.ttf") format("truetype"),
+//         url("@/fonts/Vazir.woff") format("woff"),
+//         url("@/fonts/Vazir.woff2") format("woff2");
+// }
+
+// @font-face {
+//     font-family: IranYekan;
+//     src: url("@/fonts/Qs_Iranyekan.ttf") format("truetype");
+// }
 
 @font-face {
-    font-family: Vazir;
-    src:
-        url("../../fonts/Vazir.eot") format("embedded-opentype"),
-        url("../../fonts/Vazir.ttf") format("truetype"),
-        url("../../fonts/Vazir.woff") format("woff"),
-        url("../../fonts/Vazir.woff2") format("woff2");
+    font-family: IranYekan;
+    font-weight: 100;
+    src: url("@fonts/IRANYekanX-Thin.ttf");
+    font-display: swap;
 }
 
 @font-face {
     font-family: IranYekan;
-    src: url("../../fonts/Qs_Iranyekan.ttf") format("truetype");
+    font-weight: 200;
+    src: url("@fonts/IRANYekanX-Light.ttf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: IranYekan;
+    font-weight: 300;
+    src: url("@fonts/IRANYekanX-Regular.ttf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: IranYekan;
+    font-weight: 400;
+    src: url("@fonts/IRANYekanX-Medium.ttf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: IranYekan;
+    font-weight: 500;
+    src: url("@fonts/IRANYekanX-SemiBold.ttf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: IranYekan;
+    font-weight: 600;
+    src: url("@fonts/IRANYekanX-Bold.ttf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: IranYekan;
+    font-weight: 700;
+    src: url("@fonts/IRANYekanX-Heavy.ttf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: IranYekan;
+    font-weight: 800;
+    src: url("@fonts/IRANYekanX-ExtraBold.ttf");
+    font-display: swap;
 }
 
 @font-face {
     font-family: Nastaliq;
-    src: url("../../fonts/IranNastaliq.ttf") format("truetype");
+    src: url("@fonts/IranNastaliq.ttf") format("truetype");
 }
 
-body {
-    font-family: IranYekan, sans-serif !important;
-}
-
-input {
-    font-family: IranYekan, sans-serif !important;
-}
-
-html {
-    font-family: Vazir, sans-serif !important;
+* {
+    font-family: IranYekan, sans-serif;
 }
 
 textarea {
@@ -55,7 +104,7 @@ select {
     color: var(--color-txt-primary);
     position: relative;
     text-align: center;
-    font-family: Nastaliq;
+    font-family: "Nastaliq";
     font-weight: lighter;
     line-height: 0;
     padding-top: 35px;
@@ -189,12 +238,4 @@ select {
     color: var(--color-accent-primary);
     font-style: italic;
     font-size: 14px;
-}
-
-.error-form {
-    color: $color-accent-red;
-    font-size: 0.8rem;
-    position: absolute;
-    top: -22px;
-    left: 0;
 }

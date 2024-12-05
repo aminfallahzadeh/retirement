@@ -1,19 +1,20 @@
 // IMPORTS
-import { InputProps } from "./types";
 import { useController } from "react-hook-form";
 import { FC } from "react";
 import { Close as CloseIcon } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
+import { TextAreaProps } from "./types";
 
-export const Input: FC<InputProps> = ({
+export const TextArea: FC<TextAreaProps> = ({
   name,
   label,
-  rules,
   required,
-  type = "text",
+  rules,
   control,
   value = "",
   editable = true,
+  colSpan = "",
+  rowSpan = "",
 }) => {
   const { field, fieldState } = useController({
     control,
@@ -28,20 +29,21 @@ export const Input: FC<InputProps> = ({
   };
 
   const content = (
-    <div className="inputBox__form">
+    <div className={`inputBox__form ${colSpan}  ${rowSpan}`}>
       {fieldState?.error && (
         <span className="error-form">{fieldState?.error.message}</span>
       )}
-      <input
-        autoComplete="false"
+
+      <textarea
+        disabled={!editable}
         value={field.value}
         onChange={field.onChange}
-        disabled={!editable}
-        type={type}
         id={name}
+        name={name}
         className="inputBox__form--input"
         required
       />
+
       <label htmlFor={name} className="inputBox__form--label">
         {required && <span>*</span>} {label}
       </label>

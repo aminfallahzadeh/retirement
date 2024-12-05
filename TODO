@@ -15,7 +15,7 @@ Personnel Statement:
 
 Forms:
   □ add enter key functionality to submit forms
-  □ remove control pattern in description fields @critical
+  ✔ remove control pattern in description fields @critical @done(24-12-04 12:51)
 
 
 General:
@@ -24,11 +24,11 @@ General:
   □ refactor folder structure
   □ refactor file names
   □ implement barrels
-  
+
 // NOTES
 
 excel link = https://docs.google.com/spreadsheets/d/1WHvddz4M9fIvHAP-AnyNdOTKTp6Q9fNhSM0e384FAiI/edit?gid=523953748#gid=523953748
-  
+
 RetirementStatementID=1E1D29DC-77C5-49FE-A74D-2F3BF154A8CF
 sodoore fish ID: 62A54585-F331-434A-9027-C9F3060F683A
 
@@ -74,4 +74,3 @@ Archive:
     [-] apply 62.5% font size to html globally and fix all the font sizes @cancelled(24-04-02 02:59) @project(UI)
     [+] find and replace modern color palette @done(24-04-26 14:13) @project(UI)
     [+] refactor code imports @done(24-04-02 02:59) @project(Refacoring)
-  

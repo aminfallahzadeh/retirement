@@ -35,23 +35,18 @@ import {
 import { datePickerStyles, datePickerWrapperStyles } from "@/utils/datePicker";
 
 function RetiredPersonForm() {
+  // STATES
   const birthDateCalenderRef = useRef(null);
   const deathDateCalenderRef = useRef(null);
-
   const [editable, setEditable] = useState(false);
-
-  const animatedComponents = makeAnimated();
-
-  // DATE STATES
   const [isBirthCalenderOpen, setIsBirthCalenderOpen] = useState(false);
   const [isDeathCalenderOpen, setIsDeathCalenderOpen] = useState(false);
 
+  // CONSTS
+  const animatedComponents = makeAnimated();
   const dispatch = useDispatch();
-
   const searchParams = new URLSearchParams(location.search);
   const personID = searchParams.get("personID");
-
-  // ACCESS REACT HOOK FORM CONTROL
   const {
     handleSubmit,
     formState: { errors },
@@ -60,24 +55,20 @@ function RetiredPersonForm() {
     watch,
     setValue,
   } = useForm();
-
-  // ACCESS REACT HOOK FORM DATA
   const form_data = watch();
-
-  // ACCESS UPDATE QUERY
   const [updateRetiredPerson, { isLoading: isUpdating }] =
     useUpdateRetiredPersonMutation();
-
   const {
     data: retiredPersonData,
     isLoading,
     isFetching,
     isSuccess,
     error,
+
     refetch,
   } = useGetRetiredPersonQuery(personID);
 
-  // fetch data
+  // FETCH DATA
   useEffect(() => {
     if (isSuccess) {
       const data = retiredPersonData?.itemList[0];
@@ -294,11 +285,11 @@ function RetiredPersonForm() {
               <Input
                 name="personFirstName"
                 label="نام"
-                register={register}
                 rules={{ required: "نام را وارد کنید" }}
                 errors={errors}
                 required={true}
-                disabled={!editable}
+                control={control}
+                editable={editable}
                 type="text"
               />
 
@@ -1287,7 +1278,7 @@ function RetiredPersonForm() {
                     //   message: "از حروف فارسی استفاده کنید",
                     // },
                   })}
-                ></textarea>
+                />
                 <label
                   htmlFor="personAddress"
                   className="inputBox__form--label"
@@ -1304,7 +1295,6 @@ function RetiredPersonForm() {
                 )}
                 <textarea
                   disabled={!editable}
-                  type="text"
                   id="personDescription"
                   value={
                     convertToPersianNumber(form_data?.personDescription) || ""

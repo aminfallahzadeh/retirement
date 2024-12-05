@@ -22,10 +22,12 @@ import reportGeneratorDataSliceReducer from "@/slices/reportGeneratorDataSlice";
 import payCompareDataSliceReducer from "@/slices/payCompareDataSlice";
 import financialDataSliceReducer from "@/slices/financialDataSlice";
 import configReducer from "@/features/api/configSlice";
+import roleSliceReducer from "@/features/request/roleSlice";
 
 const store = configureStore({
   reducer: {
     [apiSlice.reducerPath]: apiSlice.reducer,
+    role: roleSliceReducer,
     config: configReducer,
     auth: authSliceReducer,
     roleData: roleDataReducer,

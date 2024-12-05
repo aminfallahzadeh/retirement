@@ -59,7 +59,6 @@ const EditArchiveStructureForm = ({
           variant="contained"
           color="success"
           disabled={name === item?.label || !name || name === ""}
-          sx={{ fontFamily: "IranYekan" }}
         >
           <span>{SAVE}</span>
         </LoadingButton>
