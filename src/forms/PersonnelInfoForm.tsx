@@ -1,38 +1,28 @@
-// react imports
+// IMPORTS
 import { useEffect, useState } from "react";
-
-// rrd imports
 import { useLocation } from "react-router-dom";
-
-// redux imports
 import { useGetPersonsQuery } from "@/features/person/personApi";
 import { useGetLookupDataQuery } from "@/features/shared/sharedApi";
-
-// library imports
 import { toast } from "react-toastify";
-
-// helpers
 import {
   convertToPersianNumber,
   convertToPersianDateFormatted,
 } from "../helper";
 
 function PersonnelInfoForm() {
+  // STATES
   const [personObject, setPersonObject] = useState({});
-
-  // const [education, setEducation] = useState("");
   const [marital, setMarital] = useState("");
   const [gender, setGender] = useState("");
 
+  // CONSTS
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const personID = searchParams.get("personID");
   const personDeathDate = searchParams.get("personDeathDate");
-
-  // GET MAIN DATA
   const { data: person, isSuccess, error } = useGetPersonsQuery({ personID });
 
-  // HANDLE MAIN DATA
+  // HANDLES
   useEffect(() => {
     if (isSuccess) {
       setPersonObject(person?.itemList[0]);
@@ -59,23 +49,6 @@ function PersonnelInfoForm() {
       lookUpType: "MaritialStatus",
       lookUpID: personObject?.maritalStatusID,
     });
-
-  // const { data: educationData, isSuccess: educationSuccess } =
-  //   useGetLookupDataQuery({
-  //     lookUpType: "EducationType",
-  //     lookUpID: personObject?.educationTypeID,
-  //   });
-
-  // FETCH LOOKUP DATA
-  // useEffect(() => {
-  //   if (educationSuccess) {
-  //     if (educationData?.itemList?.length > 1) {
-  //       setEducation(null);
-  //     } else {
-  //       setEducation(educationData.itemList[0].lookUpName);
-  //     }
-  //   }
-  // }, [educationSuccess, educationData?.itemList]);
 
   useEffect(() => {
     if (maritalStatusSuccess) {

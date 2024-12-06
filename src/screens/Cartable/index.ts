@@ -1,1 +1,1 @@
-export * from "./Cartable";
+export { default as Cartable } from "./Cartable";

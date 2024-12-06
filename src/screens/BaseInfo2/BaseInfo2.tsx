@@ -1,7 +1,7 @@
 // IMPORTS
 import { BaseInfoForm } from "./forms";
 
-export const BaseInfo2 = () => {
+const BaseInfo2 = () => {
   const content = (
     <section className="flex-col">
       <div className="title-primary--container flex-row flex-center">
@@ -15,3 +15,5 @@ export const BaseInfo2 = () => {
   );
   return content;
 };
+
+export default BaseInfo2;

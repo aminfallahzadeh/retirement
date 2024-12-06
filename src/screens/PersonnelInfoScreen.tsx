@@ -1,12 +1,27 @@
 // IMPORTS
-import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { Tooltip, IconButton } from "@mui/material";
 import { ArrowBack as BackIcon } from "@mui/icons-material";
 import PersonnelInfoForm from "@/forms/PersonnelInfoForm";
 import PersonnelGridsSection from "@/sections/personnel/PersonnelGridsSection";
+import { SuspenseFallback } from "@/shared/components/SuspenseFallback";
 
 function PersonnelInfoScreen() {
+  // CONSTS
+  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+  const personID = searchParams.get("personID");
+
+  useEffect(() => {
+    if (!personID) {
+      navigate(-1);
+    }
+  }, [personID, navigate]);
+
+  if (!personID) {
+    return <SuspenseFallback />;
+  }
 
   const content = (
     <section className="flex-col u-margin-bottom-md">

@@ -1,7 +1,7 @@
 // IMPORTS
 import { RequestGrid } from "./components/RequestGrid";
 
-export const Cartable = () => {
+export default function Cartable() {
   return (
     <section className="flex-col">
       <div className="title-primary--container flex-row flex-center">
@@ -13,4 +13,4 @@ export const Cartable = () => {
       <RequestGrid />
     </section>
   );
-};
+}

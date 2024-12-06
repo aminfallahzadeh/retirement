@@ -1,4 +1,4 @@
-// IMPROTS
+// IMPORTS
 import RetiredAccountForm from "@/forms/RetiredAccountForm";
 import RetiredPensionaryForm from "@/forms/RetiredPensionaryForm";
 import RetiredPersonForm from "@/forms/RetiredPersonForm";
@@ -28,11 +28,14 @@ import RetiredHeirGrid from "@/grids/RetiredHeirGrid";
 import AllRequestsGrid from "@/grids/AllRequestsGrid";
 import RetiredSlipsGrid from "@/grids/RetiredSlipsGrid";
 
-export const Retired = () => {
+const Retired = () => {
+  // STATES
   const [value, setValue] = useState("1");
 
+  // CONSTS
   const { personDeathDate } = useAppSelector((state) => state.retiredState);
 
+  // HANDLERS
   const handleChange = (_: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
@@ -152,3 +155,5 @@ export const Retired = () => {
   );
   return content;
 };
+
+export default Retired;

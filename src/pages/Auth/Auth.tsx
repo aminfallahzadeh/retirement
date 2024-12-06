@@ -1,6 +1,8 @@
 // IMPORTS
 import { Login } from "@/screens/Login";
 
-export const Auth = () => {
+const Auth = () => {
   return <Login />;
 };
+
+export default Auth;

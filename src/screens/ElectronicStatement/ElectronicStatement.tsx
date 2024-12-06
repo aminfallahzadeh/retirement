@@ -1,7 +1,7 @@
 // IMPORTS
 import { Electronic } from "./components/Electronic";
 
-export const ElectronicStatement = () => {
+const ElectronicStatement = () => {
   const content = (
     <section className="flex-col">
       <div className="title-primary--container flex-row flex-center">
@@ -17,3 +17,5 @@ export const ElectronicStatement = () => {
   );
   return content;
 };
+
+export default ElectronicStatement;

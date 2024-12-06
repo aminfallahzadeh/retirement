@@ -20,7 +20,7 @@ Forms:
 
 General:
   □ refactor the whole code in typescript
-  □ add dynamic form support
+  ✘ add dynamic form support @cancelled(24-12-06 02:56)
   □ refactor folder structure
   □ refactor file names
   □ implement barrels
