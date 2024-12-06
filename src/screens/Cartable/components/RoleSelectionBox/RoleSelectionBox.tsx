@@ -1,29 +1,43 @@
 // IMPORTS
 import { setRole } from "@/features/request/roleSlice";
+import { useEffect, useState, useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { selectOptionsGenerator } from "@/helpers/selectOptionsGenerator";
 import { SelectInput } from "@/shared/components/SelectInput";
-import { RoleDataType } from "@/shared/types/role";
-import { useAppDispatch, useAppSelector } from "@/hooks/usePreTypesHooks";
+import { RoleDataType, RoleType } from "@/shared/types/role";
+import { useAppDispatch } from "@/hooks/usePreTypesHooks";
+import { FieldValues } from "react-hook-form";
+import { useLazyGetRoleQuery } from "@/features/request/requestApi";
 
-export const RoleSelectionBox = ({
-  isLoading,
-  roles,
-}: {
-  isLoading: boolean;
-  roles: RoleDataType["itemList"];
-}) => {
+export const RoleSelectionBox = () => {
   // STATES
-  const dispatch = useAppDispatch();
-  const { role } = useAppSelector((state) => state.role);
+  const [allRoles, setAllRoles] = useState<RoleType[]>([]);
 
   // CONSTS
-  const { control } = useForm();
-  const rolesOptions = selectOptionsGenerator<RoleDataType["itemList"][number]>(
-    roles,
-    "url",
-    "itemName"
-  );
+  const dispatch = useAppDispatch();
+  const { control, setValue } = useForm<FieldValues>({});
+  const [getRoles, { isLoading, isFetching }] = useLazyGetRoleQuery();
+
+  // FETCH DATA
+  const fetchRoles = useCallback(async () => {
+    const response = await getRoles().unwrap();
+    const rolesOptions = selectOptionsGenerator<
+      RoleDataType["itemList"][number]
+    >(response?.itemList, "url", "itemName");
+    setAllRoles(rolesOptions);
+    dispatch(setRole(rolesOptions[0]));
+    setValue("role", rolesOptions[0]);
+  }, [dispatch, getRoles, setValue]);
+
+  useEffect(() => {
+    fetchRoles();
+  }, [fetchRoles]);
+
+  useEffect(() => {
+    return () => {
+      dispatch(setRole(null));
+    };
+  }, [dispatch]);
 
   const handleSelectOptionChange = (selectedOption: unknown) => {
     if (selectedOption) {
@@ -37,9 +51,8 @@ export const RoleSelectionBox = ({
     <div style={{ width: "300px", height: "40px", margin: "10px auto" }}>
       <SelectInput
         control={control}
-        options={rolesOptions}
-        defaultValue={role ? role : undefined}
-        isLoading={isLoading}
+        options={allRoles}
+        isLoading={isLoading || isFetching}
         onValueChange={handleSelectOptionChange}
         name="role"
         label="نقش"

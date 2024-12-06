@@ -14,3 +14,4 @@ export const REPORT_GENERATOR_END = "/ReportGenerator";
 export const RETIRED_END = "/Retired";
 export const STATEMENT_END = "/RetirementStatement";
 export const SHARED_END = "/Shared";
+export const LOOKUP_END = "/Lookup";

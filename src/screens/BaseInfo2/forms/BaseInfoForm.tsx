@@ -1,28 +1,107 @@
 // IMPORTS
+import { useState, useEffect, useCallback } from "react";
 import { useForm, FieldValues } from "react-hook-form";
 import { Save as SaveIcon } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
 import { Input } from "@/shared/components/Input";
 import { SelectInput } from "@/shared/components/SelectInput";
 import { TextArea } from "@/shared/components/TextArea";
+import {
+  useGetLookupDistinctQuery,
+  useLazyGetLookupQuery,
+  useInsertLookupMutation,
+} from "@/features/lookup/lookupApi";
+import { OptionType } from "@/shared/types/options";
+import { createOptions } from "@/utils/optionsCreator";
+import { toastConfig } from "@/config/toast";
 
 export const BaseInfoForm = () => {
+  // STATES
+  const [typeOptions, setTypeOptions] = useState<OptionType[]>([]);
+  const [parentOptions, setParentOptions] = useState<OptionType[]>([]);
+
   // CONSTS
   const {
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm();
+    watch,
+    reset,
+    setValue,
+  } = useForm<FieldValues>({
+    defaultValues: {
+      title: "",
+      type: null,
+      parent: null,
+      description: "",
+    },
+  });
 
-  const onSubmit = (data: FieldValues) => {
-    console.log(data);
+  const form_data = watch();
+
+  const {
+    data: distinct,
+    isLoading: isDistinctLoading,
+    isSuccess: isDistinctSuccess,
+  } = useGetLookupDistinctQuery();
+
+  const [
+    getLookUp,
+    { isLoading: isLookUpLoading, isFetching: isLookUpFetching },
+  ] = useLazyGetLookupQuery();
+
+  const [insertLookup, { isLoading: isInsertLoading }] =
+    useInsertLookupMutation();
+
+  // LOGICS
+  const fetchLookUp = useCallback(async () => {
+    const response = await getLookUp({
+      lookupType: form_data?.type?.value,
+    }).unwrap();
+    const options = createOptions(response.itemList, "lookUpID", "lookUpName");
+    setParentOptions(options);
+    console.log(response);
+  }, [getLookUp, form_data?.type?.value]);
+
+  // HANDLERS
+  const onSubmit = async (formData: FieldValues) => {
+    const data = {
+      lookUpID: "string",
+      lookUpType: formData.type?.label,
+      lookUpTypeName: formData.title,
+      lookUpName: "string",
+      lookUpParentID: formData.parent?.value || "",
+      lookUpDescription: formData.description,
+      lookUpParentIDName: "string",
+      isDeleted: false,
+    };
+
+    const response = await insertLookup(data).unwrap();
+    toastConfig.success(response.message);
+    reset();
   };
 
-  const testOptions = [
-    { value: "test1", label: "test1" },
-    { value: "test2", label: "test2" },
-    { value: "test3", label: "test3" },
-  ];
+  useEffect(() => {
+    if (isDistinctSuccess) {
+      const options = createOptions(
+        distinct.itemList,
+        "lookUpType",
+        "lookUpTypeName"
+      );
+
+      setTypeOptions(options);
+    }
+  }, [distinct?.itemList, isDistinctSuccess]);
+
+  useEffect(() => {
+    // fetch parent on type change
+    if (form_data?.type?.value) {
+      fetchLookUp();
+    } else {
+      setValue("parent", null);
+      setParentOptions([]);
+    }
+  }, [form_data?.type?.value, fetchLookUp, setValue]);
 
   const content = (
     <section className="flex-col formContainer">
@@ -37,6 +116,7 @@ export const BaseInfoForm = () => {
             name="title"
             label="عنوان"
             control={control}
+            required={true}
             rules={{
               required: {
                 value: true,
@@ -48,10 +128,11 @@ export const BaseInfoForm = () => {
           <SelectInput
             name="type"
             label="نوع"
-            options={testOptions}
+            options={typeOptions}
             control={control}
             required={true}
             isClearable={true}
+            isLoading={isDistinctLoading}
             errors={errors}
             rules={{
               required: {
@@ -62,9 +143,10 @@ export const BaseInfoForm = () => {
           />
 
           <SelectInput
-            name="fromGroup"
+            name="parent"
             label="از مجموعه"
-            options={testOptions}
+            options={parentOptions}
+            isLoading={isLookUpLoading || isLookUpFetching}
             control={control}
             required={false}
             isClearable={true}
@@ -74,6 +156,7 @@ export const BaseInfoForm = () => {
             name="description"
             label="شرح"
             control={control}
+            required={true}
             colSpan="col-span-2"
             rowSpan="row-span-2"
           />
@@ -83,6 +166,7 @@ export const BaseInfoForm = () => {
           <LoadingButton
             dir="ltr"
             endIcon={<SaveIcon />}
+            loading={isInsertLoading}
             variant="contained"
             type="submit"
             color="success"

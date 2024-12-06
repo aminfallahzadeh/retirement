@@ -34,7 +34,7 @@ export const selectStyles = {
   }),
 };
 
-// COMON SETTINGS
+// COMO SETTINGS
 export const selectSettings = {
   noOptionsMessage: () => "موردی یافت نشد!",
   loadingMessage: () => "در حال بارگذاری ...",

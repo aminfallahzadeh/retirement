@@ -1,29 +1,3 @@
-// // IMPORTS
-// import { StylesConfig, ActionMeta } from "react-select";
-// import { UseFormReturn, RegisterOptions } from "react-hook-form";
-
-// export type Option = {
-//   value: string;
-//   label: string;
-// };
-
-// export type SelectInputProps = {
-//   label: string;
-//   name: string;
-//   required: boolean;
-//   defaultValue?: Option;
-//   isMulti?: boolean;
-//   options: Option[];
-//   handleChange?: (newValue: unknown, actionMeta?: ActionMeta<unknown>) => void;
-//   isDisabled?: boolean;
-//   value?: Option;
-//   customStyles?: StylesConfig;
-//   isLoading?: boolean;
-//   isClearable?: boolean;
-//   rules?: RegisterOptions;
-//   control: UseFormReturn["control"];
-// };
-
 // IMPORTS
 import {
   StylesConfig,
@@ -37,11 +11,7 @@ import {
   FieldErrors,
   FieldValues,
 } from "react-hook-form";
-
-export type OptionType = {
-  value: string;
-  label: string;
-};
+import { OptionType } from "@/shared/types/options";
 
 export type SelectInputProps<
   Option = SingleValue<OptionType> | MultiValue<OptionType>,

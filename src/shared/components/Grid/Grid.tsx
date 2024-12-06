@@ -24,6 +24,8 @@ export const Grid = <T extends MRT_RowData>({
   bottomBarActions,
   scroll,
   props,
+  isLoading,
+  isFetching,
 }: {
   columns: MRT_ColumnDef<T>[];
   data: T[];
@@ -31,6 +33,8 @@ export const Grid = <T extends MRT_RowData>({
   bottomBarActions?: ReactNode;
   scroll: boolean;
   props?: object;
+  isLoading?: boolean;
+  isFetching?: boolean;
 }) => {
   const [rowSelection, setRowSelection] = useState<MRT_RowSelectionState>({});
 
@@ -39,6 +43,15 @@ export const Grid = <T extends MRT_RowData>({
     data,
     renderTopToolbarCustomActions: () => topBarActions,
     renderBottomToolbarCustomActions: () => bottomBarActions,
+    muiLinearProgressProps: {
+      color: "info",
+      sx: {
+        height: 2,
+      },
+    },
+    muiCircularProgressProps: {
+      color: "info",
+    },
     muiTopToolbarProps: topBarActions
       ? {
           sx: {
@@ -114,7 +127,7 @@ export const Grid = <T extends MRT_RowData>({
       : undefined,
     getRowId: (originalRow) => originalRow.id,
     onRowSelectionChange: setRowSelection,
-    state: { rowSelection },
+    state: { rowSelection, isLoading: isLoading, showProgressBars: isFetching },
     ...props,
   });
 

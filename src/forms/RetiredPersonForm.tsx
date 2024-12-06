@@ -64,7 +64,6 @@ function RetiredPersonForm() {
     isFetching,
     isSuccess,
     error,
-
     refetch,
   } = useGetRetiredPersonQuery(personID);
 

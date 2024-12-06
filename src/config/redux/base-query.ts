@@ -26,7 +26,7 @@ const baseQuery: BaseQueryFn<
 
   const dynamicBaseQuery = fetchBaseQuery({
     baseUrl,
-    credentials: "same-origin",
+    credentials: "omit",
     prepareHeaders: (headers, { getState, endpoint }) => {
       const state = getState() as { auth: { token: string | null } };
       const token = state.auth.token;
@@ -50,7 +50,7 @@ export const baseQueryWithReauth: BaseQueryFn<
   await mutex.waitForUnlock();
   let result = await baseQuery(args, api, extraOptions);
 
-  console.log("ERROR RESULT", result.error);
+  //   console.log("ERROR RESULT", result);
 
   if (result.error && result.error.status === "FETCH_ERROR") {
     if (!mutex.isLocked()) {

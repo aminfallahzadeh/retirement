@@ -2,17 +2,14 @@
 import { Box, IconButton, Tooltip, CircularProgress } from "@mui/material";
 import { Refresh as RefreshIcon } from "@mui/icons-material";
 import { RoleSelectionBox } from "../RoleSelectionBox";
-import { RoleDataType } from "@/shared/types/role";
 
 export const topBarActionsProvider = ({
   isLoading,
   isFetching,
-  roles,
   handleRefresh,
 }: {
   isLoading: boolean;
   isFetching: boolean;
-  roles: RoleDataType["itemList"];
   handleRefresh: () => void;
 }) => (
   <Box
@@ -37,6 +34,6 @@ export const topBarActionsProvider = ({
       </Tooltip>
     )}
 
-    <RoleSelectionBox isLoading={isLoading} roles={roles} />
+    <RoleSelectionBox />
   </Box>
 );

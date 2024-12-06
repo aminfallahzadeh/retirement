@@ -1,4 +1,4 @@
-// IMPROTS
+// IMPORTS
 import { Link } from "react-router-dom";
 import { IconButton, Tooltip } from "@mui/material";
 import {

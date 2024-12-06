@@ -1,7 +1,7 @@
 // // IMPORTS
 import { useState } from "react";
 import Select, { StylesConfig, SingleValue } from "react-select";
-import { OptionType } from "./types";
+import { OptionType } from "@/shared/types/options";
 import { Controller } from "react-hook-form";
 import { FC } from "react";
 import makeAnimated from "react-select/animated";
@@ -18,13 +18,13 @@ export const SelectInput: FC<SelectInputProps> = ({
   options,
   isMulti = false,
   customStyles,
-  defaultValue,
+  isLoading,
   rules,
   control,
   onValueChange,
   errors,
 }) => {
-  const [hasValue, setHasValue] = useState(!!defaultValue);
+  const [hasValue, setHasValue] = useState<boolean>(false);
 
   const selectStyles: StylesConfig = {
     container: (base) => ({
@@ -70,11 +70,14 @@ export const SelectInput: FC<SelectInputProps> = ({
         name={name}
         rules={rules}
         control={control}
-        render={({ field: { onChange } }) => (
+        render={({ field: { onChange, value } }) => (
           <Select
+            id={name}
+            value={value}
             components={animatedComponents}
             isClearable={isClearable}
-            isDisabled={isDisabled}
+            isDisabled={isDisabled || isLoading}
+            isLoading={isLoading}
             onChange={(val) => {
               setHasValue(!!val);
               onValueChange?.(val as SingleValue<OptionType>);
@@ -82,11 +85,16 @@ export const SelectInput: FC<SelectInputProps> = ({
             }}
             placeholder={
               <div className="react-select-placeholder">
-                {required && <span>*</span>} {label}
+                {isLoading ? (
+                  LOADING_MESSAGE
+                ) : (
+                  <>
+                    {required && <span>*</span>} {label}
+                  </>
+                )}
               </div>
             }
             options={options}
-            defaultValue={defaultValue}
             isMulti={isMulti}
             closeMenuOnSelect={!isMulti}
             styles={mergedStyles}
@@ -96,7 +104,10 @@ export const SelectInput: FC<SelectInputProps> = ({
         )}
       />
 
-      <label className={hasValue ? "label--selected" : "label--unselected"}>
+      <label
+        htmlFor={name}
+        className={hasValue ? "label--selected" : "label--unselected"}
+      >
         {required && <span>*</span>} {label}
       </label>
 
