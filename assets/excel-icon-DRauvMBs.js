@@ -1,1 +1,0 @@
-import{c as e,j as s}from"./index-Bx2CJIsO.js";const o=e(s.jsx("path",{d:"M9 16h6v-6h4l-7-7-7 7h4zm3-10.17L14.17 8H13v6h-2V8H9.83zM5 18h14v2H5z"}),"UploadOutlined"),a="/retirement/assets/excel-icon-K9ONf3Iq.png";export{o as U,a as e};
