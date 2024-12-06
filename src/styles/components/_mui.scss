@@ -1,8 +1,7 @@
 /* tooltip */
 .MuiTooltip-tooltip {
-    font-family: Vazir !important;
-    font-weight: 100 !important;
-    font-size: 0.78rem !important;
+    font-family: "IranYekan" !important;
+    font-weight: 300 !important;
     text-align: center !important;
 }
 
@@ -17,14 +16,15 @@
 }
 
 .MuiTab-root {
-    font-family: sahel !important;
-    font-size: 20px !important;
+    font-family: "IranYekan" !important;
+    font-size: 18px !important;
+    font-weight: 300 !important;
 }
 
 /* button */
 .MuiButton-root {
     direction: ltr !important;
-    font-family: IranYekan, sans-serif !important;
+    font-family: "IranYekan", sans-serif !important;
 }
 
 /* grids */

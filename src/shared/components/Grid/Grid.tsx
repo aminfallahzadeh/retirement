@@ -89,6 +89,7 @@ export const Grid = <T extends MRT_RowData>({
       align: "center",
       sx: {
         fontFamily: "IranYekan",
+        fontWeight: "300",
         borderRight: "1px solid #cfcfcf",
       },
     },

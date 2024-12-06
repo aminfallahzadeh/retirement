@@ -1,6 +1,7 @@
 // IMPORTS
 import { apiSlice } from "@/features/api/apiSlice";
 import { USER_END } from "../api/endpoints";
+import { PermissionData } from "@/shared/types/domain/user";
 
 export const usersApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -103,7 +104,7 @@ export const usersApi = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
-    getItemAccess: builder.query({
+    getItemAccess: builder.query<PermissionData, void>({
       query: () => ({
         url: `${USER_END}/GetItemAccess`,
       }),

@@ -12,7 +12,7 @@ import { jwtDecode } from "jwt-decode";
 import { CiSearch } from "react-icons/ci";
 import { JwtPayload } from "jwt-decode";
 import { toastConfig } from "@/config/toast/toast-config";
-import Header from "@/components/Header";
+import { Header } from "@/shared/components/Header";
 import SearchScreen from "@/screens/SearchScreen";
 
 function App() {
