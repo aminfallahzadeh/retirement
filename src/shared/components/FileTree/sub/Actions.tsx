@@ -39,10 +39,6 @@ const options = {
 
   title: (imageData: { naturalWidth: number; naturalHeight: number }) =>
     `(${imageData.naturalWidth} × ${imageData.naturalHeight})`,
-
-  //   viewed() {
-  //     this.viewer.scale(1.2);
-  //   },
 };
 
 /**

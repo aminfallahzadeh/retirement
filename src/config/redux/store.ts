@@ -13,7 +13,6 @@ import groupsUserDataSliceReducer from "@/slices/groupsUserDataSlice";
 import archiveDataSliceReducer from "@/features/archive/archiveSlice";
 import heirDataSliceReducer from "@/slices/heirDataSlice";
 import personDataSliceReducer from "@/slices/personDataSlice";
-import themeDataSliceReducer from "@/slices/themeDataSlice";
 import slipsDataSliceReducer from "@/slices/slipsDataSlice";
 import statementSliceReducer from "@/features/statement/statementSlice";
 import fractionDataSliceReducer from "@/slices/fractionDataSlice";
@@ -23,11 +22,13 @@ import payCompareDataSliceReducer from "@/slices/payCompareDataSlice";
 import financialDataSliceReducer from "@/slices/financialDataSlice";
 import configReducer from "@/features/api/configSlice";
 import roleSliceReducer from "@/features/request/roleSlice";
+import themeSliceReducer from "@/features/user/themeSlice";
 
 const store = configureStore({
   reducer: {
     [apiSlice.reducerPath]: apiSlice.reducer,
     role: roleSliceReducer,
+    theme: themeSliceReducer,
     config: configReducer,
     auth: authSliceReducer,
     roleData: roleDataReducer,
@@ -41,7 +42,6 @@ const store = configureStore({
     archiveData: archiveDataSliceReducer,
     heirData: heirDataSliceReducer,
     personData: personDataSliceReducer,
-    themeData: themeDataSliceReducer,
     slipsData: slipsDataSliceReducer,
     statementSlice: statementSliceReducer,
     fractionData: fractionDataSliceReducer,

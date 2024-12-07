@@ -67,12 +67,12 @@ export const BaseInfoForm = () => {
   const onSubmit = async (formData: FieldValues) => {
     const data = {
       lookUpID: "string",
-      lookUpType: formData.type?.label,
-      lookUpTypeName: formData.title,
-      lookUpName: "string",
+      lookUpType: formData.type?.value,
+      lookUpTypeName: formData.type?.label,
+      lookUpName: formData.title,
       lookUpParentID: formData.parent?.value || "",
       lookUpDescription: formData.description,
-      lookUpParentIDName: "string",
+      lookUpParentIDName: formData.parent?.label || "",
       isDeleted: false,
     };
 

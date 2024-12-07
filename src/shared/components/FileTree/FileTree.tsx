@@ -1,19 +1,26 @@
 // IMPORTS
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
+import { TreeViewBaseItem } from "@mui/x-tree-view/models";
 import { useTreeViewApiRef } from "@mui/x-tree-view/hooks/useTreeViewApiRef";
 import { RichTreeView } from "@mui/x-tree-view/RichTreeView";
 import { CustomTreeItem, Actions } from "./sub";
 import { FileTreeProps, SelectedItem } from "./types";
+import {
+  Search as SearchIcon,
+  QuestionMark as QuestionIcon,
+} from "@mui/icons-material";
 import { generateTreeSchema } from "./schema";
-import { Stack, LinearProgress } from "@mui/material";
+import { Stack, LinearProgress, IconButton } from "@mui/material";
 import { Image as ImageIcon, BrokenImage } from "@mui/icons-material";
 import { prefixer } from "stylis";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 import rtlPlugin from "stylis-plugin-rtl";
-import { PARENT_FOLDER_ID, PREVIEW } from "@/constants/const";
+import { filterTree } from "@/utils/filterTree";
+import { PREVIEW } from "@/constants/const";
 import { fixAttachment } from "@/utils/fixAttachment";
 import { Img } from "../Img";
+
 export const FileTree = ({
   structure,
   files,
@@ -22,12 +29,12 @@ export const FileTree = ({
   refetch,
 }: FileTreeProps) => {
   // STATES
+  const [search, toggleSearch] = useState<boolean>(false);
+  const [term, setTerm] = useState<string>("");
   const [previewImage, setPreviewImage] = useState<string | null>(null);
   const [selectedItem, setSelectedItem] = useState<SelectedItem>(null);
   const apiRef = useTreeViewApiRef();
-  const [expandedItems, setExpandedItems] = useState<string[]>([
-    PARENT_FOLDER_ID,
-  ]);
+  const [expandedItems, setExpandedItems] = useState<string[]>([]);
 
   // CONSTS
   const cacheRtl = createCache({
@@ -35,26 +42,49 @@ export const FileTree = ({
     stylisPlugins: [prefixer, rtlPlugin],
   });
   const items = generateTreeSchema(structure, files);
+  //   const filteredItems = filterTree(items, term);
+  const filteredItems = useMemo(() => filterTree(items, term), [items, term]);
 
   // HANDLERS
+  const handelToggleSearch = () => {
+    toggleSearch((prev) => !prev);
+    setTerm("");
+  };
+
   const handleExpandedItemsChange = (
     _: React.SyntheticEvent,
     itemIds: string[]
   ) => {
-    const restrictedItemId = PARENT_FOLDER_ID;
-    const expandeds = itemIds.includes(restrictedItemId)
-      ? itemIds
-      : [...itemIds, restrictedItemId];
-
-    console.log("Updated expanded item IDs:", expandeds);
-    setExpandedItems(expandeds);
+    setExpandedItems(itemIds);
   };
+
+  useEffect(() => {
+    // expand parent found items
+    const getExpandedItemIds = (items: TreeViewBaseItem[]): string[] => {
+      return items.flatMap((item) =>
+        item.children ? [item.id, ...getExpandedItemIds(item.children)] : []
+      );
+    };
+
+    const expandedIds = getExpandedItemIds(filteredItems);
+    setExpandedItems(expandedIds);
+
+    if (!term) {
+      setExpandedItems([]);
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [term]);
 
   const onItemClick = (id: string) => {
     if (apiRef.current?.getItem) {
       const item = apiRef.current?.getItem(id);
       setSelectedItem(item);
     }
+  };
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTerm(e.target.value);
   };
 
   // PREVIEW SIDE EFFECT
@@ -74,28 +104,58 @@ export const FileTree = ({
       <LinearProgress color="primary" />
     </Stack>
   ) : (
-    <Stack>
-      <Actions access={access} item={selectedItem} refetch={refetch} />
+    <Stack sx={{ width: 800, marginTop: 2 }} spacing={2}>
+      <div className="flex flex-row gap-0 justify-start items-start">
+        <IconButton
+          aria-label="search"
+          color="warning"
+          onClick={handelToggleSearch}
+        >
+          <SearchIcon />
+        </IconButton>
+
+        <Actions access={access} item={selectedItem} refetch={refetch} />
+      </div>
+
+      {search && (
+        <input
+          type="text"
+          placeholder="جست و جو"
+          className="w-[400px] outline-none border border-gray-300 rounded-md px-2 py-1"
+          value={term}
+          onChange={handleSearch}
+        />
+      )}
 
       <div className="flex flex-row">
         <CacheProvider value={cacheRtl}>
-          <RichTreeView
-            items={items}
-            apiRef={apiRef}
-            onItemClick={(_, id) => onItemClick(id)}
-            onExpandedItemsChange={handleExpandedItemsChange}
-            expandedItems={expandedItems}
-            sx={{
-              height: "fit-content",
-              flexGrow: 1,
-              maxWidth: 400,
-              overflowY: "auto",
-              backgroundColor: "#cfcfcf",
-              borderRadius: "6px",
-              padding: "5px",
-            }}
-            slots={{ item: CustomTreeItem }}
-          />
+          {filteredItems.length === 0 ? (
+            <div className="flex flex-col justify-center items-center w-[400px]">
+              <QuestionIcon color={"error"} sx={{ fontSize: "200px" }} />
+
+              <span className="text-xl font-iranYekan font-medium">
+                موردی یافت نشد !
+              </span>
+            </div>
+          ) : (
+            <RichTreeView
+              items={filteredItems}
+              apiRef={apiRef}
+              onItemClick={(_, id) => onItemClick(id)}
+              onExpandedItemsChange={handleExpandedItemsChange}
+              expandedItems={expandedItems}
+              sx={{
+                height: "fit-content",
+                flexGrow: 1,
+                maxWidth: 400,
+                overflowY: "auto",
+                //   backgroundColor: "#cfcfcf",
+                borderRadius: "6px",
+                padding: "5px",
+              }}
+              slots={{ item: CustomTreeItem }}
+            />
+          )}
         </CacheProvider>
 
         {access === "all" || access === "files" ? (

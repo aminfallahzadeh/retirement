@@ -10,7 +10,7 @@ import {
   useUpdateUserThemeMutation,
   useGetItemAccessQuery,
 } from "@/features/user/userApi";
-import { setNavPanelOpen } from "@/slices/themeDataSlice";
+import { setNavPanelOpen } from "@/features/user/themeSlice";
 import { setUserPermissionsData } from "@/slices/userPermissionsDataSlice";
 import { CustomModal } from "@/shared/components/CustomModal";
 import DigitalClock from "@/components/DigitalClock";
@@ -43,12 +43,12 @@ export const NavBar = ({
 
   // CONSTS
   const { userID } = useAppSelector((state) => state.auth);
+  const { refreshToken } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
   const location = useLocation();
   const shouldFetch = !!userID;
   const [updateUserTheme] = useUpdateUserThemeMutation();
   const [logoutApi, { isLoading: logoutLoading }] = useLogoutMutation();
-  const { refreshToken } = useAppSelector((state) => state.auth);
   const { data: user, refetch: userRefetch } = useGetUserThemeQuery({
     skip: !shouldFetch,
   });

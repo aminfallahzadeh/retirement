@@ -106,10 +106,12 @@ export const baseQueryWithReauth: BaseQueryFn<
   }
 
   if (result.error) {
+    // console.log("ERROR RESULT:", result.error);
     const errorMessage =
-      (result.error.data && (result.error.data as { title?: string }).title) ||
-      (result.error.data as { message?: string }).message ||
-      result.error.status ||
+      (result?.error?.data &&
+        (result.error.data as { title?: string }).title) ||
+      (result?.error?.data as { message?: string })?.message ||
+      result?.error?.status ||
       "خطایی رخ داده است";
     toastConfig.error(`${errorMessage}`);
   }

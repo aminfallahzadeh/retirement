@@ -1,30 +1,14 @@
-// REACT IMPORTS
-import { useEffect } from "react";
-
-// RRD
+// IMPORTS
 import { useNavigate } from "react-router-dom";
-
-// REDUX
-import { useDispatch } from "react-redux";
-import { setNavPanelOpen } from "@/slices/themeDataSlice";
-
-// MUI
 import { Button } from "@mui/material";
 import {
   ArrowBack as BackIcon,
   HomeOutlined as HomeIcon,
 } from "@mui/icons-material";
-
-// ASSETS
 import errorImage from "@images/404.png";
 
 export const Error = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    dispatch(setNavPanelOpen(false));
-  }, [dispatch]);
 
   return (
     <div className="errorContainer">
