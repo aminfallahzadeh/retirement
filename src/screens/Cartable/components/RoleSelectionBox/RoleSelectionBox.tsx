@@ -2,7 +2,7 @@
 import { setRole } from "@/features/request/roleSlice";
 import { useEffect, useState, useCallback } from "react";
 import { useForm } from "react-hook-form";
-import { selectOptionsGenerator } from "@/helpers/selectOptionsGenerator";
+import { createOptions } from "@/utils/optionsCreator";
 import { SelectInput } from "@/shared/components/SelectInput";
 import { RoleDataType, RoleType } from "@/shared/types/role";
 import { useAppDispatch } from "@/hooks/usePreTypesHooks";
@@ -21,9 +21,11 @@ export const RoleSelectionBox = () => {
   // FETCH DATA
   const fetchRoles = useCallback(async () => {
     const response = await getRoles().unwrap();
-    const rolesOptions = selectOptionsGenerator<
-      RoleDataType["itemList"][number]
-    >(response?.itemList, "url", "itemName");
+    const rolesOptions = createOptions<RoleDataType["itemList"][number]>(
+      response?.itemList,
+      "url",
+      "itemName"
+    );
     setAllRoles(rolesOptions);
     dispatch(setRole(rolesOptions[0]));
     setValue("role", rolesOptions[0]);
