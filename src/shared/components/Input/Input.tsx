@@ -33,7 +33,7 @@ export const Input: FC<InputProps> = ({
         <span className="error-form">{fieldState?.error.message}</span>
       )}
       <input
-        autoComplete="false"
+        autoComplete="off"
         value={field.value}
         onChange={field.onChange}
         disabled={!editable}

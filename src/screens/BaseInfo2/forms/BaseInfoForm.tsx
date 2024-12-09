@@ -157,8 +157,7 @@ export const BaseInfoForm = () => {
             label="شرح"
             control={control}
             required={true}
-            colSpan="col-span-2"
-            rowSpan="row-span-2"
+            containerClassNames={"col-span-2 row-span-2"}
           />
         </div>
 

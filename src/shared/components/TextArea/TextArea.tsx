@@ -13,8 +13,7 @@ export const TextArea: FC<TextAreaProps> = ({
   control,
   value = "",
   editable = true,
-  colSpan = "",
-  rowSpan = "",
+  containerClassNames = "",
 }) => {
   const { field, fieldState } = useController({
     control,
@@ -29,7 +28,7 @@ export const TextArea: FC<TextAreaProps> = ({
   };
 
   const content = (
-    <div className={`inputBox__form ${colSpan}  ${rowSpan}`}>
+    <div className={`inputBox__form ${containerClassNames}`}>
       {fieldState?.error && (
         <span className="error-form">{fieldState?.error.message}</span>
       )}
@@ -40,7 +39,7 @@ export const TextArea: FC<TextAreaProps> = ({
         onChange={field.onChange}
         id={name}
         name={name}
-        className="inputBox__form--input"
+        className="inputBox__form--input pt-3"
         required
       />
 

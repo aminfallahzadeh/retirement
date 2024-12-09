@@ -1,4 +1,4 @@
-// // IMPORTS
+// IMPORTS
 import { useState } from "react";
 import Select, { StylesConfig, SingleValue } from "react-select";
 import { OptionType } from "@/shared/types/options";
@@ -32,7 +32,7 @@ export const SelectInput: FC<SelectInputProps> = ({
       position: "relative",
       height: "100%",
     }),
-    control: (base) => ({
+    control: (base, state) => ({
       ...base,
       fontFamily: "IranYekan",
       cursor: "pointer",
@@ -43,7 +43,13 @@ export const SelectInput: FC<SelectInputProps> = ({
       overflow: "auto",
       textOverflow: "ellipsis",
       position: "relative",
-      borderColor: "var(--color-input-border)",
+      borderColor: state.isDisabled
+        ? "var(--color-disbaled-input-border)"
+        : "var(--color-input-border)",
+    }),
+    placeholder: (base) => ({
+      ...base,
+      color: "var(--color-input-border)",
     }),
     menu: (base) => ({
       ...base,

@@ -9,6 +9,5 @@ export type TextAreaProps = {
   control: UseFormReturn["control"];
   value?: string;
   editable?: boolean;
-  colSpan?: string;
-  rowSpan?: string;
+  containerClassNames?: string;
 };

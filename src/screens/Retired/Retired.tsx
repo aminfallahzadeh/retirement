@@ -1,7 +1,6 @@
 // IMPORTS
 import RetiredAccountForm from "@/forms/RetiredAccountForm";
 import RetiredPensionaryForm from "@/forms/RetiredPensionaryForm";
-import RetiredPersonForm from "@/forms/RetiredPersonForm";
 import { Electronic } from "./components/Electronic";
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import { ArrowDropDown as ArrowDropDownIcon } from "@mui/icons-material";
@@ -27,13 +26,14 @@ import RetiredStatementsGrid from "@/grids/RetiredStatementsGrid";
 import RetiredHeirGrid from "@/grids/RetiredHeirGrid";
 import AllRequestsGrid from "@/grids/AllRequestsGrid";
 import RetiredSlipsGrid from "@/grids/RetiredSlipsGrid";
+import { PersonForm } from "./forms";
 
 const Retired = () => {
   // STATES
   const [value, setValue] = useState("1");
 
   // CONSTS
-  const { personDeathDate } = useAppSelector((state) => state.retiredState);
+  const { personDeathDate } = useAppSelector((state) => state.person);
 
   // HANDLERS
   const handleChange = (_: React.SyntheticEvent, newValue: string) => {
@@ -54,7 +54,8 @@ const Retired = () => {
             {RETIRED_PERSON_INFO}
           </AccordionSummary>
           <AccordionDetails>
-            <RetiredPersonForm />
+            <PersonForm />
+            {/* <RetiredPersonForm /> */}
           </AccordionDetails>
         </Accordion>
 

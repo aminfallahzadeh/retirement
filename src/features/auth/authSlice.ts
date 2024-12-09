@@ -41,7 +41,7 @@ const authSlice = createSlice({
 
     setNewCredentials: (state, action) => {
       const { token } = action.payload.itemList[0];
-      const oldCredentials = JSON.parse(storage.get("userInfo"));
+      const oldCredentials = JSON.parse(storage.get("userInfo")!);
       state.token = token;
       sessionStorage.clear();
       sessionStorage.setItem(
@@ -54,7 +54,6 @@ const authSlice = createSlice({
       state.token = null;
       state.refreshToken = null;
       sessionStorage.removeItem("userInfo");
-      sessionStorage.removeItem("permissions");
     },
 
     setUserID: (state, action) => {

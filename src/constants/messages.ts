@@ -3,3 +3,5 @@ export const PERSIAN_LETTERS_MESSAGE = "فقط حروف فارسی مجاز اس
 
 export const NO_OPTION_MESSAGE = "موردی یافت نشد";
 export const LOADING_MESSAGE = "در حال بارگذاری ...";
+
+export const NOT_VALID_MESSAGE = "اطلاعات معتبر نیست";

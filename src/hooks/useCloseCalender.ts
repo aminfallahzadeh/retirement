@@ -1,11 +1,15 @@
-// react imports
-import { useEffect } from "react";
+// IMPORTS
+import { MutableRefObject, useEffect, Dispatch, SetStateAction } from "react";
 
-const useCloseCalender = (calenderRefs, setHandlers) => {
+const useCloseCalender = (
+  calenderRefs: MutableRefObject<HTMLElement | null>[],
+  setHandlers: Dispatch<SetStateAction<boolean>>[]
+) => {
   useEffect(() => {
-    const handleCloseCalender = (event) => {
+    const handleCloseCalender = (event: MouseEvent) => {
+      const target = event.target as Node | null;
       calenderRefs.forEach((inputRef, index) => {
-        if (inputRef.current && !inputRef.current.contains(event.target)) {
+        if (inputRef.current && target && !inputRef.current.contains(target)) {
           setHandlers[index](false);
         }
       });

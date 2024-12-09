@@ -65,3 +65,24 @@ export class NumberHelper {
     return isNegative ? "-" + result : result;
   }
 }
+
+export const convertToPersianNumber = (num: number | string) => {
+  if (num || num === 0) {
+    const persianDigits = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
+    const result = String(num).replace(
+      /\d/g,
+      (match) => persianDigits[parseInt(match, 10)]
+    );
+    return result;
+  }
+  return "";
+};
+
+export const convertToEnglishNumber = (str: string) => {
+  if (typeof str === "string") {
+    for (let i = 0; i < 10; i++) {
+      str = str.replace(PERSIAN_NUMBERS[i], i.toString());
+    }
+  }
+  return str;
+};

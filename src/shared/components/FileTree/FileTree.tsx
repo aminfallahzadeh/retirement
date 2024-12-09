@@ -11,7 +11,11 @@ import {
 } from "@mui/icons-material";
 import { generateTreeSchema } from "./schema";
 import { Stack, LinearProgress, IconButton } from "@mui/material";
-import { Image as ImageIcon, BrokenImage } from "@mui/icons-material";
+import {
+  Image as ImageIcon,
+  Close as CloseIcon,
+  BrokenImage,
+} from "@mui/icons-material";
 import { prefixer } from "stylis";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
@@ -48,6 +52,10 @@ export const FileTree = ({
   // HANDLERS
   const handelToggleSearch = () => {
     toggleSearch((prev) => !prev);
+    setTerm("");
+  };
+
+  const handleRemoveTerm = () => {
     setTerm("");
   };
 
@@ -118,13 +126,27 @@ export const FileTree = ({
       </div>
 
       {search && (
-        <input
-          type="text"
-          placeholder="جست و جو"
-          className="w-[400px] outline-none border border-gray-300 rounded-md px-2 py-1"
-          value={term}
-          onChange={handleSearch}
-        />
+        <div className="flex flex-row w-[400px] gap-2 justify-start items-center relative">
+          <input
+            type="text"
+            placeholder="جست و جو"
+            className="w-[400px] outline-none border border-gray-300 rounded-md px-2 py-1 placeholder:text-sm"
+            value={term}
+            onChange={handleSearch}
+          />
+
+          {term ? (
+            <div className="absolute top-[2px] left-1">
+              <IconButton
+                color="default"
+                size="small"
+                onClick={handleRemoveTerm}
+              >
+                <CloseIcon fontSize="small" />
+              </IconButton>
+            </div>
+          ) : null}
+        </div>
       )}
 
       <div className="flex flex-row">
@@ -149,7 +171,6 @@ export const FileTree = ({
                 flexGrow: 1,
                 maxWidth: 400,
                 overflowY: "auto",
-                //   backgroundColor: "#cfcfcf",
                 borderRadius: "6px",
                 padding: "5px",
               }}

@@ -1,14 +1,11 @@
 // IMPORTS
 import { createSlice } from "@reduxjs/toolkit";
-import { RequestType } from "@/shared/types/requestTypes";
 
 const initialState: {
-  requestTableData: RequestType[];
   selectedRequestData: any[];
   allRequestTableData: any[];
   selectedRequestAllRequests: any[];
 } = {
-  requestTableData: [],
   selectedRequestData: [],
   allRequestTableData: [],
   selectedRequestAllRequests: [],

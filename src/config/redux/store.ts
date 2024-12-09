@@ -2,9 +2,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { apiSlice } from "@/features/api/apiSlice";
 import authSliceReducer from "@/features/auth/authSlice";
-import userPermissionsDataSliceReducer from "@/slices/userPermissionsDataSlice";
-import captchaSliceReducer from "@/slices/captchaSlice";
-import retiredStateSliceReducer from "@/slices/retiredStateSlice";
 import roleDataReducer from "@/slices/roleDataSlice";
 import itemsDataSliceReducer from "@/slices/itemsDataSlice";
 import groupItemsDataSliceReducer from "@/slices/groupItemsDataSlice";
@@ -22,19 +19,18 @@ import payCompareDataSliceReducer from "@/slices/payCompareDataSlice";
 import financialDataSliceReducer from "@/slices/financialDataSlice";
 import configReducer from "@/features/api/configSlice";
 import roleSliceReducer from "@/features/request/roleSlice";
-import themeSliceReducer from "@/features/user/themeSlice";
+import userSliceReducer from "@/features/user/userSlice";
+import personSliceReducer from "@/features/person/personSlice";
 
 const store = configureStore({
   reducer: {
     [apiSlice.reducerPath]: apiSlice.reducer,
     role: roleSliceReducer,
-    theme: themeSliceReducer,
+    user: userSliceReducer,
+    person: personSliceReducer,
     config: configReducer,
     auth: authSliceReducer,
     roleData: roleDataReducer,
-    userPermissionsData: userPermissionsDataSliceReducer,
-    captcha: captchaSliceReducer,
-    retiredState: retiredStateSliceReducer,
     itemsData: itemsDataSliceReducer,
     groupItemsData: groupItemsDataSliceReducer,
     userGroupsData: userGroupsDataSliceReducer,

@@ -36,7 +36,7 @@ function App() {
   const [logoutApi] = useLogoutMutation();
   const { refreshToken } = useAppSelector((state) => state.auth);
   const { token } = useAppSelector((state) => state.auth);
-  const { navPanelOpen } = useAppSelector((state) => state.theme);
+  const { navPanelOpen } = useAppSelector((state) => state.user);
 
   const navigate = useNavigate();
   const location = useLocation();

@@ -1,24 +1,18 @@
-// react imports
+// IMPORTS
 import { useState, useEffect, useRef } from "react";
 import { useForm, Controller } from "react-hook-form";
-
-// REDUX
-import { useSelector } from "react-redux";
+import { useAppSelector } from "@/hooks/usePreTypesHooks";
 import {
   useUpdateRetiredPensionaryMutation,
   useGetRetiredPensionaryQuery,
   useGetAllPensionariesQuery,
 } from "@/features/retired/retiredApi";
-
-// HOOKS
 import {
   useFetchPensionaryStatus,
   useFetchLookUpData,
   useFetchOrganizations,
 } from "@/hooks/useFetchLookUpData";
 import { useCloseCalender } from "@/hooks/useCloseCalender";
-
-// MUI
 import { Button, Box, CircularProgress } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import {
@@ -26,25 +20,17 @@ import {
   Save as SaveIcon,
   EditOutlined as EditIcon,
 } from "@mui/icons-material";
-
-// COMPONENTS
 import PensionaryStatusHistoryGrid from "@/grids/PensionaryStatusHistoryGrid";
-
-// HELPERS
 import {
   convertToPersianDate,
   convertToPersianNumber,
   convertToEnglishNumber,
 } from "@/helper";
-
-// LIBRARIES
 import { toast } from "react-toastify";
 import "jalaali-react-date-picker/lib/styles/index.css";
 import { InputDatePicker } from "jalaali-react-date-picker";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
-
-// UTILS
 import {
   selectStyles,
   selectSettings,
@@ -53,29 +39,21 @@ import {
 import { datePickerStyles, datePickerWrapperStyles } from "../utils/datePicker";
 
 function RetiredPensionaryForm() {
+  // STATES
   const retirementCalenderRef = useRef(null);
   const changeStatusCalenderRef = useRef(null);
-
-  // CONTORL STATES
   const [editable, setEditable] = useState(false);
-
-  const animatedComponents = makeAnimated();
-
-  // DATE STATES
   const [selectedRetriementDate, setSelectedRetriementDate] = useState(null);
   const [selectedChangeStatusDate, setSelectedChangeStatusDate] =
     useState(null);
-
-  // CALENDER STATES
   const [isChangeStatusCalenderOpen, setIsChangeStatusCalenderOpen] =
     useState(false);
   const [isRetriementCalenderOpen, setIsRetirementCalenderOpen] =
     useState(false);
-
-  // TABLE STATES
   const [statusHistoryTableData, setStatusHistoryTableData] = useState([]);
 
-  // ACCESS REACT HOOK FORM CONTROL
+  // CONSTS
+  const animatedComponents = makeAnimated();
   const {
     handleSubmit,
     formState: { errors },
@@ -85,20 +63,13 @@ function RetiredPensionaryForm() {
     setValue,
     reset,
   } = useForm();
-
-  // ACCESS REACT HOOK FORM DATA
   const form_data = watch();
-
-  // ACCESS UPDATE QUERY
   const [updateRetiredPensionary, { isLoading: isUpdating }] =
     useUpdateRetiredPensionaryMutation();
-
   const searchParams = new URLSearchParams(location.search);
   const personID = searchParams.get("personID");
+  const { personDeathDate } = useAppSelector((state) => state.person);
 
-  const { personDeathDate } = useSelector((state) => state.retiredState);
-
-  // GET PENSIONARY STATUS HISTORY
   const {
     data: statusHistory,
     isSuccess: isStatusHistorySuccess,

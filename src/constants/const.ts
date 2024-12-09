@@ -1,5 +1,5 @@
 // IMPORTS
-import { createFields } from "@/helpers/FieldHelper";
+import { createFields } from "@/helpers/fieldHelper";
 
 // GRID FIELDS
 export const REQUEST_ROW_NUM = createFields("requestRowNum", "ردیف");
@@ -39,6 +39,7 @@ export const SCAN = "اسکن";
 export const SAVE = "ذخیره";
 export const UPLOAD = "بارگذاری";
 export const LOGIN = "ورود";
+export const EDIT = "ویرایش";
 
 // RETIRED
 export const RETIRED_INFO = "اطلاعات بازنشسته";
@@ -65,3 +66,41 @@ export const STATEMENTS = "احکام";
 export const PAYSLIP = "فیش حقوقی";
 export const REQUESTS = "درخواست ها";
 export const PREVIEW = "پیش نمایش";
+
+// FORMS
+export const FIRST_NAME = "نام";
+export const LAST_NAME = "نام خانوادگی";
+export const NATIONAL_CODE = "کد ملی";
+export const CORTICATE_NO = "شماره شناسنامه";
+export const FATHER_NAME = "نام پدر";
+export const GENDER = "جنسیت";
+export const BIRTH_DATE = "تاریخ تولد";
+export const DEATH_DATE = "تاریخ فوت";
+export const BIRTH_PLACE = "محل تولد";
+export const PREVIOUS_NAME = "نام قبلی";
+export const RETIRED_NO = "شماره بازنشستگی";
+export const PHONE_NO = "تلفن ثابت";
+export const MOBILE_NO = "تلفن همراه";
+export const BACKUP_PHONE_NO = "تلفن پشتیبان";
+export const BACKUP_FIRST_NAME = "نام پشتیبان";
+export const BACKUP_LAST_NAME = "نام خانوادگی پشتیبان";
+export const EMAIL_ADDRESS = "پست الکترونیکی";
+export const EDUCATION_DEGREE = "مدرک تحصیلی";
+export const COUNTRY = "کشور";
+export const STATE = "استان";
+export const CITY = "شهر";
+export const REGION = "منطقه";
+export const AREA = "ناحیه";
+export const ADDRESS = "نشانی";
+export const POSTAL_CODE = "کد پستی";
+export const HOUSING_STATUS = "وضعیت مسکن";
+export const MARITIAL_STATUS = "وضعیت تاهل";
+export const DESCRIPTION = "توضیحات";
+
+// VETERAN
+export const SACRIFICED_FAMILY = "خانواده شهید";
+export const WARRIOR = "رزمنده";
+export const CHILD_OF_SACRIFICED = "فرزند شهید";
+export const VALIANT = "جانباز";
+export const SACRIFICED = "شهید";
+export const CAPTIVE = "آزاده";

@@ -52,7 +52,10 @@ export const baseQueryWithReauth: BaseQueryFn<
 
   //   console.log("ERROR RESULT", result);
 
-  if (result.error && result.error.status === "FETCH_ERROR") {
+  if (
+    (result.error && result.error.status === "FETCH_ERROR") ||
+    (result.error && result.error.status === 401)
+  ) {
     if (!mutex.isLocked()) {
       const release = await mutex.acquire();
       try {

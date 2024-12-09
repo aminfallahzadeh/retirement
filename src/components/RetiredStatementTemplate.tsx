@@ -1,23 +1,17 @@
-// REACT IMPORTS
+// IMPORTS
 import { useState, useEffect, useRef } from "react";
-
-// MUI IMPORTS
 import { Box, CircularProgress, Button, Checkbox } from "@mui/material";
 import {
   DownloadOutlined as DownloadIcon,
   Save as SaveIcon,
 } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
-
-// REDUX IMPORTS
-import { useSelector } from "react-redux";
+import { useAppSelector } from "@/hooks/usePreTypesHooks";
 import { useGetRetiredQuery } from "@/features/retired/retiredApi";
 import {
   useGetRetirementStatementQuery,
   useUpdateRetirementStatementAmountMutation,
 } from "@/features/statement/statementApi";
-
-// HELPERS
 import {
   convertToPersianNumber,
   separateByThousands,
@@ -25,34 +19,23 @@ import {
   convertToEnglishNumber,
   removeSeparators,
 } from "../helper";
-
-// ASSETS
 import slipLogo from "@images/logo-slip.png";
-
-// LIBRARY IMPROTS
 import generatePDF from "react-to-pdf";
 import { toast } from "react-toastify";
-
-// COMPONENTS
 import Modal from "./Modal";
 
 function RetiredStatementTemplate({ statementID, setShowStatementModal }) {
-  // DOWNLOAD REF
+  // STATES
   const targetRef = useRef();
-
-  // MAIN STATE
   const [retiredInfo, setRetiredInfo] = useState(null);
   const [statementInfo, setStatementInfo] = useState(null);
   const [signature, setSignature] = useState(null);
-
   const [updatedAmount, setUpdatedAmount] = useState([]);
 
-  // ACCESS KEY DATA
+  // CONSTS
   const searchParams = new URLSearchParams(location.search);
   const personID = searchParams.get("personID");
-  const { personDeathDate } = useSelector((state) => state.retiredState);
-
-  // ACCESS UPDATE QUERIES
+  const { personDeathDate } = useAppSelector((state) => state.person);
   const [updateRetirementStatementAmount, { isLoading }] =
     useUpdateRetirementStatementAmountMutation();
 

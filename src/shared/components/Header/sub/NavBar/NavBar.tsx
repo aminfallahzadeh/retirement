@@ -10,8 +10,7 @@ import {
   useUpdateUserThemeMutation,
   useGetItemAccessQuery,
 } from "@/features/user/userApi";
-import { setNavPanelOpen } from "@/features/user/themeSlice";
-import { setUserPermissionsData } from "@/slices/userPermissionsDataSlice";
+import { setNavPanelOpen } from "@/features/user/userSlice";
 import { CustomModal } from "@/shared/components/CustomModal";
 import DigitalClock from "@/components/DigitalClock";
 import Date from "@/components/Date";
@@ -126,8 +125,6 @@ export const NavBar = ({
   useEffect(() => {
     refetch();
     if (isPermissionsSuccess) {
-      const extractedData = permissionsList.itemList.map((item) => item.url);
-      dispatch(setUserPermissionsData(extractedData));
       const tree = createTree(permissionsList.itemList);
       setItemList(tree);
     }
