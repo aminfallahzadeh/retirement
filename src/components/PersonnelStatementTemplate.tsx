@@ -9,7 +9,7 @@ import {
   separateByThousands,
   convertToPersianDateFormatted,
 } from "../helper";
-import { NumberHelper } from "@/helpers/numberHelper";
+import { NumberHelper } from "@/helpers/numberConverter";
 import generatePDF from "react-to-pdf";
 import Modal from "./Modal";
 

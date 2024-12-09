@@ -1,5 +1,5 @@
 // IMPORTS
-import { convertToPersianNumber } from "./numberHelper";
+import { convertToPersianNumber } from "./numberConverter";
 import momentj from "moment-jalaali";
 
 // export class DateHelper {
