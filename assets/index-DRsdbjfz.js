@@ -1,1 +1,0 @@
-import{j as e}from"./index-BSRVVr8n.js";const s=()=>e.jsx("section",{className:"flex-col u-margin-bottom-md",children:e.jsx("div",{className:"title-primary--container flex-row flex-center",children:e.jsxs("h4",{className:"title-primary",children:[e.jsx("span",{className:"title-primary--underline"}),"احکام و تعرفه"]})})});export{s as PersonnelStatements};
