@@ -1,5 +1,6 @@
 // IMPORTS
 import { MRT_ColumnDef } from "material-react-table";
+import { PersonnelItem } from "@/shared/types/personnel";
 
 export type Personnel = {
   id: string;
@@ -11,22 +12,15 @@ export type Personnel = {
   personLastName: string;
 };
 
-type PersonnelItem = {
-  id: string;
-  personnelRowNum: number;
-  personnelDeathDate: string;
-  personnelID: string;
-  personnelNationalCode: string;
-  personnelFirstName: string;
-  personnelLastName: string;
-};
-
-export type PersonnelTableData = PersonnelItem[];
-
 export type PersonnelGridProps = {
   isLoading: boolean;
   isFetching: boolean;
   data: PersonnelTableData;
 };
+export type PersonnelTableData = PersonnelItem[];
 
 export type PersonnelColumns = MRT_ColumnDef<PersonnelItem>[];
+
+export type GlobalSearchProps = {
+  actions?: PersonnelColumns;
+};

@@ -1,14 +1,12 @@
 // IMPORTS
 import { RequestGrid } from "./components/RequestGrid";
+import { Title } from "@/shared/components/Title";
+import { CARTABLE } from "@/constants/const";
 
 export default function Cartable() {
   return (
     <section className="flex-col">
-      <div className="title-primary--container flex-row flex-center">
-        <h4 className="title-primary">
-          <span className="title-primary--underline"></span>کارتابل
-        </h4>
-      </div>
+      <Title title={CARTABLE} back={false} />
 
       <RequestGrid />
     </section>

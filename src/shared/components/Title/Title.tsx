@@ -4,7 +4,13 @@ import { IconButton, Tooltip } from "@mui/material";
 import { ArrowBack as BackIcon } from "@mui/icons-material";
 import { NAVIGATE_BACK } from "@/constants/const";
 
-export const NavigateBack = ({ title }: { title: string }) => {
+export const Title = ({
+  title,
+  back = false,
+}: {
+  title: string;
+  back: boolean;
+}) => {
   const navigate = useNavigate();
 
   const content = (
@@ -13,15 +19,17 @@ export const NavigateBack = ({ title }: { title: string }) => {
         <span className="title-primary--underline">{title}</span>
       </h4>
 
-      <div style={{ marginRight: "auto" }} className="back-button">
-        <Tooltip title={NAVIGATE_BACK}>
-          <span>
-            <IconButton color="primary" onClick={() => navigate(-1)}>
-              <BackIcon />
-            </IconButton>
-          </span>
-        </Tooltip>
-      </div>
+      {back && (
+        <div className="back-button mr-auto">
+          <Tooltip title={NAVIGATE_BACK}>
+            <span>
+              <IconButton color="primary" onClick={() => navigate(-1)}>
+                <BackIcon />
+              </IconButton>
+            </span>
+          </Tooltip>
+        </div>
+      )}
     </div>
   );
 

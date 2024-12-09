@@ -20,6 +20,7 @@ import configReducer from "@/features/api/configSlice";
 import roleSliceReducer from "@/features/request/roleSlice";
 import userSliceReducer from "@/features/user/userSlice";
 import personSliceReducer from "@/features/person/personSlice";
+import personDataSliceReducer from "@/slices/personDataSlice";
 
 const store = configureStore({
   reducer: {
@@ -43,6 +44,7 @@ const store = configureStore({
     reportGeneratorData: reportGeneratorDataSliceReducer,
     payCompareData: payCompareDataSliceReducer,
     financialData: financialDataSliceReducer,
+    personData: personDataSliceReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

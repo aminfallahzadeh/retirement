@@ -1,8 +1,8 @@
 // IMPORTS
-import { GlobalSearch } from "@/shared/components/GlobalSearch";
-import { personnelActions } from "@/constants/actions";
+import PersonnelStatementForm from "@/forms/PersonnelStatementForm";
+import PersonnelGrid from "@/grids/PersonnelGrid";
 
-const PersonnelStatements = () => {
+function PersonnelStatementsScreen() {
   const content = (
     <section className="flex-col u-margin-bottom-md">
       <div className="title-primary--container flex-row flex-center">
@@ -11,10 +11,12 @@ const PersonnelStatements = () => {
         </h4>
       </div>
 
-      <GlobalSearch actions={personnelActions} />
+      <PersonnelStatementForm />
+      <PersonnelGrid />
     </section>
   );
-  return content;
-};
 
-export default PersonnelStatements;
+  return content;
+}
+
+export default PersonnelStatementsScreen;

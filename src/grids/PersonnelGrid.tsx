@@ -1,16 +1,8 @@
 // IMPORTS
-import { useMemo, useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { setFinancialTableData } from "@/slices/financialDataSlice";
-import Modal from "@/components/Modal";
-import useGetFinancialItems from "@/hooks/useGetFinancialItems";
-import {
-  IconButton,
-  PaginationItem,
-  Tooltip,
-  Box,
-  CircularProgress,
-} from "@mui/material";
+import { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { IconButton, PaginationItem, Tooltip } from "@mui/material";
 import {
   VisibilityOutlined as EyeIcon,
   ChevronLeft,
@@ -18,6 +10,7 @@ import {
   FirstPage,
   LastPage,
 } from "@mui/icons-material";
+import { OBSERVE, ROW_NO } from "@/constants/consts";
 import {
   MaterialReactTable,
   useMaterialReactTable,
@@ -25,27 +18,18 @@ import {
 import { convertToPersianNumber } from "@/helper";
 import { defaultTableOptions } from "@/config/mrt";
 
-function PersonnelPayGrid() {
+function PersonnelGrid() {
+  // STATES
   const [rowSelection, setRowSelection] = useState({});
+
+  // CONSTS
   const { personTableData } = useSelector((state) => state.personData);
-
-  const dispatch = useDispatch();
-
-  // ACCESS QUERIES
-  const { getFinancialItems, isLoading, isFetching } = useGetFinancialItems();
-
-  // CLEAR CACHE
-  useEffect(() => {
-    return () => {
-      dispatch(setFinancialTableData([]));
-    };
-  }, [dispatch]);
 
   const columns = useMemo(
     () => [
       {
         accessorKey: "personRowNum",
-        header: "ردیف",
+        header: { ROW_NO },
         size: 20,
         enableSorting: false,
         enableColumnActions: false,
@@ -83,24 +67,26 @@ function PersonnelPayGrid() {
       },
       {
         accessorKey: "observeStaff",
-        header: "مشاهده",
+        header: { OBSERVE },
         enableSorting: false,
         enableColumnActions: false,
         size: 20,
         Cell: ({ row }) => (
-          <Tooltip title="مشاهده آیتمها">
-            <IconButton
-              color="primary"
-              sx={{ padding: "0" }}
-              onClick={() => getFinancialItems(row.original.id)}
+          <Tooltip
+            title={`${row.original.personFirstName} ${row.original.personLastName}`}
+          >
+            <Link
+              to={`/retirement/personnel-statements/info?personID=${row.id}&personDeathDate=${row.original.personDeathDate}`}
             >
-              <EyeIcon />
-            </IconButton>
+              <IconButton color="primary" sx={{ padding: "0" }}>
+                <EyeIcon />
+              </IconButton>
+            </Link>
           </Tooltip>
         ),
       },
     ],
-    [getFinancialItems]
+    []
   );
 
   const table = useMaterialReactTable({
@@ -140,29 +126,8 @@ function PersonnelPayGrid() {
     state: { rowSelection },
   });
 
-  const content = (
-    <>
-      {isLoading || isFetching ? (
-        <Modal title={"در حال بارگیری"}>
-          <p className="paragraph-primary" style={{ textAlign: "center" }}>
-            لطفا منتظر بمانید...
-          </p>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              padding: "2rem 10rem",
-            }}
-          >
-            <CircularProgress color="primary" />
-          </Box>
-        </Modal>
-      ) : null}
-
-      <MaterialReactTable table={table} />
-    </>
-  );
+  const content = <MaterialReactTable table={table} />;
   return content;
 }
 
-export default PersonnelPayGrid;
+export default PersonnelGrid;

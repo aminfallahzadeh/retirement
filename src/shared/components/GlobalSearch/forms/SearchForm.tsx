@@ -6,7 +6,7 @@ import { toastConfig } from "@/config/toast";
 import SearchIcon from "@mui/icons-material/SearchOutlined";
 import { LoadingButton } from "@mui/lab";
 import { Input } from "@/shared/components/Input";
-import { PersonnelGrid } from "../components/PersonnelGrid";
+import { ResultGrid } from "../sub/ResultGrid";
 import {
   NATIONAL_CODE,
   PERSONNEL_NO,
@@ -16,14 +16,11 @@ import {
 } from "@/constants/const";
 import { NO_RESULT_FOUND } from "@/constants/messages";
 import { onlyNumbersRules, onlyPersianAlphabetsRules } from "@/constants/rules";
-import {
-  PersonnelTableData,
-  Personnel,
-} from "../components/PersonnelGrid/types";
+import { PersonnelTableData, Personnel } from "../types";
 
-export const SearchPersonnel = () => {
+export const SearchForm = () => {
   // STATES
-  const [tableData, setTableData] = useState<PersonnelTableData>([]);
+  const [data, setData] = useState<PersonnelTableData>([]);
 
   // CONSTS
   const { control, handleSubmit, watch, reset } = useForm<FieldValues>();
@@ -61,11 +58,11 @@ export const SearchPersonnel = () => {
       })
     );
 
-    setTableData(mappedData);
+    setData(mappedData);
   };
 
   // MEMOIZE DATA
-  const memoizedTableData = useMemo(() => tableData, [tableData]);
+  const tableData = useMemo(() => data, [data]);
 
   const content = (
     <section className="flex-col formContainer">
@@ -130,8 +127,8 @@ export const SearchPersonnel = () => {
         </div>
       </form>
 
-      <PersonnelGrid
-        data={memoizedTableData}
+      <ResultGrid
+        data={tableData}
         isLoading={isLoading}
         isFetching={isFetching}
       />

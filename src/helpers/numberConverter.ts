@@ -86,3 +86,7 @@ export const convertToEnglishNumber = (str: string) => {
   }
   return str;
 };
+
+export const separateByThousand = (num: number | string) => {
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};

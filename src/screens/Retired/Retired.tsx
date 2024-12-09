@@ -4,7 +4,7 @@ import RetiredPensionaryForm from "@/forms/RetiredPensionaryForm";
 import { Electronic } from "./components/Electronic";
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import { ArrowDropDown as ArrowDropDownIcon } from "@mui/icons-material";
-import { NavigateBack } from "@/shared/components/NavigateBack";
+import { Title } from "@/shared/components/Title";
 import {
   RETIRED_INFO,
   RETIRED_PERSON_INFO,
@@ -42,7 +42,7 @@ const Retired = () => {
 
   const content = (
     <section className="flex-col">
-      <NavigateBack title={RETIRED_INFO} />
+      <Title title={RETIRED_INFO} back={true} />
 
       <div data-name="retired-forms">
         <Accordion>
@@ -55,7 +55,6 @@ const Retired = () => {
           </AccordionSummary>
           <AccordionDetails>
             <PersonForm />
-            {/* <RetiredPersonForm /> */}
           </AccordionDetails>
         </Accordion>
 

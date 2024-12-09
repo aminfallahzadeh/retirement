@@ -10,9 +10,10 @@ import GroupSlipsForm from "@/forms/GroupSlipsForm";
 import SlipsPreviewGrid from "@/grids/SlipsPreviewGrid";
 import CompareSalaryReportForm from "@/forms/CompareSalaryReportForm";
 import CompareSalaryReportGrid from "@/grids/CompareSalaryReportGrid";
-import PersonnelStatementForm from "@/forms/PersonnelStatementForm";
 import PersonnelPayGrid from "@/grids/PersonnelPayGrid";
 import PayItemSearchGrid from "@/grids/PayItemSearchGrid";
+import PersonnelStatementForm from "@/forms/PersonnelStatementForm";
+import { Slips } from "./Slips";
 
 function GroupSlipsScreen() {
   const navigate = useNavigate();
@@ -77,6 +78,8 @@ function GroupSlipsScreen() {
           </AccordionDetails>
         </Accordion>
       </div>
+
+      {/* <Slips /> */}
     </section>
   );
 

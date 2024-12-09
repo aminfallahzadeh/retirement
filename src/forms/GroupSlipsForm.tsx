@@ -121,7 +121,7 @@ function GroupSlipsForm() {
     [existPaySlip]
   );
 
-  // CHECK SLIP EXISTANCE ON USER DATA ENTER
+  // CHECK SLIP EXISTENCE ON USER DATA ENTER
   useEffect(() => {
     if (form_data.payType && form_data.currentYear && form_data.currentMonth) {
       slipChecker({

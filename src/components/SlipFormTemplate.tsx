@@ -108,7 +108,7 @@ function SlipFormTemplate({ payID }) {
           <div className="slip-container" ref={targetRef}>
             <div className="slip-container__logo">
               <img
-                src="./images/logo-slip.png"
+                src="@images/logo-slip.png"
                 className="slip-container__logo--img"
               />
               <p className="slip-container__logo--sub">

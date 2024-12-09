@@ -29,12 +29,22 @@ export const SEARCH = "جستجو";
 export const NAVIGATE_BACK = "بازگشت";
 export const OBSERVE = "مشاهده";
 export const REVIEW = "بررسی";
+export const ISSUE = "صدور";
+export const DOWNLOAD = "مشاهده / چاپ";
 
 // RETIRED
 export const RETIRED_INFO = "اطلاعات بازنشسته";
 export const RETIRED_PERSON_INFO = "اطلاعات فردی";
 export const RETIRES_PENSIONARY_INFO = "اطلاعات پرسنلی";
 export const RETIRED_ADDITIONAL_INFO = "اطلاعات تکمیلی";
+
+// CARTABLE
+export const CARTABLE = "کارتابل";
+
+// SLIPS
+export const SLIPS_PAYS = "فیش های حقوقی";
+export const PAY_AND_FRACTION = "کسر و پرداخت";
+export const COMPARE_SALARY_REPORT = "گزارش مقایسه حقوق";
 
 // ARCHIVE
 export const FOLDER_NAME = "نام پوشه";
@@ -86,6 +96,15 @@ export const HOUSING_STATUS = "وضعیت مسکن";
 export const MARITIAL_STATUS = "وضعیت تاهل";
 export const DESCRIPTION = "توضیحات";
 export const PERSONNEL_NO = "شماره کارمندی";
+export const ISSUE_TYPE = "نوع صدور";
+export const PAY_TYPE = "نوع فیش";
+export const PAY_YEAR = "سال مالی";
+export const PAY_MONTH = "ماه مالی";
+export const ACCOUNT_NO = "شماره حساب";
+export const PAY_AMOUNT = "مبلغ پرداختی";
+export const FRACTIONS = "کسورات";
+export const TOTAL_AMOUNT = "مبلغ کل";
+export const PAY_DATE = "تاریخ پرداخت";
 
 // VETERAN
 export const SACRIFICED_FAMILY = "خانواده شهید";
