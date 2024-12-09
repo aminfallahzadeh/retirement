@@ -1,5 +1,5 @@
 // IMPORTS
-import { createFields } from "@/helpers/fieldHelper";
+import { createFields } from "@/utils/fieldCreator";
 
 // GRID FIELDS
 export const REQUEST_ROW_NUM = createFields("requestRowNum", "ردیف");
