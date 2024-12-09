@@ -1457,7 +1457,6 @@ function UpdateHeirForm({
                 loading={isUpdating}
                 variant="contained"
                 color="success"
-                sx={{ fontFamily: "sahel" }}
               >
                 <span>ذخیره</span>
               </LoadingButton>

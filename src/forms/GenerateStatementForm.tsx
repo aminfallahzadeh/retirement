@@ -346,7 +346,6 @@ function GenerateStatementForm({
             variant="contained"
             disabled={!selectedRunDate}
             color="success"
-            sx={{ fontFamily: "sahel" }}
           >
             <span>ذخیره</span>
           </LoadingButton>

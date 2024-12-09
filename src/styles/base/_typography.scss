@@ -2,24 +2,6 @@
 
 /* FONTS DEFINITIONS */
 @font-face {
-    font-family: sahel;
-    src:
-        url("@/fonts/Sahel.eot") format("embedded-opentype"),
-        url("@/fonts/Sahel.ttf") format("truetype"),
-        url("@/fonts/Sahel.woff") format("woff"),
-        url("@/fonts/Sahel.woff2") format("woff2");
-}
-
-@font-face {
-    font-family: Vazir;
-    src:
-        url("@/fonts/Vazir.eot") format("embedded-opentype"),
-        url("@/fonts/Vazir.ttf") format("truetype"),
-        url("@/fonts/Vazir.woff") format("woff"),
-        url("@/fonts/Vazir.woff2") format("woff2");
-}
-
-@font-face {
     font-family: IranYekan;
     src: url("@/fonts/Qs_Iranyekan.ttf") format("truetype");
 }

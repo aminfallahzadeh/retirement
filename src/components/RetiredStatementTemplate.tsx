@@ -707,7 +707,6 @@ function RetiredStatementTemplate({ statementID, setShowStatementModal }) {
               onClick={handleUpdateAmounts}
               loading={isLoading}
               color="success"
-              sx={{ fontFamily: "sahel" }}
             >
               <span>ذخیره</span>
             </LoadingButton>

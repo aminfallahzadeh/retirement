@@ -401,7 +401,6 @@ function RetiredStatementsGrid() {
                   onClick={handleRemoveStatement}
                   loading={isDeleting}
                   color="success"
-                  sx={{ fontFamily: "sahel" }}
                 >
                   <span>بله</span>
                 </LoadingButton>
@@ -411,7 +410,6 @@ function RetiredStatementsGrid() {
                   onClick={() => setShowDeleteStatementModal(false)}
                   variant="contained"
                   color="error"
-                  sx={{ fontFamily: "sahel" }}
                 >
                   <span>خیر</span>
                 </Button>
@@ -457,7 +455,6 @@ function RetiredStatementsGrid() {
                   onClick={() => setShowStatModal(false)}
                   variant="contained"
                   color="success"
-                  sx={{ fontFamily: "sahel" }}
                 >
                   <span>تایید</span>
                 </Button>

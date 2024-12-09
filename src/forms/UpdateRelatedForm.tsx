@@ -1692,7 +1692,6 @@ function UpdateRelatedForm({
                 type="submit"
                 loading={isUpdating}
                 color="success"
-                sx={{ fontFamily: "sahel" }}
               >
                 <span>ذخیره</span>
               </LoadingButton>

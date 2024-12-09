@@ -15,7 +15,6 @@ import {
   FirstPage,
   LastPage,
 } from "@mui/icons-material";
-import { convertToPersianNumber } from "@/helper.js";
 
 export const Grid = <T extends MRT_RowData>({
   columns,
@@ -78,7 +77,6 @@ export const Grid = <T extends MRT_RowData>({
       },
     }),
     localization: MRT_Localization_FA,
-    paginationDisplayMode: "pages",
     enableFullScreenToggle: false,
     positionToolbarAlertBanner: "none",
     enableStickyHeader: true,
@@ -107,15 +105,15 @@ export const Grid = <T extends MRT_RowData>({
     enablePagination: scroll ? false : true,
     enableBottomToolbar: scroll ? false : true,
     muiTableContainerProps: scroll ? { sx: { height: "300px" } } : undefined,
+    paginationDisplayMode: "pages",
     muiPaginationProps: !scroll
       ? {
           size: "small",
           shape: "rounded",
-          showRowsPerPage: false,
+          rowsPerPageOptions: [5, 10, 20],
           renderItem: (item) => (
             <PaginationItem
               {...item}
-              page={convertToPersianNumber(item.page)}
               slots={{
                 previous: ChevronRight,
                 next: ChevronLeft,

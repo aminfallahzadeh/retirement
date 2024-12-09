@@ -109,7 +109,6 @@ function ArrowButtonsGroups({ selectedGroup, setShowEditItemsModal }) {
         onClick={saveChangesHandler}
         variant="contained"
         color="success"
-        sx={{ fontFamily: "sahel" }}
       >
         <span>ذخیره</span>
       </LoadingButton>

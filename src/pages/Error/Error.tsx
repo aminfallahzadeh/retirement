@@ -24,7 +24,6 @@ export const Error = () => {
           onClick={() => navigate("/retirement/cartable")}
           variant="contained"
           color="primary"
-          sx={{ fontFamily: "sahel" }}
         >
           <span>کارتابل</span>
         </Button>
@@ -35,7 +34,6 @@ export const Error = () => {
           onClick={() => navigate(-1)}
           variant="contained"
           color="warning"
-          sx={{ fontFamily: "sahel" }}
         >
           <span>بازگشت</span>
         </Button>

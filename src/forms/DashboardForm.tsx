@@ -548,7 +548,6 @@ function DashboardForm() {
             loading={dashboardReportIsLoading || dashboardReportIsFetching}
             variant="contained"
             color="success"
-            sx={{ fontFamily: "sahel" }}
           >
             <span>تولید گزارش</span>
           </LoadingButton>

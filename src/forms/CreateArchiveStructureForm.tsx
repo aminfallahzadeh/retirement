@@ -73,7 +73,6 @@ function CreateArchiveStructureForm({ setShowNewArchiveModal }) {
         variant="contained"
         color="success"
         disabled={!name}
-        sx={{ fontFamily: "sahel" }}
       >
         <span>ذخیره</span>
       </LoadingButton>

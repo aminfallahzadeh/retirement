@@ -387,7 +387,6 @@ function RetiredHeirGrid() {
                   loading={isDeleting}
                   variant="contained"
                   color="success"
-                  sx={{ fontFamily: "sahel" }}
                 >
                   <span>بله</span>
                 </LoadingButton>
@@ -398,7 +397,6 @@ function RetiredHeirGrid() {
                   onClick={() => setShowDeleteHeirModal(false)}
                   variant="contained"
                   color="error"
-                  sx={{ fontFamily: "sahel" }}
                 >
                   <span>خیر</span>
                 </Button>

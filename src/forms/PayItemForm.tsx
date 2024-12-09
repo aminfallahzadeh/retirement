@@ -323,7 +323,6 @@ function PayItemForm({ isLoading }) {
                 type="submit"
                 // loading={isUpdating}
                 color="success"
-                sx={{ fontFamily: "sahel" }}
               >
                 <span>ذخیره</span>
               </LoadingButton>

@@ -575,7 +575,6 @@ export const PersonForm = () => {
                 type="submit"
                 loading={isUpdating}
                 color="success"
-                sx={{ fontFamily: "sahel" }}
               >
                 <span>{SAVE}</span>
               </LoadingButton>
@@ -587,7 +586,6 @@ export const PersonForm = () => {
                 disabled={editable}
                 variant="contained"
                 color="primary"
-                sx={{ fontFamily: "sahel" }}
               >
                 <span>{EDIT}</span>
               </Button>

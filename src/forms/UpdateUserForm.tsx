@@ -252,7 +252,6 @@ function UpdateUserForm({ setShowEditUserModal, userID }) {
             onClick={updateUserHandler}
             variant="contained"
             color="success"
-            sx={{ fontFamily: "sahel" }}
           >
             <span>ذخیره</span>
           </LoadingButton>

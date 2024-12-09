@@ -451,7 +451,6 @@ function ReportGeneratorTableForm() {
                   color="info"
                   disabled={disableOperators}
                   onClick={() => addConditionElement(element)}
-                  sx={{ fontFamily: "sahel" }}
                 >
                   <span>{element.toUpperCase()}</span>
                 </Button>

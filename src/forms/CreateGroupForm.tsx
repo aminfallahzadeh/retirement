@@ -101,7 +101,6 @@ function CreateGroupForm({ addedItems }) {
           variant="contained"
           type="submit"
           color="success"
-          sx={{ fontFamily: "sahel" }}
         >
           <span>ذخیره</span>
         </LoadingButton>

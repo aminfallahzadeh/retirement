@@ -117,7 +117,6 @@ export const StatementDraftGrid = () => {
           endIcon={<SaveIcon />}
           variant="contained"
           color="success"
-          sx={{ fontFamily: "sahel" }}
         >
           <span>ثبت پیش نویس</span>
         </Button>

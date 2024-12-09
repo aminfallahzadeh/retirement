@@ -39,7 +39,6 @@ function BaseFractionForm() {
           endIcon={<SaveIcon />}
           variant="contained"
           color="success"
-          sx={{ fontFamily: "sahel" }}
         >
           <span>ذخیره</span>
         </LoadingButton>

@@ -95,7 +95,6 @@ function ArrowButtonsUsers({ userID, setShowEditUserGroupsModal }) {
         onClick={saveChangesHandler}
         variant="contained"
         color="success"
-        sx={{ fontFamily: "sahel" }}
       >
         <span>ذخیره</span>
       </LoadingButton>

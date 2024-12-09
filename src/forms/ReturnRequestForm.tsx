@@ -162,7 +162,6 @@ function ReturnRequestForm({ setShowModal, value }) {
                 disabled={selectedExpert === " " || isSendLoading}
                 variant="contained"
                 color="success"
-                sx={{ fontFamily: "sahel" }}
               >
                 <span>تایید</span>
               </LoadingButton>

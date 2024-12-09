@@ -49,7 +49,6 @@ const DeleteArchiveStructureForm = ({
           onClick={onSubmit}
           variant="contained"
           color="success"
-          sx={{ fontFamily: "sahel" }}
         >
           <span>{YES}</span>
         </LoadingButton>
@@ -59,7 +58,6 @@ const DeleteArchiveStructureForm = ({
           onClick={setCloseModal}
           variant="contained"
           color="error"
-          sx={{ fontFamily: "sahel" }}
         >
           <span>{NO}</span>
         </Button>

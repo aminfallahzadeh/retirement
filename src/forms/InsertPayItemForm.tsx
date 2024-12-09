@@ -235,7 +235,6 @@ function InsertPayItemForm({ payID, setIsInsertItemModalOpen, refetch }) {
             type="submit"
             loading={isItemInserting}
             color="success"
-            sx={{ fontFamily: "sahel" }}
           >
             <span>ذخیره</span>
           </LoadingButton>

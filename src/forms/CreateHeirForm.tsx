@@ -1228,7 +1228,6 @@ function CreateHeirForm({ setShowCreateHeirModal, refetch }) {
             loading={isLoading}
             variant="contained"
             color="success"
-            sx={{ fontFamily: "sahel" }}
           >
             <span>ذخیره</span>
           </LoadingButton>

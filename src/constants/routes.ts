@@ -19,6 +19,11 @@ const GroupSlipsScreen = lazy(() => import("@/screens/GroupSlipsScreen"));
 const PersonnelStatementsScreen = lazy(
   () => import("@/screens/PersonnelStatementsScreen")
 );
+const PersonnelStatements = lazy(() =>
+  import("@/screens/PersonnelStatements").then((m) => ({
+    default: m.PersonnelStatements,
+  }))
+);
 const PersonnelInfoScreen = lazy(() => import("@/screens/PersonnelInfoScreen"));
 const ElectronicStatement = lazy(
   () => import("@/screens/ElectronicStatement/ElectronicStatement")

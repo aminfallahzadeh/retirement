@@ -375,7 +375,6 @@ function GroupSlipsForm() {
               onClick={handleCloseModal}
               variant="contained"
               color="success"
-              sx={{ fontFamily: "sahel" }}
             >
               <span>تایید</span>
             </Button>
@@ -573,7 +572,6 @@ function GroupSlipsForm() {
                 onClick={getPayListHandler}
                 variant="contained"
                 color="primary"
-                sx={{ fontFamily: "sahel" }}
               >
                 <span>مشاهده</span>
               </LoadingButton>
@@ -590,7 +588,7 @@ function GroupSlipsForm() {
                   //      ? true
                   //      : false || !data.fractionTypeID
                   //  }
-                  sx={{ fontFamily: "sahel" }}
+
                   endIcon={<UploadIcon />}
                   loading={isExcelLoading || isExcelFetching}
                   onClick={handleExcelFileUpload}
@@ -660,7 +658,6 @@ function GroupSlipsForm() {
               onClick={handleSubmit}
               variant="contained"
               color="warning"
-              sx={{ fontFamily: "sahel" }}
               disabled={
                 isSlipExists || form_data.payType === "" || !form_data.payType
                   ? true

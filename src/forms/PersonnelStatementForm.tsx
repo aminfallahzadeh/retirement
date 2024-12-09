@@ -1,28 +1,22 @@
-// REACT IMPORTS
+// IMPORTS
 import { useState } from "react";
-
-// REDUX
 import { useDispatch } from "react-redux";
 import { useLazyGetPersonsQuery } from "@/features/person/personApi";
 import { setPersonTableData } from "../slices/personDataSlice";
-
-// MUI
 import { LoadingButton } from "@mui/lab";
 import { SearchOutlined as SearchIcon } from "@mui/icons-material";
-
-// LIBRARIES
 import { toast } from "react-toastify";
-
-// HELPER
 import { convertToPersianNumber, convertToEnglishNumber } from "../helper";
 
 function PersonnelStatementForm() {
+  // STATES
   const [searchPersons, { isLoading, isFetching }] = useLazyGetPersonsQuery();
-  const dispatch = useDispatch();
-
-  // PERSONNEL OBJECT STATES
   const [personnelObject, setPersonnelObject] = useState(null);
 
+  // CONSTS
+  const dispatch = useDispatch();
+
+  // HANDLERS
   const hadnlePersonnelObjectChange = (e) => {
     const { name, value } = e.target;
     setPersonnelObject({ ...personnelObject, [name]: value });
@@ -141,7 +135,6 @@ function PersonnelStatementForm() {
           color="primary"
           loading={isLoading || isFetching}
           onClick={handleSearchPersonnels}
-          sx={{ fontFamily: "sahel" }}
         >
           <span>جست و جو</span>
         </LoadingButton>

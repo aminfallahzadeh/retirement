@@ -406,7 +406,6 @@ function RetiredAccountForm() {
                 type="submit"
                 variant="contained"
                 color="success"
-                sx={{ fontFamily: "sahel" }}
               >
                 <span>ذخیره</span>
               </LoadingButton>
@@ -418,7 +417,6 @@ function RetiredAccountForm() {
                 disabled={editable}
                 variant="contained"
                 color="primary"
-                sx={{ fontFamily: "sahel" }}
               >
                 <span>ویرایش</span>
               </Button>

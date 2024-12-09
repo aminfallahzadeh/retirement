@@ -282,7 +282,6 @@ function BatchStatementsForm() {
                   variant="contained"
                   color="warning"
                   disabled={uploadProgress > 0 || excelFile ? true : false}
-                  sx={{ fontFamily: "sahel" }}
                   endIcon={<UploadIcon />}
                   loading={
                     isGetListFromExcelFetching || isGetListFromExcelLoading
@@ -438,7 +437,6 @@ function BatchStatementsForm() {
                   loading={isStatementListFetching || isStatementListLoading}
                   onClick={handleFilterListByValues}
                   color="primary"
-                  sx={{ fontFamily: "sahel" }}
                   endIcon={<EyeIcon />}
                 >
                   <span>مشاهده</span>

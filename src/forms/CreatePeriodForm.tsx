@@ -139,7 +139,6 @@ function CreatePeriodForm() {
             variant="contained"
             color="success"
             disabled={buttonDisbaled}
-            sx={{ fontFamily: "sahel" }}
             onClick={handleAddPeriod}
           >
             <span>اضافه کردن دوره</span>

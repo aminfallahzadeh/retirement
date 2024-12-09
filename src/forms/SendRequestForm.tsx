@@ -132,7 +132,6 @@ function SendRequestForm({ setShowSendRequestModal }) {
             variant="contained"
             disabled={selectedExpert === " " || isSendLoading}
             color="success"
-            sx={{ fontFamily: "sahel" }}
           >
             <span>ارسال</span>
           </LoadingButton>

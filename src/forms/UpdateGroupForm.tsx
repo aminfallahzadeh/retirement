@@ -95,7 +95,6 @@ function UpdateGroupForm({ setShowEditModal, selectedGroup }) {
               variant="contained"
               color="success"
               disabled={groupName === selectedGroup?.name || !groupName}
-              sx={{ fontFamily: "sahel" }}
             >
               <span>ذخیره</span>
             </LoadingButton>

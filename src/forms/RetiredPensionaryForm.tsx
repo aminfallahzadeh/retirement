@@ -667,7 +667,6 @@ function RetiredPensionaryForm() {
                 onClick={handleSubmit}
                 variant="contained"
                 color="success"
-                sx={{ fontFamily: "sahel" }}
               >
                 <span>ذخیره</span>
               </LoadingButton>
@@ -679,7 +678,6 @@ function RetiredPensionaryForm() {
                 disabled={editable}
                 variant="contained"
                 color="primary"
-                sx={{ fontFamily: "sahel" }}
               >
                 <span>ویرایش</span>
               </Button>

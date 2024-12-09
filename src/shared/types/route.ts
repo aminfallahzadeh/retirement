@@ -1,5 +1,5 @@
 export type AppRoute = {
-  id: number;
+  id?: number;
   path: string;
   element: JSX.Element;
   index: boolean;

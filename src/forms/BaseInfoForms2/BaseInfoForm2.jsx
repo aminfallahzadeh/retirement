@@ -21,7 +21,6 @@ function BaseInfoForm2() {
           dir="ltr"
           variant="contained"
           color="success"
-          sx={{ fontFamily: "sahel" }}
           endIcon={<SaveIcon />}
         >
           <span>ذخیره</span>

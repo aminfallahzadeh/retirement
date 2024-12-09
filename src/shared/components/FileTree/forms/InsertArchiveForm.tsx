@@ -115,7 +115,6 @@ const InsertArchiveForm = ({
           variant="contained"
           color="primary"
           disabled
-          sx={{ fontFamily: "sahel" }}
         >
           <span>{SCAN}</span>
         </LoadingButton>
@@ -129,7 +128,6 @@ const InsertArchiveForm = ({
           variant="contained"
           disabled={!documentID || documentID === ""}
           color="primary"
-          sx={{ fontFamily: "sahel" }}
         >
           <span>{UPLOAD}</span>
         </LoadingButton>

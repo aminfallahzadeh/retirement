@@ -245,7 +245,6 @@ function EditPayItemGrid({ payID, setIsEditModalOpen }) {
               loading={isItemRemoving}
               variant="contained"
               color="success"
-              sx={{ fontFamily: "sahel" }}
             >
               <span>بله</span>
             </LoadingButton>
@@ -256,7 +255,6 @@ function EditPayItemGrid({ payID, setIsEditModalOpen }) {
               onClick={() => setIsRemoveItemModalOpen(false)}
               variant="contained"
               color="error"
-              sx={{ fontFamily: "sahel" }}
             >
               <span>خیر</span>
             </Button>

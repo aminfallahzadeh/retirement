@@ -194,7 +194,6 @@ function RequestAttachmentForm({ setShowInsertAttachmentModal, refetch }) {
         onClick={handleUploadButtonClick}
         variant="contained"
         color="primary"
-        sx={{ fontFamily: "sahel" }}
       >
         <span>بارگزاری</span>
       </LoadingButton>

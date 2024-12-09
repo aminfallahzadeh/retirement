@@ -329,7 +329,6 @@ function GroupsGrid() {
                   onClick={deleteGroupHandler}
                   variant="contained"
                   color="success"
-                  sx={{ fontFamily: "sahel" }}
                 >
                   <span>بله</span>
                 </LoadingButton>
@@ -339,7 +338,6 @@ function GroupsGrid() {
                   onClick={() => setShowDeleteGroupModal(false)}
                   variant="contained"
                   color="error"
-                  sx={{ fontFamily: "sahel" }}
                 >
                   <span>خیر</span>
                 </Button>

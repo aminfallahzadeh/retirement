@@ -433,7 +433,6 @@ function FractionForm() {
               onClick={handleCloseModal}
               variant="contained"
               color="success"
-              sx={{ fontFamily: "sahel" }}
             >
               <span>تایید</span>
             </Button>
@@ -784,7 +783,6 @@ function FractionForm() {
                     ? true
                     : false || !data.fractionTypeID
                 }
-                sx={{ fontFamily: "sahel" }}
                 endIcon={<UploadIcon />}
                 loading={isJariLoading || isJariFetching}
                 onClick={handleExcelFileUpload}

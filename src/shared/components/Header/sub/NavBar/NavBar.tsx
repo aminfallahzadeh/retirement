@@ -184,7 +184,6 @@ export const NavBar = ({
             onClick={logoutHandler}
             variant="contained"
             color="success"
-            sx={{ fontFamily: "sahel" }}
           >
             <span>بله</span>
           </LoadingButton>
@@ -195,7 +194,6 @@ export const NavBar = ({
             variant="contained"
             loading={logoutLoading}
             color="error"
-            sx={{ fontFamily: "sahel" }}
           >
             <span>خیر</span>
           </LoadingButton>

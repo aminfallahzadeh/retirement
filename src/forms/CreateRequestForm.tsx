@@ -218,7 +218,6 @@ function CreateRequestForm() {
           onClick={handleInsertRequest}
           loading={isInserting}
           color="success"
-          sx={{ fontFamily: "sahel" }}
         >
           <span>ارسال درخواست</span>
         </LoadingButton>

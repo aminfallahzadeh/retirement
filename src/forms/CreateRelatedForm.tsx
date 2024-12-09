@@ -1489,7 +1489,6 @@ function CreateRelatedForm({ setShowCreateRelatedModal, refetch }) {
             type="submit"
             variant="contained"
             color="success"
-            sx={{ fontFamily: "sahel" }}
           >
             <span>ذخیره</span>
           </LoadingButton>

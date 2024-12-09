@@ -377,7 +377,6 @@ function RequestAttachmentsGrid() {
                   onClick={handleDeleteAttachment}
                   variant="contained"
                   color="success"
-                  sx={{ fontFamily: "sahel" }}
                 >
                   <span>بله</span>
                 </LoadingButton>
@@ -389,7 +388,6 @@ function RequestAttachmentsGrid() {
                   onClick={() => setShowDeleteAttachmentModal(false)}
                   variant="contained"
                   color="error"
-                  sx={{ fontFamily: "sahel" }}
                 >
                   <span>خیر</span>
                 </Button>

@@ -150,7 +150,6 @@ function InsertAnnounceForm({ setIsRefresh }) {
           loading={isLoading || isFetching}
           variant="contained"
           color="success"
-          sx={{ fontFamily: "sahel" }}
         >
           <span>ذخیره</span>
         </LoadingButton>

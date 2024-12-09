@@ -127,7 +127,6 @@ function InsertArchiveForm({ setShowAddImageModal }) {
           variant="contained"
           color="primary"
           disabled
-          sx={{ fontFamily: "sahel" }}
         >
           <span>اسکن</span>
         </LoadingButton>
@@ -149,7 +148,6 @@ function InsertArchiveForm({ setShowAddImageModal }) {
           variant="contained"
           disabled={!documentID || !documentID === ""}
           color="primary"
-          sx={{ fontFamily: "sahel" }}
         >
           <span>کامپیوتر</span>
         </LoadingButton>
