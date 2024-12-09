@@ -1,7 +1,6 @@
 // IMPORTS
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import { setPersonTableData } from "@/slices/personDataSlice";
 import { useLogoutMutation } from "@/features/auth/authApi";
 import { setUserID, logout } from "@/features/auth/authSlice";
 import { useAppSelector, useAppDispatch } from "@/hooks/usePreTypesHooks";
@@ -98,20 +97,6 @@ function App() {
       };
     }
   }, [getRemainingTime, isActive, logoutHandler, token]);
-
-  // CLEAR THE PERSONNEL GRID WHEN USERS NAVIGATE TO OTHER ROUTES
-  useEffect(() => {
-    const allowedRoutes = [
-      "/retirement/personnel-statements",
-      "/retirement/personnel-statements/info",
-    ];
-
-    if (!allowedRoutes.includes(location.pathname)) {
-      dispatch(setPersonTableData([]));
-    }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location.pathname]);
 
   const handleSearchClick = () => {
     setSearch(true);

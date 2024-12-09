@@ -8,7 +8,6 @@ import {
 
 // NATIONAL CODE RULES
 export const nationalCodeRules = {
-  required: REQUIRED_MESSAGE,
   minLength: {
     value: 10,
     message: NOT_VALID_MESSAGE,
@@ -17,14 +16,6 @@ export const nationalCodeRules = {
     value: 10,
     message: NOT_VALID_MESSAGE,
   },
-  pattern: {
-    value: ONLY_NUMBERS_REGEX,
-    message: NOT_VALID_MESSAGE,
-  },
-};
-
-export const certificateNoRules = {
-  required: REQUIRED_MESSAGE,
   pattern: {
     value: ONLY_NUMBERS_REGEX,
     message: NOT_VALID_MESSAGE,

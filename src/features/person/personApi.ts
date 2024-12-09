@@ -1,8 +1,6 @@
-// constant imports
+// IMPORTS
 import { apiSlice } from "../api/apiSlice";
 import { PERSON_END } from "../api/endpoints";
-
-// slice imports
 
 export const personApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({

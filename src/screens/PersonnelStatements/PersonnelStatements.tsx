@@ -1,4 +1,5 @@
 // IMPORTS
+import { SearchPersonnel } from "./forms";
 
 const PersonnelStatements = () => {
   const content = (
@@ -8,6 +9,8 @@ const PersonnelStatements = () => {
           <span className="title-primary--underline"></span>احکام و تعرفه
         </h4>
       </div>
+
+      <SearchPersonnel />
     </section>
   );
   return content;

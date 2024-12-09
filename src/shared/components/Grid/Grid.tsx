@@ -82,7 +82,7 @@ export const Grid = <T extends MRT_RowData>({
     enableStickyHeader: true,
     enableStickyFooter: true,
     enableDensityToggle: false,
-    enableFilterMatchHighlighting: false,
+    // enableFilterMatchHighlighting: false,
     muiTableBodyCellProps: {
       align: "center",
       sx: {

@@ -1,7 +1,7 @@
 // IMPORTS
 import { useState, useEffect, useCallback } from "react";
 import { useForm, FieldValues } from "react-hook-form";
-import { Save as SaveIcon } from "@mui/icons-material";
+import DoneIcon from "@mui/icons-material/Done";
 import { LoadingButton } from "@mui/lab";
 import { Input } from "@/shared/components/Input";
 import { SelectInput } from "@/shared/components/SelectInput";
@@ -164,7 +164,7 @@ export const BaseInfoForm = () => {
         <div className="flex mr-auto">
           <LoadingButton
             dir="ltr"
-            endIcon={<SaveIcon />}
+            endIcon={<DoneIcon />}
             loading={isInsertLoading}
             variant="contained"
             type="submit"

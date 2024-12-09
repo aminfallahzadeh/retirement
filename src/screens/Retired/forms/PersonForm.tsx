@@ -16,7 +16,7 @@ import { CustomCheckBox } from "@/shared/components/CustomCheckBox";
 import { TextArea } from "@/shared/components/TextArea";
 import DoneOutlinedIcon from "@mui/icons-material/DoneOutlined";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
-import { Box, CircularProgress, Button } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import useToggleState from "@/hooks/useToggleState";
 import { useFetchLookUpData } from "@/hooks/useFetchLookUpData";
@@ -63,7 +63,6 @@ import {
 import {
   requiredRule,
   nationalCodeRules,
-  certificateNoRules,
   onlyPersianAlphabetsRules,
   onlyNumbersRules,
   mobileRules,
@@ -85,6 +84,7 @@ export const PersonForm = () => {
     formState: { errors },
     setValue,
   } = useForm<FieldValues>();
+
   // FETCH DATA
   const {
     data: retiredPersonData,
@@ -249,7 +249,7 @@ export const PersonForm = () => {
               <Input
                 name="personNationalCode"
                 label={NATIONAL_CODE}
-                rules={nationalCodeRules}
+                rules={{ ...nationalCodeRules, ...requiredRule }}
                 required={true}
                 control={control}
                 editable={editable}
@@ -259,7 +259,7 @@ export const PersonForm = () => {
               <Input
                 name="personCertificateNo"
                 label={CORTICATE_NO}
-                rules={certificateNoRules}
+                rules={{ ...onlyNumbersRules, ...requiredRule }}
                 required={true}
                 control={control}
                 editable={editable}
@@ -566,7 +566,7 @@ export const PersonForm = () => {
             </div>
 
             {/* Button Section */}
-            <div style={{ marginRight: "auto" }} className="flex-row">
+            <div className="flex-row mr-auto">
               <LoadingButton
                 dir="ltr"
                 endIcon={<DoneOutlinedIcon />}
@@ -579,7 +579,7 @@ export const PersonForm = () => {
                 <span>{SAVE}</span>
               </LoadingButton>
 
-              <Button
+              <LoadingButton
                 dir="ltr"
                 endIcon={<EditOutlinedIcon />}
                 onClick={toggleEditable}
@@ -588,7 +588,7 @@ export const PersonForm = () => {
                 color="primary"
               >
                 <span>{EDIT}</span>
-              </Button>
+              </LoadingButton>
             </div>
           </form>
         </section>

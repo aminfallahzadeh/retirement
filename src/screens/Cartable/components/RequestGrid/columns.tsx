@@ -8,11 +8,8 @@ import {
 import { MRT_RowData } from "material-react-table";
 import { RoleType } from "@/shared/types/role";
 import { RequestColumn } from "./types";
-
-import {
-  convertToPersianNumber,
-  convertToPersianDateFormatted,
-} from "@/helper";
+import { convertToPersianDateFormatted } from "@/helper";
+import { ROW_NO, OBSERVE, REVIEW } from "@/constants/const";
 
 export const columnsRenderer = ({
   role,
@@ -21,21 +18,15 @@ export const columnsRenderer = ({
 }): RequestColumn => [
   {
     accessorKey: "requestRowNum",
-    header: "ردیف",
+    header: ROW_NO,
     size: 20,
     enableSorting: false,
     enableColumnActions: false,
-    Cell: ({ renderedCellValue }) => (
-      <div>{convertToPersianNumber(renderedCellValue)}</div>
-    ),
   },
   {
     accessorKey: "requestNO",
     header: "شماره درخواست",
     size: 20,
-    Cell: ({ renderedCellValue }) => (
-      <div>{convertToPersianNumber(renderedCellValue)}</div>
-    ),
   },
   {
     accessorKey: "requestTypeNameFa",
@@ -57,7 +48,7 @@ export const columnsRenderer = ({
   },
   {
     accessorKey: "senderInfo",
-    header: "بررسی درخواست",
+    header: REVIEW,
     enableSorting: false,
     enableColumnActions: false,
     muiTableBodyCellProps: {
@@ -98,7 +89,7 @@ export const columnsRenderer = ({
   },
   {
     accessorKey: "observe",
-    header: "مشاهده درخواست",
+    header: OBSERVE,
     enableSorting: false,
     enableColumnActions: false,
     muiTableBodyCellProps: {
@@ -106,7 +97,7 @@ export const columnsRenderer = ({
     },
     size: 20,
     Cell: ({ row }: MRT_RowData) => (
-      <Tooltip title={convertToPersianNumber(row.original.requestNO)}>
+      <Tooltip title={row.original.requestNO}>
         <Link
           to={`/retirement/request?requestID=${row.id}&Role=${role?.value}&type=${row.original.requestTypeID}`}
         >

@@ -16,9 +16,6 @@ const BatchStatementsScreen = lazy(
   () => import("@/screens/BatchStatementsScreen")
 );
 const GroupSlipsScreen = lazy(() => import("@/screens/GroupSlipsScreen"));
-const PersonnelStatementsScreen = lazy(
-  () => import("@/screens/PersonnelStatementsScreen")
-);
 const PersonnelStatements = lazy(() =>
   import("@/screens/PersonnelStatements").then((m) => ({
     default: m.PersonnelStatements,
@@ -103,7 +100,7 @@ export const ROUTES = [
   {
     id: 11,
     path: "/retirement/personnel-statements",
-    element: createSuspense(PersonnelStatementsScreen),
+    element: createSuspense(PersonnelStatements),
     index: false,
   },
   {

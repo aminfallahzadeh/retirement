@@ -9,7 +9,6 @@ import userGroupsDataSliceReducer from "@/slices/userGroupsDataSlice";
 import groupsUserDataSliceReducer from "@/slices/groupsUserDataSlice";
 import archiveDataSliceReducer from "@/features/archive/archiveSlice";
 import heirDataSliceReducer from "@/slices/heirDataSlice";
-import personDataSliceReducer from "@/slices/personDataSlice";
 import slipsDataSliceReducer from "@/slices/slipsDataSlice";
 import statementSliceReducer from "@/features/statement/statementSlice";
 import fractionDataSliceReducer from "@/slices/fractionDataSlice";
@@ -37,7 +36,6 @@ const store = configureStore({
     groupsUserData: groupsUserDataSliceReducer,
     archiveData: archiveDataSliceReducer,
     heirData: heirDataSliceReducer,
-    personData: personDataSliceReducer,
     slipsData: slipsDataSliceReducer,
     statementSlice: statementSliceReducer,
     fractionData: fractionDataSliceReducer,

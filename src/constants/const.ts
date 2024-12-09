@@ -1,18 +1,3 @@
-// IMPORTS
-import { createFields } from "@/utils/fieldCreator";
-
-// GRID FIELDS
-export const REQUEST_ROW_NUM = createFields("requestRowNum", "ردیف");
-export const REQUEST_NUMBER = createFields("requestNO", "شماره درخواست");
-export const REQUEST_TYPE_NAME = createFields(
-  "requestTypeNameFa",
-  "نوع درخواست"
-);
-export const REQUEST_PERSON_NAME = createFields("personName", "درخواست کننده");
-export const REQUEST_DATE = createFields("date", "تاریخ درخواست");
-export const REQUEST_SENDER_INFO = createFields("senderInfo", "بررسی درخواست");
-export const REQUEST_ACTION_OBSERVE = createFields("observe", "مشاهده درخواست");
-
 // ARRAYS
 export const PERSIAN_NUMBERS = [
   /۰/g,
@@ -40,6 +25,10 @@ export const SAVE = "ذخیره";
 export const UPLOAD = "بارگذاری";
 export const LOGIN = "ورود";
 export const EDIT = "ویرایش";
+export const SEARCH = "جستجو";
+export const NAVIGATE_BACK = "بازگشت";
+export const OBSERVE = "مشاهده";
+export const REVIEW = "بررسی";
 
 // RETIRED
 export const RETIRED_INFO = "اطلاعات بازنشسته";
@@ -59,13 +48,13 @@ export const OBSERVE_FILE = "مشاهده برگه";
 export const PARENT_FOLDER_ID = "97134493291b473f9b3bf8c4c15b27a0";
 
 // GENERAL
-export const NAVIGATE_BACK = "بازگشت";
 export const RELATEDS = "وابستگان";
 export const HEIRS = "موظفین";
 export const STATEMENTS = "احکام";
 export const PAYSLIP = "فیش حقوقی";
 export const REQUESTS = "درخواست ها";
 export const PREVIEW = "پیش نمایش";
+export const ROW_NO = "ردیف";
 
 // FORMS
 export const FIRST_NAME = "نام";
@@ -96,6 +85,7 @@ export const POSTAL_CODE = "کد پستی";
 export const HOUSING_STATUS = "وضعیت مسکن";
 export const MARITIAL_STATUS = "وضعیت تاهل";
 export const DESCRIPTION = "توضیحات";
+export const PERSONNEL_NO = "شماره کارمندی";
 
 // VETERAN
 export const SACRIFICED_FAMILY = "خانواده شهید";
