@@ -53,11 +53,13 @@ export const CustomModal = ({
     >
       <Stack spacing={2} sx={styles.container}>
         <Box sx={styles.header}>
-          <Box sx={styles.closeIcon}>
-            <IconButton onClick={onClose} color="error">
-              <CloseIcon />
-            </IconButton>
-          </Box>
+          {onClose && (
+            <Box sx={styles.closeIcon}>
+              <IconButton onClick={onClose} color="error">
+                <CloseIcon />
+              </IconButton>
+            </Box>
+          )}
           <Typography
             id={ariaLabel}
             variant="h6"

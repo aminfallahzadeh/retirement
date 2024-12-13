@@ -82,3 +82,14 @@ export const postalCodeRules = {
     message: NOT_VALID_MESSAGE,
   },
 };
+
+export const yearRules = {
+  minLength: {
+    value: 4,
+    message: NOT_VALID_MESSAGE,
+  },
+  maxLength: {
+    value: 4,
+    message: NOT_VALID_MESSAGE,
+  },
+};

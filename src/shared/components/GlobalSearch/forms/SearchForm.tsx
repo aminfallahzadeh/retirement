@@ -65,7 +65,7 @@ export const SearchForm = () => {
   const tableData = useMemo(() => data, [data]);
 
   const content = (
-    <section className="flex-col formContainer">
+    <section className="flex-col">
       <form
         method="POST"
         className="flex-col"

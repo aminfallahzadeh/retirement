@@ -1,7 +1,7 @@
 export type CustomModalProps = {
   title: string;
   open: boolean;
-  onClose: () => void;
+  onClose?: () => void;
   children: React.ReactNode;
   ariaLabel?: string;
   ariaDescription?: string;

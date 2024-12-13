@@ -1,38 +1,19 @@
 // IMPORTS
-import { useNavigate } from "react-router-dom";
-import { IconButton, Tooltip } from "@mui/material";
-import {
-  ArrowBack as BackIcon,
-  ArrowDropDown as ArrowDropDownIcon,
-} from "@mui/icons-material";
+import { ArrowDropDown as ArrowDropDownIcon } from "@mui/icons-material";
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
-import CompareSalaryReportForm from "@/forms/CompareSalaryReportForm";
-import CompareSalaryReportGrid from "@/grids/CompareSalaryReportGrid";
-import PersonnelStatementForm from "@/forms/PersonnelStatementForm";
-import PersonnelPayGrid from "@/grids/PersonnelPayGrid";
-import PayItemSearchGrid from "@/grids/PayItemSearchGrid";
+import { CompareSalaryReport } from "@/shared/components/CompareSalaryReport";
+import {
+  SALARY_AND_WAGE,
+  PAY_AND_FRACTION,
+  COMPARE_SALARY_REPORT,
+} from "@/constants/const";
+import { Title } from "@/shared/components/Title";
+import { FractionAndPayment } from "@/shared/components/FractionAndPayment";
 
 function SalaryScreen() {
-  const navigate = useNavigate();
-
   const content = (
-    <section className="flex-col u-margin-bottom-lg">
-      <div className="title-primary--container flex-row flex-center">
-        <h4 className="title-primary">
-          <span className="title-primary--underline"></span>
-          حقوق و دستمزد
-        </h4>
-
-        <div style={{ marginRight: "auto" }} className="back-button">
-          <Tooltip title="بازگشت">
-            <span>
-              <IconButton color="primary" onClick={() => navigate(-1)}>
-                <BackIcon />
-              </IconButton>
-            </span>
-          </Tooltip>
-        </div>
-      </div>
+    <section className="flex-col mb-5">
+      <Title title={SALARY_AND_WAGE} back={true} />
 
       <div>
         <Accordion>
@@ -41,22 +22,10 @@ function SalaryScreen() {
             aria-controls="panel-content"
             expandIcon={<ArrowDropDownIcon />}
           >
-            کسر و پرداخت
+            {PAY_AND_FRACTION}
           </AccordionSummary>
           <AccordionDetails>
-            <PersonnelStatementForm />
-
-            <div className="flex-col flex-center">
-              <h4 className="title-secondary">جدول افراد</h4>
-            </div>
-
-            <PersonnelPayGrid />
-
-            <div className="flex-col flex-center u-margin-top-md">
-              <h4 className="title-secondary">جدول آیتم ها</h4>
-            </div>
-
-            <PayItemSearchGrid />
+            <FractionAndPayment />
           </AccordionDetails>
         </Accordion>
 
@@ -66,11 +35,10 @@ function SalaryScreen() {
             aria-controls="panel-content"
             expandIcon={<ArrowDropDownIcon />}
           >
-            گزارش مقایسه حقوق
+            {COMPARE_SALARY_REPORT}
           </AccordionSummary>
           <AccordionDetails>
-            <CompareSalaryReportForm />
-            <CompareSalaryReportGrid />
+            <CompareSalaryReport />
           </AccordionDetails>
         </Accordion>
       </div>

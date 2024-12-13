@@ -1,5 +1,5 @@
 // IMPORTS
-import { Slip } from "../types";
+import { Slip } from "../../types";
 import { MRT_ColumnDef } from "material-react-table";
 import { Tooltip, IconButton } from "@mui/material";
 import EyeIcon from "@mui/icons-material/VisibilityOutlined";

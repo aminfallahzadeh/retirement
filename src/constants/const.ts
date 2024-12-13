@@ -31,6 +31,9 @@ export const OBSERVE = "مشاهده";
 export const REVIEW = "بررسی";
 export const ISSUE = "صدور";
 export const DOWNLOAD = "مشاهده / چاپ";
+export const UPLOAD_EXCEL = "بارگذاری اکسل";
+export const CONFIRM = "تایید";
+export const LOADING = "در حال بارگذاری";
 
 // RETIRED
 export const RETIRED_INFO = "اطلاعات بازنشسته";
@@ -42,9 +45,11 @@ export const RETIRED_ADDITIONAL_INFO = "اطلاعات تکمیلی";
 export const CARTABLE = "کارتابل";
 
 // SLIPS
-export const SLIPS_PAYS = "فیش های حقوقی";
-export const PAY_AND_FRACTION = "کسر و پرداخت";
-export const COMPARE_SALARY_REPORT = "گزارش مقایسه حقوق";
+
+export const ITEM_ID = "شناسه آیتم";
+export const ITEM_NAME = "نام آیتم";
+export const ADD_ITEM = "افزودن آیتم";
+export const DELETE_ITEM = "حذف آیتم";
 
 // ARCHIVE
 export const FOLDER_NAME = "نام پوشه";
@@ -65,6 +70,8 @@ export const PAYSLIP = "فیش حقوقی";
 export const REQUESTS = "درخواست ها";
 export const PREVIEW = "پیش نمایش";
 export const ROW_NO = "ردیف";
+export const RESULT = "نتیجه";
+export const DELETE = "حذف";
 
 // FORMS
 export const FIRST_NAME = "نام";
@@ -105,6 +112,14 @@ export const PAY_AMOUNT = "مبلغ پرداختی";
 export const FRACTIONS = "کسورات";
 export const TOTAL_AMOUNT = "مبلغ کل";
 export const PAY_DATE = "تاریخ پرداخت";
+export const AMOUNT = "مبلغ";
+export const CURRENT_YEAR = "سال جاری";
+export const CURRENT_MONTH = "ماه جاری";
+export const PAY_ITEM_TYPE = "آیتم حقوق";
+export const PENSIONARY_TYPE = "توع بازنشسته";
+export const PREVIOUS_MONTH = "ماه قبل";
+export const DIFF = "تفاوت";
+export const STATUS = "وضعیت";
 
 // VETERAN
 export const SACRIFICED_FAMILY = "خانواده شهید";
@@ -113,3 +128,9 @@ export const CHILD_OF_SACRIFICED = "فرزند شهید";
 export const VALIANT = "جانباز";
 export const SACRIFICED = "شهید";
 export const CAPTIVE = "آزاده";
+
+// SCREENS
+export const SALARY_AND_WAGE = "حقوق و دستمزد";
+export const SLIPS_PAYS = "فیش های حقوقی";
+export const PAY_AND_FRACTION = "کسر و پرداخت";
+export const COMPARE_SALARY_REPORT = "گزارش مقایسه حقوق";

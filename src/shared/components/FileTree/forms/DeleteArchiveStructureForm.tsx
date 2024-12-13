@@ -17,12 +17,12 @@ const DeleteArchiveStructureForm = ({
   refetch,
 }: ArchiveStructureFormProps) => {
   // CONSTS
-  const [deleteArhiveStructure, { isLoading }] =
+  const [deleteArchiveStructure, { isLoading }] =
     useDeleteArchiveStructureMutation();
 
-  // HANLDERS
+  // HANDLERS
   const onSubmit = async () => {
-    const response = await deleteArhiveStructure({
+    const response = await deleteArchiveStructure({
       id: item?.id,
     }).unwrap();
     setCloseModal();

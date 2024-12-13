@@ -2,10 +2,8 @@
 import { useState } from "react";
 import { Grid } from "@/shared/components/Grid";
 import { CustomModal } from "@/shared/components/CustomModal";
-import { Slip } from "../types";
+import { Slip } from "../../types";
 import { slipsColumns } from "./columns";
-import useToggleState from "@/hooks/useToggleState";
-
 // TEST
 import EditPayItemsGrid from "@/grids/EditPayItemsGrid";
 import SlipFormTemplate from "@/components/SlipFormTemplate";
@@ -42,18 +40,16 @@ export const SlipsGrid = ({
 
   return (
     <>
-      {showUpdateModal && (
-        <CustomModal
-          open={showUpdateModal}
-          onClose={() => setShowUpdateModal(false)}
-          title="ویرایش پرسنل"
-        >
-          <EditPayItemsGrid
-            payID={payID}
-            setIsEditModalOpen={setShowUpdateModal}
-          />
-        </CustomModal>
-      )}
+      <CustomModal
+        open={showUpdateModal}
+        onClose={() => setShowUpdateModal(false)}
+        title="ویرایش پرسنل"
+      >
+        <EditPayItemsGrid
+          payID={payID}
+          setIsEditModalOpen={setShowUpdateModal}
+        />
+      </CustomModal>
 
       {showObserveModal && (
         <CustomModal

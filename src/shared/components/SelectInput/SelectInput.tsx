@@ -24,7 +24,9 @@ export const SelectInput: FC<SelectInputProps> = ({
   onValueChange,
   errors,
 }) => {
-  const [hasValue, setHasValue] = useState<boolean>(false);
+  const [hasValue, setHasValue] = useState<boolean>(
+    !!control._defaultValues?.[name]
+  );
 
   const selectStyles: StylesConfig = {
     container: (base) => ({

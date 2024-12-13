@@ -1,6 +1,6 @@
 // IMPORTS
 import { GlobalSearch } from "@/shared/components/GlobalSearch";
-import { personnelActions } from "@/constants/actions";
+import { personnelActions } from "./actions";
 
 const PersonnelStatements = () => {
   const content = (

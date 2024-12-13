@@ -6,6 +6,8 @@
     box-sizing: border-box;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    scrollbar-width: thin;
+    --webkit-scrollbar-width: thin;
 }
 
 body {

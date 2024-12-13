@@ -1,1 +1,1 @@
-export * from "./Slips";
+export { default as Slips } from "./Slips";

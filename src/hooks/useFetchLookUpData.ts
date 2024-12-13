@@ -373,7 +373,7 @@ const useFetchRequestAttachmentTypes = (requestTypeID) => {
 };
 
 // PAY ITEM TYPE LOOK UP LOGIC
-const useFetchPayItemType = (payItemtypeID) => {
+const useFetchPayItemType = (payItemtypeID: string | undefined = undefined) => {
   const [payItemTypes, setPayItemTypes] = useState([]);
 
   // GET DATA

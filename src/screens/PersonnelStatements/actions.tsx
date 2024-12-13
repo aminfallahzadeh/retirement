@@ -3,7 +3,7 @@ import { Tooltip, IconButton } from "@mui/material";
 import EyeIcon from "@mui/icons-material/VisibilityOutlined";
 import { Link } from "react-router-dom";
 import { MRT_RowData } from "material-react-table";
-import { OBSERVE } from "./const";
+import { OBSERVE } from "@/constants/const";
 
 export const personnelActions = [
   {
@@ -23,29 +23,6 @@ export const personnelActions = [
             <EyeIcon />
           </IconButton>
         </Link>
-      </Tooltip>
-    ),
-  },
-];
-
-export const personnelPayActions = (
-  fn: (personID: string) => Promise<void>
-) => [
-  {
-    accessorKey: "observeStaff",
-    header: OBSERVE,
-    enableSorting: false,
-    enableColumnActions: false,
-    size: 20,
-    Cell: ({ row }: MRT_RowData) => (
-      <Tooltip title="مشاهده آیتمها">
-        <IconButton
-          color="primary"
-          sx={{ padding: "0" }}
-          onClick={() => fn(row.original.id)}
-        >
-          <EyeIcon />
-        </IconButton>
       </Tooltip>
     ),
   },

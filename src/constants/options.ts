@@ -40,3 +40,9 @@ export const currentMonthOptions = [
   { value: "11", label: "بهمن" },
   { value: "12", label: "اسفند" },
 ];
+
+export const pensionaryTypeOptions = [
+  { value: "1", label: "بازنشسته" },
+  { value: "0", label: "وظیفه بگیر" },
+  { value: "-1", label: "هر دو" },
+];

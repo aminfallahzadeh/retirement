@@ -3,7 +3,7 @@ import { useState } from "react";
 import { LoadingButton } from "@mui/lab";
 import {
   Save as SaveIcon,
-  WarningAmberOutlined as WarningIcon,
+  InfoOutlined as WarningIcon,
 } from "@mui/icons-material";
 import { SAVE } from "@/constants/const";
 import { DESCRIPTION } from "@/constants/fields";
@@ -44,11 +44,11 @@ const DeleteArchiveForm = ({
   const content = (
     <section className="flex flex-col">
       <form method="POST" className="grid grid-cols-1 gap-0">
-        <div className="flex gap-x-2">
+        <div className="flex gap-x-2 w-full justify-center items-center">
           <WarningIcon color="warning" />
           <p className="paragraph">
-            حذف برگه{"  "}
-            <strong className="accent">&quot;{item?.label}&quot;</strong>
+            حذف برگه
+            <span className="accent">&quot;{item?.label}&quot;</span>
           </p>
         </div>
 

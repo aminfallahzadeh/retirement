@@ -1,27 +1,18 @@
-// REACT IMPORTS
+// IMPORTS
 import { useState, useEffect, useRef } from "react";
-
-// REDUX IMPORTS
 import { useGetPayQuery } from "@/features/pay/payApi";
-
-// MUI IMPORTS
 import { Box, CircularProgress, Button } from "@mui/material";
 import { DownloadOutlined as DownloadIcon } from "@mui/icons-material";
-
-// HELPERS
 import {
   convertToPersianNumber,
   separateByThousands,
   convertToPersianWords,
 } from "../helper";
-
-// LIBRARY IMPROTS
+import images from "@/constants/images";
 import generatePDF from "react-to-pdf";
-
-// COMPONENTS
 import Modal from "./Modal";
 
-function SlipFormTemplate({ payID }) {
+function SlipFormTemplate({ payID }: { payID: string }) {
   // DOWNLOAD REF
   const targetRef = useRef();
 
@@ -92,23 +83,23 @@ function SlipFormTemplate({ payID }) {
   const content = (
     <>
       {isLoading || isFetching || formData === null ? (
-        <Modal title={"در حال بارگذاری..."}>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              padding: "2rem 10rem",
-            }}
-          >
-            <CircularProgress color="primary" />
-          </Box>
-        </Modal>
+        // <Modal title={"در حال بارگذاری..."}>
+        //     </Modal>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            padding: "2rem 10rem",
+          }}
+        >
+          <CircularProgress color="primary" />
+        </Box>
       ) : (
         <div className="slip-container">
           <div className="slip-container" ref={targetRef}>
             <div className="slip-container__logo">
               <img
-                src="@images/logo-slip.png"
+                src={images.slipLogo}
                 className="slip-container__logo--img"
               />
               <p className="slip-container__logo--sub">
@@ -122,7 +113,6 @@ function SlipFormTemplate({ payID }) {
             </div>
 
             {/* MAIN INFO TABLE */}
-
             <table className="slip-container__info-table form-table">
               <thead>
                 <tr>
