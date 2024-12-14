@@ -36,6 +36,24 @@ const styles = {
   },
 };
 
+const fullScreenContainer = {
+  container: {
+    outline: "none",
+    border: "none",
+    position: "absolute",
+    top: 0,
+    left: 0,
+    bottom: 0,
+    width: "100%",
+    overflow: "auto",
+    bgcolor: "var(--color-bg-primary)",
+    boxShadow: 24,
+    borderRadius: 1,
+    px: 4,
+    py: 2,
+  },
+};
+
 export const CustomModal = ({
   open,
   onClose,
@@ -43,6 +61,7 @@ export const CustomModal = ({
   ariaLabel,
   ariaDescription,
   title,
+  fullScreen = false,
 }: CustomModalProps) => {
   return (
     <Modal
@@ -51,7 +70,10 @@ export const CustomModal = ({
       aria-labelledby={ariaLabel}
       aria-describedby={ariaDescription}
     >
-      <Stack spacing={2} sx={styles.container}>
+      <Stack
+        spacing={2}
+        sx={fullScreen ? fullScreenContainer.container : styles.container}
+      >
         <Box sx={styles.header}>
           {onClose && (
             <Box sx={styles.closeIcon}>

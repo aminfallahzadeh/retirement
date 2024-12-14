@@ -8,11 +8,15 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import "react-toastify/dist/ReactToastify.css";
 import { useIdleTimer } from "react-idle-timer";
 import { jwtDecode } from "jwt-decode";
-import { CiSearch } from "react-icons/ci";
+import SearchIcon from "@mui/icons-material/SearchRounded";
+import CloseIcon from "@mui/icons-material/CloseRounded";
 import { JwtPayload } from "jwt-decode";
 import { toastConfig } from "@/config/toast/toast-config";
 import { Header } from "@/shared/components/Header";
-import SearchScreen from "@/screens/SearchScreen";
+import { SearchScreen } from "./screens/SearchScreen";
+import { CustomModal } from "./shared/components/CustomModal";
+import useToggleState from "./hooks/useToggleState";
+import { SEARCH } from "./constants/const";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -29,7 +33,8 @@ function App() {
   const [, setRemaining] = useState(0);
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState("");
-  const [search, setSearch] = useState(false);
+  //   const [search, setSearch] = useState(false);
+  const [search, toggleSearch] = useToggleState(false);
 
   // CONSTS
   const [logoutApi] = useLogoutMutation();
@@ -98,15 +103,15 @@ function App() {
     }
   }, [getRemainingTime, isActive, logoutHandler, token]);
 
-  const handleSearchClick = () => {
-    setSearch(true);
-  };
-
   const ToastProvider = useMemo(() => toastConfig.registerProvider, []);
 
   return (
     <ThemeProvider theme={theme}>
       {!isLoginPage && <Header firstName={firstName} lastName={lastName} />}
+
+      <CustomModal title={SEARCH} open={search} fullScreen={true}>
+        <SearchScreen />
+      </CustomModal>
       <main
         className={!isLoginPage ? "main" : ""}
         style={{
@@ -121,26 +126,12 @@ function App() {
       >
         <Outlet />
       </main>
-      {search ? (
-        <div
-          style={{
-            position: "fixed",
-            top: "0",
-            left: "0",
-            bottom: "0",
-            width: "100%",
-            height: "100%",
-            backgroundColor: "white",
-            zIndex: "9999",
-          }}
-        >
-          <SearchScreen setSearch={setSearch} />
+
+      {!isLoginPage && (
+        <div onClick={toggleSearch} className="search-btn">
+          {search ? <CloseIcon /> : <SearchIcon />}
         </div>
-      ) : !isLoginPage ? (
-        <div onClick={handleSearchClick} className="search-btn">
-          <CiSearch />
-        </div>
-      ) : null}
+      )}
 
       <ToastProvider />
     </ThemeProvider>

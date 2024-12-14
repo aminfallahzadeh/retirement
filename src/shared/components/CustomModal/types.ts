@@ -5,4 +5,5 @@ export type CustomModalProps = {
   children: React.ReactNode;
   ariaLabel?: string;
   ariaDescription?: string;
+  fullScreen?: boolean;
 };
