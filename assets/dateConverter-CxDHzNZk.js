@@ -1,0 +1,1 @@
+import{a as e}from"./numberConverter-DcI1FAjY.js";import{ak as o}from"./index-DXLU_PyE.js";const a=r=>r?o(r):null,m=r=>{if(r){const t=o(r).format("jYYYY/jMM/jDD");return e(t)}return"-"};export{a,m as c};
