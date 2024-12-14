@@ -1,0 +1,1 @@
+import{a as e}from"./numberConverter-BO73yQ0O.js";import{bY as o}from"./index-CS2lvWxn.js";const a=r=>r?o(r):null,m=r=>{if(r){const t=o(r).format("jYYYY/jMM/jDD");return e(t)}return"-"};export{a,m as c};
