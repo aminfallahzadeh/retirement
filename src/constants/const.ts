@@ -45,7 +45,6 @@ export const RETIRED_ADDITIONAL_INFO = "اطلاعات تکمیلی";
 export const CARTABLE = "کارتابل";
 
 // SLIPS
-
 export const ITEM_ID = "شناسه آیتم";
 export const ITEM_NAME = "نام آیتم";
 export const ADD_ITEM = "افزودن آیتم";
@@ -72,6 +71,7 @@ export const PREVIEW = "پیش نمایش";
 export const ROW_NO = "ردیف";
 export const RESULT = "نتیجه";
 export const DELETE = "حذف";
+export const START_DATE = "تاریخ شروع";
 
 // FORMS
 export const FIRST_NAME = "نام";
@@ -120,6 +120,15 @@ export const PENSIONARY_TYPE = "توع بازنشسته";
 export const PREVIOUS_MONTH = "ماه قبل";
 export const DIFF = "تفاوت";
 export const STATUS = "وضعیت";
+export const GROUP = "گروه";
+export const LAST_ORGANIZATION = "آخرین محل خدمت";
+export const POSITION = "سمت";
+export const EMPLOYMENT_TYPE = "نوع استخدام";
+export const RETIREMENT_DATE = "تاریخ بازنشستگی";
+export const CHANGE_STATUS_DATE = "تاریخ تغییر وضعیت";
+export const JOB_DEGREE_COEF = "ضریب مدیریتی";
+export const RETIRED_REAL_DURATION = "سابقه حقیقی بازنشسته";
+export const RETIRED_GRANT_DURATION = "سابقه ارفاقی بازنشسته";
 
 // VETERAN
 export const SACRIFICED_FAMILY = "خانواده شهید";

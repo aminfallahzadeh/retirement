@@ -5,6 +5,9 @@ import { Controller } from "react-hook-form";
 import { InputDatePicker } from "jalaali-react-date-picker";
 import { DatePickerProps, ExtendedInputDatePickerProps } from "./types";
 import { useCloseCalender } from "@/hooks/useCloseCalender";
+import { IconButton } from "@mui/material";
+import CalenderIcon from "@mui/icons-material/CalendarTodayOutlined";
+import CloseIcon from "@mui/icons-material/Close";
 
 export const DatePicker = ({
   name,
@@ -15,6 +18,7 @@ export const DatePicker = ({
   control,
   required = false,
   errors,
+  setValue,
 }: DatePickerProps) => {
   // STATES
   const calenderRef = useRef(null);
@@ -23,6 +27,10 @@ export const DatePicker = ({
   // HANDLERS
   const handleCalenderOpenChange = (open: boolean) => {
     toggleOpen(open);
+  };
+
+  const handleRemoveField = () => {
+    setValue(name, null);
   };
 
   useCloseCalender([calenderRef], [toggleOpen]);
@@ -41,6 +49,19 @@ export const DatePicker = ({
             format={format}
             value={value}
             open={open}
+            suffixIcon={
+              value && !disabled ? (
+                <IconButton
+                  color="default"
+                  size="small"
+                  onClick={handleRemoveField}
+                >
+                  <CloseIcon />
+                </IconButton>
+              ) : (
+                <CalenderIcon color="action" />
+              )
+            }
             defaultValue={null}
             onOpenChange={handleCalenderOpenChange}
             onChange={(val) => {

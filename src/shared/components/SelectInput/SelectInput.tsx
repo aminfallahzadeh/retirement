@@ -1,8 +1,8 @@
 // IMPORTS
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Select, { StylesConfig, SingleValue } from "react-select";
 import { OptionType } from "@/shared/types/options";
-import { Controller } from "react-hook-form";
+import { Controller, useWatch } from "react-hook-form";
 import { FC } from "react";
 import makeAnimated from "react-select/animated";
 import { SelectInputProps } from "./types";
@@ -24,9 +24,16 @@ export const SelectInput: FC<SelectInputProps> = ({
   onValueChange,
   errors,
 }) => {
-  const [hasValue, setHasValue] = useState<boolean>(
-    !!control._defaultValues?.[name]
-  );
+  const value = useWatch({
+    control,
+    name,
+  });
+
+  useEffect(() => {
+    setHasValue(!!value);
+  }, [value]);
+
+  const [hasValue, setHasValue] = useState<boolean>(!!value);
 
   const selectStyles: StylesConfig = {
     container: (base) => ({

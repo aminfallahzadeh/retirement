@@ -16,6 +16,7 @@ export type DatePickerProps = {
   rules?: RegisterOptions;
   control: UseFormReturn["control"];
   errors?: FieldErrors<FieldValues>;
+  setValue: UseFormReturn["setValue"];
 };
 
 export type ExtendedInputDatePickerProps = InputDatePickerProps & {

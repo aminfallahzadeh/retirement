@@ -2,7 +2,7 @@
 import { InputProps } from "./types";
 import { useController } from "react-hook-form";
 import { FC } from "react";
-import { Close as CloseIcon } from "@mui/icons-material";
+import CloseIcon from "@mui/icons-material/Close";
 import { IconButton } from "@mui/material";
 
 export const Input: FC<InputProps> = ({

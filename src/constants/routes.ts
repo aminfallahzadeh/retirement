@@ -54,8 +54,9 @@ export const ROUTES = [
   {
     id: 3,
     path: "/retirement/retired",
-    element: createSuspense(Retired),
+    element: createSuspense(Retired, ["requestID", "personID"]),
     index: false,
+    guard: true,
   },
   {
     id: 4,

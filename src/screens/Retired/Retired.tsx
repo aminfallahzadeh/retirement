@@ -1,6 +1,5 @@
 // IMPORTS
 import RetiredAccountForm from "@/forms/RetiredAccountForm";
-import RetiredPensionaryForm from "@/forms/RetiredPensionaryForm";
 import { Electronic } from "./components/Electronic";
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import { ArrowDropDown as ArrowDropDownIcon } from "@mui/icons-material";
@@ -26,7 +25,7 @@ import RetiredStatementsGrid from "@/grids/RetiredStatementsGrid";
 import RetiredHeirGrid from "@/grids/RetiredHeirGrid";
 import AllRequestsGrid from "@/grids/AllRequestsGrid";
 import RetiredSlipsGrid from "@/grids/RetiredSlipsGrid";
-import { PersonForm } from "./forms";
+import { PersonForm, PensionaryForm } from "./forms";
 
 const Retired = () => {
   // STATES
@@ -67,7 +66,7 @@ const Retired = () => {
             {RETIRES_PENSIONARY_INFO}
           </AccordionSummary>
           <AccordionDetails>
-            <RetiredPensionaryForm />
+            <PensionaryForm />
           </AccordionDetails>
         </Accordion>
 

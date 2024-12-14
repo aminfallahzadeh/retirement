@@ -95,7 +95,8 @@ function PensionaryStatusHistoryGrid({
     },
     muiTableBodyRowProps: ({ row }) => ({
       sx: {
-        backgroundColor: row.original.isActive ? "#00FF00" : "",
+        color: row.original.isActive ? "#087a30" : "", // Text color
+        "& td": { color: row.original.isActive ? "#087a30" : "" }, // Explicitly target cells
       },
     }),
     muiTableHeadProps: {

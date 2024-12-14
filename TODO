@@ -1,6 +1,6 @@
 Fractions:
   ✔ change the layout to tabs @done(24-10-31 11:53)
-  □ add second tab layout
+  ✔ add second tab layout @started(24-12-13 16:56) @done(24-12-13 16:56) @lasted(4s)
 
 Report Generator:
   □ check the grid after report is not showing
@@ -11,19 +11,34 @@ Report Generator:
     □ second tab: check email file
 
 Personnel Statement:
-  □ fill the form od statement @files
+  ✔ fill the form of statement @files @done(24-12-13 16:55)
 
 Forms:
-  □ add enter key functionality to submit forms
+  ✔ add enter key functionality to submit forms @done(24-12-13 16:55)
   ✔ remove control pattern in description fields @critical @done(24-12-04 12:51)
 
 
 General:
-  □ refactor the whole code in typescript
+  ✔ refactor the whole code in typescript @done(24-12-13 16:54)
   ✘ add dynamic form support @cancelled(24-12-06 02:56)
-  □ refactor folder structure
-  □ refactor file names
-  □ implement barrels
+  ✔ refactor folder structure @done(24-12-13 16:54)
+  ✔ refactor file names @done(24-12-13 16:54)
+  ✔ implement barrels @done(24-12-13 16:54)
+
+Refactor:
+    ✔ add route protector @done(24-12-13 17:37)
+    □ refactor retired screen
+
+NewFeature:
+    □ add scanner to file tree
+    □ implement base info
+    □ implement second fraction tab
+
+
+
+Portal Problems:
+    □ in retired pensionary form, does retiredJobDegreeCoef should be float?
+    □ search does not show the result sometimes
 
 // NOTES
 
@@ -31,6 +46,8 @@ excel link = https://docs.google.com/spreadsheets/d/1WHvddz4M9fIvHAP-AnyNdOTKTp6
 
 RetirementStatementID=1E1D29DC-77C5-49FE-A74D-2F3BF154A8CF
 sodoore fish ID: 62A54585-F331-434A-9027-C9F3060F683A
+
+ALIREZA FALLAHZADEH NATIONAL CODE = 0045723702
 
 Archive:
   ✔ transfer all forms into react-hook-form (form control) @done(24-10-30 21:54) @project(Forms)

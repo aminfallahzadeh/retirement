@@ -8,7 +8,7 @@ import {
 import { MRT_RowData } from "material-react-table";
 import { RoleType } from "@/shared/types/role";
 import { RequestColumn } from "./types";
-import { convertToPersianDateFormatted } from "@/helper";
+import { convertToPersianDateFormatted } from "@/helpers/dateConverter";
 import { ROW_NO, OBSERVE, REVIEW } from "@/constants/const";
 
 export const columnsRenderer = ({
@@ -43,7 +43,7 @@ export const columnsRenderer = ({
     header: "تاریخ درخواست",
     size: 20,
     Cell: ({ renderedCellValue }) => (
-      <div>{convertToPersianDateFormatted(renderedCellValue)}</div>
+      <div>{convertToPersianDateFormatted(renderedCellValue as string)}</div>
     ),
   },
   {

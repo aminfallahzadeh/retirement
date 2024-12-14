@@ -26,7 +26,7 @@ import { useGetTablesQuery } from "@/features/report-generator/reportGeneratorAp
  * - `lookUpItemsIsLoading` {boolean}: A flag indicating if the data is currently loading.
  * - `lookUpItemsIsFetching` {boolean}: A flag indicating if the data is being fetched.
  */
-const useFetchLookUpData = ({ lookUpType }) => {
+const useFetchLookUpData = ({ lookUpType }: { lookUpType: string }) => {
   const [lookUpItems, setLookUpItems] = useState([]);
 
   // GET DATA
@@ -96,7 +96,10 @@ const useFetchRetirementStatementTypes = () => {
 // PENSIONARY STATUS LOOK UP LOGIC
 const useFetchPensionaryStatus = ({
   pensionaryStatusCategory,
-  pensionaryStatusIsDead = undefined,
+  pensionaryStatusIsDead = null,
+}: {
+  pensionaryStatusCategory: string;
+  pensionaryStatusIsDead: string | null;
 }) => {
   const [pensionaryStatus, setPensionaryStatus] = useState([]);
 
@@ -305,7 +308,7 @@ const useFetchPersonnelStatementOffType = () => {
 };
 
 // REPORT GENERATOR TABLES LOOK UP LOGIC
-const useFetchReportGeneratorTables = (role) => {
+const useFetchReportGeneratorTables = (role: string) => {
   const [reportGeneratorTables, setReportGeneratorTables] = useState([]);
 
   // GET DATA
@@ -339,7 +342,7 @@ const useFetchReportGeneratorTables = (role) => {
 };
 
 // REQUEST ATTACHMENT TYPES LOOK UP LOGIC
-const useFetchRequestAttachmentTypes = (requestTypeID) => {
+const useFetchRequestAttachmentTypes = (requestTypeID: string) => {
   const [requestAttachmentTypes, setRequestAttachmentTypes] = useState([]);
 
   // GET DATA

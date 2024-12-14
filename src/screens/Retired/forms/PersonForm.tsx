@@ -1,5 +1,5 @@
 // IMPORTS
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useForm, FieldValues } from "react-hook-form";
 import { useSearchParams } from "react-router-dom";
 import {
@@ -21,7 +21,10 @@ import { LoadingButton } from "@mui/lab";
 import useToggleState from "@/hooks/useToggleState";
 import { useFetchLookUpData } from "@/hooks/useFetchLookUpData";
 import { createOptions } from "@/utils/optionsCreator";
-import { convertToPersianDate } from "@/helpers/dateConverter";
+import {
+  processDataForView,
+  processDataForRequest,
+} from "@/utils/convertFormData";
 import {
   SAVE,
   EDIT,
@@ -78,12 +81,28 @@ export const PersonForm = () => {
   // CONSTS
   const dispatch = useAppDispatch();
   const personID = searchParams.get("personID");
+  const selectKeys = useMemo(
+    () => [
+      "personCountryID",
+      "personStateID",
+      "personCityID",
+      "housingTypeID",
+      "educationTypeID",
+      "maritalStatusID",
+    ],
+    []
+  );
+  const dateKeys = useMemo(() => ["personDeathDate", "personBirthDate"], []);
   const {
     control,
     handleSubmit,
     formState: { errors },
     setValue,
-  } = useForm<FieldValues>();
+  } = useForm<FieldValues>({
+    defaultValues: {
+      personCountryID: null,
+    },
+  });
 
   // FETCH DATA
   const {
@@ -96,113 +115,127 @@ export const PersonForm = () => {
   const [updateRetiredPerson, { isLoading: isUpdating }] =
     useUpdateRetiredPersonMutation();
 
-  // CONVERT DATES
-  useEffect(() => {
-    if (isSuccess) {
-      const originalData = retiredPersonData?.itemList[0];
-
-      if (originalData) {
-        const data = { ...originalData };
-
-        Object.keys(data).forEach((key) => {
-          if (key === "personDeathDate") {
-            data[key] =
-              data[key] === null ? null : convertToPersianDate(data[key]);
-          }
-
-          if (key === "personBirthDate") {
-            data[key] =
-              data[key] === null ? null : convertToPersianDate(data[key]);
-          }
-
-          setValue(key, data[key]);
-        });
-
-        dispatch(
-          setPersonDeathDate(data?.personDeathDate === null ? false : true)
-        );
-      }
-    }
-
-    return () => {
-      dispatch(setPersonDeathDate(null));
-    };
-  }, [dispatch, isSuccess, retiredPersonData?.itemList, setValue]);
-
   const { lookUpItems: genders, lookUpItemsIsLoading: isGenderItemsLoading } =
     useFetchLookUpData({ lookUpType: "Gender" });
-  const genderOptions = createOptions(genders, "lookUpID", "lookUpName");
+  const genderOptions = useMemo(
+    () => createOptions(genders, "lookUpID", "lookUpName"),
+    [genders]
+  );
 
   const {
     lookUpItems: educationTypes,
     lookUpItemsIsLoading: educationTypesIsLoading,
   } = useFetchLookUpData({ lookUpType: "EducationType" });
-  const educationOptions = createOptions(
-    educationTypes,
-    "lookUpID",
-    "lookUpName"
+  const educationOptions = useMemo(
+    () => createOptions(educationTypes, "lookUpID", "lookUpName"),
+    [educationTypes]
   );
 
   const { lookUpItems: countries, lookUpItemsIsLoading: countriesIsLoading } =
     useFetchLookUpData({ lookUpType: "Country" });
-  const countryOptions = createOptions(countries, "lookUpID", "lookUpName");
+  const countryOptions = useMemo(
+    () => createOptions(countries, "lookUpID", "lookUpName"),
+    [countries]
+  );
 
   const { lookUpItems: states, lookUpItemsIsLoading: statesIsLoading } =
     useFetchLookUpData({ lookUpType: "State" });
-  const stateOptions = createOptions(states, "lookUpID", "lookUpName");
+  const stateOptions = useMemo(
+    () => createOptions(states, "lookUpID", "lookUpName"),
+    [states]
+  );
 
   const { lookUpItems: cities, lookUpItemsIsLoading: citiesIsLoading } =
     useFetchLookUpData({ lookUpType: "City" });
-  const cityOptions = createOptions(cities, "lookUpID", "lookUpName");
+  const cityOptions = useMemo(
+    () => createOptions(cities, "lookUpID", "lookUpName"),
+    [cities]
+  );
 
   const {
     lookUpItems: housingTypes,
     lookUpItemsIsLoading: housingTypesIsLoading,
   } = useFetchLookUpData({ lookUpType: "HousingType" });
-  const housingOptions = createOptions(housingTypes, "lookUpID", "lookUpName");
+  const housingOptions = useMemo(
+    () => createOptions(housingTypes, "lookUpID", "lookUpName"),
+    [housingTypes]
+  );
 
   const {
     lookUpItems: maritalStatusItems,
     lookUpItemsIsLoading: maritalStatusItemsIsLoading,
   } = useFetchLookUpData({ lookUpType: "MaritialStatus" });
-  const maritalStatusOptions = createOptions(
-    maritalStatusItems,
-    "lookUpID",
-    "lookUpName"
+  const maritalStatusOptions = useMemo(
+    () => createOptions(maritalStatusItems, "lookUpID", "lookUpName"),
+    [maritalStatusItems]
   );
 
   // HANDLERS
   const onSubmit = async (data: FieldValues) => {
-    let personDeathDate;
-    let personBirthDate;
+    // CONVERT DATA FOR REQUEST
+    const transformedData = processDataForRequest(data, selectKeys, dateKeys);
 
-    if (data.personDeathDate) {
-      personDeathDate = new Date(data.personDeathDate);
-      personDeathDate.setMinutes(
-        personDeathDate.getMinutes() - personDeathDate.getTimezoneOffset()
-      );
-    } else {
-      personDeathDate = null;
-    }
-
-    if (data.personBirthDate) {
-      personBirthDate = new Date(data.personBirthDate);
-      personBirthDate.setMinutes(
-        personBirthDate.getMinutes() - personBirthDate.getTimezoneOffset()
-      );
-    } else {
-      personBirthDate = null;
-    }
-
-    const updateRes = await updateRetiredPerson({
-      ...data,
-      personBirthDate,
-      personDeathDate,
+    const response = await updateRetiredPerson({
+      ...transformedData,
     }).unwrap();
     refetch();
     toggleEditable();
-    toastConfig.success(updateRes.message);
+    toastConfig.success(response.message);
   };
+
+  // CONVERT DATA FOR VIEW
+  useEffect(() => {
+    if (isSuccess) {
+      const originalData = retiredPersonData?.itemList[0];
+
+      dispatch(
+        setPersonDeathDate(
+          originalData?.personDeathDate === null ? false : true
+        )
+      );
+
+      const transformedData = processDataForView(
+        originalData,
+        selectKeys,
+        dateKeys,
+        {
+          genderID: genderOptions,
+          educationTypeID: educationOptions,
+          personCountryID: countryOptions,
+          personStateID: stateOptions,
+          personCityID: cityOptions,
+          housingTypeID: housingOptions,
+          maritalStatusID: maritalStatusOptions,
+        }
+      );
+
+      Object.keys(transformedData).forEach((key) => {
+        if (transformedData[key] === null) {
+          setValue(key, "");
+        } else {
+          setValue(key, transformedData[key]);
+        }
+      });
+    }
+
+    return () => {
+      dispatch(setPersonDeathDate(null));
+    };
+  }, [
+    dispatch,
+    isSuccess,
+    retiredPersonData?.itemList,
+    setValue,
+    genderOptions,
+    countryOptions,
+    educationOptions,
+    stateOptions,
+    cityOptions,
+    housingOptions,
+    maritalStatusOptions,
+    dateKeys,
+    selectKeys,
+  ]);
 
   const content = (
     <>
@@ -297,6 +330,7 @@ export const PersonForm = () => {
                 required={true}
                 errors={errors}
                 rules={requiredRule}
+                setValue={setValue}
               />
 
               <Input
@@ -544,6 +578,7 @@ export const PersonForm = () => {
                 control={control}
                 disabled={!editable}
                 required={false}
+                setValue={setValue}
               />
 
               <TextArea

@@ -6,6 +6,7 @@ import {
   MRT_RowSelectionState,
   MRT_ColumnDef,
   MRT_RowData,
+  MRT_SortingState,
 } from "material-react-table";
 import { MRT_Localization_FA } from "material-react-table/locales/fa";
 import { PaginationItem } from "@mui/material";
@@ -21,7 +22,9 @@ export const Grid = <T extends MRT_RowData>({
   data,
   topBarActions,
   bottomBarActions,
+  sorting,
   scroll,
+  highlightActive = false,
   props,
   isLoading,
   isFetching,
@@ -32,8 +35,10 @@ export const Grid = <T extends MRT_RowData>({
   bottomBarActions?: ReactNode;
   scroll: boolean;
   props?: object;
+  sorting?: MRT_SortingState;
   isLoading?: boolean;
   isFetching?: boolean;
+  highlightActive?: boolean;
 }) => {
   const [rowSelection, setRowSelection] = useState<MRT_RowSelectionState>({});
 
@@ -74,6 +79,10 @@ export const Grid = <T extends MRT_RowData>({
       selected: rowSelection[row.id],
       sx: {
         cursor: "pointer",
+        color: row.original.isActive && highlightActive ? "#087a30" : "",
+        "& td": {
+          color: row.original.isActive && highlightActive ? "#087a30" : "",
+        },
       },
     }),
     localization: MRT_Localization_FA,
@@ -101,6 +110,7 @@ export const Grid = <T extends MRT_RowData>({
     },
     initialState: {
       density: "compact",
+      sorting: sorting ? sorting : [],
     },
     enablePagination: scroll ? false : true,
     enableBottomToolbar: scroll ? false : true,

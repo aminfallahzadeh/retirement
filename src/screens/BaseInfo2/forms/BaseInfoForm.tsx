@@ -53,7 +53,7 @@ export const BaseInfoForm = () => {
   const [insertLookup, { isLoading: isInsertLoading }] =
     useInsertLookupMutation();
 
-  // LOGICS
+  // HANDLERS
   const fetchLookUp = useCallback(async () => {
     const response = await getLookUp({
       lookupType: form_data?.type?.value,
@@ -63,7 +63,6 @@ export const BaseInfoForm = () => {
     console.log(response);
   }, [getLookUp, form_data?.type?.value]);
 
-  // HANDLERS
   const onSubmit = async (formData: FieldValues) => {
     const data = {
       lookUpID: "string",
