@@ -27,13 +27,7 @@ import { toastConfig } from "@/config/toast/toast-config";
 import { Permission } from "@/shared/types/domain/user";
 import { TreeItem } from "../../types";
 
-export const NavBar = ({
-  firstName,
-  lastName,
-}: {
-  firstName: string;
-  lastName: string;
-}) => {
+export const NavBar = () => {
   // STATES
   const [activePanel, setActivePanel] = useState<string | null>(null);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
@@ -41,8 +35,9 @@ export const NavBar = ({
   const [itemList, setItemList] = useState<TreeItem[]>([]);
 
   // CONSTS
-  const { userID } = useAppSelector((state) => state.auth);
   const { refreshToken } = useAppSelector((state) => state.auth);
+  const { firstName, lastName } = useAppSelector((state) => state.auth);
+  const { userID } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
   const location = useLocation();
   const shouldFetch = !!userID;

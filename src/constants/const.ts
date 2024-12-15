@@ -129,6 +129,11 @@ export const CHANGE_STATUS_DATE = "تاریخ تغییر وضعیت";
 export const JOB_DEGREE_COEF = "ضریب مدیریتی";
 export const RETIRED_REAL_DURATION = "سابقه حقیقی بازنشسته";
 export const RETIRED_GRANT_DURATION = "سابقه ارفاقی بازنشسته";
+export const BANK = "بانک";
+export const BANK_BRANCH = "شعبه";
+export const LEDGER_CODE = "دفتر کل";
+export const INSURANCE_COEF = "ضریب بیمه";
+export const INSURANCE_AMOUNT = "بیمه تبعی";
 
 // VETERAN
 export const SACRIFICED_FAMILY = "خانواده شهید";

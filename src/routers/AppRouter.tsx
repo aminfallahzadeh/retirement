@@ -1,10 +1,10 @@
+// IMPORTS
 import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
   RouterProvider,
 } from "react-router-dom";
-import App from "@/App";
 import { FC } from "react";
 import { ROUTES } from "@/constants/routes";
 import { Error } from "@/pages/Error";
@@ -12,9 +12,11 @@ import { AppRoute } from "@/shared/types/route";
 
 const renderRoutes = (routes: AppRoute[]) =>
   routes.map((route) => {
-    if (route.index) {
+    if (!route.path && route.children) {
       return (
-        <Route key={route.id} index path={route.path} element={route.element} />
+        <Route key={route.id} element={route.element}>
+          {renderRoutes(route.children)}
+        </Route>
       );
     }
     return (
@@ -27,9 +29,7 @@ const renderRoutes = (routes: AppRoute[]) =>
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path="/retirement/" element={<App />}>
-        {renderRoutes(ROUTES)}
-      </Route>
+      {renderRoutes(ROUTES)}
       <Route path="*" element={<Error />} />
     </>
   )

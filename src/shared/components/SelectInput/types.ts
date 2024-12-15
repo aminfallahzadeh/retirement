@@ -31,6 +31,7 @@ export type SelectInputProps<
   onValueChange?: (
     value: IsMulti extends true ? Option[] : Option | null
   ) => void;
+  //   fetchOnChange?: (id: string) => void;
   isDisabled?: boolean;
   value?: IsMulti extends true ? Option[] : Option | null;
   customStyles?: StylesConfig;

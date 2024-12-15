@@ -1,7 +1,7 @@
 // IMPORTS
 import { Suspense, LazyExoticComponent, ComponentType } from "react";
 import { SuspenseFallback } from "@/shared/components/SuspenseFallback";
-import { withRouteGuard } from "@/hoc/RouteGuard";
+import { withRouteGuard } from "@/hoc/routeGuard";
 
 /**
  * Suspense Creator
@@ -11,13 +11,21 @@ import { withRouteGuard } from "@/hoc/RouteGuard";
  */
 export const createSuspense = (
   Component: LazyExoticComponent<ComponentType>,
-  requiredParams: string[] = []
+  requiredParams: string[] = [],
+  guard: boolean = false
 ): JSX.Element => {
-  const GuardedComponent = withRouteGuard(Component, requiredParams);
-
-  return (
-    <Suspense fallback={<SuspenseFallback />}>
-      <GuardedComponent />
-    </Suspense>
-  );
+  if (guard) {
+    const GuardedComponent = withRouteGuard(Component, requiredParams);
+    return (
+      <Suspense fallback={<SuspenseFallback />}>
+        <GuardedComponent />
+      </Suspense>
+    );
+  } else {
+    return (
+      <Suspense fallback={<SuspenseFallback />}>
+        <Component />
+      </Suspense>
+    );
+  }
 };

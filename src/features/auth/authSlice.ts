@@ -1,6 +1,7 @@
 // IMPORTS
 import { createSlice } from "@reduxjs/toolkit";
 import { storageHelper } from "@/helpers/storageHelper";
+import { jwtDecode, JwtPayload } from "jwt-decode";
 
 // CONSTS
 const storage = storageHelper("session");
@@ -8,6 +9,8 @@ const storage = storageHelper("session");
 const initialState: {
   token: string | null;
   refreshToken: string | null;
+  firstName: string | null;
+  lastName: string | null;
   userID: string | null;
 } = {
   token: (() => {
@@ -19,6 +22,15 @@ const initialState: {
     return userInfo ? JSON.parse(userInfo).refreshToken : null;
   })(),
 
+  firstName: (() => {
+    const userInfo = storage.get("userInfo");
+    return userInfo ? JSON.parse(userInfo).firstName : null;
+  })(),
+
+  lastName: (() => {
+    const userInfo = storage.get("userInfo");
+    return userInfo ? JSON.parse(userInfo).lastName : null;
+  })(),
   userID: null,
 };
 
@@ -28,13 +40,24 @@ const authSlice = createSlice({
   reducers: {
     setCredentials: (state, action) => {
       const { token, refreshToken } = action.payload.itemList[0];
+      const decodedToken = jwtDecode(token) as JwtPayload & {
+        name: string;
+        familyName: string;
+        id: string;
+      };
       state.token = token;
       state.refreshToken = refreshToken;
-      sessionStorage.setItem(
+      state.firstName = decodedToken.name;
+      state.lastName = decodedToken.familyName;
+
+      storage.set(
         "userInfo",
         JSON.stringify({
           token,
           refreshToken,
+          firstName: decodedToken.name,
+          lastName: decodedToken.familyName,
+          userID: decodedToken.id,
         })
       );
     },
@@ -53,6 +76,8 @@ const authSlice = createSlice({
     logout: (state) => {
       state.token = null;
       state.refreshToken = null;
+      state.firstName = null;
+      state.lastName = null;
       sessionStorage.removeItem("userInfo");
     },
 

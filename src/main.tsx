@@ -6,7 +6,14 @@ import "./index.css";
 import { Provider } from "react-redux";
 import store from "@/config/redux/store";
 import { setConfig } from "@/features/api/configSlice";
-import { AppRouter } from "./routers/AppRouter";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import App from "./App";
+
+const theme = createTheme({
+  typography: {
+    fontFamily: "IranYekan",
+  },
+});
 
 const loadConfig = async (): Promise<void> => {
   try {
@@ -27,7 +34,9 @@ const loadConfig = async (): Promise<void> => {
   root.render(
     <React.StrictMode>
       <Provider store={store}>
-        <AppRouter />
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
       </Provider>
     </React.StrictMode>
   );
