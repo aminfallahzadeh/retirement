@@ -77,7 +77,7 @@ export const START_DATE = "تاریخ شروع";
 export const FIRST_NAME = "نام";
 export const LAST_NAME = "نام خانوادگی";
 export const NATIONAL_CODE = "کد ملی";
-export const CORTICATE_NO = "شماره شناسنامه";
+export const CERTIFICATE_NO = "شماره شناسنامه";
 export const FATHER_NAME = "نام پدر";
 export const GENDER = "جنسیت";
 export const BIRTH_DATE = "تاریخ تولد";
@@ -134,6 +134,7 @@ export const BANK_BRANCH = "شعبه";
 export const LEDGER_CODE = "دفتر کل";
 export const INSURANCE_COEF = "ضریب بیمه";
 export const INSURANCE_AMOUNT = "بیمه تبعی";
+export const SACRIFICE_STATUS = "وضعیت ایثارگری";
 
 // VETERAN
 export const SACRIFICED_FAMILY = "خانواده شهید";

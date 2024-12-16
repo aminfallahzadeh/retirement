@@ -49,7 +49,7 @@ export const SearchForm = () => {
     const mappedData = response.itemList.map(
       (item: Personnel, index: number) => ({
         id: item.personID,
-        personnelRowNum: index + 1,
+        personnelRowNo: index + 1,
         personnelDeathDate: item.personDeathDate,
         personnelID: item.personnelID,
         personnelNationalCode: item.personNationalCode,

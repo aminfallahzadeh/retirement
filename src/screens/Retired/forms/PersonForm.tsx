@@ -31,7 +31,7 @@ import {
   FIRST_NAME,
   LAST_NAME,
   NATIONAL_CODE,
-  CORTICATE_NO,
+  CERTIFICATE_NO,
   FATHER_NAME,
   GENDER,
   BIRTH_DATE,
@@ -62,6 +62,7 @@ import {
   MARITIAL_STATUS,
   DESCRIPTION,
   DEATH_DATE,
+  SACRIFICE_STATUS,
 } from "@/constants/const";
 import {
   requiredRule,
@@ -291,7 +292,7 @@ export const PersonForm = () => {
 
               <Input
                 name="personCertificateNo"
-                label={CORTICATE_NO}
+                label={CERTIFICATE_NO}
                 rules={{ ...onlyNumbersRules, ...requiredRule }}
                 required={true}
                 control={control}
@@ -361,7 +362,7 @@ export const PersonForm = () => {
                 }
               >
                 <p className="inputBox__form--readOnly-label">
-                  وضعیت ایثارگری:
+                  {SACRIFICE_STATUS}
                 </p>
 
                 <CustomCheckBox
