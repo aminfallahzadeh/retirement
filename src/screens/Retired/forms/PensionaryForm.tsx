@@ -9,6 +9,7 @@ import { DatePicker } from "@/shared/components/DatePicker";
 import { SelectInput } from "@/shared/components/SelectInput";
 import { createOptions } from "@/utils/optionsCreator";
 import { convertToPersianDate } from "@/helpers/dateConverter";
+import { convertToEnglishNumber } from "@/helpers/numberConverter";
 import { toastConfig } from "@/config/toast";
 import { Box, CircularProgress } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
@@ -151,10 +152,16 @@ export const PensionaryForm = () => {
 
     const response = await updateRetiredPensionary({
       ...transformedData,
-      retiredGroup: parseInt(data.retiredGroup),
-      retiredJobDegreeCoef: parseInt(data.retiredJobDegreeCoef),
-      retiredRealDuration: parseInt(data.retiredRealDuration),
-      retiredGrantDuration: parseInt(data.retiredGrantDuration),
+      retiredGroup: parseInt(convertToEnglishNumber(data.retiredGroup)),
+      retiredJobDegreeCoef: parseInt(
+        convertToEnglishNumber(data.retiredJobDegreeCoef)
+      ),
+      retiredRealDuration: parseInt(
+        convertToEnglishNumber(data.retiredRealDuration)
+      ),
+      retiredGrantDuration: parseInt(
+        convertToEnglishNumber(data.retiredGrantDuration)
+      ),
       personID,
     }).unwrap();
     toggleEditable();
@@ -207,8 +214,6 @@ export const PensionaryForm = () => {
           pensionaryStatusRowNum: index + 1,
           pensionaryStatusName: item.pensionaryStatusName || "-",
           pensionaryStartdate: item.pensionaryStartdate || "-",
-          //   pensionaryStartdate:
-          //     convertToPersianDate(item.pensionaryStartdate) || "-",
         })
       );
 

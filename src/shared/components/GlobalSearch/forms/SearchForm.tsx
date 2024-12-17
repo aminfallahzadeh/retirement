@@ -17,6 +17,7 @@ import {
 import { NO_RESULT_FOUND } from "@/constants/messages";
 import { onlyNumbersRules, onlyPersianAlphabetsRules } from "@/constants/rules";
 import { PersonnelTableData, Personnel } from "../types";
+import { convertToEnglishNumber } from "@/helpers/numberConverter";
 
 export const SearchForm = () => {
   // STATES
@@ -38,7 +39,11 @@ export const SearchForm = () => {
 
   // HANDLERS
   const onSubmit = async (data: FieldValues) => {
-    const response = await searchPersonnel(data).unwrap();
+    const response = await searchPersonnel({
+      ...data,
+      personnelID: convertToEnglishNumber(data.personnelID),
+      personNationalCode: convertToEnglishNumber(data.personNationalCode),
+    }).unwrap();
 
     if (response.itemList.length === 0) {
       toastConfig.warning(NO_RESULT_FOUND);

@@ -9,6 +9,7 @@ import {
   useUpdateRetiredAccountMutation,
   useGetRetiredAccountQuery,
 } from "@/features/retired/retiredApi";
+import { convertToEnglishNumber } from "@/helpers/numberConverter";
 import { Input } from "@/shared/components/Input";
 import { SelectInput } from "@/shared/components/SelectInput";
 import { LoadingButton } from "@mui/lab";
@@ -96,9 +97,12 @@ export const AdditionalInfoForm = () => {
 
     const response = await updateRetiredAccount({
       ...transformedData,
-      ledgerCode: parseInt(data.ledgerCode) || null,
-      insuranceAmount: parseFloat(data.insuranceAmount) || null,
-      insuranceCoef: parseFloat(data.insuranceCoef) || null,
+      accountNo: convertToEnglishNumber(data.accountNo) || null,
+      ledgerCode: parseInt(convertToEnglishNumber(data.ledgerCode)) || null,
+      insuranceAmount:
+        parseFloat(convertToEnglishNumber(data.insuranceAmount)) || null,
+      insuranceCoef:
+        parseFloat(convertToEnglishNumber(data.insuranceCoef)) || null,
       personID,
     }).unwrap();
     refetch();

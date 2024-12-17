@@ -50,8 +50,7 @@ export const baseQueryWithReauth: BaseQueryFn<
   await mutex.waitForUnlock();
   let result = await baseQuery(args, api, extraOptions);
 
-  //   console.log("ERROR RESULT", result);
-
+  // console.log("ERROR RESULT", result);
   if (
     (result.error && result.error.status === "FETCH_ERROR") ||
     (result.error && result.error.status === 401)
@@ -114,8 +113,7 @@ export const baseQueryWithReauth: BaseQueryFn<
       (result?.error?.data &&
         (result.error.data as { title?: string }).title) ||
       (result?.error?.data as { message?: string })?.message ||
-      result?.error?.status ||
-      "خطایی رخ داده است";
+      "خطا در برقراری ارتباط";
     toastConfig.error(`${errorMessage}`);
   }
 

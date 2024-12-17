@@ -1,5 +1,6 @@
 // IMPORTS
 import { useState, useRef, useEffect } from "react";
+import { useForm, FieldValues } from "react-hook-form";
 import { LoadingButton } from "@mui/lab";
 import {
   AdfScannerOutlined as ScanIcon,
@@ -9,9 +10,11 @@ import { ArchiveFormProps } from "./types";
 import { useInsertArchiveMutation } from "@/features/archive/archiveApi";
 import { toastConfig } from "@/config/toast";
 import { useSearchParams } from "react-router-dom";
-import { convertToPersianNumber, convertToEnglishNumber } from "@/helper";
 import { SCAN, UPLOAD } from "@/constants/const";
 import { DOCUMENT_NUMBER } from "@/constants/fields";
+import { requiredRule } from "@/constants/rules";
+import { convertToEnglishNumber } from "@/helpers/numberConverter";
+import { Input } from "../../Input";
 
 const InsertArchiveForm = ({
   setCloseModal,
@@ -21,16 +24,18 @@ const InsertArchiveForm = ({
   // STATES
   const [searchParams] = useSearchParams();
   const inputFileRef = useRef<HTMLInputElement | null>(null);
-  const [documentID, setDocumentID] = useState<string>("");
   const [image, setImage] = useState<string | null>(null);
   const [contentType, setContentType] = useState<string | null>(null);
 
   // CONSTS
   const personID = searchParams.get("personID");
+  const { control, handleSubmit, watch } = useForm<FieldValues>();
   const [insertArchive, { isLoading }] = useInsertArchiveMutation();
+  const form_data = watch();
 
   // HANDLERS
   const handleUploadButtonClick = () => {
+    if (form_data.documentID === "" || !form_data.documentID) return;
     inputFileRef?.current?.click();
   };
 
@@ -56,14 +61,10 @@ const InsertArchiveForm = ({
     reader.readAsDataURL(file);
   };
 
-  const handleDocumentIDChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setDocumentID(e.target.value);
-  };
-
   const onSubmit = async () => {
     const response = await insertArchive({
       personID,
-      documentID: convertToEnglishNumber(documentID),
+      documentID: convertToEnglishNumber(form_data.documentID),
       archiveStructureID: item?.id,
       attachment: image,
       contentType,
@@ -82,56 +83,58 @@ const InsertArchiveForm = ({
   }, [image]);
 
   const content = (
-    <section className="flex flex-col">
-      <form method="POST" className="grid grid--col-1">
-        <input
-          type="file"
-          ref={inputFileRef}
-          style={{ display: "none" }}
-          onChange={handleImageChange}
-          accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps,image/tiff,image/jpeg"
-        />
-
-        <div className="inputBox__form">
+    <section className="flex-col">
+      <form
+        method="POST"
+        className="flex-col"
+        onSubmit={handleSubmit(onSubmit)}
+        noValidate
+      >
+        {/* Form Fields */}
+        <div className="grid grid-cols-1">
           <input
-            type="text"
-            id="documentID"
-            className="inputBox__form--input"
-            value={convertToPersianNumber(documentID)}
-            onChange={handleDocumentIDChange}
-            required
+            type="file"
+            ref={inputFileRef}
+            style={{ display: "none" }}
+            onChange={handleImageChange}
+            accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps,image/tiff,image/jpeg"
           />
-          <label className="inputBox__form--label" htmlFor="documentID">
-            <span>*</span> {DOCUMENT_NUMBER}
-          </label>
+
+          <Input
+            name="documentID"
+            label={DOCUMENT_NUMBER}
+            rules={requiredRule}
+            required={true}
+            control={control}
+            type="text"
+          />
+        </div>
+        <div className="flex justify-center items-center gap-x-5">
+          <LoadingButton
+            dir="ltr"
+            endIcon={<ScanIcon />}
+            loading={isLoading}
+            variant="contained"
+            color="primary"
+            disabled
+          >
+            <span>{SCAN}</span>
+          </LoadingButton>
+
+          <LoadingButton
+            dir="ltr"
+            endIcon={<UploadIcon />}
+            loading={isLoading}
+            aria-label="upload"
+            onClick={handleUploadButtonClick}
+            variant="contained"
+            // type="submit"
+            color="primary"
+          >
+            <span>{UPLOAD}</span>
+          </LoadingButton>
         </div>
       </form>
-
-      <div className="flex justify-center items-center gap-x-5">
-        <LoadingButton
-          dir="ltr"
-          endIcon={<ScanIcon />}
-          loading={isLoading}
-          variant="contained"
-          color="primary"
-          disabled
-        >
-          <span>{SCAN}</span>
-        </LoadingButton>
-
-        <LoadingButton
-          dir="ltr"
-          endIcon={<UploadIcon />}
-          loading={isLoading}
-          aria-label="upload"
-          onClick={handleUploadButtonClick}
-          variant="contained"
-          disabled={!documentID || documentID === ""}
-          color="primary"
-        >
-          <span>{UPLOAD}</span>
-        </LoadingButton>
-      </div>
     </section>
   );
 

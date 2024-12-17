@@ -15,9 +15,13 @@ const roleSlice = createSlice({
     setRole: (state, action) => {
       state.role = action.payload;
     },
+
+    clearRole: (state) => {
+      state.role = null;
+    },
   },
 });
 
-export const { setRole } = roleSlice.actions;
+export const { setRole, clearRole } = roleSlice.actions;
 
 export default roleSlice.reducer;

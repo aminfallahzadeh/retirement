@@ -2,6 +2,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { storageHelper } from "@/helpers/storageHelper";
 import { jwtDecode, JwtPayload } from "jwt-decode";
+import { AppDispatch } from "@/config/redux/store";
+import { clearRole } from "../request/roleSlice";
 
 // CONSTS
 const storage = storageHelper("session");
@@ -31,7 +33,10 @@ const initialState: {
     const userInfo = storage.get("userInfo");
     return userInfo ? JSON.parse(userInfo).lastName : null;
   })(),
-  userID: null,
+  userID: (() => {
+    const userInfo = storage.get("userInfo");
+    return userInfo ? JSON.parse(userInfo).userID : null;
+  })(),
 };
 
 const authSlice = createSlice({
@@ -49,6 +54,7 @@ const authSlice = createSlice({
       state.refreshToken = refreshToken;
       state.firstName = decodedToken.name;
       state.lastName = decodedToken.familyName;
+      state.userID = decodedToken.id;
 
       storage.set(
         "userInfo",
@@ -73,13 +79,23 @@ const authSlice = createSlice({
       );
     },
 
-    logout: (state) => {
+    clearAuthState: (state) => {
       state.token = null;
       state.refreshToken = null;
       state.firstName = null;
       state.lastName = null;
+      state.userID = null;
       sessionStorage.removeItem("userInfo");
     },
+
+    // logout: (state) => {
+    //   state.token = null;
+    //   state.refreshToken = null;
+    //   state.firstName = null;
+    //   state.lastName = null;
+    //   state.userID = null;
+    //   sessionStorage.removeItem("userInfo");
+    // },
 
     setUserID: (state, action) => {
       state.userID = action.payload;
@@ -87,7 +103,15 @@ const authSlice = createSlice({
   },
 });
 
-export const { setCredentials, setNewCredentials, logout, setUserID } =
+export const { setCredentials, setNewCredentials, setUserID, clearAuthState } =
   authSlice.actions;
+
+// Custom thunk action for logout
+export const logout = () => (dispatch: AppDispatch) => {
+  // Clear the auth slice state
+  dispatch(clearAuthState());
+  // Dispatch RESET to reset the entire Redux store
+  dispatch(clearRole());
+};
 
 export default authSlice.reducer;

@@ -9,3 +9,5 @@ export const NOT_VALID_MESSAGE = "اطلاعات معتبر نیست";
 export const NO_RESULT_FOUND = "موردی یافت نشد";
 
 export const CONFIRM_DELETE = "آیا از حذف اطمینان دارید؟";
+
+export const ERROR_ON_PREVIEW = "خطا در پیش نمایش";

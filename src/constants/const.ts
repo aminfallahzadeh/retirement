@@ -34,12 +34,14 @@ export const DOWNLOAD = "مشاهده / چاپ";
 export const UPLOAD_EXCEL = "بارگذاری اکسل";
 export const CONFIRM = "تایید";
 export const LOADING = "در حال بارگذاری";
+export const SEND_REQUEST = "ارسال";
 
-// RETIRED
+// SCREENS
 export const RETIRED_INFO = "اطلاعات بازنشسته";
 export const RETIRED_PERSON_INFO = "اطلاعات فردی";
 export const RETIRES_PENSIONARY_INFO = "اطلاعات پرسنلی";
 export const RETIRED_ADDITIONAL_INFO = "اطلاعات تکمیلی";
+export const CREATE_REQUEST = "ایجاد درخواست";
 
 // CARTABLE
 export const CARTABLE = "کارتابل";
@@ -60,6 +62,7 @@ export const ADD_NEW_IMAGE = "افزودن برگه جدید";
 export const DELETE_IMAGE = "حذف برگه";
 export const OBSERVE_FILE = "مشاهده برگه";
 export const PARENT_FOLDER_ID = "97134493291b473f9b3bf8c4c15b27a0";
+export const PREVIEW_DOCUMENT = "پیش نمایش سند";
 
 // GENERAL
 export const RELATEDS = "وابستگان";
@@ -135,6 +138,7 @@ export const LEDGER_CODE = "دفتر کل";
 export const INSURANCE_COEF = "ضریب بیمه";
 export const INSURANCE_AMOUNT = "بیمه تبعی";
 export const SACRIFICE_STATUS = "وضعیت ایثارگری";
+export const REQUEST_TYPE = "نوع درخواست";
 
 // VETERAN
 export const SACRIFICED_FAMILY = "خانواده شهید";

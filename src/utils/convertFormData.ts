@@ -20,6 +20,8 @@ export const processDataForView = (
 
   const transformedData = { ...data };
 
+  console.log("TRANSFORMEDDATA IN FUNCTION:", transformedData);
+
   Object.keys(transformedData).forEach((key) => {
     if (dateKeys.includes(key)) {
       transformedData[key] =

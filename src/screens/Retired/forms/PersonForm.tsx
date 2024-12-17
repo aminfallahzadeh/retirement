@@ -21,6 +21,7 @@ import { LoadingButton } from "@mui/lab";
 import useToggleState from "@/hooks/useToggleState";
 import { useFetchLookUpData } from "@/hooks/useFetchLookUpData";
 import { createOptions } from "@/utils/optionsCreator";
+import { convertToEnglishNumber } from "@/helpers/numberConverter";
 import {
   processDataForView,
   processDataForRequest,
@@ -84,6 +85,7 @@ export const PersonForm = () => {
   const personID = searchParams.get("personID");
   const selectKeys = useMemo(
     () => [
+      "genderID",
       "personCountryID",
       "personStateID",
       "personCityID",
@@ -99,11 +101,7 @@ export const PersonForm = () => {
     handleSubmit,
     formState: { errors },
     setValue,
-  } = useForm<FieldValues>({
-    defaultValues: {
-      personCountryID: null,
-    },
-  });
+  } = useForm<FieldValues>();
 
   // FETCH DATA
   const {
@@ -178,6 +176,14 @@ export const PersonForm = () => {
 
     const response = await updateRetiredPerson({
       ...transformedData,
+      personNationalCode: convertToEnglishNumber(data.personNationalCode),
+      personCertificateNo: convertToEnglishNumber(data.personCertificateNo),
+      retiredID: convertToEnglishNumber(data.retiredID),
+      personPhone: convertToEnglishNumber(data.personPhone),
+      personCellPhone: convertToEnglishNumber(data.personCellPhone),
+      backupPhone: convertToEnglishNumber(data.backupPhone),
+      personRegion: convertToEnglishNumber(data.personRegion),
+      personArea: convertToEnglishNumber(data.personArea),
     }).unwrap();
     refetch();
     toggleEditable();
@@ -438,7 +444,7 @@ export const PersonForm = () => {
               />
 
               <Input
-                name="backupNum"
+                name="backupPhone"
                 label={BACKUP_PHONE_NO}
                 required={false}
                 rules={onlyNumbersRules}
@@ -448,7 +454,7 @@ export const PersonForm = () => {
               />
 
               <Input
-                name="backupName"
+                name="backupFirstName"
                 label={BACKUP_FIRST_NAME}
                 required={false}
                 rules={onlyPersianAlphabetsRules}
@@ -458,7 +464,7 @@ export const PersonForm = () => {
               />
 
               <Input
-                name="backupLname"
+                name="backupLastName"
                 label={BACKUP_LAST_NAME}
                 required={false}
                 rules={onlyPersianAlphabetsRules}

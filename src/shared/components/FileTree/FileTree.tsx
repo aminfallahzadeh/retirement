@@ -21,7 +21,8 @@ import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
 import rtlPlugin from "stylis-plugin-rtl";
 import { filterTree } from "@/utils/filterTree";
-import { PREVIEW } from "@/constants/const";
+import { PREVIEW, SEARCH, PREVIEW_DOCUMENT } from "@/constants/const";
+import { ERROR_ON_PREVIEW, NO_RESULT_FOUND } from "@/constants/messages";
 import { fixAttachment } from "@/utils/fixAttachment";
 import { Img } from "../Img";
 
@@ -129,7 +130,7 @@ export const FileTree = ({
         <div className="flex flex-row w-[400px] gap-2 justify-start items-center relative">
           <input
             type="text"
-            placeholder="جست و جو"
+            placeholder={SEARCH}
             className="w-[400px] outline-none border border-gray-300 rounded-md px-2 py-1 placeholder:text-sm"
             value={term}
             onChange={handleSearch}
@@ -156,7 +157,7 @@ export const FileTree = ({
               <QuestionIcon color={"error"} sx={{ fontSize: "200px" }} />
 
               <span className="text-xl font-iranYekan font-medium">
-                موردی یافت نشد !
+                {NO_RESULT_FOUND}
               </span>
             </div>
           ) : (
@@ -188,19 +189,21 @@ export const FileTree = ({
               <div className="w-full h-full flex flex-col justify-center items-center bg-gray-300 rounded-md p-2 gap-2">
                 <ImageIcon color={"primary"} sx={{ fontSize: "5rem" }} />
 
-                <span className="text-base text-gray-800">پیش نمایش سند</span>
+                <span className="text-base text-gray-800">
+                  {PREVIEW_DOCUMENT}
+                </span>
               </div>
             ) : (
               <Img
                 src={previewImage as string}
                 alt={PREVIEW}
-                className="w-full h-full object-cover rounded-md"
+                className="w-full h-full rounded-md object-contain"
                 fallback={
                   <div className="w-full h-full flex flex-col justify-center items-center bg-gray-300 rounded-md p-2 gap-2">
                     <BrokenImage color={"error"} sx={{ fontSize: "5rem" }} />
 
                     <span className="text-base text-red-500">
-                      خطا در پیش نمایش
+                      {ERROR_ON_PREVIEW}
                     </span>
                   </div>
                 }

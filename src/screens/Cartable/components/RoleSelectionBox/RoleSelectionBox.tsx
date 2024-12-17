@@ -35,12 +35,6 @@ export const RoleSelectionBox = () => {
     fetchRoles();
   }, [fetchRoles]);
 
-  useEffect(() => {
-    return () => {
-      dispatch(setRole(null));
-    };
-  }, [dispatch]);
-
   const handleSelectOptionChange = (selectedOption: unknown) => {
     if (selectedOption) {
       dispatch(setRole(selectedOption));

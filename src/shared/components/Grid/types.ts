@@ -1,5 +1,4 @@
-// REACT TYPES
-import { MRT_ColumnDef } from "material-react-table";
+// IMPORTS
 import { ReactNode } from "react";
 
 export type CellRendererProps = {
@@ -14,10 +13,4 @@ export type GridColumnProps = {
   enableSorting?: boolean;
   enableColumnActions?: boolean;
   muiTableBodyCellProps?: object;
-};
-
-export type UseCreateColumnsProps<T> = {
-  schema: MRT_ColumnDef<T[]>[];
-  customCellRenderers?: any;
-  dependencies: unknown[];
 };

@@ -29,7 +29,10 @@ const PersonnelInfoScreen = lazy(() => import("@/screens/PersonnelInfoScreen"));
 const ElectronicStatement = lazy(
   () => import("@/screens/ElectronicStatement/ElectronicStatement")
 );
-const CreateRequestScreen = lazy(() => import("@/screens/CreateRequestScreen"));
+// const CreateRequestScreen = lazy(() => import("@/screens/CreateRequestScreen"));
+const CreateRequest = lazy(() =>
+  import("@/screens/CreateRequest").then((m) => ({ default: m.CreateRequest }))
+);
 const FractionScreen = lazy(() => import("@/screens/FractionScreen"));
 const ReportGeneratorScreen = lazy(
   () => import("@/screens/ReportGeneratorScreen")
@@ -132,7 +135,7 @@ export const ROUTES: AppRoute[] = [
       {
         id: 113,
         path: "/retirement/create-request",
-        element: createSuspense(CreateRequestScreen, [], true),
+        element: createSuspense(CreateRequest, ["role"], true),
         index: false,
       },
       {

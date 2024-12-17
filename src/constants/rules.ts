@@ -1,5 +1,6 @@
 // IMPORTS
 import { REQUIRED_MESSAGE, NOT_VALID_MESSAGE } from "./messages";
+import { nationalCodeChecker } from "@/utils/nationalCodeChecker";
 import {
   ONLY_NUMBERS_REGEX,
   PERSIAN_LETTERS_VALIDATION_REGEX,
@@ -8,17 +9,8 @@ import {
 
 // NATIONAL CODE RULES
 export const nationalCodeRules = {
-  minLength: {
-    value: 10,
-    message: NOT_VALID_MESSAGE,
-  },
-  maxLength: {
-    value: 10,
-    message: NOT_VALID_MESSAGE,
-  },
-  pattern: {
-    value: ONLY_NUMBERS_REGEX,
-    message: NOT_VALID_MESSAGE,
+  validate: (value: string) => {
+    return nationalCodeChecker(value) || NOT_VALID_MESSAGE;
   },
 };
 

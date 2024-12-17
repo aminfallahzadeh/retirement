@@ -1,5 +1,4 @@
 // IMPORTS
-// IMPORTS
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { logout } from "@/features/auth/authSlice";
@@ -10,7 +9,6 @@ import {
   useUpdateUserThemeMutation,
   useGetItemAccessQuery,
 } from "@/features/user/userApi";
-import { setNavPanelOpen } from "@/features/user/userSlice";
 import { CustomModal } from "@/shared/components/CustomModal";
 import DigitalClock from "@/components/DigitalClock";
 import Date from "@/components/Date";
@@ -35,24 +33,15 @@ export const NavBar = () => {
   const [itemList, setItemList] = useState<TreeItem[]>([]);
 
   // CONSTS
+  const { role } = useAppSelector((state) => state.role);
   const { refreshToken } = useAppSelector((state) => state.auth);
   const { firstName, lastName } = useAppSelector((state) => state.auth);
   const { userID } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
   const location = useLocation();
-  const shouldFetch = !!userID;
   const [updateUserTheme] = useUpdateUserThemeMutation();
   const [logoutApi, { isLoading: logoutLoading }] = useLogoutMutation();
-  const { data: user, refetch: userRefetch } = useGetUserThemeQuery({
-    skip: !shouldFetch,
-  });
-
-  // GET THEME WHENEVER PAGE LOADS
-  useEffect(() => {
-    if (shouldFetch) {
-      userRefetch();
-    }
-  }, [userRefetch, shouldFetch]);
+  const { data: user } = useGetUserThemeQuery({});
 
   // LOGOUT FUNCTION
   const logoutHandler = async () => {
@@ -132,9 +121,6 @@ export const NavBar = () => {
   const handlePanelToggle = (panel: string | null) => {
     setActivePanel((prev) => {
       const newPanel = prev === panel ? null : panel;
-      setTimeout(() => {
-        dispatch(setNavPanelOpen(newPanel !== null));
-      }, 0);
       return newPanel;
     });
   };
@@ -209,7 +195,13 @@ export const NavBar = () => {
                       className={isActivePath(item.url) ? "active" : ""}
                       onClick={() => handlePanelToggle(null)}
                     >
-                      <Link to={baseURL + item.url}>{item.itemName}</Link>
+                      {item.url === "create-request" ? (
+                        <Link to={baseURL + item.url + `?role=${role?.value}`}>
+                          {item.itemName}
+                        </Link>
+                      ) : (
+                        <Link to={baseURL + item.url}>{item.itemName}</Link>
+                      )}
                     </li>
                   ) : (
                     <li
