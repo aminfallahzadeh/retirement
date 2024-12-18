@@ -42,6 +42,9 @@ const BaseInfo2 = lazy(() => import("@/screens/BaseInfo2/BaseInfo2"));
 const InsertAnnounce = lazy(() => import("@/screens/InsertAnnounceScreen"));
 const DashboardScreen = lazy(() => import("@/screens/DashboardScreen"));
 const SalaryScreen = lazy(() => import("@/screens/SalaryScreen"));
+const Related = lazy(() =>
+  import("@/screens/Related").then((m) => ({ default: m.Related }))
+);
 
 export const ROUTES: AppRoute[] = [
   {
@@ -178,6 +181,12 @@ export const ROUTES: AppRoute[] = [
         id: 120,
         path: "/retirement/salary",
         element: createSuspense(SalaryScreen, [], true),
+        index: false,
+      },
+      {
+        id: 121,
+        path: "/retirement/retired/related",
+        element: createSuspense(Related, ["id", "mode"], true),
         index: false,
       },
     ],

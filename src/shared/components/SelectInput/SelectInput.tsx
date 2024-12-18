@@ -64,6 +64,7 @@ export const SelectInput: FC<SelectInputProps> = ({
       ...base,
       fontFamily: "IranYekan",
       zIndex: "5",
+      fontSize: "13px",
     }),
     option: (base) => ({
       ...base,

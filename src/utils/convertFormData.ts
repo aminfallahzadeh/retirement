@@ -2,6 +2,7 @@
 
 // IMPORTS
 import { convertToPersianDate } from "@/helpers/dateConverter";
+import { convertToEnglishNumber } from "@/helpers/numberConverter";
 
 type Option = {
   value: string;
@@ -19,8 +20,6 @@ export const processDataForView = (
   if (!data) return {};
 
   const transformedData = { ...data };
-
-  console.log("TRANSFORMEDDATA IN FUNCTION:", transformedData);
 
   Object.keys(transformedData).forEach((key) => {
     if (dateKeys.includes(key)) {
@@ -63,6 +62,12 @@ export const processDataForRequest = (
   selectKeys.forEach((key) => {
     if (data[key] && data[key].value !== undefined) {
       result[key] = data[key].value;
+    }
+  });
+
+  Object.keys(result).forEach((key) => {
+    if (!dateKeys.includes(key) && !selectKeys.includes(key)) {
+      result[key] = convertToEnglishNumber(data[key]);
     }
   });
 

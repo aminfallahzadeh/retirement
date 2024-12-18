@@ -35,6 +35,10 @@ export const UPLOAD_EXCEL = "بارگذاری اکسل";
 export const CONFIRM = "تایید";
 export const LOADING = "در حال بارگذاری";
 export const SEND_REQUEST = "ارسال";
+export const EXIT = "خروج";
+export const REFRESH = "بروز رسانی";
+export const CREATE_RELATED = "ایجاد وابسته";
+export const RELATED_STATUS = "وضعیت وابسته";
 
 // SCREENS
 export const RETIRED_INFO = "اطلاعات بازنشسته";
@@ -139,6 +143,14 @@ export const INSURANCE_COEF = "ضریب بیمه";
 export const INSURANCE_AMOUNT = "بیمه تبعی";
 export const SACRIFICE_STATUS = "وضعیت ایثارگری";
 export const REQUEST_TYPE = "نوع درخواست";
+export const RELATION = "نسبت";
+export const MARITIAL_DATE = "تاریخ عقد";
+export const DEGREE_TITLE = "عنوان مدرک";
+export const UNIVERSITY = "دانشگاه";
+export const UNIVERSITY_UNIT = "واحد دانشگاهی";
+export const SPECIAL_DISEASE = "بیماری خاص";
+export const END_DATE = "تاریخ پایان";
+export const STATUS_HISTORIES = "تاریخچه وضعیت ها";
 
 // VETERAN
 export const SACRIFICED_FAMILY = "خانواده شهید";
@@ -153,3 +165,7 @@ export const SALARY_AND_WAGE = "حقوق و دستمزد";
 export const SLIPS_PAYS = "فیش های حقوقی";
 export const PAY_AND_FRACTION = "کسر و پرداخت";
 export const COMPARE_SALARY_REPORT = "گزارش مقایسه حقوق";
+
+// TITLES
+export const BACKUP_INFO = "اطلاعات پشتیبان";
+export const SELF_PROCLAIMED_INFO = "اطلاعات خویش فرمایی";

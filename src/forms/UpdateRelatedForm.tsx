@@ -155,27 +155,6 @@ function UpdateRelatedForm({
     }
   }, [isSuccess, related, refetch, setValue]);
 
-  // HANDLE ERROR
-  useEffect(() => {
-    if (error && error.status !== "FETCH_ERROR") {
-      toast.error(error?.data?.message || error.error, {
-        autoClose: 2000,
-      });
-    }
-  }, [error]);
-
-  useEffect(() => {
-    if (statusHistoryError) {
-      console.log(statusHistoryError);
-      toast.error(
-        statusHistoryError?.data?.message || statusHistoryError.error,
-        {
-          autoClose: 2000,
-        }
-      );
-    }
-  }, [statusHistoryError]);
-
   // GET LOOKUP DATA
   const { relationships, relationshipIsLoading, relationshipIsFetching } =
     useFetchRelationship();

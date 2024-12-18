@@ -21,7 +21,6 @@ import { LoadingButton } from "@mui/lab";
 import useToggleState from "@/hooks/useToggleState";
 import { useFetchLookUpData } from "@/hooks/useFetchLookUpData";
 import { createOptions } from "@/utils/optionsCreator";
-import { convertToEnglishNumber } from "@/helpers/numberConverter";
 import {
   processDataForView,
   processDataForRequest,
@@ -174,17 +173,7 @@ export const PersonForm = () => {
     // CONVERT DATA FOR REQUEST
     const transformedData = processDataForRequest(data, selectKeys, dateKeys);
 
-    const response = await updateRetiredPerson({
-      ...transformedData,
-      personNationalCode: convertToEnglishNumber(data.personNationalCode),
-      personCertificateNo: convertToEnglishNumber(data.personCertificateNo),
-      retiredID: convertToEnglishNumber(data.retiredID),
-      personPhone: convertToEnglishNumber(data.personPhone),
-      personCellPhone: convertToEnglishNumber(data.personCellPhone),
-      backupPhone: convertToEnglishNumber(data.backupPhone),
-      personRegion: convertToEnglishNumber(data.personRegion),
-      personArea: convertToEnglishNumber(data.personArea),
-    }).unwrap();
+    const response = await updateRetiredPerson(transformedData).unwrap();
     refetch();
     toggleEditable();
     toastConfig.success(response.message);

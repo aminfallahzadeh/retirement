@@ -12,7 +12,9 @@ export const StatusHistoryGrid = ({
   isLoading: boolean;
   isFetching: boolean;
 }) => {
+  // CONSTS
   const columns = statusHistoryColumns();
+
   return (
     <Grid
       data={data}

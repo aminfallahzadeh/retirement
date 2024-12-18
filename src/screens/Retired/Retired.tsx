@@ -19,12 +19,12 @@ import { useState } from "react";
 import { useAppSelector } from "@/hooks/usePreTypesHooks";
 import { Box, Tab } from "@mui/material";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
-import RetiredRelatedGrid from "@/grids/RetiredRelatedGrid";
 import RetiredStatementsGrid from "@/grids/RetiredStatementsGrid";
 import RetiredHeirGrid from "@/grids/RetiredHeirGrid";
 import AllRequestsGrid from "@/grids/AllRequestsGrid";
 import RetiredSlipsGrid from "@/grids/RetiredSlipsGrid";
 import { PersonForm, PensionaryForm, AdditionalInfoForm } from "./forms";
+import { RelatedGrid } from "./components/RelatedGrid";
 
 const Retired = () => {
   // STATES
@@ -39,7 +39,7 @@ const Retired = () => {
   };
 
   const content = (
-    <section className="flex-col">
+    <section className="flex-col mb-20">
       <Title title={RETIRED_INFO} back={true} />
 
       <div data-name="retired-forms">
@@ -121,7 +121,7 @@ const Retired = () => {
               padding: "0",
             }}
           >
-            {personDeathDate ? <RetiredHeirGrid /> : <RetiredRelatedGrid />}
+            {personDeathDate ? <RetiredHeirGrid /> : <RelatedGrid />}
           </TabPanel>
           <TabPanel
             value="2"

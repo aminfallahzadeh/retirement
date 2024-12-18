@@ -4,31 +4,29 @@ import { Link, useLocation } from "react-router-dom";
 import { logout } from "@/features/auth/authSlice";
 import { useLogoutMutation } from "@/features/auth/authApi";
 import { useAppDispatch, useAppSelector } from "@/hooks/usePreTypesHooks";
+import { DeleteModal } from "@/shared/components/DeleteModal";
+import useToggleState from "@/hooks/useToggleState";
 import {
   useGetUserThemeQuery,
   useUpdateUserThemeMutation,
   useGetItemAccessQuery,
 } from "@/features/user/userApi";
-import { CustomModal } from "@/shared/components/CustomModal";
 import DigitalClock from "@/components/DigitalClock";
 import Date from "@/components/Date";
-import { LoadingButton } from "@mui/lab";
 import { Box, Tooltip } from "@mui/material";
-import {
-  Logout as LogoutIcon,
-  ColorLensRounded as ThemeIcon,
-  Done as DoneIcon,
-  Close as CloseIcon,
-  ArrowLeftOutlined as ArrowIcon,
-} from "@mui/icons-material";
+import LogoutIcon from "@mui/icons-material/Logout";
+import ThemeIcon from "@mui/icons-material/ColorLensRounded";
+import ArrowIcon from "@mui/icons-material/ArrowLeftOutlined";
 import { toastConfig } from "@/config/toast/toast-config";
 import { Permission } from "@/shared/types/domain/user";
 import { TreeItem } from "../../types";
+import { EXIT } from "@/constants/const";
+import { ENSURE_FROM_LOGOUT } from "@/constants/messages";
 
 export const NavBar = () => {
   // STATES
   const [activePanel, setActivePanel] = useState<string | null>(null);
-  const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const [logoutModal, toggleLogoutModal] = useToggleState(false);
   const [theme, setTheme] = useState("default");
   const [itemList, setItemList] = useState<TreeItem[]>([]);
 
@@ -114,10 +112,6 @@ export const NavBar = () => {
     }
   }, [isPermissionsSuccess, permissionsList, dispatch, refetch]);
 
-  const handleShowLogoutModalChange = () => {
-    setShowLogoutModal(true);
-  };
-
   const handlePanelToggle = (panel: string | null) => {
     setActivePanel((prev) => {
       const newPanel = prev === panel ? null : panel;
@@ -148,38 +142,14 @@ export const NavBar = () => {
 
   return (
     <>
-      <CustomModal
-        open={showLogoutModal}
-        onClose={() => setShowLogoutModal(false)}
-        title="خروج"
-      >
-        <p className="paragraph-primary text-center m-5">
-          آیا از خروج اطمینان دارید؟
-        </p>
-
-        <div className="flex-row flex-center">
-          <LoadingButton
-            dir="ltr"
-            endIcon={<DoneIcon />}
-            loading={logoutLoading}
-            onClick={logoutHandler}
-            variant="contained"
-            color="success"
-          >
-            <span>بله</span>
-          </LoadingButton>
-          <LoadingButton
-            dir="ltr"
-            endIcon={<CloseIcon />}
-            onClick={() => setShowLogoutModal(false)}
-            variant="contained"
-            loading={logoutLoading}
-            color="error"
-          >
-            <span>خیر</span>
-          </LoadingButton>
-        </div>
-      </CustomModal>
+      <DeleteModal
+        open={logoutModal}
+        onClose={toggleLogoutModal}
+        title={EXIT}
+        handleRemove={logoutHandler}
+        isLoading={logoutLoading}
+        description={ENSURE_FROM_LOGOUT}
+      />
 
       <nav className="nav">
         <div className="nav__links">
@@ -228,11 +198,11 @@ export const NavBar = () => {
 
         <div className="nav__profile">
           <ul className="nav__profile--list">
-            <li onClick={handleShowLogoutModalChange}>
+            <li onClick={toggleLogoutModal}>
               <Tooltip
                 title={
                   <span style={{ fontFamily: "sahel", fontSize: "12px" }}>
-                    خروج
+                    {EXIT}
                   </span>
                 }
               >
