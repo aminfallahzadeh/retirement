@@ -29,6 +29,7 @@ export const StatementGrid = memo(
           id: item.personnelStatementSerial,
           personnelStatementRowNo: index + 1,
           personnelStatementSerial: item.personnelStatementSerial,
+          orderType: item.orderType,
           personnelStatementNumber: item.personnelStatementID,
           insertTime: item.insertTime,
           personnelStatementRunDate: item.personnelStatementRunDate,

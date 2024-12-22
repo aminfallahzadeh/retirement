@@ -7,6 +7,7 @@ import {
   STATEMENT_NO,
   ISSUE_DATE,
   RUN_DATE,
+  STATEMENT_TYPE,
 } from "@/constants/const";
 
 export const fractionStatementColumns = (): StatementColumn => [
@@ -20,6 +21,11 @@ export const fractionStatementColumns = (): StatementColumn => [
   {
     accessorKey: "personnelStatementSerial",
     header: STATEMENT_SERIAL,
+    size: 20,
+  },
+  {
+    accessorKey: "orderType",
+    header: STATEMENT_TYPE,
     size: 20,
   },
   {

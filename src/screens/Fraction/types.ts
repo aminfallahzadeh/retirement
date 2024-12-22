@@ -9,6 +9,7 @@ export type Statement = {
   personnelStatementNumber: string;
   insertTime: string;
   personnelStatementRunDate: string;
+  orderType: string;
 };
 
 export type StatementColumn = MRT_ColumnDef<Statement>[];
