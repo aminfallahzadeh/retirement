@@ -41,6 +41,7 @@ export const CREATE_RELATED = "ایجاد وابسته";
 export const RELATED_STATUS = "وضعیت وابسته";
 export const UPDATE_RELATED = "ویرایش وابسته";
 export const CONTINUE = "ادامه";
+export const CALCULATE = "محاسبه";
 
 // SCREENS
 export const RETIRED_INFO = "اطلاعات بازنشسته";
@@ -167,6 +168,18 @@ export const TRANSFERRED_AMOUNT = "مبلغ منتقله";
 export const YEAR = "سال";
 export const MONTH = "ماه";
 export const DAY = "روز";
+export const DELAY_AND_MODIFICATION = "تاخیر و تعدیه";
+export const MANAGER_PERCENT_SHARE = "درصد سهم کارفرما";
+export const PERSONNEL_PERCENT_SHARE = "درصد سهم کارمند";
+export const MANAGER_SHARE = "سهم کارفرما";
+export const PERSONNEL_SHARE = "سهم کارمند";
+export const REMAINING_DEBT = "مانده بدهی";
+export const REMAINING_CREDIT = "مانده بستانکاری";
+export const FROM_DATE = "تاریخ از";
+export const TO_DATE = "تاریخ تا";
+export const INSTALLMENT = "قسطی";
+export const INSTALLMENT_AMOUNT = "مبلغ قسط";
+export const INSTALLMENT_COUNT = "تعداد قسط";
 
 // VETERAN
 export const SACRIFICED_FAMILY = "خانواده شهید";

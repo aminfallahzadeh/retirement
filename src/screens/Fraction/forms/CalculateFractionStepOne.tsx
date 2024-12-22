@@ -3,7 +3,7 @@ import { useEffect, useMemo, useCallback, useState } from "react";
 import { useForm, FieldValues } from "react-hook-form";
 import { setFractionData } from "@/features/fraction/fractionSlice";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "@/hooks/usePreTypesHooks";
+import { useAppDispatch, useAppSelector } from "@/hooks/usePreTypesHooks";
 import { useLazyGetPersonsQuery } from "@/features/person/personApi";
 import {
   useFetchPersonnelStatementOffType,
@@ -11,6 +11,7 @@ import {
 } from "@/hooks/useFetchLookUpData";
 import { Input } from "@/shared/components/Input";
 import ArrowForward from "@mui/icons-material/ArrowForward";
+import { useEnterToSubmit } from "@/hooks/useEnterToSubmit";
 import { SelectInput } from "@/shared/components/SelectInput";
 import { LoadingButton } from "@mui/lab";
 import { createOptions } from "@/utils/optionsCreator";
@@ -35,6 +36,7 @@ const CalculateFractionStepOne = () => {
   const navigate = useNavigate();
 
   // CONSTS
+  const { fractionData } = useAppSelector((state) => state.fraction);
   const {
     control,
     handleSubmit,
@@ -42,7 +44,11 @@ const CalculateFractionStepOne = () => {
     trigger,
     watch,
     setValue,
-  } = useForm<FieldValues>();
+  } = useForm<FieldValues>({
+    defaultValues: {
+      personNationalCode: fractionData?.personNationalCode || "",
+    },
+  });
   const nationalCode = watch("personNationalCode");
   const [
     searchPerson,
@@ -117,6 +123,8 @@ const CalculateFractionStepOne = () => {
     }
   }, [trigger, fetchPersonData, nationalCode, setValue]);
 
+  useEnterToSubmit();
+
   return (
     <>
       <section className="flex-col">
@@ -176,7 +184,6 @@ const CalculateFractionStepOne = () => {
               isClearable={true}
               options={offTypesOptions}
               isLoading={personnelStatementOffTypesIsLoading}
-              //   rules={requiredRule}
               errors={errors}
             />
 
@@ -188,7 +195,6 @@ const CalculateFractionStepOne = () => {
               isClearable={true}
               options={organizationOptions}
               isLoading={organizationIsLoading}
-              //   rules={requiredRule}
               errors={errors}
             />
           </div>

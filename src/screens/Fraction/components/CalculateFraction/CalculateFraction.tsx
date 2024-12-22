@@ -1,6 +1,7 @@
 // IMPORTS
 import CalculateFractionStepOne from "../../forms/CalculateFractionStepOne";
 import CalculateFractionStepTwo from "../../forms/CalculateFractionStepTwo";
+import CalculateFractionStepThree from "../../forms/CalculateFractionStepThree";
 import { useParams } from "react-router-dom";
 
 const CalculateFraction = () => {
@@ -15,6 +16,10 @@ const CalculateFraction = () => {
 
       case "2":
         return <CalculateFractionStepTwo />;
+        break;
+
+      case "3":
+        return <CalculateFractionStepThree />;
         break;
 
       default:

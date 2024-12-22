@@ -38,8 +38,8 @@ export const CustomCheckBox = ({
         htmlFor={name}
         className={
           disabled
-            ? "checkboxContainer__label--disabled"
-            : "checkboxContainer__label"
+            ? "checkboxContainer__label--disabled prevent-select"
+            : "checkboxContainer__label prevent-select"
         }
       >
         {label}
