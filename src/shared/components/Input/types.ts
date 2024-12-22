@@ -10,4 +10,5 @@ export interface InputProps {
   control: UseFormReturn["control"];
   value?: string;
   editable?: boolean;
+  isLoading?: boolean;
 }

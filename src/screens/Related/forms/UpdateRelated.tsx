@@ -206,7 +206,6 @@ const UpdateRelated = () => {
   const onSubmit = async (data: FieldValues) => {
     // CONVERT DATA FOR REQUEST
     const transformedData = processDataForRequest(data, selectKeys, dateKeys);
-    console.log(transformedData);
     const response = await updateRelated({
       ...transformedData,
       parentPersonID,

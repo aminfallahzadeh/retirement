@@ -56,6 +56,8 @@ import {
   END_DATE,
   BIRTH_PLACE,
   RELATED_STATUS,
+  SELF_PROCLAIMED_INFO,
+  BACKUP_INFO,
 } from "@/constants/const";
 
 const CreateRelated = () => {
@@ -448,7 +450,7 @@ const CreateRelated = () => {
         </div>
 
         <div className="Modal__header flex justify-center items-center">
-          <h4 className="title-secondary"> اطلاعات خویش فرمایی</h4>
+          <h4 className="title-secondary">{SELF_PROCLAIMED_INFO}</h4>
         </div>
 
         <div className="grid grid-cols-4">
@@ -486,7 +488,7 @@ const CreateRelated = () => {
         </div>
 
         <div className="Modal__header flex justify-center items-center">
-          <h4 className="title-secondary">اطلاعات پشتیبان</h4>
+          <h4 className="title-secondary">{BACKUP_INFO}</h4>
         </div>
 
         <div className="grid grid-cols-4">

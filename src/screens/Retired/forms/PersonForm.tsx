@@ -21,6 +21,7 @@ import { LoadingButton } from "@mui/lab";
 import useToggleState from "@/hooks/useToggleState";
 import { useFetchLookUpData } from "@/hooks/useFetchLookUpData";
 import { createOptions } from "@/utils/optionsCreator";
+import { retiredPersonSchema } from "./schema";
 import {
   processDataForView,
   processDataForRequest,
@@ -206,8 +207,12 @@ export const PersonForm = () => {
       );
 
       Object.keys(transformedData).forEach((key) => {
-        if (transformedData[key] === null) {
-          setValue(key, "");
+        if (retiredPersonSchema.includes(key)) {
+          if (transformedData[key] === null) {
+            setValue(key, "");
+          } else {
+            setValue(key, transformedData[key]);
+          }
         } else {
           setValue(key, transformedData[key]);
         }

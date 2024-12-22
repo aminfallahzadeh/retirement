@@ -4,6 +4,7 @@ import { useController } from "react-hook-form";
 import { FC } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import { IconButton } from "@mui/material";
+import { LOADING_MESSAGE } from "@/constants/messages";
 
 export const Input: FC<InputProps> = ({
   name,
@@ -14,6 +15,7 @@ export const Input: FC<InputProps> = ({
   control,
   value = "",
   editable = true,
+  isLoading,
 }) => {
   const { field, fieldState } = useController({
     control,
@@ -34,7 +36,7 @@ export const Input: FC<InputProps> = ({
       )}
       <input
         autoComplete="off"
-        value={field.value}
+        value={isLoading ? LOADING_MESSAGE : field.value}
         onChange={field.onChange}
         disabled={!editable}
         type={type}

@@ -94,7 +94,8 @@ export const NavBar = () => {
   };
 
   const baseURL = "/retirement/";
-  const isActivePath = (path: string) => location.pathname === baseURL + path;
+  const isActivePath = (path: string) =>
+    location.pathname.startsWith(baseURL + path);
 
   const {
     data: permissionsList,

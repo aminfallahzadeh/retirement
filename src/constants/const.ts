@@ -39,6 +39,8 @@ export const EXIT = "خروج";
 export const REFRESH = "بروز رسانی";
 export const CREATE_RELATED = "ایجاد وابسته";
 export const RELATED_STATUS = "وضعیت وابسته";
+export const UPDATE_RELATED = "ویرایش وابسته";
+export const CONTINUE = "ادامه";
 
 // SCREENS
 export const RETIRED_INFO = "اطلاعات بازنشسته";
@@ -46,6 +48,7 @@ export const RETIRED_PERSON_INFO = "اطلاعات فردی";
 export const RETIRES_PENSIONARY_INFO = "اطلاعات پرسنلی";
 export const RETIRED_ADDITIONAL_INFO = "اطلاعات تکمیلی";
 export const CREATE_REQUEST = "ایجاد درخواست";
+export const FRACTION = "کسورات";
 
 // CARTABLE
 export const CARTABLE = "کارتابل";
@@ -151,6 +154,19 @@ export const UNIVERSITY_UNIT = "واحد دانشگاهی";
 export const SPECIAL_DISEASE = "بیماری خاص";
 export const END_DATE = "تاریخ پایان";
 export const STATUS_HISTORIES = "تاریخچه وضعیت ها";
+export const RECORD_TYPE = "نوع سابقه";
+export const CALCULATE_TYPE = "نوع محاسبه";
+export const ORGANIZATION_NAME = "نام سازمان";
+export const STATEMENT_TYPE = "نوع حکم";
+export const STATEMENT_SERIAL = "سریال حکم";
+export const STATEMENT_NO = "شماره حکم";
+export const ISSUE_DATE = "تاریخ صدور";
+export const RUN_DATE = "تاریخ اجرا";
+export const INCLUDED_FRACTION_AMOUNT = "مبلغ مشمول کسور";
+export const TRANSFERRED_AMOUNT = "مبلغ منتقله";
+export const YEAR = "سال";
+export const MONTH = "ماه";
+export const DAY = "روز";
 
 // VETERAN
 export const SACRIFICED_FAMILY = "خانواده شهید";
@@ -169,3 +185,9 @@ export const COMPARE_SALARY_REPORT = "گزارش مقایسه حقوق";
 // TITLES
 export const BACKUP_INFO = "اطلاعات پشتیبان";
 export const SELF_PROCLAIMED_INFO = "اطلاعات خویش فرمایی";
+export const COMPUTABLE_YEARS = "سنوات قابل محاسبه";
+
+// TABS
+export const SUBMIT_FRACTION = "ثبت کسورات";
+export const CALCULATE_FRACTION = "محاسبه کسورات";
+export const PERSONNEL_STATEMENTS = "احکام کارمندی";

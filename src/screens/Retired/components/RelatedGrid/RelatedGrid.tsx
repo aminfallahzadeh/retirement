@@ -34,7 +34,6 @@ export const RelatedGrid = () => {
   // HANDLERS
   useEffect(() => {
     if (isSuccess) {
-      console.log(related);
       const mappedData = related.itemList.map(
         (item: Related, index: number) => ({
           id: item.personID,

@@ -22,6 +22,7 @@ import roleSliceReducer from "@/features/request/roleSlice";
 import userSliceReducer from "@/features/user/userSlice";
 import personSliceReducer from "@/features/person/personSlice";
 import personDataSliceReducer from "@/slices/personDataSlice";
+import fractionSliceReducer from "@/features/fraction/fractionSlice";
 
 export const appReducer = combineReducers({
   [apiSlice.reducerPath]: apiSlice.reducer,
@@ -30,6 +31,7 @@ export const appReducer = combineReducers({
   person: personSliceReducer,
   config: configReducer,
   auth: authSliceReducer,
+  fraction: fractionSliceReducer,
   roleData: roleDataReducer,
   itemsData: itemsDataSliceReducer,
   groupItemsData: groupItemsDataSliceReducer,

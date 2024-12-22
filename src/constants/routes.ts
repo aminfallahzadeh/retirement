@@ -29,11 +29,9 @@ const PersonnelInfoScreen = lazy(() => import("@/screens/PersonnelInfoScreen"));
 const ElectronicStatement = lazy(
   () => import("@/screens/ElectronicStatement/ElectronicStatement")
 );
-// const CreateRequestScreen = lazy(() => import("@/screens/CreateRequestScreen"));
 const CreateRequest = lazy(() =>
   import("@/screens/CreateRequest").then((m) => ({ default: m.CreateRequest }))
 );
-const FractionScreen = lazy(() => import("@/screens/FractionScreen"));
 const ReportGeneratorScreen = lazy(
   () => import("@/screens/ReportGeneratorScreen")
 );
@@ -44,6 +42,15 @@ const DashboardScreen = lazy(() => import("@/screens/DashboardScreen"));
 const SalaryScreen = lazy(() => import("@/screens/SalaryScreen"));
 const Related = lazy(() =>
   import("@/screens/Related").then((m) => ({ default: m.Related }))
+);
+const Fraction = lazy(() => import("@/screens/Fraction/Fraction"));
+const CalculateFraction = lazy(
+  () =>
+    import("@/screens/Fraction/components/CalculateFraction/CalculateFraction")
+);
+
+const SubmitFraction = lazy(
+  () => import("@/screens/Fraction/components/SubmitFraction/SubmitFraction")
 );
 
 export const ROUTES: AppRoute[] = [
@@ -144,8 +151,22 @@ export const ROUTES: AppRoute[] = [
       {
         id: 114,
         path: "/retirement/fraction",
-        element: createSuspense(FractionScreen, [], true),
+        element: createSuspense(Fraction, [], true),
         index: false,
+        children: [
+          {
+            id: 214,
+            path: "",
+            element: createSuspense(SubmitFraction, [], true),
+            index: true,
+          },
+          {
+            id: 215,
+            path: "calculate/:step",
+            element: createSuspense(CalculateFraction, [], true),
+            index: false,
+          },
+        ],
       },
       {
         id: 115,

@@ -21,6 +21,7 @@ import { createOptions } from "@/utils/optionsCreator";
 import { onlyNumbersRules } from "@/constants/rules";
 import { toastConfig } from "@/config/toast";
 import { processDataForRequest } from "@/utils/convertFormData";
+import { retiredAdditionalInfoSchema } from "./schema";
 import {
   BANK,
   SAVE,
@@ -128,8 +129,12 @@ export const AdditionalInfoForm = () => {
       delete data.bankBranchID;
 
       Object.keys(retiredAccountData).forEach((key) => {
-        if (retiredAccountData[key] === null) {
-          setValue(key, "");
+        if (retiredAdditionalInfoSchema.includes(key)) {
+          if (retiredAccountData[key] === null) {
+            setValue(key, "");
+          } else {
+            setValue(key, retiredAccountData[key]);
+          }
         } else {
           setValue(key, retiredAccountData[key]);
         }

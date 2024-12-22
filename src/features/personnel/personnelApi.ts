@@ -49,6 +49,7 @@ export const personnelStatementApiSlice = apiSlice.injectEndpoints({
 
 export const {
   useGetPersonnelStatementQuery,
+  useLazyGetPersonnelStatementQuery,
   useGetPersonnelStatementOffQuery,
   useGetPersonnelStatementOffTypeQuery,
   useGetPersonnelStatementDetailQuery,

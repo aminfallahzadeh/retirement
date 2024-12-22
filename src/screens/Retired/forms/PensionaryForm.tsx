@@ -36,6 +36,7 @@ import {
   onlyNumbersRules,
   onlyPersianAlphabetsRules,
 } from "@/constants/rules";
+import { retiredPensionarySchema } from "./schema";
 import {
   GROUP,
   SAVE,
@@ -187,8 +188,12 @@ export const PensionaryForm = () => {
       );
 
       Object.keys(transformedData).forEach((key) => {
-        if (transformedData[key] === null) {
-          setValue(key, "");
+        if (retiredPensionarySchema.includes(key)) {
+          if (transformedData[key] === null) {
+            setValue(key, "");
+          } else {
+            setValue(key, transformedData[key]);
+          }
         } else {
           setValue(key, transformedData[key]);
         }

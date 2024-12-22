@@ -1,6 +1,6 @@
 // IMPORTS
 import { Title } from "@/shared/components/Title";
-import { CREATE_RELATED } from "@/constants/const";
+import { CREATE_RELATED, UPDATE_RELATED } from "@/constants/const";
 import { useSearchParams } from "react-router-dom";
 import CreateRelated from "./forms/CreateRelated";
 import UpdateRelated from "./forms/UpdateRelated";
@@ -14,7 +14,10 @@ const Related = () => {
 
   return (
     <section className="flex-col">
-      <Title title={CREATE_RELATED} back={true} />
+      <Title
+        title={mode === "update" ? UPDATE_RELATED : CREATE_RELATED}
+        back={true}
+      />
 
       {mode === "create" ? (
         <CreateRelated />

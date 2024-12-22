@@ -52,6 +52,14 @@ export const fractionApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+
+    calculateFractionFromStatement: builder.mutation({
+      query: (data) => ({
+        url: `${FRACTION_END}/CalculateFractionFromPersonnelStatementOff`,
+        method: "POST",
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -60,4 +68,5 @@ export const {
   useGetFractionTypeQuery,
   useInsertFractionExcelMutation,
   useCalculateFractionMutation,
+  useCalculateFractionFromStatementMutation,
 } = fractionApiSlice;

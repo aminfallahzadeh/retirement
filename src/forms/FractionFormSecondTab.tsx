@@ -65,7 +65,7 @@ function FractionFormSecondTab() {
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="grid grid--col-5">
-          <div className="inputBox__form">
+          {/* <div className="inputBox__form">
             {errors.nationaCode && (
               <span className="error-form">{errors.nationaCode.message}</span>
             )}
@@ -86,9 +86,9 @@ function FractionFormSecondTab() {
             <label htmlFor="nationaCode" className="inputBox__form--label">
               <span>*</span> شماره ملی
             </label>
-          </div>
+          </div> */}
 
-          <div className="inputBox__form">
+          {/* <div className="inputBox__form">
             {errors.name && (
               <span className="error-form">{errors.name.message}</span>
             )}
@@ -109,9 +109,9 @@ function FractionFormSecondTab() {
             <label htmlFor="name" className="inputBox__form--label">
               <span>*</span> نام
             </label>
-          </div>
+          </div> */}
 
-          <div className="inputBox__form">
+          {/* <div className="inputBox__form">
             {errors.familyName && (
               <span className="error-form">{errors.familyName.message}</span>
             )}
@@ -132,9 +132,9 @@ function FractionFormSecondTab() {
             <label htmlFor="familyName" className="inputBox__form--label">
               <span>*</span> نام خانوادگی
             </label>
-          </div>
+          </div> */}
 
-          <div className="inputBox__form">
+          {/* <div className="inputBox__form">
             {errors.familyName && (
               <span className="error-form">{errors.familyName.message}</span>
             )}
@@ -155,11 +155,11 @@ function FractionFormSecondTab() {
             <label htmlFor="personID" className="inputBox__form--label">
               <span>*</span> شماره کارمندی
             </label>
-          </div>
+          </div> */}
 
           <div></div>
 
-          <div className="inputBox__form">
+          {/* <div className="inputBox__form">
             <Controller
               name="calcualteType"
               control={control}
@@ -167,11 +167,6 @@ function FractionFormSecondTab() {
                 <Select
                   closeMenuOnSelect={true}
                   components={animatedComponents}
-                  // options={issueTypeOptions}
-                  // onChange={(val) => onChange(val ? val.value : null)}
-                  // value={issueTypeOptions.find(
-                  //   (c) => c.value === form_data?.issueType
-                  // )}
                   isClearable={true}
                   placeholder={
                     <div className="react-select-placeholder">
@@ -194,9 +189,9 @@ function FractionFormSecondTab() {
             >
               <span>*</span> نوع محاسبه کسور
             </label>
-          </div>
+          </div> */}
 
-          <div className="inputBox__form">
+          {/* <div className="inputBox__form">
             <Controller
               name="oraginaztionName"
               control={control}
@@ -231,9 +226,9 @@ function FractionFormSecondTab() {
             >
               <span>*</span> نام سازمان
             </label>
-          </div>
+          </div> */}
 
-          <div></div>
+          {/* <div></div>
           <div></div>
 
           <div style={{ marginRight: "auto" }}>
@@ -248,7 +243,7 @@ function FractionFormSecondTab() {
               <span>محاسبه سنوات</span>
             </LoadingButton>
           </div>
-        </div>
+        </div> */}
       </form>
 
       <div

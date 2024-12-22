@@ -1,4 +1,5 @@
 // IMPORTS
+import { useState, SyntheticEvent } from "react";
 import { Electronic } from "./components/Electronic";
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import { ArrowDropDown as ArrowDropDownIcon } from "@mui/icons-material";
@@ -15,7 +16,6 @@ import {
   PAYSLIP,
   REQUESTS,
 } from "@/constants/const";
-import { useState } from "react";
 import { useAppSelector } from "@/hooks/usePreTypesHooks";
 import { Box, Tab } from "@mui/material";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
@@ -34,7 +34,7 @@ const Retired = () => {
   const { personDeathDate } = useAppSelector((state) => state.person);
 
   // HANDLERS
-  const handleChange = (_: React.SyntheticEvent, newValue: string) => {
+  const handleChange = (_: SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
 

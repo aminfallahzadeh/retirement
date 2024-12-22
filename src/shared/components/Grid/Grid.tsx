@@ -28,6 +28,7 @@ export const Grid = <T extends MRT_RowData>({
   props,
   isLoading,
   isFetching,
+  onRowSelect,
 }: {
   columns: MRT_ColumnDef<T>[];
   data: T[];
@@ -39,8 +40,18 @@ export const Grid = <T extends MRT_RowData>({
   isLoading?: boolean;
   isFetching?: boolean;
   highlightActive?: boolean;
+  onRowSelect?: (selectedRowId: string | null) => void;
 }) => {
   const [rowSelection, setRowSelection] = useState<MRT_RowSelectionState>({});
+
+  const handleRowClick = (rowId: string) => {
+    const newSelection = { [rowId]: true };
+    setRowSelection(newSelection);
+    if (onRowSelect) {
+      const selectedRowId = Object.keys(newSelection)[0] || null;
+      onRowSelect(selectedRowId);
+    }
+  };
 
   const table = useMaterialReactTable({
     columns,
@@ -72,10 +83,11 @@ export const Grid = <T extends MRT_RowData>({
       : undefined,
     muiTableBodyRowProps: ({ row }) => ({
       // IMPLEMENT ROW SELECTION MANUALLY
-      onClick: () =>
-        setRowSelection(() => ({
-          [row.id]: true,
-        })),
+      //   onClick: () =>
+      //     setRowSelection(() => ({
+      //       [row.id]: true,
+      //     })),
+      onClick: () => handleRowClick(row.id),
       selected: rowSelection[row.id],
       sx: {
         cursor: "pointer",
