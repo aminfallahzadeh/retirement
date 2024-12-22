@@ -172,11 +172,11 @@ const CalculateFractionStepOne = () => {
               name="statementType"
               control={control}
               label={CALCULATE_TYPE}
-              required={true}
+              required={false}
               isClearable={true}
               options={offTypesOptions}
               isLoading={personnelStatementOffTypesIsLoading}
-              rules={requiredRule}
+              //   rules={requiredRule}
               errors={errors}
             />
 
@@ -184,11 +184,11 @@ const CalculateFractionStepOne = () => {
               name="organizationID"
               control={control}
               label={ORGANIZATION_NAME}
-              required={true}
+              required={false}
               isClearable={true}
               options={organizationOptions}
               isLoading={organizationIsLoading}
-              rules={requiredRule}
+              //   rules={requiredRule}
               errors={errors}
             />
           </div>

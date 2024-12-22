@@ -78,6 +78,7 @@ function PersonnelStatementGrid() {
       const data = statements.itemList.map((item, index) => ({
         id: item.personnelStatementID,
         personnelStatementRowNum: index + 1,
+        orderTypePersonnel: item.orderType,
         personnelStatementSerial: item.personnelStatementSerial,
         personnelStatementNumber: item.personnelStatementID,
         personnelStatementTypeName: item.personnelStatementTypeName,
@@ -115,11 +116,7 @@ function PersonnelStatementGrid() {
           <div>{convertToPersianNumber(renderedCellValue)}</div>
         ),
       },
-      {
-        accessorKey: "personnelStatementTypeName",
-        header: "نوع حکم",
-        size: 20,
-      },
+
       {
         accessorKey: "personnelStatementSerial",
         header: "سریال حکم",
@@ -127,6 +124,11 @@ function PersonnelStatementGrid() {
         Cell: ({ renderedCellValue }) => (
           <div>{convertToPersianNumber(renderedCellValue)}</div>
         ),
+      },
+      {
+        accessorKey: "orderTypePersonnel",
+        header: "نوع حکم",
+        size: 20,
       },
       {
         accessorKey: "personnelStatementNumber",

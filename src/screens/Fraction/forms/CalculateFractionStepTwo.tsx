@@ -1,5 +1,5 @@
 // IMPORTS
-import { useEffect, useMemo, useCallback, useState } from "react";
+import { useEffect, useCallback, useState } from "react";
 import { useForm, FieldValues } from "react-hook-form";
 import { useAppSelector, useAppDispatch } from "@/hooks/usePreTypesHooks";
 import { useCalculateFractionFromStatementMutation } from "@/features/fraction/fractionApi";
@@ -7,6 +7,7 @@ import ArrowForward from "@mui/icons-material/ArrowForward";
 import { Input } from "@/shared/components/Input";
 import { LoadingButton } from "@mui/lab";
 import { requiredRule } from "@/constants/rules";
+import { separateByThousand } from "@/helpers/numberConverter";
 import {
   CONTINUE,
   INCLUDED_FRACTION_AMOUNT,
@@ -19,6 +20,7 @@ import {
 
 const CalculateFractionStepTwo = () => {
   // STATES
+
   // CONSTS
   const {
     control,
@@ -38,16 +40,26 @@ const CalculateFractionStepTwo = () => {
   const fetchCalculation = useCallback(async () => {
     const response = await calculateFraction({
       personNationalCode: stepOneData.personNationalCode,
-      personnelStatementOffTypeID: stepOneData.statementType.value,
-      organizationID: stepOneData.organizationID.value,
+      personnelStatementOffTypeID: stepOneData?.statementType?.value || "0",
+      organizationID: stepOneData?.organizationID?.value || "0",
       numberOfInstallments: 0,
       personnelStatementSerialNO: parseInt(stepOneData.serial),
       periods: null,
       save: false,
     }).unwrap();
 
+    const data = response?.itemList[0];
+
+    Object.keys(data).forEach((key) => {
+      if (typeof data[key] === "number") {
+        setValue(key, separateByThousand(data[key]));
+      } else {
+        setValue(key, data[key]);
+      }
+    });
+
     console.log("CALCULATION", response);
-  }, [calculateFraction, stepOneData]);
+  }, [calculateFraction, stepOneData, setValue]);
 
   const onSubmit = async (data: FieldValues) => {
     console.log(data);
@@ -77,10 +89,10 @@ const CalculateFractionStepTwo = () => {
         {/* Form Fields */}
         <div className="grid grid-cols-4">
           <Input
-            name="includedAmount"
+            name="credit"
             label={INCLUDED_FRACTION_AMOUNT}
-            rules={requiredRule}
-            required={true}
+            editable={false}
+            required={false}
             control={control}
             type="text"
           />
@@ -88,8 +100,7 @@ const CalculateFractionStepTwo = () => {
           <Input
             name="transferredAmount"
             label={TRANSFERRED_AMOUNT}
-            rules={requiredRule}
-            required={true}
+            required={false}
             control={control}
             type="text"
           />
@@ -107,8 +118,8 @@ const CalculateFractionStepTwo = () => {
           <Input
             name="startYear"
             label={YEAR}
-            rules={requiredRule}
-            required={true}
+            editable={false}
+            required={false}
             control={control}
             type="text"
           />
@@ -116,8 +127,8 @@ const CalculateFractionStepTwo = () => {
           <Input
             name="startMonth"
             label={MONTH}
-            rules={requiredRule}
-            required={true}
+            editable={false}
+            required={false}
             control={control}
             type="text"
           />
@@ -125,8 +136,8 @@ const CalculateFractionStepTwo = () => {
           <Input
             name="startDay"
             label={DAY}
-            rules={requiredRule}
-            required={true}
+            editable={false}
+            required={false}
             control={control}
             type="text"
           />
@@ -138,8 +149,8 @@ const CalculateFractionStepTwo = () => {
           <Input
             name="endYear"
             label={YEAR}
-            rules={requiredRule}
-            required={true}
+            editable={false}
+            required={false}
             control={control}
             type="text"
           />
@@ -147,8 +158,8 @@ const CalculateFractionStepTwo = () => {
           <Input
             name="endMonth"
             label={MONTH}
-            rules={requiredRule}
-            required={true}
+            editable={false}
+            required={false}
             control={control}
             type="text"
           />
@@ -156,8 +167,8 @@ const CalculateFractionStepTwo = () => {
           <Input
             name="endDay"
             label={DAY}
-            rules={requiredRule}
-            required={true}
+            editable={false}
+            required={false}
             control={control}
             type="text"
           />

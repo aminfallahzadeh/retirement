@@ -20,12 +20,10 @@ const BatchStatementsScreen = lazy(
 const Slips = lazy(() =>
   import("@/screens/Slips").then((m) => ({ default: m.Slips }))
 );
-const PersonnelStatements = lazy(() =>
-  import("@/screens/PersonnelStatements").then((m) => ({
-    default: m.PersonnelStatements,
-  }))
+const StatementsAndTariff = lazy(
+  () => import("@/screens/StatementsAndTariff/StatementsAndTariff")
 );
-const PersonnelInfoScreen = lazy(() => import("@/screens/PersonnelInfoScreen"));
+const Personnel = lazy(() => import("@/screens/Personnel/Personnel"));
 const ElectronicStatement = lazy(
   () => import("@/screens/ElectronicStatement/ElectronicStatement")
 );
@@ -121,13 +119,13 @@ export const ROUTES: AppRoute[] = [
       {
         id: 109,
         path: "/retirement/personnel-statements",
-        element: createSuspense(PersonnelStatements, [], true),
+        element: createSuspense(StatementsAndTariff, [], true),
         index: false,
       },
       {
         id: 110,
         path: "/retirement/personnel-statements/info",
-        element: createSuspense(PersonnelInfoScreen, [], true),
+        element: createSuspense(Personnel, ["personID"], true),
         index: false,
       },
       {

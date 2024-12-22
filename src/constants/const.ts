@@ -181,6 +181,7 @@ export const SALARY_AND_WAGE = "حقوق و دستمزد";
 export const SLIPS_PAYS = "فیش های حقوقی";
 export const PAY_AND_FRACTION = "کسر و پرداخت";
 export const COMPARE_SALARY_REPORT = "گزارش مقایسه حقوق";
+export const PERSONNEL_INFO = "اطلاعات کارمند";
 
 // TITLES
 export const BACKUP_INFO = "اطلاعات پشتیبان";
