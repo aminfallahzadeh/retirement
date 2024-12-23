@@ -3,7 +3,7 @@ import { Box, IconButton, Tooltip, CircularProgress } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import { REFRESH, CREATE_RELATED } from "@/constants/const";
-import { CREATE_RELATED_URL } from "@/constants/urls";
+import { RELATED_URL } from "@/constants/urls";
 import { Link } from "react-router-dom";
 
 export const relatedGridTopActionsProvider = (
@@ -33,7 +33,7 @@ export const relatedGridTopActionsProvider = (
       </IconButton>
     ) : (
       <Tooltip title={CREATE_RELATED}>
-        <Link to={`${CREATE_RELATED_URL}?mode=create&id=${parentPersonID}`}>
+        <Link to={`${RELATED_URL}?mode=create&id=${parentPersonID}`}>
           <IconButton aria-label="refresh" color="success">
             <AddIcon fontSize="small" />
           </IconButton>
