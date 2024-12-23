@@ -9,7 +9,15 @@ import { MRT_RowData } from "material-react-table";
 import { RoleType } from "@/shared/types/role";
 import { RequestColumn } from "./types";
 import { convertToPersianDateFormatted } from "@/helpers/dateConverter";
-import { ROW_NO, OBSERVE, REVIEW } from "@/constants/const";
+import {
+  ROW_NO,
+  OBSERVE,
+  REVIEW,
+  REQUEST_NO,
+  REQUEST_TYPE,
+  REQUESTER,
+  REQUEST_DATE,
+} from "@/constants/const";
 
 export const columnsRenderer = ({
   role,
@@ -25,22 +33,22 @@ export const columnsRenderer = ({
   },
   {
     accessorKey: "requestNO",
-    header: "شماره درخواست",
+    header: REQUEST_NO,
     size: 20,
   },
   {
     accessorKey: "requestTypeNameFa",
-    header: "نوع درخواست",
+    header: REQUEST_TYPE,
     size: 20,
   },
   {
     accessorKey: "personName",
-    header: "درخواست کننده",
+    header: REQUESTER,
     size: 20,
   },
   {
     accessorKey: "date",
-    header: "تاریخ درخواست",
+    header: REQUEST_DATE,
     size: 20,
     Cell: ({ renderedCellValue }) => (
       <div>{convertToPersianDateFormatted(renderedCellValue as string)}</div>

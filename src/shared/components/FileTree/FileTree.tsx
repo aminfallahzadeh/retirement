@@ -34,6 +34,7 @@ export const FileTree = ({
   refetch,
 }: FileTreeProps) => {
   // STATES
+  const [isDataReady, setIsDataReady] = useState<boolean>(false);
   const [search, toggleSearch] = useState<boolean>(false);
   const [term, setTerm] = useState<string>("");
   const [previewImage, setPreviewImage] = useState<string | null>(null);
@@ -66,6 +67,13 @@ export const FileTree = ({
   ) => {
     setExpandedItems(itemIds);
   };
+
+  // EFFECTS
+  useEffect(() => {
+    if (items && items.length > 0) {
+      setIsDataReady(true);
+    }
+  }, [items]);
 
   useEffect(() => {
     // expand parent found items
@@ -113,7 +121,7 @@ export const FileTree = ({
       <LinearProgress color="primary" />
     </Stack>
   ) : (
-    <Stack sx={{ width: 800, marginTop: 2 }} spacing={2}>
+    <Stack sx={{ width: 800 }}>
       <div className="flex flex-row gap-0 justify-start items-start">
         <IconButton
           aria-label="search"
@@ -152,7 +160,7 @@ export const FileTree = ({
 
       <div className="flex flex-row">
         <CacheProvider value={cacheRtl}>
-          {filteredItems.length === 0 ? (
+          {filteredItems.length === 0 && isDataReady ? (
             <div className="flex flex-col justify-center items-center w-[400px]">
               <QuestionIcon color={"error"} sx={{ fontSize: "200px" }} />
 

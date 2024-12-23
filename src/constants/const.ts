@@ -180,6 +180,12 @@ export const TO_DATE = "تاریخ تا";
 export const INSTALLMENT = "قسطی";
 export const INSTALLMENT_AMOUNT = "مبلغ قسط";
 export const INSTALLMENT_COUNT = "تعداد قسط";
+export const TITLE = "عنوان";
+export const DATE = "تاریخ";
+export const ANNOUNCE_DESCRIPTION = "متن اطلاعیه";
+export const REQUEST_NO = "شماره درخواست";
+export const REQUESTER = "درخواست دهنده";
+export const REQUEST_DATE = "تاریخ درخواست";
 
 // VETERAN
 export const SACRIFICED_FAMILY = "خانواده شهید";
@@ -200,6 +206,7 @@ export const PERSONNEL_INFO = "اطلاعات کارمند";
 export const BACKUP_INFO = "اطلاعات پشتیبان";
 export const SELF_PROCLAIMED_INFO = "اطلاعات خویش فرمایی";
 export const COMPUTABLE_YEARS = "سنوات قابل محاسبه";
+export const INSERT_ANNOUNCE = "ثبت اطلاعیه";
 
 // TABS
 export const SUBMIT_FRACTION = "ثبت کسورات";

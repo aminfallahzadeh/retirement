@@ -112,6 +112,7 @@ export const logout = () => (dispatch: AppDispatch) => {
   dispatch(clearAuthState());
   // Dispatch RESET to reset the entire Redux store
   dispatch(clearRole());
+  //   dispatch({ type: "RESET" });
 };
 
 export default authSlice.reducer;

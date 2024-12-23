@@ -3,6 +3,20 @@ import { lazy, createElement } from "react";
 import { createSuspense } from "@/utils/suspenseCreator";
 import { AppRoute } from "@/shared/types/route";
 import AppLayout from "@/layouts/AppLayout/AppLayout";
+import {
+  BASE_URL,
+  CARTABLE_URL,
+  RETIRED_URL,
+  PERSONNEL_STATEMENTS_URL,
+  PERSONNEL_URL,
+  ELECTRONIC_STATEMENT_URL,
+  CREATE_REQUEST_URL,
+  FRACTION_URL,
+  FRACTION_CALCULATE_URL,
+  BASE_INF_2_URL,
+  RELATED_URL,
+  ANNOUNCE_URL,
+} from "./urls";
 
 const Cartable = lazy(() =>
   import("@/screens/Cartable").then((m) => ({ default: m.Cartable }))
@@ -33,9 +47,9 @@ const CreateRequest = lazy(() =>
 const ReportGeneratorScreen = lazy(
   () => import("@/screens/ReportGeneratorScreen")
 );
+const Announce = lazy(() => import("@/screens/Announce/Announce"));
 const BaseInfoScreen = lazy(() => import("@/screens/BaseInfoScreen"));
 const BaseInfo2 = lazy(() => import("@/screens/BaseInfo2/BaseInfo2"));
-const InsertAnnounce = lazy(() => import("@/screens/InsertAnnounceScreen"));
 const DashboardScreen = lazy(() => import("@/screens/DashboardScreen"));
 const SalaryScreen = lazy(() => import("@/screens/SalaryScreen"));
 const Related = lazy(() =>
@@ -46,7 +60,6 @@ const CalculateFraction = lazy(
   () =>
     import("@/screens/Fraction/components/CalculateFraction/CalculateFraction")
 );
-
 const SubmitFraction = lazy(
   () => import("@/screens/Fraction/components/SubmitFraction/SubmitFraction")
 );
@@ -54,7 +67,7 @@ const SubmitFraction = lazy(
 export const ROUTES: AppRoute[] = [
   {
     id: 1,
-    path: "/retirement/",
+    path: BASE_URL,
     element: createSuspense(Auth),
     index: true,
   },
@@ -64,13 +77,13 @@ export const ROUTES: AppRoute[] = [
     children: [
       {
         id: 100,
-        path: "/retirement/cartable",
+        path: CARTABLE_URL,
         element: createSuspense(Cartable, [], true),
         index: false,
       },
       {
         id: 101,
-        path: "/retirement/retired",
+        path: RETIRED_URL,
         element: createSuspense(Retired, ["requestID", "personID"], true),
         index: false,
       },
@@ -118,37 +131,31 @@ export const ROUTES: AppRoute[] = [
       },
       {
         id: 109,
-        path: "/retirement/personnel-statements",
+        path: PERSONNEL_STATEMENTS_URL,
         element: createSuspense(StatementsAndTariff, [], true),
         index: false,
       },
       {
         id: 110,
-        path: "/retirement/personnel-statements/info",
+        path: PERSONNEL_URL,
         element: createSuspense(Personnel, ["personID"], true),
         index: false,
       },
       {
         id: 111,
-        path: "/retirement/electronic-statement",
-        element: createSuspense(ElectronicStatement, [], true),
-        index: false,
-      },
-      {
-        id: 112,
-        path: "/retirement/electronic-statement",
+        path: ELECTRONIC_STATEMENT_URL,
         element: createSuspense(ElectronicStatement, [], true),
         index: false,
       },
       {
         id: 113,
-        path: "/retirement/create-request",
+        path: CREATE_REQUEST_URL,
         element: createSuspense(CreateRequest, ["role"], true),
         index: false,
       },
       {
         id: 114,
-        path: "/retirement/fraction",
+        path: FRACTION_URL,
         element: createSuspense(Fraction, [], true),
         index: false,
         children: [
@@ -160,7 +167,7 @@ export const ROUTES: AppRoute[] = [
           },
           {
             id: 215,
-            path: "calculate/:step",
+            path: FRACTION_CALCULATE_URL,
             element: createSuspense(CalculateFraction, [], true),
             index: false,
           },
@@ -180,14 +187,14 @@ export const ROUTES: AppRoute[] = [
       },
       {
         id: 117,
-        path: "/retirement/base-info2",
+        path: BASE_INF_2_URL,
         element: createSuspense(BaseInfo2, [], true),
         index: false,
       },
       {
         id: 118,
-        path: "/retirement/insert-announce",
-        element: createSuspense(InsertAnnounce, [], true),
+        path: ANNOUNCE_URL,
+        element: createSuspense(Announce, [], true),
         index: false,
       },
       {
@@ -204,7 +211,7 @@ export const ROUTES: AppRoute[] = [
       },
       {
         id: 121,
-        path: "/retirement/retired/related",
+        path: RELATED_URL,
         element: createSuspense(Related, ["id", "mode"], true),
         index: false,
       },

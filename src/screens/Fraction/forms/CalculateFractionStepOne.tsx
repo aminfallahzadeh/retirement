@@ -3,7 +3,7 @@ import { useEffect, useMemo, useCallback, useState } from "react";
 import { useForm, FieldValues } from "react-hook-form";
 import { setFractionData } from "@/features/fraction/fractionSlice";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "@/hooks/usePreTypesHooks";
+import { useAppDispatch } from "@/hooks/usePreTypesHooks";
 import { useLazyGetPersonsQuery } from "@/features/person/personApi";
 import {
   useFetchPersonnelStatementOffType,
@@ -36,7 +36,6 @@ const CalculateFractionStepOne = () => {
   const navigate = useNavigate();
 
   // CONSTS
-  const { fractionData } = useAppSelector((state) => state.fraction);
   const {
     control,
     handleSubmit,
@@ -44,11 +43,7 @@ const CalculateFractionStepOne = () => {
     trigger,
     watch,
     setValue,
-  } = useForm<FieldValues>({
-    defaultValues: {
-      personNationalCode: fractionData?.personNationalCode || "",
-    },
-  });
+  } = useForm<FieldValues>({});
   const nationalCode = watch("personNationalCode");
   const [
     searchPerson,

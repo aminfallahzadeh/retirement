@@ -49,9 +49,9 @@ export const appReducer = combineReducers({
   personData: personDataSliceReducer,
 });
 
-// export const rootReducer = (state: any, action: PayloadAction) => {
-//   if (action.type === "RESET") {
-//     state = undefined;
-//   }
-//   return appReducer(state, action);
-// };
+export const rootReducer = (state: any, action: PayloadAction) => {
+  if (action.type === "RESET") {
+    state = undefined;
+  }
+  return appReducer(state, action);
+};

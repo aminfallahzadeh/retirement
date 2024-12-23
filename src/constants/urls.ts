@@ -1,5 +1,35 @@
-export const BASE_URL = "/retirement/";
-export const BASE_API_URL = "https://185.129.238.13/api";
+export const BASE_URL = import.meta.env.VITE_BASE_URL;
+// export const BASE_API_URL = "https://185.129.238.13/api";
 // export const USERS_URL_HTTPS = "https://185.129.238.13/api/User";
 
-export const CREATE_RELATED_URL = BASE_URL + "retired/related";
+// CONSTS
+const CARTABLE = "cartable";
+const RETIRED = "retired";
+const RELATED = "related";
+const PERSONNEL = "personnel";
+const STATEMENTS = "statements";
+const STATEMENT = "statement";
+const ELECTRONIC = "electronic";
+const PERSONNEL_STATEMENTS = PERSONNEL + "-" + STATEMENTS;
+const INFO = "info";
+const REQUEST = "request";
+const CREATE = "create";
+const CREATE_REQUEST = CREATE + "-" + REQUEST;
+const FRACTION = "fraction";
+const CALCULATE = "calculate";
+const BASE_INFO = "base-info";
+const ANNOUNCE = "announce";
+const INSERT = "insert";
+const INSERT_ANNOUNCE = INSERT + "-" + ANNOUNCE;
+
+export const RELATED_URL = BASE_URL + RETIRED + "/" + RELATED;
+export const RETIRED_URL = BASE_URL + RETIRED;
+export const CARTABLE_URL = BASE_URL + CARTABLE;
+export const PERSONNEL_STATEMENTS_URL = BASE_URL + PERSONNEL_STATEMENTS;
+export const PERSONNEL_URL = PERSONNEL_STATEMENTS_URL + "/" + INFO;
+export const ELECTRONIC_STATEMENT_URL = BASE_URL + ELECTRONIC + "/" + STATEMENT;
+export const CREATE_REQUEST_URL = BASE_URL + CREATE_REQUEST;
+export const FRACTION_URL = BASE_URL + FRACTION;
+export const FRACTION_CALCULATE_URL = CALCULATE + "/" + ":step";
+export const BASE_INF_2_URL = BASE_URL + BASE_INFO + "2";
+export const ANNOUNCE_URL = BASE_URL + INSERT_ANNOUNCE;

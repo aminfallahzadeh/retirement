@@ -4,7 +4,7 @@ import { Related } from "../../types";
 import { Tooltip, IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/DeleteOutline";
 import EditIcon from "@mui/icons-material/EditOutlined";
-import { CREATE_RELATED_URL } from "@/constants/urls";
+import { RELATED_URL } from "@/constants/urls";
 import { Link } from "react-router-dom";
 import { convertToPersianDateFormatted } from "@/helpers/dateConverter";
 import {
@@ -74,7 +74,7 @@ export const relatedColumns = (
         title={`${EDIT} "${row.original.personFirstName} ${row.original.personLastName}"`}
       >
         <Link
-          to={`${CREATE_RELATED_URL}?mode=update&id=${parentID}&personID=${row.original.id}`}
+          to={`${RELATED_URL}?mode=update&id=${parentID}&personID=${row.original.id}`}
         >
           <IconButton
             color="success"

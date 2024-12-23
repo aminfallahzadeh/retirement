@@ -1,7 +1,7 @@
 // slice imports
 import { configureStore } from "@reduxjs/toolkit";
 import { apiSlice } from "@/features/api/apiSlice";
-import { appReducer } from "@/features/shared/rootReducer";
+import { appReducer } from "./rootReducer";
 
 export const store = configureStore({
   reducer: appReducer,
