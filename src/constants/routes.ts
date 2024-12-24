@@ -18,6 +18,7 @@ import {
   ANNOUNCE_URL,
   HEIR_URL,
   DOCUMENT_URL,
+  GENERATE_STATEMENT_URL,
 } from "./urls";
 
 const Cartable = lazy(() =>
@@ -65,6 +66,9 @@ const SubmitFraction = lazy(
   () => import("@/screens/Fraction/components/SubmitFraction/SubmitFraction")
 );
 const Document = lazy(() => import("@/screens/Document/Document"));
+const GenerateStatement = lazy(
+  () => import("@/screens/GenerateStatement/GenerateStatement")
+);
 
 export const ROUTES: AppRoute[] = [
   {
@@ -226,7 +230,17 @@ export const ROUTES: AppRoute[] = [
       {
         id: 123,
         path: DOCUMENT_URL,
-        element: createSuspense(Document, [], true),
+        element: createSuspense(Document, ["id"], true),
+        index: false,
+      },
+      {
+        id: 124,
+        path: GENERATE_STATEMENT_URL,
+        element: createSuspense(
+          GenerateStatement,
+          ["personID", "requestID"],
+          true
+        ),
         index: false,
       },
     ],

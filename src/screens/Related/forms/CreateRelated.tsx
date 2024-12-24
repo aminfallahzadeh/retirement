@@ -3,7 +3,7 @@ import { useMemo } from "react";
 import { useForm, FieldValues } from "react-hook-form";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { LoadingButton } from "@mui/lab";
-import DoneOutlinedIcon from "@mui/icons-material/DoneOutlined";
+import DoneIcon from "@mui/icons-material/DoneOutlined";
 import { useInsertRelatedMutation } from "@/features/related/relatedApi";
 import {
   useFetchLookUpData,
@@ -549,7 +549,7 @@ const CreateRelated = () => {
         <div className="flex-row mr-auto">
           <LoadingButton
             dir="ltr"
-            endIcon={<DoneOutlinedIcon />}
+            endIcon={<DoneIcon />}
             variant="contained"
             type="submit"
             loading={isLoading}

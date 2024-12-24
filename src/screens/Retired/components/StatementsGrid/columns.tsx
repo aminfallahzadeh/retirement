@@ -6,7 +6,7 @@ import { Tooltip, IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/DeleteOutline";
 import EyeIcon from "@mui/icons-material/VisibilityOutlined";
 import { convertToPersianDateFormatted } from "@/helpers/dateConverter";
-import { HEIR_URL } from "@/constants/urls";
+import { BASE_URL } from "@/constants/urls";
 import {
   ROW_NO,
   STATEMENT_SERIAL,
@@ -68,7 +68,7 @@ export const statementsColumns = (
     size: 20,
     Cell: ({ row }) => (
       <Tooltip title={`${SERIAL} ${row.original.retirementStatementSerial}`}>
-        <Link to={`${HEIR_URL}/retirement-statement?id=${row.original.id}`}>
+        <Link to={`${BASE_URL}document/rstatement?id=${row.original.id}`}>
           <EyeIcon color="primary" />
         </Link>
       </Tooltip>

@@ -197,6 +197,9 @@ export const SUB_INSURANCE = "بیمه تبعی";
 export const HEIR_NO = "شماره وظیفه بگیری";
 export const HEIR_DATE = "تاریخ وظیفه بگیری";
 export const SERIAL = "سریال";
+export const BASE_SALARY_AMOUNT_RAISE = "میزان افزایش حقوق مبنا";
+export const SUPPLEMENTARY_AMOUNT_RAISE = "میزان افزایش حقوق تکمیلی";
+export const STATEMENT_DESC = "شرح حکم";
 
 // VETERAN
 export const SACRIFICED_FAMILY = "خانواده شهید";
@@ -212,6 +215,7 @@ export const SLIPS_PAYS = "فیش های حقوقی";
 export const PAY_AND_FRACTION = "کسر و پرداخت";
 export const COMPARE_SALARY_REPORT = "گزارش مقایسه حقوق";
 export const PERSONNEL_INFO = "اطلاعات کارمند";
+export const GENERATE_STATEMENT = "صدور حکم";
 
 // TITLES
 export const BACKUP_INFO = "اطلاعات پشتیبان";

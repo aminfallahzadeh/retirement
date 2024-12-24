@@ -24,6 +24,8 @@ const INSERT = "insert";
 const INSERT_ANNOUNCE = INSERT + "-" + ANNOUNCE;
 const HEIR = "heir";
 const DOCUMENT = "document";
+const GENERATE = "generate";
+const GENERATE_STATEMENT = GENERATE + "-" + STATEMENT;
 
 export const RELATED_URL = BASE_URL + RETIRED + "/" + RELATED;
 export const RETIRED_URL = BASE_URL + RETIRED;
@@ -38,3 +40,4 @@ export const BASE_INF_2_URL = BASE_URL + BASE_INFO + "2";
 export const ANNOUNCE_URL = BASE_URL + INSERT_ANNOUNCE;
 export const HEIR_URL = BASE_URL + RETIRED + "/" + HEIR;
 export const DOCUMENT_URL = BASE_URL + DOCUMENT + "/" + ":type";
+export const GENERATE_STATEMENT_URL = BASE_URL + GENERATE_STATEMENT;

@@ -3,11 +3,13 @@ import { Box, IconButton, Tooltip, CircularProgress } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { CREATE_RELATED } from "@/constants/const";
 import { Link } from "react-router-dom";
+import { GENERATE_STATEMENT_URL } from "@/constants/urls";
 
 export const statementsTopActionsProvider = (
   isLoading: boolean,
-  isFetching: boolean
-  //   parentPersonID: string | null
+  isFetching: boolean,
+  personID: string | null,
+  requestID: string | null
 ) => (
   <Box>
     {isFetching || isLoading ? (
@@ -16,11 +18,11 @@ export const statementsTopActionsProvider = (
       </IconButton>
     ) : (
       <Tooltip title={CREATE_RELATED}>
-        <IconButton aria-label="refresh" color="success">
-          <AddIcon fontSize="small" />
-        </IconButton>
-        {/* <Link to={`${RELATED_URL}?mode=create&id=${parentPersonID}`}>
-        </Link> */}
+        <Link
+          to={`${GENERATE_STATEMENT_URL}?personID=${personID}&requestID=${requestID}`}
+        >
+          <AddIcon fontSize="small" color="success" />
+        </Link>
       </Tooltip>
     )}
   </Box>

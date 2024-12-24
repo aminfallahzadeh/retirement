@@ -161,7 +161,7 @@ function GenerateStatementForm({
         noValidate
       >
         <div className="grid grid--col-2">
-          <div className="inputBox__form">
+          {/* <div className="inputBox__form">
             <InputDatePicker
               value={selectedRunDate}
               format={"jYYYY/jMM/jDD"}
@@ -178,9 +178,9 @@ function GenerateStatementForm({
             <div className="inputBox__form--readOnly-label">
               <span>*</span> تاریخ اجرا
             </div>
-          </div>
+          </div> */}
 
-          <div className="inputBox__form">
+          {/* <div className="inputBox__form">
             <Controller
               name={"retirementStatementTypeID"}
               control={control}
@@ -258,7 +258,7 @@ function GenerateStatementForm({
             {errors.retirementStatementTypeID && (
               <span className="error-form">نوع حکم اجباری است</span>
             )}
-          </div>
+          </div> */}
 
           {baseSalaryOptions.includes(form_data?.retirementStatementTypeID) && (
             <>

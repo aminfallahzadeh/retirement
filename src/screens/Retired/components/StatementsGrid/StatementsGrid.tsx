@@ -17,13 +17,16 @@ export const StatementsGrid = () => {
   // STATES
   const [tableData, setTableData] = useState<Statement[]>([]);
   const [deleteModal, toggleDeleteModal] = useToggleState(false);
-  //   const [id, setId] = useState<string | null>("");
+  const [id, setId] = useState<string | null>("");
   const [searchParams] = useSearchParams();
 
   // CONSTS
   const personID = searchParams.get("personID");
-  const { data, isSuccess, isLoading, isFetching } =
+  const requestID = searchParams.get("requestID");
+  const { data, isSuccess, isLoading, isFetching, refetch } =
     useGetListOfRetirementStatementsQuery({ personID });
+  const [removeStatement, { isLoading: isDeleting }] =
+    useRemoveRetirementStatementMutation();
 
   // HANDLERS
   useEffect(() => {
@@ -45,13 +48,27 @@ export const StatementsGrid = () => {
   }, [isSuccess, data]);
 
   const handleRemoveRelatedClick = (id: string) => {
-    // setId(id);
+    setId(id);
+    toggleDeleteModal();
+  };
+
+  const handleRemoveStatement = async () => {
+    const response = await removeStatement({
+      rsID: id,
+    }).unwrap();
+    toastConfig.success(response.message);
+    refetch();
     toggleDeleteModal();
   };
 
   const columns = statementsColumns(handleRemoveRelatedClick);
 
-  const topBarActions = statementsTopActionsProvider(isLoading, isFetching);
+  const topBarActions = statementsTopActionsProvider(
+    isLoading,
+    isFetching,
+    personID,
+    requestID
+  );
 
   // CONTENT
 
@@ -60,8 +77,8 @@ export const StatementsGrid = () => {
       <DeleteModal
         open={deleteModal}
         onClose={toggleDeleteModal}
-        // isLoading={isDeleting}
-        // handleRemove={handleDeleteRelated}
+        isLoading={isDeleting}
+        handleRemove={handleRemoveStatement}
       />
       <Grid
         data={tableData}

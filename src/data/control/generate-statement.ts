@@ -1,6 +1,4 @@
-type BaseSalaryOptions = string[];
-
-export const baseSalaryOptions: BaseSalaryOptions = [
+export const baseSalaryOptions: string[] = [
   "100",
   "11",
   "14",
