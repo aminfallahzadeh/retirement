@@ -12,7 +12,7 @@ const BASE_URL = process.env.VITE_BASE_URL;
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: BASE_URL,
+  base: "/retirement/",
   css: {
     preprocessorOptions: {
       scss: {
