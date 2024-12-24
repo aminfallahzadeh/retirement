@@ -20,11 +20,11 @@ import { useAppSelector } from "@/hooks/usePreTypesHooks";
 import { Box, Tab } from "@mui/material";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import RetiredStatementsGrid from "@/grids/RetiredStatementsGrid";
-import RetiredHeirGrid from "@/grids/RetiredHeirGrid";
 import AllRequestsGrid from "@/grids/AllRequestsGrid";
 import RetiredSlipsGrid from "@/grids/RetiredSlipsGrid";
 import { PersonForm, PensionaryForm, AdditionalInfoForm } from "./forms";
 import { RelatedGrid } from "./components/RelatedGrid";
+import { HeirGrid } from "./components/HeirGrid";
 
 const Retired = () => {
   // STATES
@@ -121,7 +121,7 @@ const Retired = () => {
               padding: "0",
             }}
           >
-            {personDeathDate ? <RetiredHeirGrid /> : <RelatedGrid />}
+            {personDeathDate ? <HeirGrid /> : <RelatedGrid />}
           </TabPanel>
           <TabPanel
             value="2"

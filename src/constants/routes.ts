@@ -16,6 +16,7 @@ import {
   BASE_INF_2_URL,
   RELATED_URL,
   ANNOUNCE_URL,
+  HEIR_URL,
 } from "./urls";
 
 const Cartable = lazy(() =>
@@ -52,9 +53,8 @@ const BaseInfoScreen = lazy(() => import("@/screens/BaseInfoScreen"));
 const BaseInfo2 = lazy(() => import("@/screens/BaseInfo2/BaseInfo2"));
 const DashboardScreen = lazy(() => import("@/screens/DashboardScreen"));
 const SalaryScreen = lazy(() => import("@/screens/SalaryScreen"));
-const Related = lazy(() =>
-  import("@/screens/Related").then((m) => ({ default: m.Related }))
-);
+const Related = lazy(() => import("@/screens/Related/Related"));
+const Heir = lazy(() => import("@/screens/Heir/Heir"));
 const Fraction = lazy(() => import("@/screens/Fraction/Fraction"));
 const CalculateFraction = lazy(
   () =>
@@ -213,6 +213,12 @@ export const ROUTES: AppRoute[] = [
         id: 121,
         path: RELATED_URL,
         element: createSuspense(Related, ["id", "mode"], true),
+        index: false,
+      },
+      {
+        id: 122,
+        path: HEIR_URL,
+        element: createSuspense(Heir, ["id", "mode"], true),
         index: false,
       },
     ],

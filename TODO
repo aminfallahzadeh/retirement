@@ -1,40 +1,22 @@
-Fractions:
-  ✔ change the layout to tabs @done(24-10-31 11:53)
-  ✔ add second tab layout @started(24-12-13 16:56) @done(24-12-13 16:56) @lasted(4s)
+REFACTOR:
+    □ check related form for both create and update
+    □ check heir form for both create and update
+    □ check dates for update heir form
+    □ double check the data process logics in heir and related forms
+    □ pensionary status ID in heir form is not correct
+
 
 Report Generator:
   □ check the grid after report is not showing
-  ✔ change the layout of fields @done(24-11-08 17:01)
-  ✔ add save button @started(24-10-31 12:05) @done(24-10-31 12:40) @lasted(35m28s)
-  ✔ change the layout to two tabs @started(24-10-31 12:41) @done(24-10-31 12:45) @lasted(4m9s)
-    ✔ first tab: گزارش ساز فعلی @done(24-10-31 13:03)
     □ second tab: check email file
 
-Personnel Statement:
-  ✔ fill the form of statement @files @done(24-12-13 16:55)
-
-Forms:
-  ✔ add enter key functionality to submit forms @done(24-12-13 16:55)
-  ✔ remove control pattern in description fields @critical @done(24-12-04 12:51)
-
-
-General:
-  ✔ refactor the whole code in typescript @done(24-12-13 16:54)
-  ✘ add dynamic form support @cancelled(24-12-06 02:56)
-  ✔ refactor folder structure @done(24-12-13 16:54)
-  ✔ refactor file names @done(24-12-13 16:54)
-  ✔ implement barrels @done(24-12-13 16:54)
-
 Refactor:
-    ✔ add route protector @done(24-12-13 17:37)
     □ refactor retired screen
 
 NewFeature:
     □ add scanner to file tree
     □ implement base info
     □ implement second fraction tab
-
-
 
 Portal Problems:
     □ in retired pensionary form, does retiredJobDegreeCoef should be float?
@@ -50,6 +32,21 @@ sodoore fish ID: 62A54585-F331-434A-9027-C9F3060F683A
 ALIREZA FALLAHZADEH NATIONAL CODE = 0045723702
 
 Archive:
+  ✔ change the layout to tabs @done(24-10-31 11:53) @project(Fractions)
+  ✔ add second tab layout @started(24-12-13 16:56) @done(24-12-13 16:56) @lasted(4s) @project(Fractions)
+  ✔ change the layout of fields @done(24-11-08 17:01) @project(Report Generator)
+  ✔ add save button @started(24-10-31 12:05) @done(24-10-31 12:40) @lasted(35m28s) @project(Report Generator)
+  ✔ change the layout to two tabs @started(24-10-31 12:41) @done(24-10-31 12:45) @lasted(4m9s) @project(Report Generator)
+  ✔ first tab: گزارش ساز فعلی @done(24-10-31 13:03) @project(Report Generator)
+  ✔ fill the form of statement @files @done(24-12-13 16:55) @project(Personnel Statement)
+  ✔ add enter key functionality to submit forms @done(24-12-13 16:55) @project(Forms)
+  ✔ remove control pattern in description fields @critical @done(24-12-04 12:51) @project(Forms)
+  ✔ refactor the whole code in typescript @done(24-12-13 16:54) @project(General)
+  ✘ add dynamic form support @cancelled(24-12-06 02:56) @project(General)
+  ✔ refactor folder structure @done(24-12-13 16:54) @project(General)
+  ✔ refactor file names @done(24-12-13 16:54) @project(General)
+  ✔ implement barrels @done(24-12-13 16:54) @project(General)
+  ✔ add route protector @done(24-12-13 17:37) @project(Refactor)
   ✔ transfer all forms into react-hook-form (form control) @done(24-10-30 21:54) @project(Forms)
   ✔ add multiselection on bottom grids @done(24-10-30 21:54) @project(Grids)
   ✔ change grids theme @done(24-10-30 21:54) @project(Grids)

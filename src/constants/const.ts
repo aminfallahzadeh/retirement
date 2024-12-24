@@ -40,6 +40,8 @@ export const REFRESH = "بروز رسانی";
 export const CREATE_RELATED = "ایجاد وابسته";
 export const RELATED_STATUS = "وضعیت وابسته";
 export const UPDATE_RELATED = "ویرایش وابسته";
+export const CREATE_HEIR = "ایجاد موظف";
+export const UPDATE_HEIR = "ویرایش موظف";
 export const CONTINUE = "ادامه";
 export const CALCULATE = "محاسبه";
 
@@ -186,6 +188,13 @@ export const ANNOUNCE_DESCRIPTION = "متن اطلاعیه";
 export const REQUEST_NO = "شماره درخواست";
 export const REQUESTER = "درخواست دهنده";
 export const REQUEST_DATE = "تاریخ درخواست";
+export const CASE_NO = "شماره پرونده";
+export const HEIR_STATUS = "وضعیت موظف";
+export const HEIR_FINISH_DATE = "تاریخ مبنای قطع سهم";
+export const HEIR_LEDGER_CODE = "ردیف ورثه";
+export const SUB_INSURANCE = "بیمه تبعی";
+export const HEIR_NO = "شماره وظیفه بگیری";
+export const HEIR_DATE = "تاریخ وظیفه بگیری";
 
 // VETERAN
 export const SACRIFICED_FAMILY = "خانواده شهید";
@@ -207,6 +216,8 @@ export const BACKUP_INFO = "اطلاعات پشتیبان";
 export const SELF_PROCLAIMED_INFO = "اطلاعات خویش فرمایی";
 export const COMPUTABLE_YEARS = "سنوات قابل محاسبه";
 export const INSERT_ANNOUNCE = "ثبت اطلاعیه";
+export const HEIR_INFO = "اطلاعات وظیفه بگیری";
+export const HEIR_BANK_INFO = "اطلاعات بانکی وظیفه بگیر";
 
 // TABS
 export const SUBMIT_FRACTION = "ثبت کسورات";

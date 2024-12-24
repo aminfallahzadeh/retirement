@@ -318,7 +318,7 @@ function CreateHeirForm({ setShowCreateHeirModal, refetch }) {
         noValidate
       >
         <div className="grid grid--col-3">
-          <div className="inputBox__form">
+          {/* <div className="inputBox__form">
             <Controller
               name="relationshipWithParentID"
               control={control}
@@ -360,8 +360,8 @@ function CreateHeirForm({ setShowCreateHeirModal, refetch }) {
             {errors.relationshipWithParentID && (
               <span className="error-form"> نسبت اجباری است</span>
             )}
-          </div>
-
+          </div> */}
+          {/*
           <div className="inputBox__form">
             {errors.personFirstName && (
               <span className="error-form">
@@ -386,9 +386,9 @@ function CreateHeirForm({ setShowCreateHeirModal, refetch }) {
             <label className="inputBox__form--label" htmlFor="personFirstName1">
               <span>*</span> نام
             </label>
-          </div>
+          </div> */}
 
-          <div className="inputBox__form">
+          {/* <div className="inputBox__form">
             {errors.personLastName && (
               <span className="error-form">
                 {errors.personLastName.message}
@@ -412,9 +412,9 @@ function CreateHeirForm({ setShowCreateHeirModal, refetch }) {
             <label className="inputBox__form--label" htmlFor="personLastName1">
               <span>*</span> نام خانوادگی
             </label>
-          </div>
+          </div> */}
 
-          <div className="inputBox__form">
+          {/* <div className="inputBox__form">
             {errors.personNationalCode && (
               <span className="error-form">
                 {errors.personNationalCode.message}
@@ -451,9 +451,9 @@ function CreateHeirForm({ setShowCreateHeirModal, refetch }) {
             >
               <span>*</span> کد ملی
             </label>
-          </div>
+          </div> */}
 
-          <div className="inputBox__form">
+          {/* <div className="inputBox__form">
             {errors.personCertificateNo && (
               <span className="error-form">
                 {errors.personCertificateNo.message}
@@ -482,9 +482,9 @@ function CreateHeirForm({ setShowCreateHeirModal, refetch }) {
             >
               <span>*</span> شماره شناسنامه
             </label>
-          </div>
+          </div> */}
 
-          <div className="inputBox__form">
+          {/* <div className="inputBox__form">
             {errors.personFatherName && (
               <span className="error-form">
                 {errors.personFatherName.message}
@@ -510,9 +510,9 @@ function CreateHeirForm({ setShowCreateHeirModal, refetch }) {
             >
               نام پدر
             </label>
-          </div>
+          </div> */}
 
-          <div className="inputBox__form">
+          {/* <div className="inputBox__form">
             <InputDatePicker
               value={selectedBirthDate}
               onChange={handleBirthDateChange}
@@ -527,9 +527,9 @@ function CreateHeirForm({ setShowCreateHeirModal, refetch }) {
               }}
             />
             <div className="inputBox__form--readOnly-label">تاریخ تولد</div>
-          </div>
+          </div> */}
 
-          <div className="inputBox__form">
+          {/* <div className="inputBox__form">
             {errors.personBirthPlace && (
               <span className="error-form">
                 {errors.personBirthPlace.message}
@@ -556,9 +556,9 @@ function CreateHeirForm({ setShowCreateHeirModal, refetch }) {
             >
               محل تولد
             </label>
-          </div>
+          </div> */}
 
-          <div className="inputBox__form">
+          {/* <div className="inputBox__form">
             <Controller
               name="maritalStatusID"
               control={control}
@@ -595,9 +595,9 @@ function CreateHeirForm({ setShowCreateHeirModal, refetch }) {
             >
               وضعیت تاهل
             </label>
-          </div>
+          </div> */}
 
-          <div className="inputBox__form">
+          {/* <div className="inputBox__form">
             {errors.personPhone && (
               <span className="error-form">{errors.personPhone.message}</span>
             )}
@@ -626,9 +626,9 @@ function CreateHeirForm({ setShowCreateHeirModal, refetch }) {
             <label className="inputBox__form--label" htmlFor="personPhone11">
               تلفن ثابت
             </label>
-          </div>
+          </div> */}
 
-          <div className="inputBox__form">
+          {/* <div className="inputBox__form">
             {errors.personCellPhone && (
               <span className="error-form">
                 {errors.personCellPhone.message}
@@ -662,9 +662,9 @@ function CreateHeirForm({ setShowCreateHeirModal, refetch }) {
             >
               تلفن همراه
             </label>
-          </div>
+          </div> */}
 
-          <div className="inputBox__form">
+          {/* <div className="inputBox__form">
             {errors.personArea && (
               <span className="error-form">{errors.personArea.message}</span>
             )}
@@ -685,9 +685,9 @@ function CreateHeirForm({ setShowCreateHeirModal, refetch }) {
             <label className="inputBox__form--label" htmlFor="personArea1">
               ناحیه سکونت
             </label>
-          </div>
+          </div> */}
 
-          <div className="inputBox__form">
+          {/* <div className="inputBox__form">
             {errors.personRegion && (
               <span className="error-form">{errors.personRegion.message}</span>
             )}
@@ -708,9 +708,9 @@ function CreateHeirForm({ setShowCreateHeirModal, refetch }) {
             <label className="inputBox__form--label" htmlFor="personRegion1">
               منطقه سکونت
             </label>
-          </div>
+          </div> */}
 
-          <div className="inputBox__form">
+          {/* <div className="inputBox__form">
             <Controller
               name="personCountryID"
               control={control}
@@ -745,9 +745,9 @@ function CreateHeirForm({ setShowCreateHeirModal, refetch }) {
             >
               کشور
             </label>
-          </div>
+          </div> */}
 
-          <div className="inputBox__form">
+          {/* <div className="inputBox__form">
             <Controller
               name="personStateID"
               control={control}
@@ -782,9 +782,9 @@ function CreateHeirForm({ setShowCreateHeirModal, refetch }) {
             >
               استان
             </label>
-          </div>
+          </div> */}
 
-          <div className="inputBox__form">
+          {/* <div className="inputBox__form">
             <Controller
               name="personCityID"
               control={control}
@@ -819,9 +819,9 @@ function CreateHeirForm({ setShowCreateHeirModal, refetch }) {
             >
               شهر
             </label>
-          </div>
+          </div> */}
 
-          <div className="inputBox__form">
+          {/* <div className="inputBox__form">
             {errors.personPostalCode && (
               <span className="error-form">
                 {errors.personPostalCode.message}
@@ -855,9 +855,9 @@ function CreateHeirForm({ setShowCreateHeirModal, refetch }) {
             >
               کد پستی
             </label>
-          </div>
+          </div> */}
 
-          <div className="inputBox__form">
+          {/* <div className="inputBox__form">
             {errors.personSpecialDisease && (
               <span className="error-form">
                 {errors.personSpecialDisease.message}
@@ -883,8 +883,8 @@ function CreateHeirForm({ setShowCreateHeirModal, refetch }) {
             >
               بیماری خاص
             </label>
-          </div>
-
+          </div> */}
+          {/*
           <div className="inputBox__form col-span-3">
             {errors.personAddress && (
               <span className="error-form">{errors.personAddress.message}</span>
@@ -906,9 +906,9 @@ function CreateHeirForm({ setShowCreateHeirModal, refetch }) {
             <label className="inputBox__form--label" htmlFor="personAddress1">
               نشانی
             </label>
-          </div>
+          </div> */}
 
-          <div className="inputBox__form col-span-3 row-span-2">
+          {/* <div className="inputBox__form col-span-3 row-span-2">
             {errors.personDescription && (
               <span className="error-form">
                 {errors.personDescription.message}
@@ -934,7 +934,7 @@ function CreateHeirForm({ setShowCreateHeirModal, refetch }) {
             >
               توضیحات
             </label>
-          </div>
+          </div> */}
         </div>
 
         <div className="Modal__header u-margin-top-sm">
@@ -942,7 +942,7 @@ function CreateHeirForm({ setShowCreateHeirModal, refetch }) {
         </div>
 
         <div className="grid grid--col-4">
-          <div className="inputBox__form">
+          {/* <div className="inputBox__form">
             <Controller
               name="pensionaryStatusID"
               control={control}
@@ -986,9 +986,9 @@ function CreateHeirForm({ setShowCreateHeirModal, refetch }) {
             {errors.pensionaryStatusID && (
               <span className="error-form"> نسبت اجباری است</span>
             )}
-          </div>
+          </div> */}
 
-          <div className="inputBox__form">
+          {/* <div className="inputBox__form">
             <InputDatePicker
               value={selectedChangeStatusDate}
               defaultValue={null}
@@ -1006,9 +1006,9 @@ function CreateHeirForm({ setShowCreateHeirModal, refetch }) {
             <div className="inputBox__form--readOnly-label">
               تاریخ تغییر وضعیت
             </div>
-          </div>
+          </div> */}
 
-          <div className="inputBox__form">
+          {/* <div className="inputBox__form">
             <InputDatePicker
               value={selectedBaseFinishDate}
               onChange={handleBaseFinishDateChange}
@@ -1025,7 +1025,7 @@ function CreateHeirForm({ setShowCreateHeirModal, refetch }) {
             <div className="inputBox__form--readOnly-label">
               تاریخ مبنای قطع سهم
             </div>
-          </div>
+          </div> */}
         </div>
 
         <div className="Modal__header u-margin-top-sm">
@@ -1033,7 +1033,7 @@ function CreateHeirForm({ setShowCreateHeirModal, refetch }) {
         </div>
 
         <div className="grid grid--col-4">
-          <div className="inputBox__form">
+          {/* <div className="inputBox__form">
             <Controller
               name="bankID"
               control={control}
@@ -1068,9 +1068,9 @@ function CreateHeirForm({ setShowCreateHeirModal, refetch }) {
             >
               بانک
             </label>
-          </div>
+          </div> */}
 
-          <div className="inputBox__form">
+          {/* <div className="inputBox__form">
             <Controller
               name="bankBranchID"
               control={control}
@@ -1116,9 +1116,9 @@ function CreateHeirForm({ setShowCreateHeirModal, refetch }) {
             >
               شعبه
             </label>
-          </div>
+          </div> */}
 
-          <div className="inputBox__form">
+          {/* <div className="inputBox__form">
             {errors.accountNo && (
               <span className="error-form">{errors.accountNo.message}</span>
             )}
@@ -1139,9 +1139,9 @@ function CreateHeirForm({ setShowCreateHeirModal, refetch }) {
             <label className="inputBox__form--label" htmlFor="accountNoHeir">
               شماره حساب
             </label>
-          </div>
+          </div> */}
 
-          <div className="inputBox__form">
+          {/* <div className="inputBox__form">
             {errors.ledgerCode && (
               <span className="error-form">{errors.ledgerCode.message}</span>
             )}
@@ -1162,9 +1162,9 @@ function CreateHeirForm({ setShowCreateHeirModal, refetch }) {
             <label className="inputBox__form--label" htmlFor="ledgerCodeHeir">
               ردیف ورثه
             </label>
-          </div>
+          </div> */}
 
-          <div className="inputBox__form">
+          {/* <div className="inputBox__form">
             {errors.insuranceCoef && (
               <span className="error-form">{errors.insuranceCoef.message}</span>
             )}
@@ -1188,9 +1188,9 @@ function CreateHeirForm({ setShowCreateHeirModal, refetch }) {
             >
               ضریب بیمه
             </label>
-          </div>
+          </div> */}
 
-          <div className="inputBox__form">
+          {/* <div className="inputBox__form">
             {errors.insuranceAmount && (
               <span className="error-form">
                 {errors.insuranceAmount.message}
@@ -1216,7 +1216,7 @@ function CreateHeirForm({ setShowCreateHeirModal, refetch }) {
             >
               بیمه تبعی
             </label>
-          </div>
+          </div> */}
         </div>
 
         <div style={{ marginRight: "auto" }}>

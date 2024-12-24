@@ -22,35 +22,28 @@ export const RelatedGrid = () => {
 
   // CONSTS
   const parentPersonID = searchParams.get("personID");
-  const {
-    data: related,
-    isSuccess,
-    isLoading,
-    isFetching,
-    refetch,
-  } = useGetRelatedListByParentPersonIDQuery(parentPersonID);
+  const { data, isSuccess, isLoading, isFetching, refetch } =
+    useGetRelatedListByParentPersonIDQuery(parentPersonID);
   const [deleteRelated, { isLoading: isDeleting }] = useRemoveRelatedMutation();
 
   // HANDLERS
   useEffect(() => {
     if (isSuccess) {
-      const mappedData = related.itemList.map(
-        (item: Related, index: number) => ({
-          id: item.personID,
-          relatedRowNo: index + 1,
-          pensionaryID: item.pensionaryID,
-          personBirthDate: item.personBirthDate,
-          personNationalCode: item.personNationalCode,
-          personFirstName: item.personFirstName,
-          personLastName: item.personLastName,
-          pensionaryIsUnderGauranteeText: item.pensionaryIsUnderGauranteeText,
-          relationshipWithParentName: item.relationshipWithParentName,
-        })
-      );
+      const mappedData = data.itemList.map((item: Related, index: number) => ({
+        id: item.personID,
+        relatedRowNo: index + 1,
+        pensionaryID: item.pensionaryID,
+        personBirthDate: item.personBirthDate,
+        personNationalCode: item.personNationalCode,
+        personFirstName: item.personFirstName,
+        personLastName: item.personLastName,
+        pensionaryIsUnderGauranteeText: item.pensionaryIsUnderGauranteeText,
+        relationshipWithParentName: item.relationshipWithParentName,
+      }));
 
       setTableData(mappedData);
     }
-  }, [isSuccess, related]);
+  }, [isSuccess, data]);
 
   const handleDeleteRelated = async () => {
     const response = await deleteRelated({

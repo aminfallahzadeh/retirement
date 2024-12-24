@@ -446,7 +446,7 @@ function UpdateHeirForm({
             noValidate
           >
             <div className="grid grid--col-3">
-              <div className="inputBox__form">
+              {/* <div className="inputBox__form">
                 <Controller
                   name="relationshipWithParentID"
                   control={control}
@@ -1100,7 +1100,7 @@ function UpdateHeirForm({
                 >
                   توضیحات
                 </label>
-              </div>
+              </div> */}
             </div>
 
             <div className="flex-col flex-center">
@@ -1108,7 +1108,7 @@ function UpdateHeirForm({
             </div>
 
             <div className="grid grid--col-3">
-              <div className="inputBox__form">
+              {/* <div className="inputBox__form">
                 <Controller
                   name="pensionaryStatusID"
                   control={control}
@@ -1172,9 +1172,9 @@ function UpdateHeirForm({
                 <div className="inputBox__form--readOnly-label">
                   تاریخ تغییر وضعیت
                 </div>
-              </div>
+              </div> */}
 
-              <div className="inputBox__form">
+              {/* <div className="inputBox__form">
                 <InputDatePicker
                   value={selectedBaseFinishDate}
                   onChange={handleBaseFinishDateChange}
@@ -1189,9 +1189,9 @@ function UpdateHeirForm({
                   }}
                 />
                 <div className="inputBox__form--readOnly-label">تاریخ</div>
-              </div>
+              </div> */}
 
-              <div className="inputBox__form">
+              {/* <div className="inputBox__form">
                 <input
                   type="text"
                   className="inputBox__form--input"
@@ -1204,9 +1204,9 @@ function UpdateHeirForm({
                 <label className="inputBox__form--label" htmlFor="heirID">
                   شماره وظیفه بگیری
                 </label>
-              </div>
+              </div> */}
 
-              <div className="inputBox__form">
+              {/* <div className="inputBox__form">
                 <input
                   type="text"
                   className="inputBox__form--input"
@@ -1228,7 +1228,7 @@ function UpdateHeirForm({
                 >
                   تاریخ وظیفه بگیری
                 </label>
-              </div>
+              </div> */}
             </div>
 
             <div className="flex-col flex-center">
@@ -1246,7 +1246,7 @@ function UpdateHeirForm({
               <h4 className="title-secondary"> اطلاعات بانکی وظیفه بگیر </h4>
             </div>
             <div className="grid grid--col-3">
-              <div className="inputBox__form">
+              {/* <div className="inputBox__form">
                 <Controller
                   name="bankID"
                   control={control}
@@ -1283,9 +1283,9 @@ function UpdateHeirForm({
                 >
                   بانک
                 </label>
-              </div>
+              </div> */}
 
-              <div className="inputBox__form">
+              {/* <div className="inputBox__form">
                 <Controller
                   name="bankBranchID"
                   control={control}
@@ -1331,9 +1331,9 @@ function UpdateHeirForm({
                 >
                   شعبه
                 </label>
-              </div>
+              </div> */}
 
-              <div className="inputBox__form">
+              {/* <div className="inputBox__form">
                 {errors.accountNo && (
                   <span className="error-form">{errors.accountNo.message}</span>
                 )}
@@ -1358,9 +1358,9 @@ function UpdateHeirForm({
                 >
                   شماره حساب
                 </label>
-              </div>
+              </div> */}
 
-              <div className="inputBox__form">
+              {/* <div className="inputBox__form">
                 {errors.ledgerCode && (
                   <span className="error-form">
                     {errors.ledgerCode.message}
@@ -1387,9 +1387,9 @@ function UpdateHeirForm({
                 >
                   ردیف ورثه
                 </label>
-              </div>
+              </div> */}
 
-              <div className="inputBox__form">
+              {/* <div className="inputBox__form">
                 {errors.insuranceCoef && (
                   <span className="error-form">
                     {errors.insuranceCoef.message}
@@ -1415,8 +1415,8 @@ function UpdateHeirForm({
                 >
                   ضریب بیمه
                 </label>
-              </div>
-
+              </div> */}
+              {/*
               <div className="inputBox__form">
                 {errors.insuranceAmount && (
                   <span className="error-form">
@@ -1446,7 +1446,7 @@ function UpdateHeirForm({
                 >
                   بیمه تبعی
                 </label>
-              </div>
+              </div> */}
             </div>
             <div style={{ marginRight: "auto" }}>
               <LoadingButton

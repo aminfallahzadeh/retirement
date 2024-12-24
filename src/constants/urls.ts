@@ -21,6 +21,7 @@ const BASE_INFO = "base-info";
 const ANNOUNCE = "announce";
 const INSERT = "insert";
 const INSERT_ANNOUNCE = INSERT + "-" + ANNOUNCE;
+const HEIR = "heir";
 
 export const RELATED_URL = BASE_URL + RETIRED + "/" + RELATED;
 export const RETIRED_URL = BASE_URL + RETIRED;
@@ -33,3 +34,4 @@ export const FRACTION_URL = BASE_URL + FRACTION;
 export const FRACTION_CALCULATE_URL = CALCULATE + "/" + ":step";
 export const BASE_INF_2_URL = BASE_URL + BASE_INFO + "2";
 export const ANNOUNCE_URL = BASE_URL + INSERT_ANNOUNCE;
+export const HEIR_URL = BASE_URL + RETIRED + "/" + HEIR;

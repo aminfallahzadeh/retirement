@@ -1,12 +1,12 @@
 // IMPORTS
 import { MRT_ColumnDef } from "material-react-table";
-import { Related } from "../../types";
+import { Link } from "react-router-dom";
+import { Heir } from "../../types";
 import { Tooltip, IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/DeleteOutline";
 import EditIcon from "@mui/icons-material/EditOutlined";
-import { RELATED_URL } from "@/constants/urls";
-import { Link } from "react-router-dom";
 import { convertToPersianDateFormatted } from "@/helpers/dateConverter";
+import { HEIR_URL } from "@/constants/urls";
 import {
   ROW_NO,
   NATIONAL_CODE,
@@ -17,41 +17,42 @@ import {
   RELATION,
   EDIT,
   DELETE,
+  CASE_NO,
 } from "@/constants/const";
 
-export const relatedColumns = (
+export const heirColumns = (
   parentID: string | null,
   deleteFn: (id: string) => void
-): MRT_ColumnDef<Related>[] => [
+): MRT_ColumnDef<Heir>[] => [
   {
-    accessorKey: "relatedRowNo",
+    accessorKey: "heirRowNo",
     header: ROW_NO,
     size: 20,
     enableSorting: false,
     enableColumnActions: false,
   },
   {
-    accessorKey: "personNationalCode",
+    accessorKey: "heirNationalCode",
     header: NATIONAL_CODE,
     size: 20,
   },
   {
-    accessorKey: "personFirstName",
+    accessorKey: "heirFirstName",
     header: FIRST_NAME,
     size: 20,
   },
   {
-    accessorKey: "personLastName",
+    accessorKey: "heirLastName",
     header: LAST_NAME,
     size: 20,
   },
   {
-    accessorKey: "pensionaryIsUnderGauranteeText",
+    accessorKey: "heirPensionaryIsUnderGauranteeText",
     header: STATUS,
     size: 20,
   },
   {
-    accessorKey: "personBirthDate",
+    accessorKey: "heirBirthDate",
     header: BIRTH_DATE,
     size: 20,
     Cell: ({ renderedCellValue }) => (
@@ -59,12 +60,17 @@ export const relatedColumns = (
     ),
   },
   {
-    accessorKey: "relationshipWithParentName",
+    accessorKey: "heirRelationshipWithParentName",
     header: RELATION,
     size: 20,
   },
   {
-    accessorKey: "updateRelated",
+    accessorKey: "heirParentPersonNationalCode",
+    header: CASE_NO,
+    size: 20,
+  },
+  {
+    accessorKey: "updateHeir",
     header: EDIT,
     enableSorting: false,
     enableColumnActions: false,
@@ -74,7 +80,7 @@ export const relatedColumns = (
         title={`${EDIT} "${row.original.personFirstName} ${row.original.personLastName}"`}
       >
         <Link
-          to={`${RELATED_URL}?mode=update&id=${parentID}&personID=${row.original.id}`}
+          to={`${HEIR_URL}?mode=update&id=${parentID}&personID=${row.original.id}`}
         >
           <EditIcon color="success" />
         </Link>

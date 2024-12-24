@@ -14,3 +14,16 @@ export type Related = {
   pensionaryIsUnderGauranteeText: string;
   relationshipWithParentName: string;
 };
+
+export type Heir = {
+  id: string;
+  personID: string;
+  personFirstName: string;
+  personLastName: string;
+  pensionaryID: string;
+  personBirthDate: string;
+  personNationalCode: string;
+  pensionaryIsUnderGauranteeText: string;
+  relationshipWithParentName: string;
+  parentPersonNationalCode: string;
+};
