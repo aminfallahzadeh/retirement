@@ -9,7 +9,8 @@ import { TabContext, TabList, TabPanel } from "@mui/lab";
 import PersonnelStatementGrid from "@/grids/PersonnelStatementGrid";
 import PersonnelFractionGrid from "@/grids/PersonnelFractionGrid";
 import PersonnelTariffGrid from "@/grids/PersonnelTariffGrid";
-import RetiredStatementsGrid from "@/grids/RetiredStatementsGrid";
+import { RetiredStatementsGrid } from "@/shared/components/RetiredStatementsGrid";
+import { statementsColumns } from "./columns";
 
 function PersonnelGridsSection() {
   const [value, setValue] = useState("1");
@@ -18,6 +19,7 @@ function PersonnelGridsSection() {
     setValue(newValue);
   };
 
+  const columns = statementsColumns();
   const content = (
     <section className="u-margin-top-lg">
       <TabContext value={value}>
@@ -57,7 +59,7 @@ function PersonnelGridsSection() {
             padding: "0",
           }}
         >
-          <RetiredStatementsGrid />
+          <RetiredStatementsGrid columns={columns} />
         </TabPanel>
       </TabContext>
     </section>

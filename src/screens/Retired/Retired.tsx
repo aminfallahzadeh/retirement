@@ -19,13 +19,12 @@ import {
 import { useAppSelector } from "@/hooks/usePreTypesHooks";
 import { Box, Tab } from "@mui/material";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
-import RetiredStatementsGrid from "@/grids/RetiredStatementsGrid";
 import AllRequestsGrid from "@/grids/AllRequestsGrid";
 import RetiredSlipsGrid from "@/grids/RetiredSlipsGrid";
 import { PersonForm, PensionaryForm, AdditionalInfoForm } from "./forms";
 import { RelatedGrid } from "./components/RelatedGrid";
 import { HeirGrid } from "./components/HeirGrid";
-import { StatementsGrid } from "./components/StatementsGrid";
+import { RetiredStatementsGrid } from "@/shared/components/RetiredStatementsGrid";
 
 const Retired = () => {
   // STATES
@@ -131,8 +130,7 @@ const Retired = () => {
             }}
           >
             <>
-              {/* <RetiredStatementsGrid /> */}
-              <StatementsGrid />
+              <RetiredStatementsGrid />
             </>
           </TabPanel>
           <TabPanel

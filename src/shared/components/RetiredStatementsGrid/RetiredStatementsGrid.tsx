@@ -10,10 +10,15 @@ import { Grid } from "@/shared/components/Grid";
 import { DeleteModal } from "@/shared/components/DeleteModal";
 import { statementsColumns } from "./columns";
 import { statementsTopActionsProvider } from "./actions";
-import { Statement } from "../../types";
+import { Statement } from "@/shared/types/statement";
 import { toastConfig } from "@/config/toast";
+import { MRT_ColumnDef } from "material-react-table";
 
-export const StatementsGrid = () => {
+export const RetiredStatementsGrid = ({
+  columns,
+}: {
+  columns?: MRT_ColumnDef<Statement>[];
+}) => {
   // STATES
   const [tableData, setTableData] = useState<Statement[]>([]);
   const [deleteModal, toggleDeleteModal] = useToggleState(false);
@@ -61,7 +66,7 @@ export const StatementsGrid = () => {
     toggleDeleteModal();
   };
 
-  const columns = statementsColumns(handleRemoveRelatedClick);
+  const defaultColumns = statementsColumns(handleRemoveRelatedClick);
 
   const topBarActions = statementsTopActionsProvider(
     isLoading,
@@ -82,7 +87,7 @@ export const StatementsGrid = () => {
       />
       <Grid
         data={tableData}
-        columns={columns}
+        columns={columns ? columns : defaultColumns}
         scroll={true}
         topBarActions={topBarActions}
         isLoading={isLoading}

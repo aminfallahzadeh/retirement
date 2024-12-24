@@ -1,9 +1,8 @@
 // IMPORTS
 import { MRT_ColumnDef } from "material-react-table";
 import { Link } from "react-router-dom";
-import { Statement } from "../../types";
-import { Tooltip, IconButton } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/DeleteOutline";
+import { Statement } from "@/shared/types/statement";
+import { Tooltip } from "@mui/material";
 import EyeIcon from "@mui/icons-material/VisibilityOutlined";
 import { convertToPersianDateFormatted } from "@/helpers/dateConverter";
 import { BASE_URL } from "@/constants/urls";
@@ -15,15 +14,10 @@ import {
   ISSUE_DATE,
   RUN_DATE,
   OBSERVE,
-  DELETE,
   SERIAL,
-  STATEMENT_CONFIRMED,
 } from "@/constants/const";
 
-export const statementsColumns = (
-  //   statementID: string | null,
-  deleteFn: (id: string) => void
-): MRT_ColumnDef<Statement>[] => [
+export const statementsColumns = (): MRT_ColumnDef<Statement>[] => [
   {
     accessorKey: "retirementStatementRowNo",
     size: 20,
@@ -71,35 +65,6 @@ export const statementsColumns = (
         <Link to={`${BASE_URL}document/rstatement?id=${row.original.id}`}>
           <EyeIcon color="primary" />
         </Link>
-      </Tooltip>
-    ),
-  },
-  {
-    accessorKey: "deleteRetirementStatement",
-    header: DELETE,
-    enableSorting: false,
-    enableColumnActions: false,
-    size: 20,
-    Cell: ({ row }) => (
-      <Tooltip
-        title={
-          row.original.retirementStatementIssueConfirmDate
-            ? STATEMENT_CONFIRMED
-            : `${SERIAL} ${row.original.retirementStatementSerial}`
-        }
-      >
-        <span>
-          <IconButton
-            disabled={
-              row.original.retirementStatementIssueConfirmDate ? true : false
-            }
-            color="error"
-            onClick={() => deleteFn(row.original.id)}
-            sx={{ padding: "0" }}
-          >
-            <DeleteIcon />
-          </IconButton>
-        </span>
       </Tooltip>
     ),
   },
