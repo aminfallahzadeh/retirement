@@ -25,6 +25,7 @@ import RetiredSlipsGrid from "@/grids/RetiredSlipsGrid";
 import { PersonForm, PensionaryForm, AdditionalInfoForm } from "./forms";
 import { RelatedGrid } from "./components/RelatedGrid";
 import { HeirGrid } from "./components/HeirGrid";
+import { StatementsGrid } from "./components/StatementsGrid";
 
 const Retired = () => {
   // STATES
@@ -129,7 +130,10 @@ const Retired = () => {
               padding: "0",
             }}
           >
-            <RetiredStatementsGrid />
+            <>
+              {/* <RetiredStatementsGrid /> */}
+              <StatementsGrid />
+            </>
           </TabPanel>
           <TabPanel
             value="3"

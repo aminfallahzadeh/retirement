@@ -1,6 +1,6 @@
 REFACTOR:
-    □ check related form for both create and update
-    □ check heir form for both create and update
+    □ check related form for both create and update to refactor even more
+    □ check heir form for both create and update to refactor even more
     □ check dates for update heir form
     □ double check the data process logics in heir and related forms
     □ pensionary status ID in heir form is not correct

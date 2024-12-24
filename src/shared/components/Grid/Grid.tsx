@@ -67,26 +67,21 @@ export const Grid = <T extends MRT_RowData>({
     muiCircularProgressProps: {
       color: "info",
     },
-    muiTopToolbarProps: topBarActions
-      ? {
-          sx: {
-            overflow: "none",
-          },
-        }
-      : undefined,
-    muiTableHeadProps: topBarActions
-      ? {
-          sx: {
-            zIndex: 0,
-          },
-        }
-      : undefined,
+    // muiTopToolbarProps: topBarActions
+    //   ? {
+    //       sx: {
+    //         overflow: "none",
+    //       },
+    //     }
+    //   : undefined,
+    // muiTableHeadProps: topBarActions
+    //   ? {
+    //       sx: {
+    //         zIndex: 0,
+    //       },
+    //     }
+    //   : undefined,
     muiTableBodyRowProps: ({ row }) => ({
-      // IMPLEMENT ROW SELECTION MANUALLY
-      //   onClick: () =>
-      //     setRowSelection(() => ({
-      //       [row.id]: true,
-      //     })),
       onClick: () => handleRowClick(row.id),
       selected: rowSelection[row.id],
       sx: {

@@ -1,10 +1,8 @@
 // IMPORTS
 import { Link } from "react-router-dom";
 import { IconButton, Tooltip } from "@mui/material";
-import {
-  VisibilityOutlined as EyeIcon,
-  TextSnippetOutlined as CheckIcon,
-} from "@mui/icons-material";
+import EyeIcon from "@mui/icons-material/VisibilityOutlined";
+import CheckIcon from "@mui/icons-material/TextSnippetOutlined";
 import { MRT_RowData } from "material-react-table";
 import { RoleType } from "@/shared/types/role";
 import { RequestColumn } from "./types";

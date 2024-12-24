@@ -17,6 +17,7 @@ import {
   RELATED_URL,
   ANNOUNCE_URL,
   HEIR_URL,
+  DOCUMENT_URL,
 } from "./urls";
 
 const Cartable = lazy(() =>
@@ -63,6 +64,7 @@ const CalculateFraction = lazy(
 const SubmitFraction = lazy(
   () => import("@/screens/Fraction/components/SubmitFraction/SubmitFraction")
 );
+const Document = lazy(() => import("@/screens/Document/Document"));
 
 export const ROUTES: AppRoute[] = [
   {
@@ -219,6 +221,12 @@ export const ROUTES: AppRoute[] = [
         id: 122,
         path: HEIR_URL,
         element: createSuspense(Heir, ["id", "mode"], true),
+        index: false,
+      },
+      {
+        id: 123,
+        path: DOCUMENT_URL,
+        element: createSuspense(Document, [], true),
         index: false,
       },
     ],

@@ -85,6 +85,7 @@ export const ROW_NO = "ردیف";
 export const RESULT = "نتیجه";
 export const DELETE = "حذف";
 export const START_DATE = "تاریخ شروع";
+export const STATEMENT_CONFIRMED = "حکم تایید شده";
 
 // FORMS
 export const FIRST_NAME = "نام";
@@ -195,6 +196,7 @@ export const HEIR_LEDGER_CODE = "ردیف ورثه";
 export const SUB_INSURANCE = "بیمه تبعی";
 export const HEIR_NO = "شماره وظیفه بگیری";
 export const HEIR_DATE = "تاریخ وظیفه بگیری";
+export const SERIAL = "سریال";
 
 // VETERAN
 export const SACRIFICED_FAMILY = "خانواده شهید";
@@ -218,6 +220,7 @@ export const COMPUTABLE_YEARS = "سنوات قابل محاسبه";
 export const INSERT_ANNOUNCE = "ثبت اطلاعیه";
 export const HEIR_INFO = "اطلاعات وظیفه بگیری";
 export const HEIR_BANK_INFO = "اطلاعات بانکی وظیفه بگیر";
+export const RETIREMENT_STATEMENT = "حکم بازنشستگی";
 
 // TABS
 export const SUBMIT_FRACTION = "ثبت کسورات";
