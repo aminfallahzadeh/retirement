@@ -14,7 +14,7 @@ import { SelectInput } from "@/shared/components/SelectInput";
 import { DatePicker } from "@/shared/components/DatePicker";
 import { CustomCheckBox } from "@/shared/components/CustomCheckBox";
 import { TextArea } from "@/shared/components/TextArea";
-import DoneOutlinedIcon from "@mui/icons-material/DoneOutlined";
+import DoneIcon from "@mui/icons-material/DoneOutlined";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import { Box, CircularProgress } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
@@ -605,7 +605,7 @@ export const PersonForm = () => {
             <div className="flex-row mr-auto">
               <LoadingButton
                 dir="ltr"
-                endIcon={<DoneOutlinedIcon />}
+                endIcon={<DoneIcon />}
                 disabled={!editable}
                 variant="contained"
                 type="submit"

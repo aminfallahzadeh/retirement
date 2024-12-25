@@ -30,11 +30,12 @@ export const convertToPersianDate = (date: string) => {
   return null;
 };
 
-export const convertToPersianDateFormatted = (date: string) => {
+export const convertToPersianDateFormatted = (
+  date: string | undefined | null
+) => {
   if (date) {
     const result = momentj(date).format("jYYYY/jMM/jDD");
     return convertToPersianNumber(result);
   }
-
   return "-";
 };

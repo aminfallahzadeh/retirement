@@ -68,7 +68,9 @@ export const statementsColumns = (
     size: 20,
     Cell: ({ row }) => (
       <Tooltip title={`${SERIAL} ${row.original.retirementStatementSerial}`}>
-        <Link to={`${BASE_URL}document/rstatement?id=${row.original.id}`}>
+        <Link
+          to={`${BASE_URL}document/rstatement?statementID=${row.original.id}&personID=${row.original.personID}&personDeathDate=${row.original.personDeathDate}`}
+        >
           <EyeIcon color="primary" />
         </Link>
       </Tooltip>

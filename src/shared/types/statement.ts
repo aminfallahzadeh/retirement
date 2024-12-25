@@ -7,4 +7,6 @@ export type Statement = {
   retirementStatementIssueDate: string;
   retirementStatementRunDate: string;
   retirementStatementIssueConfirmDate: string;
+  personID: string;
+  personDeathDate: string;
 };

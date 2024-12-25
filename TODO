@@ -4,6 +4,9 @@ REFACTOR:
     □ check dates for update heir form
     □ double check the data process logics in heir and related forms
     □ pensionary status ID in heir form is not correct
+    □ check children count in retirement statement
+    □ the RETIREMENT_YEARS field is not available
+    □ the CAREER_TITLE field is not available
 
 
 Report Generator:

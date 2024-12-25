@@ -44,6 +44,7 @@ export const CREATE_HEIR = "ایجاد موظف";
 export const UPDATE_HEIR = "ویرایش موظف";
 export const CONTINUE = "ادامه";
 export const CALCULATE = "محاسبه";
+export const PRINT = "چاپ";
 
 // SCREENS
 export const RETIRED_INFO = "اطلاعات بازنشسته";
@@ -136,6 +137,7 @@ export const DIFF = "تفاوت";
 export const STATUS = "وضعیت";
 export const GROUP = "گروه";
 export const LAST_ORGANIZATION = "آخرین محل خدمت";
+export const LAST_POSITION = "آخرین پست سازمانی";
 export const POSITION = "سمت";
 export const EMPLOYMENT_TYPE = "نوع استخدام";
 export const RETIREMENT_DATE = "تاریخ بازنشستگی";
@@ -200,6 +202,14 @@ export const SERIAL = "سریال";
 export const BASE_SALARY_AMOUNT_RAISE = "میزان افزایش حقوق مبنا";
 export const SUPPLEMENTARY_AMOUNT_RAISE = "میزان افزایش حقوق تکمیلی";
 export const STATEMENT_DESC = "شرح حکم";
+export const CHILDREN_NO = "تعداد فرزندان";
+export const LEVEL = "مرتبه";
+export const HEIR_SALARY = "حقوق وظیفه";
+export const SUPPLEMENTARY_RETIREMENT = "بازنشستگی تکمیلی";
+export const MARITIAL_RIGHT = "حقوق تاهل";
+export const CHILDREN_RIGHT = "حقوق اولاد";
+export const ISSUE_NO = "شماره صدور";
+export const SIGNATURE = "امضا";
 
 // VETERAN
 export const SACRIFICED_FAMILY = "خانواده شهید";
@@ -216,6 +226,7 @@ export const PAY_AND_FRACTION = "کسر و پرداخت";
 export const COMPARE_SALARY_REPORT = "گزارش مقایسه حقوق";
 export const PERSONNEL_INFO = "اطلاعات کارمند";
 export const GENERATE_STATEMENT = "صدور حکم";
+export const STATEMENT_PRINT = "چاپ حکم";
 
 // TITLES
 export const BACKUP_INFO = "اطلاعات پشتیبان";

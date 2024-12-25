@@ -195,7 +195,6 @@ function RetiredStatementTemplate({ statementID, setShowStatementModal }) {
             </div>
 
             {/* MAIN INFO TABLE */}
-
             <table className="slip-container__person-info-table form-table">
               <thead>
                 <tr>

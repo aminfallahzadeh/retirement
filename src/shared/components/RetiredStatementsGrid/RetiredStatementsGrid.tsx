@@ -46,6 +46,8 @@ export const RetiredStatementsGrid = ({
         retirementStatementRunDate: item.retirementStatementRunDate,
         retirementStatementIssueConfirmDate:
           item.retirementStatementIssueConfirmDate,
+        personID: item.personID,
+        personDeathDate: item.personDeathDate,
       }));
 
       setTableData(mappedData);

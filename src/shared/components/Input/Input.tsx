@@ -1,7 +1,7 @@
 // IMPORTS
+import { FC } from "react";
 import { InputProps } from "./types";
 import { useController } from "react-hook-form";
-import { FC } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import { IconButton } from "@mui/material";
 import { LOADING_MESSAGE } from "@/constants/messages";

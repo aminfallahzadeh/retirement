@@ -1,3 +1,182 @@
+.pdf-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pdf {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    row-gap: 25px;
+    width: 900px;
+    background-color: var(--color-bg-container);
+}
+
+.pdf-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-size: 13px;
+
+    & thead tr th {
+        font-weight: 800;
+    }
+
+    & th,
+    & td {
+        border: 1px solid black;
+        padding: 5px;
+    }
+
+    & th {
+        text-align: right;
+        padding: 5px;
+    }
+
+    &__body {
+        & td {
+            padding-inline: 5px;
+            // text-align: center;
+        }
+    }
+}
+
+.pdf-table td,
+.pdf-table th {
+    padding: 5px;
+    margin: 0;
+    vertical-align: middle;
+    // line-height: 1.5;
+}
+
+.pdf-logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 25px;
+
+    &--img {
+        width: 110px;
+    }
+
+    &--sub {
+        font-size: 15px;
+        text-align: center;
+    }
+}
+
+.pdf-qr {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 5px;
+    left: 20px;
+
+    &--box {
+        width: 90px;
+        height: 90px;
+        background-color: #fff;
+        border: 1px solid #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &--serial {
+        text-align: right;
+        font-size: 13px;
+    }
+}
+
+.pdf-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.pdf-person-info-table {
+    margin-top: 20px;
+
+    & tr {
+        background-color: #e2efd9;
+    }
+
+    & thead tr:first-child th {
+        text-align: center !important;
+    }
+
+    &--checkbox {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        // column-gap: 10px;
+    }
+}
+
+.pdf-personnel-info-table {
+    & tr {
+        background-color: #fff;
+    }
+
+    & thead tr:first-child th {
+        text-align: center !important;
+    }
+}
+
+.pdf-related-table {
+    width: 100%;
+    table-layout: auto !important;
+
+    & tr {
+        background-color: #fbe4d5;
+    }
+
+    & tr th {
+        text-align: center;
+    }
+
+    & thead tr:first-child th {
+        text-align: center !important;
+    }
+
+    & tbody tr {
+        text-align: center;
+    }
+}
+
+.pdf-statement-items-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    column-gap: 20px;
+}
+
+.pdf-statement-items-table {
+    & tr {
+        background-color: #fff;
+    }
+}
+
+.pdf-statement-footer-table {
+    & tr {
+        background-color: #fff;
+    }
+}
+
 .slip-container {
     position: relative;
     display: flex;
@@ -258,4 +437,8 @@
 
 .no-border-bottom {
     border-bottom: none !important;
+}
+
+table {
+    border-spacing: none !important;
 }

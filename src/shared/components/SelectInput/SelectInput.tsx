@@ -29,10 +29,12 @@ export const SelectInput: FC<SelectInputProps> = ({
     name,
   });
 
+  // EFFECTS
   useEffect(() => {
     setHasValue(!!value);
   }, [value]);
 
+  // STATES
   const [hasValue, setHasValue] = useState<boolean>(!!value);
 
   const selectStyles: StylesConfig = {

@@ -230,7 +230,11 @@ export const ROUTES: AppRoute[] = [
       {
         id: 123,
         path: DOCUMENT_URL,
-        element: createSuspense(Document, ["id"], true),
+        element: createSuspense(
+          Document,
+          ["statementID", "personID", "personDeathDate"],
+          true
+        ),
         index: false,
       },
       {

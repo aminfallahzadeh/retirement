@@ -1,0 +1,57 @@
+// IMPORTS
+import { CustomCheckBox } from "../CustomCheckBox";
+import {
+  TableRowProps,
+  CheckboxGroupProps,
+  TableHeaderProps,
+  TableHeadRowProps,
+} from "./types";
+
+export const Table = () => {};
+
+Table.Header = ({ title, colSpan = 4 }: TableHeaderProps) => {
+  return (
+    <tr>
+      <th colSpan={colSpan}>{title}</th>
+    </tr>
+  );
+};
+
+Table.HeadRow = ({ cells }: TableHeadRowProps) => {
+  return (
+    <tr>
+      {cells.map((cell, index) => (
+        <th key={index}>{cell}</th>
+      ))}
+    </tr>
+  );
+};
+
+Table.Row = ({ columns }: TableRowProps) => {
+  return (
+    <tr>
+      {columns.map((column, index) => (
+        <td key={index} colSpan={column.colSpan}>
+          {column.content}
+        </td>
+      ))}
+    </tr>
+  );
+};
+
+Table.CheckBoxGroup = ({ checkboxes, title, control }: CheckboxGroupProps) => {
+  return (
+    <div className="pdf-person-info-table--checkbox">
+      <span>{title}:</span>
+      {checkboxes.map((checkbox, index) => (
+        <CustomCheckBox
+          key={index}
+          name={checkbox.name}
+          label={checkbox.label}
+          control={control}
+          disabled={checkbox.disabled}
+        />
+      ))}
+    </div>
+  );
+};
