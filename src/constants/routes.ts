@@ -19,6 +19,9 @@ import {
   HEIR_URL,
   DOCUMENT_URL,
   GENERATE_STATEMENT_URL,
+  RETIRED_STATEMENTS_TAB_URL,
+  RETIRED_SLIPS_TAB_URL,
+  RETIRED_REQUESTS_TAB_URL,
 } from "./urls";
 
 const Cartable = lazy(() =>
@@ -69,6 +72,15 @@ const Document = lazy(() => import("@/screens/Document/Document"));
 const GenerateStatement = lazy(
   () => import("@/screens/GenerateStatement/GenerateStatement")
 );
+const RelatedOrHeirTab = lazy(
+  () => import("@/screens/Retired/components/RelatedOrHeirTab/RelatedOrHeirTab")
+);
+const RetiredStatementsGrid = lazy(
+  () =>
+    import("@/shared/components/RetiredStatementsGrid/RetiredStatementsGrid")
+);
+const RetiredSlipsGrid = lazy(() => import("@/grids/RetiredSlipsGrid"));
+const AllRequestsGrid = lazy(() => import("@/grids/AllRequestsGrid"));
 
 export const ROUTES: AppRoute[] = [
   {
@@ -92,6 +104,32 @@ export const ROUTES: AppRoute[] = [
         path: RETIRED_URL,
         element: createSuspense(Retired, ["requestID", "personID"], true),
         index: false,
+        children: [
+          {
+            id: 222,
+            path: "",
+            element: createSuspense(RelatedOrHeirTab, [], true),
+            index: true,
+          },
+          {
+            id: 223,
+            path: RETIRED_STATEMENTS_TAB_URL,
+            element: createSuspense(RetiredStatementsGrid, [], true),
+            index: false,
+          },
+          {
+            id: 224,
+            path: RETIRED_SLIPS_TAB_URL,
+            element: createSuspense(RetiredSlipsGrid, [], true),
+            index: false,
+          },
+          {
+            id: 225,
+            path: RETIRED_REQUESTS_TAB_URL,
+            element: createSuspense(AllRequestsGrid, [], true),
+            index: false,
+          },
+        ],
       },
       {
         id: 102,

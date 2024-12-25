@@ -101,3 +101,5 @@ export const RetiredStatementsGrid = ({
 
   return content;
 };
+
+export default RetiredStatementsGrid;

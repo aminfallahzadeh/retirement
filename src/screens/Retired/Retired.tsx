@@ -1,5 +1,4 @@
 // IMPORTS
-import { useState, SyntheticEvent } from "react";
 import { Electronic } from "./components/Electronic";
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import { ArrowDropDown as ArrowDropDownIcon } from "@mui/icons-material";
@@ -10,34 +9,12 @@ import {
   RETIRES_PENSIONARY_INFO,
   RETIRED_ADDITIONAL_INFO,
   ELECTRONIC_CASE,
-  RELATEDS,
-  HEIRS,
-  STATEMENTS,
-  PAYSLIP,
-  REQUESTS,
 } from "@/constants/const";
-import { useAppSelector } from "@/hooks/usePreTypesHooks";
-import { Box, Tab } from "@mui/material";
-import { TabContext, TabList, TabPanel } from "@mui/lab";
-import AllRequestsGrid from "@/grids/AllRequestsGrid";
-import RetiredSlipsGrid from "@/grids/RetiredSlipsGrid";
 import { PersonForm, PensionaryForm, AdditionalInfoForm } from "./forms";
-import { RelatedGrid } from "./components/RelatedGrid";
-import { HeirGrid } from "./components/HeirGrid";
-import { RetiredStatementsGrid } from "@/shared/components/RetiredStatementsGrid";
+import { RetiredTabs } from "./components/RetiredTabs";
 
 const Retired = () => {
-  // STATES
-  const [value, setValue] = useState("1");
-
-  // CONSTS
-  const { personDeathDate } = useAppSelector((state) => state.person);
-
-  // HANDLERS
-  const handleChange = (_: SyntheticEvent, newValue: string) => {
-    setValue(newValue);
-  };
-
+  // CONTENT
   const content = (
     <section className="flex-col mb-20">
       <Title title={RETIRED_INFO} back={true} />
@@ -96,7 +73,8 @@ const Retired = () => {
         </Accordion>
       </div>
 
-      <div data-name="retired-grids">
+      <RetiredTabs />
+      {/* <div data-name="retired-grids">
         <TabContext value={value}>
           <Box
             sx={{
@@ -121,7 +99,7 @@ const Retired = () => {
               padding: "0",
             }}
           >
-            {personDeathDate ? <HeirGrid /> : <RelatedGrid />}
+            <RelatedOrHeirTab />
           </TabPanel>
           <TabPanel
             value="2"
@@ -150,7 +128,7 @@ const Retired = () => {
             <AllRequestsGrid />
           </TabPanel>
         </TabContext>
-      </div>
+      </div> */}
     </section>
   );
   return content;

@@ -76,8 +76,6 @@ export const PARENT_FOLDER_ID = "97134493291b473f9b3bf8c4c15b27a0";
 export const PREVIEW_DOCUMENT = "پیش نمایش سند";
 
 // GENERAL
-export const RELATEDS = "وابستگان";
-export const HEIRS = "موظفین";
 export const STATEMENTS = "احکام";
 export const PAYSLIP = "فیش حقوقی";
 export const REQUESTS = "درخواست ها";
@@ -241,3 +239,5 @@ export const RETIREMENT_STATEMENT = "حکم بازنشستگی";
 export const SUBMIT_FRACTION = "ثبت کسورات";
 export const CALCULATE_FRACTION = "محاسبه کسورات";
 export const PERSONNEL_STATEMENTS = "احکام کارمندی";
+export const RELATED_GROUP = "وابستگان";
+export const HEIR_GROUP = "موظفین";

@@ -1,28 +1,17 @@
 // IMPORTS
 import { Box, Tab, Tabs } from "@mui/material";
 import { SUBMIT_FRACTION, CALCULATE_FRACTION } from "@/constants/const";
-import { matchPath, useLocation, Link, Outlet } from "react-router-dom";
-
-function useRouteMatch(patterns: readonly string[]) {
-  const { pathname } = useLocation();
-
-  for (let i = 0; i < patterns.length; i += 1) {
-    const pattern = patterns[i];
-    const possibleMatch = matchPath(pattern, pathname);
-    if (possibleMatch !== null) {
-      return possibleMatch;
-    }
-  }
-
-  return null;
-}
+import useRouteMatch from "@/hooks/useRouteMatch";
+import { Link, Outlet } from "react-router-dom";
 
 export const FractionTabs = () => {
-  // TEST
+  // HANDLERS
   const routeMatch = useRouteMatch([
     "/retirement/fraction/calculate/:step",
     "/retirement/fraction",
   ]);
+
+  // CONSTS
   const currentTab = routeMatch?.pattern.path;
 
   const content = (
