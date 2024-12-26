@@ -6,8 +6,13 @@ export interface TableHeaderProps {
   colSpan?: number;
 }
 
+export interface TableRowHead {
+  title: string;
+  width?: string;
+}
+
 export interface TableHeadRowProps {
-  cells: string[];
+  cells: TableRowHead[];
 }
 
 export interface TableRowColumn {

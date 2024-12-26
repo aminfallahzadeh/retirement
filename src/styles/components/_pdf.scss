@@ -107,6 +107,34 @@
     row-gap: 20px;
 }
 
+.pdf-green-table {
+    & tr {
+        background-color: #e2efd9;
+    }
+
+    & thead tr:first-child th {
+        text-align: center !important;
+    }
+
+    &--checkbox {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        // column-gap: 10px;
+    }
+}
+
+.pdf-red-table {
+    width: 100%;
+    & thead tr th {
+        text-align: center;
+    }
+
+    & tr {
+        background-color: #fbe4d5;
+    }
+}
+
 .pdf-person-info-table {
     margin-top: 20px;
 
@@ -124,6 +152,10 @@
         justify-content: flex-start;
         // column-gap: 10px;
     }
+}
+
+.pdf-table-center-text {
+    text-align: center !important;
 }
 
 .pdf-personnel-info-table {
@@ -157,18 +189,12 @@
     }
 }
 
-.pdf-statement-items-container {
+.pdf-items-container {
     display: flex;
     justify-content: center;
     align-items: flex-start;
     width: 100%;
     column-gap: 20px;
-}
-
-.pdf-statement-items-table {
-    & tr {
-        background-color: #fff;
-    }
 }
 
 .pdf-statement-footer-table {

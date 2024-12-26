@@ -1,8 +1,9 @@
 // IMPORTS
 import { useParams } from "react-router-dom";
-import { RetiredStatementDocument } from "@/shared/components/RetiredStatementDocument";
 import { Title } from "@/shared/components/Title";
-import { STATEMENT_PRINT } from "@/constants/const";
+import { RetiredStatementDocument } from "@/shared/components/RetiredStatementDocument";
+import { PaySlipDocument } from "@/shared/components/PaySlipDocument";
+import { STATEMENT_PRINT, PAYSLIP } from "@/constants/const";
 
 const Document = () => {
   // STATES
@@ -16,12 +17,17 @@ const Document = () => {
         return <RetiredStatementDocument />;
         break;
 
+      case "rslip":
+        return <PaySlipDocument />;
+        break;
+
       default:
         return null;
     }
   };
 
-  const title = type === "rstatement" ? STATEMENT_PRINT : "";
+  const title =
+    type === "rstatement" ? STATEMENT_PRINT : type === "rslip" ? PAYSLIP : "";
 
   const content = (
     <section className="flex-col mb-20">

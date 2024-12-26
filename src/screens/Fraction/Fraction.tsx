@@ -4,7 +4,7 @@ import { setPeriodsTableData } from "@/slices/fractionDataSlice";
 import { setData } from "@/slices/calculateFractionDataSlice";
 import { useDispatch } from "react-redux";
 import { Title } from "@/shared/components/Title";
-import { FRACTION } from "@/constants/const";
+import { FRACTIONS } from "@/constants/const";
 import { FractionTabs } from "./components/FractionTabs";
 
 function Fraction() {
@@ -19,7 +19,7 @@ function Fraction() {
 
   const content = (
     <section className="flex-col u-margin-bottom-xl">
-      <Title title={FRACTION} back={true} />
+      <Title title={FRACTIONS} back={true} />
 
       <FractionTabs />
     </section>

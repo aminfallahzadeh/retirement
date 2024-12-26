@@ -52,7 +52,7 @@ export const RETIRED_PERSON_INFO = "اطلاعات فردی";
 export const RETIRES_PENSIONARY_INFO = "اطلاعات پرسنلی";
 export const RETIRED_ADDITIONAL_INFO = "اطلاعات تکمیلی";
 export const CREATE_REQUEST = "ایجاد درخواست";
-export const FRACTION = "کسورات";
+export const FRACTION = "کسور";
 
 // CARTABLE
 export const CARTABLE = "کارتابل";
@@ -208,6 +208,15 @@ export const MARITIAL_RIGHT = "حقوق تاهل";
 export const CHILDREN_RIGHT = "حقوق اولاد";
 export const ISSUE_NO = "شماره صدور";
 export const SIGNATURE = "امضا";
+export const CREDIT_AMOUNT = "مبلغ بستانکاری";
+export const DEBIT_AMOUNT = "مبلغ بدهکاری";
+export const PERIOD = "دوره";
+export const SALARY_AND_BENEFITS = "حقوق و مزایا";
+export const REMAINING = "مانده";
+export const AMOUNT_IN_RIALS = "مبلغ به ریال";
+export const ORIGINAL_LOAN = "اصل وام";
+export const TOTAL = "جمع";
+export const PAYMENT_TOTAL = "مبلغ قابل پرداخت";
 
 // VETERAN
 export const SACRIFICED_FAMILY = "خانواده شهید";

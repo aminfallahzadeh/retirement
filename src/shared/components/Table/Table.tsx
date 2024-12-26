@@ -12,7 +12,9 @@ export const Table = () => {};
 Table.Header = ({ title, colSpan = 4 }: TableHeaderProps) => {
   return (
     <tr>
-      <th colSpan={colSpan}>{title}</th>
+      <th colSpan={colSpan} className="pdf-table-center-text">
+        {title}
+      </th>
     </tr>
   );
 };
@@ -21,7 +23,13 @@ Table.HeadRow = ({ cells }: TableHeadRowProps) => {
   return (
     <tr>
       {cells.map((cell, index) => (
-        <th key={index}>{cell}</th>
+        <th
+          key={index}
+          style={{ width: cell.width }}
+          className="pdf-table-center-text"
+        >
+          {cell.title}
+        </th>
       ))}
     </tr>
   );

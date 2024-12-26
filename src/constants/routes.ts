@@ -79,7 +79,9 @@ const RetiredStatementsGrid = lazy(
   () =>
     import("@/shared/components/RetiredStatementsGrid/RetiredStatementsGrid")
 );
-const RetiredSlipsGrid = lazy(() => import("@/grids/RetiredSlipsGrid"));
+const RetiredSlipsGrid = lazy(
+  () => import("@/screens/Retired/components/SlipsGrid/SlipsGrid")
+);
 const AllRequestsGrid = lazy(() => import("@/grids/AllRequestsGrid"));
 
 export const ROUTES: AppRoute[] = [
@@ -268,11 +270,7 @@ export const ROUTES: AppRoute[] = [
       {
         id: 123,
         path: DOCUMENT_URL,
-        element: createSuspense(
-          Document,
-          ["statementID", "personID", "personDeathDate"],
-          true
-        ),
+        element: createSuspense(Document, ["personID"], true),
         index: false,
       },
       {

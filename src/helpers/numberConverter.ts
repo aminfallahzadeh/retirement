@@ -1,5 +1,6 @@
 // IMPORTS
 import { PERSIAN_NUMBERS } from "@/constants/const";
+import PN from "persian-number";
 
 export class NumberHelper {
   num: string;
@@ -94,4 +95,8 @@ export const separateByThousand = (num: number | string | null | undefined) => {
 
 export const removeSeparators = (str: string) => {
   return str.toString().replace(/,/g, "");
+};
+
+export const convertToPersianWords = (num: string) => {
+  return PN.convert(num);
 };

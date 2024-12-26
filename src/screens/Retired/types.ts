@@ -27,3 +27,14 @@ export type Heir = {
   relationshipWithParentName: string;
   parentPersonNationalCode: string;
 };
+
+export type Slip = {
+  id: string;
+  payID: string;
+  payCreditAmount: string;
+  payDebitAmount: string;
+  payAmount: string;
+  payDate: string;
+  currentYear: string;
+  currentMonth: string;
+};

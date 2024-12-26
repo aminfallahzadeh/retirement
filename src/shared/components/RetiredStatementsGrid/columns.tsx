@@ -21,7 +21,6 @@ import {
 } from "@/constants/const";
 
 export const statementsColumns = (
-  //   statementID: string | null,
   deleteFn: (id: string) => void
 ): MRT_ColumnDef<Statement>[] => [
   {

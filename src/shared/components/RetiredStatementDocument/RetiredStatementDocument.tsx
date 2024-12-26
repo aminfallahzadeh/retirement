@@ -10,7 +10,7 @@ import { LoadingButton } from "@mui/lab";
 import { Box, CircularProgress } from "@mui/material";
 import DownloadIcon from "@mui/icons-material/DownloadOutlined";
 import EditIcon from "@mui/icons-material/EditOutlined";
-import slipLogo from "@images/logo-slip.png";
+import images from "@/constants/images";
 import generatePDF, { Resolution } from "react-to-pdf";
 import { convertToPersianDateFormatted } from "@/helpers/dateConverter";
 import { separateByThousand } from "@/helpers/numberConverter";
@@ -186,7 +186,7 @@ export const RetiredStatementDocument = () => {
         <section className="pdf-container">
           <div className="pdf" ref={downloadRef}>
             <div className="pdf-logo">
-              <img src={slipLogo} className="pdf-logo--img" />
+              <img src={images.documentLogo} className="pdf-logo--img" />
               <p className="pdf-logo--sub">{RETIREMENT_ORGANIZATION}</p>
             </div>
 
@@ -445,17 +445,17 @@ export const RetiredStatementDocument = () => {
                   <Table.Header colSpan={11} title={RELATED_INFO_TABLE} />
                   <Table.HeadRow
                     cells={[
-                      ROW_NO,
-                      NATIONAL_CODE,
-                      FIRST_NAME,
-                      LAST_NAME,
-                      FATHER_NAME,
-                      RELATION,
-                      BIRTH_DATE,
-                      HEIR_SALARY,
-                      SUPPLEMENTARY_RETIREMENT,
-                      MARITIAL_RIGHT,
-                      CHILDREN_RIGHT,
+                      { title: ROW_NO, width: "10px" },
+                      { title: NATIONAL_CODE },
+                      { title: FIRST_NAME },
+                      { title: LAST_NAME },
+                      { title: FATHER_NAME },
+                      { title: RELATION },
+                      { title: BIRTH_DATE },
+                      { title: HEIR_SALARY },
+                      { title: SUPPLEMENTARY_RETIREMENT },
+                      { title: MARITIAL_RIGHT },
+                      { title: CHILDREN_RIGHT },
                     ]}
                   />
                 </thead>
@@ -525,13 +525,28 @@ export const RetiredStatementDocument = () => {
                   <Table.Header colSpan={7} title={RELATED_INFO_TABLE} />
                   <Table.HeadRow
                     cells={[
-                      ROW_NO,
-                      NATIONAL_CODE,
-                      FIRST_NAME,
-                      LAST_NAME,
-                      FATHER_NAME,
-                      RELATION,
-                      BIRTH_DATE,
+                      {
+                        title: ROW_NO,
+                        width: "10px",
+                      },
+                      {
+                        title: NATIONAL_CODE,
+                      },
+                      {
+                        title: FIRST_NAME,
+                      },
+                      {
+                        title: LAST_NAME,
+                      },
+                      {
+                        title: FATHER_NAME,
+                      },
+                      {
+                        title: RELATION,
+                      },
+                      {
+                        title: BIRTH_DATE,
+                      },
                     ]}
                   />
                 </thead>
@@ -578,8 +593,8 @@ export const RetiredStatementDocument = () => {
             )}
 
             {/* STATEMENT ITEMS  & DESC */}
-            <div className="pdf-statement-items-container">
-              <table className="pdf-statement-items-table pdf-table">
+            <div className="pdf-items-container">
+              <table className="pdf-table">
                 <thead>
                   <Table.Header title={STATEMENT_DESC} colSpan={1} />
                 </thead>
@@ -687,7 +702,7 @@ export const RetiredStatementDocument = () => {
             </table>
           </div>
 
-          <div className="flex-row mr-auto">
+          <div className="flex-row mr-auto px-40 mt-10">
             <LoadingButton
               dir="ltr"
               endIcon={<DownloadIcon />}
@@ -699,7 +714,6 @@ export const RetiredStatementDocument = () => {
               }
               variant="contained"
               color="primary"
-              sx={{ fontFamily: "IranYekan" }}
             >
               <span>{PRINT}</span>
             </LoadingButton>
