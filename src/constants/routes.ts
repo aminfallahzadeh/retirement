@@ -22,6 +22,9 @@ import {
   RETIRED_STATEMENTS_TAB_URL,
   RETIRED_SLIPS_TAB_URL,
   RETIRED_REQUESTS_TAB_URL,
+  REQUEST_URL,
+  REQUEST_ATTACHMENTS_URl,
+  REQUEST_HISTORY_URL,
 } from "./urls";
 
 const Cartable = lazy(() =>
@@ -33,7 +36,7 @@ const GroupsScreen = lazy(() => import("@/screens/GroupsScreen"));
 const UsersScreen = lazy(() => import("@/screens/UsersScreen"));
 const CreateGroupScreen = lazy(() => import("@/screens/CreateGroupScreen"));
 const CreateUserScreen = lazy(() => import("@/screens/CreateUserScreen"));
-const RequestScreen = lazy(() => import("@/screens/RequestScreen"));
+const RequestScreen = lazy(() => import("@/screens/Request/Request"));
 const BatchStatementsScreen = lazy(
   () => import("@/screens/BatchStatementsScreen")
 );
@@ -82,7 +85,18 @@ const RetiredStatementsGrid = lazy(
 const RetiredSlipsGrid = lazy(
   () => import("@/screens/Retired/components/SlipsGrid/SlipsGrid")
 );
-const AllRequestsGrid = lazy(() => import("@/grids/AllRequestsGrid"));
+const AllRequestsGrid = lazy(
+  () => import("@/screens/Retired/components/AllRequestsGrid/AllRequestsGrid")
+);
+const RequestInfo = lazy(
+  () => import("@/screens/Request/components/RequestInfo/RequestInfo")
+);
+const RequestAttachments = lazy(
+  () => import("@/screens/Request/components/AttachmentsGrid/AttachmentsGrid")
+);
+const RequestHistory = lazy(
+  () => import("@/screens/Request/components/HistoryGird/HistoryGrid")
+);
 
 export const ROUTES: AppRoute[] = [
   {
@@ -159,9 +173,29 @@ export const ROUTES: AppRoute[] = [
       },
       {
         id: 106,
-        path: "/retirement/request",
-        element: createSuspense(RequestScreen, [], true),
+        path: REQUEST_URL,
+        element: createSuspense(RequestScreen, ["requestID"], true),
         index: false,
+        children: [
+          {
+            id: 207,
+            path: "",
+            element: createSuspense(RequestInfo, [], true),
+            index: true,
+          },
+          {
+            id: 208,
+            path: REQUEST_ATTACHMENTS_URl,
+            element: createSuspense(RequestAttachments, [], true),
+            index: true,
+          },
+          {
+            id: 209,
+            path: REQUEST_HISTORY_URL,
+            element: createSuspense(RequestHistory, [], true),
+            index: true,
+          },
+        ],
       },
       {
         id: 107,

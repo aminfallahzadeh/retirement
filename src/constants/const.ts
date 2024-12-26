@@ -74,6 +74,7 @@ export const DELETE_IMAGE = "حذف برگه";
 export const OBSERVE_FILE = "مشاهده برگه";
 export const PARENT_FOLDER_ID = "97134493291b473f9b3bf8c4c15b27a0";
 export const PREVIEW_DOCUMENT = "پیش نمایش سند";
+export const INSERT_ATTACHMENT = "افزودن پیوست";
 
 // GENERAL
 export const STATEMENTS = "احکام";
@@ -217,6 +218,14 @@ export const AMOUNT_IN_RIALS = "مبلغ به ریال";
 export const ORIGINAL_LOAN = "اصل وام";
 export const TOTAL = "جمع";
 export const PAYMENT_TOTAL = "مبلغ قابل پرداخت";
+export const ATTACHMENT_NAME = "نام پیوست";
+export const ATTACHMENT_TYPE = "نوع پیوست";
+export const USER = "کاربر";
+export const ROLE = "نقش";
+export const EXPLANATION = "شرح";
+export const STATE_LEVEL = "مرحله";
+export const EXPERT = "کارشناس";
+export const REQUEST_SENDER = "درخواست کننده";
 
 // VETERAN
 export const SACRIFICED_FAMILY = "خانواده شهید";
@@ -234,6 +243,7 @@ export const COMPARE_SALARY_REPORT = "گزارش مقایسه حقوق";
 export const PERSONNEL_INFO = "اطلاعات کارمند";
 export const GENERATE_STATEMENT = "صدور حکم";
 export const STATEMENT_PRINT = "چاپ حکم";
+export const REQUEST_INFO = "اطلاعات درخواست";
 
 // TITLES
 export const BACKUP_INFO = "اطلاعات پشتیبان";
@@ -243,6 +253,7 @@ export const INSERT_ANNOUNCE = "ثبت اطلاعیه";
 export const HEIR_INFO = "اطلاعات وظیفه بگیری";
 export const HEIR_BANK_INFO = "اطلاعات بانکی وظیفه بگیر";
 export const RETIREMENT_STATEMENT = "حکم بازنشستگی";
+export const SELECT_EXPERT = "انتخاب کارشناس";
 
 // TABS
 export const SUBMIT_FRACTION = "ثبت کسورات";
@@ -250,3 +261,6 @@ export const CALCULATE_FRACTION = "محاسبه کسورات";
 export const PERSONNEL_STATEMENTS = "احکام کارمندی";
 export const RELATED_GROUP = "وابستگان";
 export const HEIR_GROUP = "موظفین";
+export const REQUEST = "درخواست";
+export const ATTACHMENTS = "پیوست ها";
+export const HISTORY = "تاریخچه";

@@ -3,27 +3,26 @@ import { Box, Tab, Tabs } from "@mui/material";
 import { Link, Outlet, useSearchParams } from "react-router-dom";
 import useRouteMatch from "@/hooks/useRouteMatch";
 import { useAppSelector } from "@/hooks/usePreTypesHooks";
+import { RETIRED_URL, STATEMENTS, SLIPS, REQUESTS } from "@/constants/urls";
 import {
   RELATED_GROUP,
   HEIR_GROUP,
-  STATEMENTS,
+  STATEMENTS as STATEMENTS_TITLE,
   PAYSLIP,
-  REQUESTS,
+  REQUESTS as REQUESTS_TITLE,
 } from "@/constants/const";
 
 export const RetiredTabs = () => {
   // STATES
   const [searchParams] = useSearchParams();
 
-  // HANDLERS
-  const routeMatch = useRouteMatch([
-    "/retirement/retired/statements",
-    "/retirement/retired/requests",
-    "/retirement/retired/slips",
-    "/retirement/retired",
-  ]);
-
   // CONSTS
+  const routeMatch = useRouteMatch([
+    `${RETIRED_URL}/${STATEMENTS}`,
+    `${RETIRED_URL}/${REQUESTS}`,
+    `${RETIRED_URL}/${SLIPS}`,
+    RETIRED_URL,
+  ]);
   const queryParams = searchParams.toString();
   const { personDeathDate } = useAppSelector((state) => state.person);
   const currentTab = routeMatch?.pattern.path;
@@ -39,29 +38,29 @@ export const RetiredTabs = () => {
         <Tabs value={currentTab}>
           <Tab
             label={personDeathDate ? HEIR_GROUP : RELATED_GROUP}
-            value="/retirement/retired"
-            to={buildPath("/retirement/retired")}
+            value={RETIRED_URL}
+            to={buildPath(RETIRED_URL)}
             component={Link}
           />
 
           <Tab
-            label={STATEMENTS}
-            value="/retirement/retired/statements"
-            to={buildPath("/retirement/retired/statements")}
+            label={STATEMENTS_TITLE}
+            value={`${RETIRED_URL}/${STATEMENTS}`}
+            to={buildPath(`${RETIRED_URL}/${STATEMENTS}`)}
             component={Link}
           />
 
           <Tab
             label={PAYSLIP}
-            value="/retirement/retired/slips"
-            to={buildPath("/retirement/retired/slips")}
+            value={`${RETIRED_URL}/${SLIPS}`}
+            to={buildPath(`${RETIRED_URL}/${SLIPS}`)}
             component={Link}
           />
 
           <Tab
-            label={REQUESTS}
-            value="/retirement/retired/requests"
-            to={buildPath("/retirement/retired/requests")}
+            label={REQUESTS_TITLE}
+            value={`${RETIRED_URL}/${REQUESTS}`}
+            to={buildPath(`${RETIRED_URL}/${REQUESTS}`)}
             component={Link}
           />
         </Tabs>

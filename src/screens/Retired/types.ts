@@ -38,3 +38,18 @@ export type Slip = {
   currentYear: string;
   currentMonth: string;
 };
+
+export type AllRequestType = {
+  id: string;
+  requestID: string;
+  requestNo: string;
+  requestType: string;
+  requestTypeID: string;
+  requestNO: string;
+  personID: string;
+  requestTypeNameFa: string;
+  personFirstName: string;
+  personLastName: string;
+  requestDate: string;
+  requestText: string;
+};

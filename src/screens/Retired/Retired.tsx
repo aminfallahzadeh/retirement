@@ -74,61 +74,6 @@ const Retired = () => {
       </div>
 
       <RetiredTabs />
-      {/* <div data-name="retired-grids">
-        <TabContext value={value}>
-          <Box
-            sx={{
-              bgcolor: "background.paper",
-              borderRadius: 1,
-            }}
-          >
-            <TabList
-              onChange={handleChange}
-              aria-label="tabs"
-              variant="fullWidth"
-            >
-              <Tab label={personDeathDate ? HEIRS : RELATEDS} value="1" />
-              <Tab label={STATEMENTS} value="2" />
-              <Tab label={PAYSLIP} value="3" />
-              <Tab label={REQUESTS} value="4" />
-            </TabList>
-          </Box>
-          <TabPanel
-            value="1"
-            sx={{
-              padding: "0",
-            }}
-          >
-            <RelatedOrHeirTab />
-          </TabPanel>
-          <TabPanel
-            value="2"
-            sx={{
-              padding: "0",
-            }}
-          >
-            <>
-              <RetiredStatementsGrid />
-            </>
-          </TabPanel>
-          <TabPanel
-            value="3"
-            sx={{
-              padding: "0",
-            }}
-          >
-            <RetiredSlipsGrid />
-          </TabPanel>
-          <TabPanel
-            value="4"
-            sx={{
-              padding: "0",
-            }}
-          >
-            <AllRequestsGrid />
-          </TabPanel>
-        </TabContext>
-      </div> */}
     </section>
   );
   return content;

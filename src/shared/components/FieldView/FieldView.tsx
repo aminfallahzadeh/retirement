@@ -22,14 +22,10 @@ FieldView.Text = ({ value, label }: TextFieldProps) => {
 FieldView.TextArea = ({ value, label, classNames }: TextAreaFieldProps) => {
   return (
     <div className={`inputBox__form ${classNames}`}>
-      <textarea
-        disabled
-        className="inputBox__form--input pt-3"
-        required
-        value={value}
-      />
-
-      <label className="inputBox__form--label">{label}</label>
+      <div className="inputBox__form--readOnly-input">
+        <div className="inputBox__form--readOnly-label">{label}</div>
+        <div className="inputBox__form--readOnly-content">{value}</div>
+      </div>
     </div>
   );
 };

@@ -7,6 +7,7 @@ REFACTOR:
     □ check children count in retirement statement
     □ the RETIREMENT_YEARS field is not available
     □ the CAREER_TITLE field is not available
+    □ send request to next state has error from backend
 
 
 Report Generator:

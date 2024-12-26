@@ -18,7 +18,6 @@ export const SearchScreen = () => {
   const fetchData = async (personID: string) => {
     const response = await getRetired(personID).unwrap();
     setData(response.itemList[0]);
-    console.log(response.itemList[0]);
   };
 
   return (
