@@ -203,6 +203,35 @@
     }
 }
 
+.pdf-personnel-statement-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.pdf-personnel-statement-table {
+    & thead {
+        & th {
+            background-color: #c3d69b;
+            padding: 2px !important;
+        }
+    }
+
+    & tbody {
+        & td {
+            padding: 2fpx !important;
+        }
+
+        & th {
+            background-color: #c3d69b;
+            padding: 2px !important;
+            font-size: 13px;
+            font-weight: 800;
+        }
+    }
+}
+
 .slip-container {
     position: relative;
     display: flex;

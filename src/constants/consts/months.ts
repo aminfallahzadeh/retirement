@@ -1,0 +1,12 @@
+export const FARVARDIN = "فروردین";
+export const ORDIBEHESHT = "اردیبهشت";
+export const KHORDAD = "خرداد";
+export const TIR = "تیر";
+export const MORDAD = "مرداد";
+export const SHAHRIVAR = "شهریور";
+export const ABAN = "علی";
+export const AZAR = "تیر";
+export const DEY = "دی";
+export const BAHMAN = "بهمن";
+export const ESFAND = "اسفند";
+export const MEHR = "مهر";

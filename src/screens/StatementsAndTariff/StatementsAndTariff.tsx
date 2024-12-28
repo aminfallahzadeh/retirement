@@ -1,15 +1,13 @@
 // IMPORTS
 import { GlobalSearch } from "@/shared/components/GlobalSearch";
 import { personnelActions } from "./actions";
+import { Title } from "@/shared/components/Title";
+import { STATEMENTS_AND_TARIFF } from "@/constants/const";
 
 const StatementsAndTariff = () => {
   const content = (
     <section className="flex-col u-margin-bottom-md">
-      <div className="title-primary--container flex-row flex-center">
-        <h4 className="title-primary">
-          <span className="title-primary--underline"></span>احکام و تعرفه
-        </h4>
-      </div>
+      <Title title={STATEMENTS_AND_TARIFF} back={true} />
 
       <GlobalSearch actions={personnelActions} />
     </section>

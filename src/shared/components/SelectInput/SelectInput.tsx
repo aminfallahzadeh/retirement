@@ -65,7 +65,7 @@ export const SelectInput: FC<SelectInputProps> = ({
     menu: (base) => ({
       ...base,
       fontFamily: "IranYekan",
-      zIndex: "5",
+      zIndex: 500,
       fontSize: "13px",
     }),
     option: (base) => ({

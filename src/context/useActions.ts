@@ -4,7 +4,6 @@ import { PersonnelItem } from "@/shared/types/personnel";
 import { MRT_ColumnDef } from "material-react-table";
 
 const ActionsContext = createContext<MRT_ColumnDef<PersonnelItem>[]>([]);
-
 const useActions = () => {
   const context = useContext(ActionsContext);
   if (!context) {

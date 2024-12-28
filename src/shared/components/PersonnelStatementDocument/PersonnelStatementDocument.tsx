@@ -1,33 +1,66 @@
 // IMPORTS
 import { useState, useEffect, useRef } from "react";
-import { Box, CircularProgress, Button, Checkbox } from "@mui/material";
-import { DownloadOutlined as DownloadIcon } from "@mui/icons-material";
+import { useSearchParams } from "react-router-dom";
+// import { Table } from "../Table";
+import DownloadIcon from "@mui/icons-material/DownloadOutlined";
+
+import generatePDF, { Resolution } from "react-to-pdf";
+import { Box, CircularProgress, Checkbox } from "@mui/material";
 import { useGetPersonnelStatementDetailQuery } from "@/features/personnel/personnelApi";
 import { useGetPersonsQuery } from "@/features/person/personApi";
+import { convertToPersianDateFormatted } from "@/helpers/dateConverter";
+import { LoadingButton } from "@mui/lab";
 import {
-  convertToPersianNumber,
-  separateByThousands,
-  convertToPersianDateFormatted,
-} from "../helper";
-import { NumberHelper } from "@/helpers/numberConverter";
-import generatePDF from "react-to-pdf";
-import Modal from "./Modal";
+  PersonnelStatementType,
+  PersonnelPersonType,
+  PersonnelSanavatType,
+  PersonnelStatementItem,
+} from "./types";
+import { separateByThousand } from "@/helpers/numberConverter";
+import { PRINT } from "@/constants/const";
+// import {
+//   EMPLOYEE_NUMBER,
+//   EDUCATION_LEVEL,
+//   EDUCATION_FILED,
+//   EDUCATION_TENDENCY,
+// } from "@/constants/consts/personnel-statement";
+// import {
+//   RECRUITING_STATEMENT,
+//   TEHRAN_MUNICIPALITY,
+//   STATEMENT_SERIAL,
+//   NATIONAL_CODE,
+//   POSTAL_CODE,
+//   FIRST_NAME,
+//   LAST_NAME,
+//   FATHER_NAME,
+//   CERTIFICATE_NO,
+//   ISSUE_PLACE,
+//   STATE,
+//   BIRTH_DATE,
+//   BIRTH_PLACE,
+//   YEAR,
+//   MONTH,
+//   DAY,
+// } from "@/constants/const";
 
-function PersonnelStatementTemplate({ statementID }) {
-  // DOWNLOAD REF
-  const targetRef = useRef();
+export const PersonnelStatementDocument = () => {
+  // STATES
+  const downloadRef = useRef(null);
+  const [searchParams] = useSearchParams();
+  const [statementData, setStatementData] =
+    useState<PersonnelStatementType | null>(null);
+  const [personData, setPersonData] = useState<PersonnelPersonType | null>(
+    null
+  );
+  const [birthDate, setBirthDate] = useState<string[]>([]);
+  const [acceptedSanavat, setAcceptedSanavat] = useState<
+    PersonnelSanavatType[]
+  >([]);
+  const [itemList, setItemList] = useState<PersonnelStatementItem[]>([]);
 
-  const searchParams = new URLSearchParams(location.search);
+  // CONSTS
   const personID = searchParams.get("personID");
-
-  // MAIN STATE
-  const [statementData, setStatementData] = useState(null);
-  const [personData, setPersonData] = useState(null);
-  const [itemList, setItemList] = useState([]);
-  const [birthDate, setBirthDate] = useState([]);
-  const [acceptedSanavat, setAcceptedSanavat] = useState([]);
-
-  // GET DATA
+  const statementID = searchParams.get("statementID");
   const {
     data: statement,
     isSuccess: isStatementSuccess,
@@ -44,7 +77,7 @@ function PersonnelStatementTemplate({ statementID }) {
     isFetching: isPersonFetching,
   } = useGetPersonsQuery({ personID });
 
-  // FETCH DATA
+  // HANDLERS
   useEffect(() => {
     if (isStatementSuccess) {
       const clearedSanavat = statement?.itemList[0]?.retiredRecorded1.trim();
@@ -65,6 +98,7 @@ function PersonnelStatementTemplate({ statementID }) {
     }
   }, [isPersonSuccess, person]);
 
+  // CONTENT
   const content = (
     <>
       {isStatementLoading ||
@@ -73,54 +107,44 @@ function PersonnelStatementTemplate({ statementID }) {
       isPersonFetching ||
       statementData === null ||
       personData === null ? (
-        <Modal title={"در حال بارگذاری..."}>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              padding: "2rem 10rem",
-            }}
-          >
-            <CircularProgress color="primary" />
-          </Box>
-        </Modal>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            padding: "2rem 10rem",
+          }}
+        >
+          <CircularProgress color="primary" />
+        </Box>
       ) : (
-        <div className="slip-container">
-          {/* HEADER */}
-
-          <div className="slip-container" ref={targetRef}>
+        <section className="pdf-container">
+          <div className="pdf" ref={downloadRef}>
             <div className="slip-container__personnel-statement-header">
               <p className="slip-container__logo--sub">شهرداری تهران</p>
 
               <h5>حکم کارگزینی</h5>
               <p className="slip-container__qr--serial">
                 شماره سریال :
-                <span>
-                  {convertToPersianNumber(
-                    statementData?.personnelStatementSerial
-                  ) || "-"}
-                </span>
+                <span>{statementData?.personnelStatementSerial || "-"}</span>
               </p>
             </div>
 
             {/* MAIN INFO TABLE */}
-            <table className="slip-container__personnel-statement-table form-table">
+            <table className="pdf-personnel-statement-table pdf-table">
               <thead>
                 <tr>
                   <th className="no-border-left">۱- شماره مستخدم : </th>
                   <th className="no-border-right">
-                    {convertToPersianNumber(statementData?.personnelID)}
+                    {statementData?.personnelID}
                   </th>
                   <th className="no-border-left">۲- شماره ملی : </th>
 
                   <th className="no-border-right">
-                    {convertToPersianNumber(personData?.personNationalCode) ||
-                      "-"}
+                    {personData?.personNationalCode || "-"}
                   </th>
                   <th className="no-border-left">۳- کد پستی :</th>
                   <th className="no-border-right">
-                    {convertToPersianNumber(personData?.personPostalCode) ||
-                      "-"}
+                    {personData?.personPostalCode || "-"}
                   </th>
                 </tr>
               </thead>
@@ -144,10 +168,9 @@ function PersonnelStatementTemplate({ statementID }) {
                 <tr>
                   <td className="no-border-left">۷- شماره شناسنامه :</td>
                   <td className="no-border-right">
-                    {convertToPersianNumber(personData?.personCertificateNo) ||
-                      "-"}
+                    {personData?.personCertificateNo || "-"}
                   </td>
-                  <td className="no-border-left">۸- محل صدور :‌</td>
+                  <td className="no-border-left">۸- محل صدور :</td>
                   <td className="no-border-right"></td>
                   <td className="no-border-left">۹- استان :</td>
                   <td className="no-border-right"></td>
@@ -198,7 +221,7 @@ function PersonnelStatementTemplate({ statementID }) {
 
                   <td className="no-border-left">شماره پست :</td>
                   <td className="no-border-right">
-                    {convertToPersianNumber(statementData?.positionCode) || "-"}{" "}
+                    {statementData?.positionCode || "-"}{" "}
                   </td>
                 </tr>
 
@@ -220,17 +243,11 @@ function PersonnelStatementTemplate({ statementID }) {
                   <td colSpan={3} className="no-border-left">
                     ۱۵- سنوات فابل قبول از نظر بازنشستگی : <br />
                     <div className="w-full flex justify-between items-center px-10 mt-1">
-                      <span>
-                        روز : {convertToPersianNumber(acceptedSanavat[2])}
-                      </span>
+                      <span>روز : {acceptedSanavat[2]}</span>
 
-                      <span>
-                        ماه : {convertToPersianNumber(acceptedSanavat[1])}
-                      </span>
+                      <span>ماه : {acceptedSanavat[1]}</span>
 
-                      <span>
-                        سال : {convertToPersianNumber(acceptedSanavat[0])}
-                      </span>
+                      <span>سال : {acceptedSanavat[0]}</span>
                     </div>
                   </td>
 
@@ -336,10 +353,7 @@ function PersonnelStatementTemplate({ statementID }) {
                   <td className="no-border-right">
                     {statementData?.maritalStatusIDName}
                   </td>
-                  <td>
-                    تعداد فرزندان :{" "}
-                    {convertToPersianNumber(statementData?.childCount)}
-                  </td>
+                  <td>تعداد فرزندان : {statementData?.childCount}</td>
 
                   <td colSpan={3}>۲۰- ضریب افزایش سنواتی :</td>
                 </tr>
@@ -355,7 +369,7 @@ function PersonnelStatementTemplate({ statementID }) {
 
             <div className="flex justify-center items-start w-full gap-x-1">
               <div className="flex flex-col w-full">
-                <table className="slip-container__personnel-statement-table form-table">
+                <table className="pdf-personnel-statement-table pdf-table">
                   <tbody>
                     <tr>
                       <td style={{ verticalAlign: "top" }}>۲۲- شرح حکم :</td>
@@ -367,7 +381,7 @@ function PersonnelStatementTemplate({ statementID }) {
                   </tbody>
                 </table>
 
-                <table className="slip-container__personnel-statement-table form-table">
+                <table className="pdf-personnel-statement-table pdf-table">
                   <tbody>
                     <tr>
                       <td>
@@ -378,10 +392,7 @@ function PersonnelStatementTemplate({ statementID }) {
                       </td>
                     </tr>
                     <tr>
-                      <td>
-                        ﺷﻤﺎﺭﻩ ﺣﮑﻢ :{" "}
-                        {convertToPersianNumber(statementData?.code)}
-                      </td>
+                      <td>ﺷﻤﺎﺭﻩ ﺣﮑﻢ : {statementData?.code}</td>
                     </tr>
 
                     <tr>
@@ -396,37 +407,29 @@ function PersonnelStatementTemplate({ statementID }) {
                 </table>
               </div>
 
-              <table className="slip-container__personnel-statement-table form-table">
+              <table className="pdf-personnel-statement-table form-table">
                 <tbody>
-                  {itemList?.map((item, index) => {
-                    const helper = new NumberHelper(
-                      item.personnelStatementItemAmount.toString()
-                    );
-                    const separatedNum = helper.toSeparated();
-                    return (
-                      <tr key={index}>
-                        <td style={{ verticalAlign: "top" }}>
-                          {item.personnelStatementItemTypeName}
-                        </td>
-                        <td className="text-center">{separatedNum}</td>
-                      </tr>
-                    );
-                  })}
-                  <tr className="font-bold">
+                  {itemList?.map((item, index) => (
+                    <tr key={index}>
+                      <td style={{ verticalAlign: "top" }}>
+                        {item.personnelStatementItemTypeName}
+                      </td>
+                      <td className="text-center">
+                        {separateByThousand(item.personnelStatementItemAmount)}
+                      </td>
+                    </tr>
+                  ))}
+                  <tr className="font-[800]">
                     <td>جمع مشمول کسور</td>
                     <td className="text-center">
-                      {separateByThousands(
-                        convertToPersianNumber(
-                          statementData?.fractionBaseAmount
-                        )
-                      )}
+                      {separateByThousand(statementData?.fractionBaseAmount)}
                     </td>
                   </tr>
                 </tbody>
               </table>
             </div>
 
-            <table className="slip-container__personnel-statement-table form-table">
+            <table className="pdf-personnel-statement-table pdf-table">
               <tbody>
                 <tr>
                   <th colSpan={6}>۲۵- ﺟﻤﻊ ﺣﻘﻮﻕ ﻭ ﻣﺰﺍﯾﺎ ﺑﻪ ﺣﺮﻭﻑ :</th>
@@ -466,26 +469,103 @@ function PersonnelStatementTemplate({ statementID }) {
             </p>
           </div>
 
-          <div style={{ marginRight: "auto" }}>
-            <Button
+          <div className="flex-row mr-auto ml-60 mt-10">
+            <LoadingButton
               dir="ltr"
               endIcon={<DownloadIcon />}
               onClick={() =>
-                generatePDF(targetRef, { filename: "حکم کارمندی.pdf" })
+                generatePDF(downloadRef, {
+                  filename: "حکم کارمندی.pdf",
+                  resolution: Resolution.HIGH,
+                })
               }
               variant="contained"
               color="primary"
               sx={{ fontFamily: "IranYekan" }}
             >
-              <span>دانلود حکم</span>
-            </Button>
+              <span>{PRINT}</span>
+            </LoadingButton>
           </div>
-        </div>
+        </section>
+        // <section className="pdf-container">
+        //   <div className="pdf" ref={downloadRef}>
+        //     <div className="pdf-personnel-statement-header">
+        //       <p className="pdf-logo--sub">{TEHRAN_MUNICIPALITY}</p>
+
+        //       <h5>{RECRUITING_STATEMENT}</h5>
+
+        //       <p className="pdf-qr--serial">
+        //         {STATEMENT_SERIAL}:{" "}
+        //         <span>{statementData?.personnelStatementSerial || "-"}</span>
+        //       </p>
+        //     </div>
+
+        //     {/* MAIN INFO TABLE */}
+        //     <table className="pdf-personnel-statement-table pdf-table">
+        //       <thead>
+        //         <Table.HeadRowRight
+        //           cells={[
+        //             {
+        //               title: `۱ - ${EMPLOYEE_NUMBER} : ${
+        //                 statementData?.personnelID || "-"
+        //               }`,
+        //             },
+        //             {
+        //               title: `۲ - ${NATIONAL_CODE} : ${
+        //                 personData?.personNationalCode || "-"
+        //               }`,
+        //             },
+        //             {
+        //               title: `۳ - ${POSTAL_CODE} : ${
+        //                 personData?.personPostalCode || "-"
+        //               }`,
+        //             },
+        //           ]}
+        //         />
+        //       </thead>
+
+        //       <tbody>
+        //         <Table.Row
+        //           columns={[
+        //             {
+        //               content: `۴ -  ${FIRST_NAME} : ${
+        //                 personData?.personFirstName || "-"
+        //               }`,
+        //             },
+        //             {
+        //               content: `۵ -  ${LAST_NAME} : ${
+        //                 personData?.personLastName || "-"
+        //               }`,
+        //             },
+        //             {
+        //               content: `۶ -  ${FATHER_NAME} : ${
+        //                 personData?.personFatherName || "-"
+        //               }`,
+        //             },
+        //           ]}
+        //         />
+
+        //         <Table.Row
+        //           columns={[
+        //             {
+        //               content: `۷ -  ${CERTIFICATE_NO} : ${
+        //                 personData?.personCertificateNo || "-"
+        //               }`,
+        //             },
+        //             {
+        //               content: `۸ -  ${ISSUE_PLACE} : ${"-"}`,
+        //             },
+        //             {
+        //               content: `۹ -  ${STATE} : ${"-"}`,
+        //             },
+        //           ]}
+        //         />
+        //       </tbody>
+        //     </table>
+        //   </div>
+        // </section>
       )}
     </>
   );
-
   return content;
-}
-
-export default PersonnelStatementTemplate;
+};

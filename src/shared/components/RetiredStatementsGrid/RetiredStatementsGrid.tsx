@@ -16,8 +16,10 @@ import { MRT_ColumnDef } from "material-react-table";
 
 export const RetiredStatementsGrid = ({
   columns,
+  hasDeleteAction = true,
 }: {
   columns?: MRT_ColumnDef<Statement>[];
+  hasDeleteAction?: boolean;
 }) => {
   // STATES
   const [tableData, setTableData] = useState<Statement[]>([]);
@@ -68,7 +70,10 @@ export const RetiredStatementsGrid = ({
     toggleDeleteModal();
   };
 
-  const defaultColumns = statementsColumns(handleRemoveRelatedClick);
+  const defaultColumns = statementsColumns(
+    handleRemoveRelatedClick,
+    hasDeleteAction
+  );
 
   const topBarActions = statementsTopActionsProvider(
     isLoading,

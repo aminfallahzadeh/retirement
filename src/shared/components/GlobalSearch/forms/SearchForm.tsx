@@ -56,6 +56,7 @@ export const SearchForm = () => {
         id: item.personID,
         personnelRowNo: index + 1,
         personnelDeathDate: item.personDeathDate,
+        personDeathDate: item.personDeathDate,
         personnelID: item.personnelID,
         personnelNationalCode: item.personNationalCode,
         personnelFirstName: item.personFirstName,

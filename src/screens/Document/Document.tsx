@@ -3,7 +3,12 @@ import { useParams } from "react-router-dom";
 import { Title } from "@/shared/components/Title";
 import { RetiredStatementDocument } from "@/shared/components/RetiredStatementDocument";
 import { PaySlipDocument } from "@/shared/components/PaySlipDocument";
-import { STATEMENT_PRINT, PAYSLIP } from "@/constants/const";
+import { PersonnelStatementDocument } from "@/shared/components/PersonnelStatementDocument";
+import {
+  STATEMENT_PRINT,
+  PAYSLIP,
+  RECRUITING_STATEMENT,
+} from "@/constants/const";
 
 const Document = () => {
   // STATES
@@ -21,13 +26,23 @@ const Document = () => {
         return <PaySlipDocument />;
         break;
 
+      case "pstatement":
+        return <PersonnelStatementDocument />;
+        break;
+
       default:
         return null;
     }
   };
 
   const title =
-    type === "rstatement" ? STATEMENT_PRINT : type === "rslip" ? PAYSLIP : "";
+    type === "rstatement"
+      ? STATEMENT_PRINT
+      : type === "rslip"
+      ? PAYSLIP
+      : type === "pstatement"
+      ? RECRUITING_STATEMENT
+      : "";
 
   const content = (
     <section className="flex-col mb-20">

@@ -67,13 +67,13 @@ export const Grid = <T extends MRT_RowData>({
     muiCircularProgressProps: {
       color: "info",
     },
-    // muiTopToolbarProps: topBarActions
-    //   ? {
-    //       sx: {
-    //         overflow: "none",
-    //       },
-    //     }
-    //   : undefined,
+    muiTopToolbarProps: topBarActions
+      ? {
+          sx: {
+            overflow: "none",
+          },
+        }
+      : undefined,
     // muiTableHeadProps: topBarActions
     //   ? {
     //       sx: {

@@ -35,6 +35,18 @@ Table.HeadRow = ({ cells }: TableHeadRowProps) => {
   );
 };
 
+Table.HeadRowRight = ({ cells }: TableHeadRowProps) => {
+  return (
+    <tr>
+      {cells.map((cell, index) => (
+        <th key={index} style={{ width: cell.width }}>
+          {cell.title}
+        </th>
+      ))}
+    </tr>
+  );
+};
+
 Table.Row = ({ columns }: TableRowProps) => {
   return (
     <tr>

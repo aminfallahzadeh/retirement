@@ -25,6 +25,8 @@ import {
   REQUEST_URL,
   REQUEST_ATTACHMENTS_URl,
   REQUEST_HISTORY_URL,
+  PERSONNEL_TARIFF_TAB_URL,
+  PERSONNEL_RETIRED_STATEMENTS_TAB_URL,
 } from "./urls";
 
 const Cartable = lazy(() =>
@@ -78,9 +80,9 @@ const GenerateStatement = lazy(
 const RelatedOrHeirTab = lazy(
   () => import("@/screens/Retired/components/RelatedOrHeirTab/RelatedOrHeirTab")
 );
-const RetiredStatementsGrid = lazy(
+const RetiredStatements = lazy(
   () =>
-    import("@/shared/components/RetiredStatementsGrid/RetiredStatementsGrid")
+    import("@/screens/Retired/components/RetiredStatements/RetiredStatements")
 );
 const RetiredSlipsGrid = lazy(
   () => import("@/screens/Retired/components/SlipsGrid/SlipsGrid")
@@ -96,6 +98,21 @@ const RequestAttachments = lazy(
 );
 const RequestHistory = lazy(
   () => import("@/screens/Request/components/HistoryGird/HistoryGrid")
+);
+const PersonnelStatementsGrid = lazy(
+  () =>
+    import(
+      "@/screens/Personnel/components/PersonnelStatementsGrid/PersonnelStatementsGrid"
+    )
+);
+const PersonnelTariff = lazy(
+  () => import("@/screens/Personnel/components/Tariff/Tariff")
+);
+const PersonnelRetiredStatements = lazy(
+  () =>
+    import(
+      "@/screens/Personnel/components/PersonnelRetiredStatementsGrid/PersonnelRetiredStatementsGrid"
+    )
 );
 
 export const ROUTES: AppRoute[] = [
@@ -130,7 +147,7 @@ export const ROUTES: AppRoute[] = [
           {
             id: 223,
             path: RETIRED_STATEMENTS_TAB_URL,
-            element: createSuspense(RetiredStatementsGrid, [], true),
+            element: createSuspense(RetiredStatements, [], true),
             index: false,
           },
           {
@@ -220,6 +237,26 @@ export const ROUTES: AppRoute[] = [
         path: PERSONNEL_URL,
         element: createSuspense(Personnel, ["personID"], true),
         index: false,
+        children: [
+          {
+            id: 211,
+            path: "",
+            element: createSuspense(PersonnelStatementsGrid, [], true),
+            index: true,
+          },
+          {
+            id: 213,
+            path: PERSONNEL_TARIFF_TAB_URL,
+            element: createSuspense(PersonnelTariff, [], true),
+            index: false,
+          },
+          {
+            id: 214,
+            path: PERSONNEL_RETIRED_STATEMENTS_TAB_URL,
+            element: createSuspense(PersonnelRetiredStatements, [], true),
+            index: false,
+          },
+        ],
       },
       {
         id: 111,

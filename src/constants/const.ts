@@ -226,6 +226,12 @@ export const EXPLANATION = "شرح";
 export const STATE_LEVEL = "مرحله";
 export const EXPERT = "کارشناس";
 export const REQUEST_SENDER = "درخواست کننده";
+export const START_EMPLOYMENT_DATE = "ورود به خدمت";
+export const ISSUE_PLACE = "محل صدور";
+export const EMPLOYEE_TYPE = "نوع خدمت";
+export const REAL_TOTAL = "جمع واقعی";
+export const CHEST_NAME = "نام صندوق";
+export const ORGANIZATION = "سازمان";
 
 // VETERAN
 export const SACRIFICED_FAMILY = "خانواده شهید";
@@ -244,6 +250,7 @@ export const PERSONNEL_INFO = "اطلاعات کارمند";
 export const GENERATE_STATEMENT = "صدور حکم";
 export const STATEMENT_PRINT = "چاپ حکم";
 export const REQUEST_INFO = "اطلاعات درخواست";
+export const STATEMENTS_AND_TARIFF = "احکام و تعرفه";
 
 // TITLES
 export const BACKUP_INFO = "اطلاعات پشتیبان";
@@ -254,6 +261,8 @@ export const HEIR_INFO = "اطلاعات وظیفه بگیری";
 export const HEIR_BANK_INFO = "اطلاعات بانکی وظیفه بگیر";
 export const RETIREMENT_STATEMENT = "حکم بازنشستگی";
 export const SELECT_EXPERT = "انتخاب کارشناس";
+export const RECRUITING_STATEMENT = "حکم کارگزینی";
+export const TEHRAN_MUNICIPALITY = "شهرداری تهران";
 
 // TABS
 export const SUBMIT_FRACTION = "ثبت کسورات";
@@ -264,3 +273,5 @@ export const HEIR_GROUP = "موظفین";
 export const REQUEST = "درخواست";
 export const ATTACHMENTS = "پیوست ها";
 export const HISTORY = "تاریخچه";
+export const TARIFF = "تعرفه";
+export const RETIRED_STATEMENTS = "احکام بازنشستگی";

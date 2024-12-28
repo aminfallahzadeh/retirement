@@ -8,6 +8,10 @@ REFACTOR:
     □ the RETIREMENT_YEARS field is not available
     □ the CAREER_TITLE field is not available
     □ send request to next state has error from backend
+    □ 2 columns of tariff grid does not have values - total - realTotal
+    □ personnel fraction grid does not have chest name field from backend
+    □ negative show numbers should be checked in transformation to separators
+
 
 
 Report Generator:

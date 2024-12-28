@@ -12,7 +12,6 @@ export const STATEMENTS = "statements";
 const STATEMENT = "statement";
 const ELECTRONIC = "electronic";
 const PERSONNEL_STATEMENTS = PERSONNEL + "-" + STATEMENTS;
-const INFO = "info";
 const REQUEST = "request";
 const CREATE = "create";
 const CREATE_REQUEST = CREATE + "-" + REQUEST;
@@ -31,6 +30,7 @@ const ELECTRONIC_STATEMENT = ELECTRONIC + "-" + STATEMENT;
 export const REQUESTS = "requests";
 export const ATTACHMENTS = "attachments";
 export const HISTORY = "history";
+export const TARIFF = "tariff";
 
 export const RELATED_URL = BASE_URL + RETIRED + "/" + RELATED;
 export const RETIRED_URL = BASE_URL + RETIRED;
@@ -39,7 +39,12 @@ export const RETIRED_SLIPS_TAB_URL = SLIPS;
 export const RETIRED_REQUESTS_TAB_URL = REQUESTS;
 export const CARTABLE_URL = BASE_URL + CARTABLE;
 export const PERSONNEL_STATEMENTS_URL = BASE_URL + PERSONNEL_STATEMENTS;
-export const PERSONNEL_URL = PERSONNEL_STATEMENTS_URL + "/" + INFO;
+
+// PERSONNEL
+export const PERSONNEL_URL = RETIRED_URL + "/" + PERSONNEL;
+export const PERSONNEL_TARIFF_TAB_URL = TARIFF;
+export const PERSONNEL_RETIRED_STATEMENTS_TAB_URL = RETIRED + "-" + STATEMENTS;
+
 export const ELECTRONIC_STATEMENT_URL = BASE_URL + ELECTRONIC_STATEMENT;
 export const CREATE_REQUEST_URL = BASE_URL + CREATE_REQUEST;
 export const FRACTION_URL = BASE_URL + FRACTION;
