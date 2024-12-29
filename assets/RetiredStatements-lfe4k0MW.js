@@ -1,1 +1,0 @@
-import{j as t}from"./index-Celh3WKK.js";import{R as r}from"./RetiredStatementsGrid-C4QQkgjr.js";import"./statementApi-z0RhQNqU.js";import"./DeleteOutline-BzsYrv9z.js";import"./Add-CMf60KAA.js";const p=()=>t.jsx(r,{});export{p as default};
