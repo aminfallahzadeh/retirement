@@ -4,7 +4,7 @@ REFACTOR:
     □ check dates for update heir form
     □ double check the data process logics in heir and related forms
     □ pensionary status ID in heir form is not correct
-    □ check children count in retirement statement
+    ✔ check children count in retirement statement @started(24-12-29 21:51) @done(24-12-29 21:51) @lasted(3s)
     □ the RETIREMENT_YEARS field is not available
     □ the CAREER_TITLE field is not available
     □ send request to next state has error from backend
@@ -12,6 +12,9 @@ REFACTOR:
     □ personnel fraction grid does not have chest name field from backend
     □ negative show numbers should be checked in transformation to separators
 
+    □ request for group request should not gor to retired page
+    □ ID of request for navigation should be checked, better to get the navigation url from the backend
+    □ should I show the related table in statement if empty ?
 
 
 Report Generator:

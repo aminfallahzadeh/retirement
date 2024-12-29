@@ -69,8 +69,6 @@ export const InsertAnnounceForm = () => {
             setValue={setValue}
           />
 
-          <div />
-
           <TextArea
             name="description"
             label={ANNOUNCE_DESCRIPTION}

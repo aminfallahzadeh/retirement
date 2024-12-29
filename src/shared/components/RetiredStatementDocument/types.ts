@@ -50,7 +50,7 @@ export type Amount = {
 
 export type StatementInfo = {
   retirementStatementSerial: string;
-  retirementStatementChildrenCount: string;
+  retirementStatementChildrenCount: number;
   retirementStatementTypeName: string;
   retiredGroup: string;
   retirementStatementDesc: string;
@@ -60,6 +60,7 @@ export type StatementInfo = {
   retirementStatementNo: string;
   retirementStatementRelatedList: StatementRelated[];
   retirementStatementAmountList: Amount[];
+  retirementStatementRelatedCount: number;
 };
 
 export type EditStatementFormProps = {

@@ -272,7 +272,7 @@ export const RetiredStatementDocument = () => {
                     },
                     {
                       content: `${PERSONS_UNDER_COVER}: ${
-                        statementInfo?.retirementStatementChildrenCount ?? "-"
+                        statementInfo?.retirementStatementRelatedCount ?? "-"
                       }`,
                     },
                     {

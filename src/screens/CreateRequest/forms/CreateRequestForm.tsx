@@ -20,6 +20,7 @@ import { TextArea } from "@/shared/components/TextArea";
 import { requiredRule, nationalCodeRules } from "@/constants/rules";
 import { convertToEnglishNumber } from "@/helpers/numberConverter";
 import { toastConfig } from "@/config/toast";
+import { groupRequestTypeIDs } from "./data";
 
 export const CreateRequestForm = () => {
   // STATES
@@ -41,7 +42,10 @@ export const CreateRequestForm = () => {
     control,
     handleSubmit,
     formState: { errors },
+    watch,
+    unregister,
   } = useForm<FieldValues>();
+  const selectedRequestTypeID = watch("requestTypeID");
 
   // HANDLERS
   useEffect(() => {
@@ -53,6 +57,7 @@ export const CreateRequestForm = () => {
   }, [isRequestTypesSuccess, requestTypes]);
 
   const onSubmit = async (data: FieldValues) => {
+    console.log(data);
     const response = await insertRequest({
       ...data,
       requestTypeID: data.requestTypeID?.value,
@@ -62,6 +67,15 @@ export const CreateRequestForm = () => {
     toastConfig.success(response.message);
     navigate("/retirement/cartable");
   };
+
+  // EFFECTS
+  useEffect(() => {
+    if (selectedRequestTypeID) {
+      if (groupRequestTypeIDs.includes(selectedRequestTypeID?.value)) {
+        unregister("nationalCode");
+      }
+    }
+  }, [selectedRequestTypeID, unregister]);
 
   const content = (
     <section className="formContainer flex-col">
@@ -85,14 +99,16 @@ export const CreateRequestForm = () => {
             isLoading={isRequestTypesLoading}
           />
 
-          <Input
-            name="nationalCode"
-            label={NATIONAL_CODE}
-            required={true}
-            control={control}
-            rules={{ ...requiredRule, ...nationalCodeRules }}
-            type={"text"}
-          />
+          {!groupRequestTypeIDs.includes(selectedRequestTypeID?.value) && (
+            <Input
+              name="nationalCode"
+              label={NATIONAL_CODE}
+              required={true}
+              control={control}
+              rules={{ ...requiredRule, ...nationalCodeRules }}
+              type={"text"}
+            />
+          )}
 
           <TextArea
             name="requestText"
