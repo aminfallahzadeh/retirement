@@ -385,7 +385,6 @@ const useFetchPayItemType = (payItemtypeID: string | undefined = undefined) => {
     isSuccess: payItemTypesIsSuccess,
     isLoading: payItemTypesIsLoading,
     isFetching: payItemTypesIsFetching,
-    error: payItemTypesError,
   } = useGetPayItemTypeQuery(payItemtypeID);
 
   // FETCH DATA
@@ -394,13 +393,6 @@ const useFetchPayItemType = (payItemtypeID: string | undefined = undefined) => {
       setPayItemTypes(payItemTypesItems.itemList);
     }
   }, [payItemTypesIsSuccess, payItemTypesItems]);
-
-  // HANDLE ERROR
-  useEffect(() => {
-    if (payItemTypesError) {
-      console.log(payItemTypesError);
-    }
-  }, [payItemTypesError]);
 
   return {
     payItemTypes,

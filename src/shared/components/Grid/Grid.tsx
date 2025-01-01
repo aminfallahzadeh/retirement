@@ -74,13 +74,13 @@ export const Grid = <T extends MRT_RowData>({
           },
         }
       : undefined,
-    // muiTableHeadProps: topBarActions
-    //   ? {
-    //       sx: {
-    //         zIndex: 0,
-    //       },
-    //     }
-    //   : undefined,
+    muiTableHeadProps: topBarActions
+      ? {
+          sx: {
+            zIndex: 0,
+          },
+        }
+      : undefined,
     muiTableBodyRowProps: ({ row }) => ({
       onClick: () => handleRowClick(row.id),
       selected: rowSelection[row.id],

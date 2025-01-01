@@ -17,7 +17,12 @@ export const Gadget = () => {
   // CONTENT
   const content = (
     <>
-      <CustomModal title={SEARCH} open={state.search} fullScreen={true}>
+      <CustomModal
+        title={SEARCH}
+        open={state.search}
+        fullScreen={true}
+        bigTitle={true}
+      >
         <SearchScreen />
       </CustomModal>
 
@@ -25,6 +30,7 @@ export const Gadget = () => {
         title={NATIONAL_CODE_INQUIRY}
         open={state.inquiry}
         fullScreen={true}
+        bigTitle={true}
       >
         <InquiryScreen />
       </CustomModal>

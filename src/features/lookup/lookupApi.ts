@@ -33,6 +33,12 @@ export const lookupApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+
+    getLookupParent: builder.query({
+      query: (type) => ({
+        url: `${LOOKUP_END}/GetLookupParent?lookupType=${type}`,
+      }),
+    }),
   }),
 });
 
@@ -40,4 +46,5 @@ export const {
   useLazyGetLookupQuery,
   useGetLookupDistinctQuery,
   useInsertLookupMutation,
+  useLazyGetLookupParentQuery,
 } = lookupApiSlice;

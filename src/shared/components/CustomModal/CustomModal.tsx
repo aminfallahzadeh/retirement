@@ -2,6 +2,7 @@
 import { IconButton, Modal, Box, Stack, Typography } from "@mui/material";
 import { CloseOutlined as CloseIcon } from "@mui/icons-material";
 import { CustomModalProps } from "./types";
+import { Title } from "../Title";
 
 const styles = {
   container: {
@@ -62,6 +63,7 @@ export const CustomModal = ({
   ariaDescription,
   title,
   fullScreen = false,
+  bigTitle = false,
 }: CustomModalProps) => {
   return (
     <Modal
@@ -82,15 +84,19 @@ export const CustomModal = ({
               </IconButton>
             </Box>
           )}
-          <Typography
-            id={ariaLabel}
-            variant="h6"
-            component="h2"
-            sx={styles.title}
-            className="title-secondary"
-          >
-            {title}
-          </Typography>
+          {bigTitle ? (
+            <Title title={title} back={false} />
+          ) : (
+            <Typography
+              id={ariaLabel}
+              variant="h6"
+              component="h2"
+              sx={styles.title}
+              className="title-secondary"
+            >
+              {title}
+            </Typography>
+          )}
         </Box>
         <Box>{children}</Box>
       </Stack>

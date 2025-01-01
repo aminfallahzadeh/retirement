@@ -8,12 +8,13 @@ import { SelectInput } from "@/shared/components/SelectInput";
 import { TextArea } from "@/shared/components/TextArea";
 import {
   useGetLookupDistinctQuery,
-  useLazyGetLookupQuery,
+  useLazyGetLookupParentQuery,
   useInsertLookupMutation,
 } from "@/features/lookup/lookupApi";
 import { OptionType } from "@/shared/types/options";
 import { createOptions } from "@/utils/optionsCreator";
 import { toastConfig } from "@/config/toast";
+import { requiredRule } from "@/constants/rules";
 
 export const BaseInfoForm = () => {
   // STATES
@@ -28,6 +29,7 @@ export const BaseInfoForm = () => {
     watch,
     reset,
     setValue,
+    unregister,
   } = useForm<FieldValues>({
     defaultValues: {
       title: "",
@@ -46,22 +48,22 @@ export const BaseInfoForm = () => {
   } = useGetLookupDistinctQuery();
 
   const [
-    getLookUp,
-    { isLoading: isLookUpLoading, isFetching: isLookUpFetching },
-  ] = useLazyGetLookupQuery();
+    getParent,
+    { isLoading: isParentLoading, isFetching: isParentFetching },
+  ] = useLazyGetLookupParentQuery();
 
   const [insertLookup, { isLoading: isInsertLoading }] =
     useInsertLookupMutation();
 
   // HANDLERS
   const fetchLookUp = useCallback(async () => {
-    const response = await getLookUp({
-      lookupType: form_data?.type?.value,
-    }).unwrap();
-    const options = createOptions(response.itemList, "lookUpID", "lookUpName");
+    const response = await getParent(form_data?.type?.value).unwrap();
+    const options = createOptions(response.itemList, "id", "lookUpName");
+    if (response.itemList.length === 0 && form_data?.type?.value) {
+      unregister("parent");
+    }
     setParentOptions(options);
-    console.log(response);
-  }, [getLookUp, form_data?.type?.value]);
+  }, [getParent, form_data?.type?.value, unregister]);
 
   const onSubmit = async (formData: FieldValues) => {
     const data = {
@@ -116,12 +118,7 @@ export const BaseInfoForm = () => {
             label="عنوان"
             control={control}
             required={true}
-            rules={{
-              required: {
-                value: true,
-                message: "این فیلد اجباری است",
-              },
-            }}
+            rules={requiredRule}
           />
 
           <SelectInput
@@ -129,34 +126,34 @@ export const BaseInfoForm = () => {
             label="نوع"
             options={typeOptions}
             control={control}
+            rules={requiredRule}
             required={true}
             isClearable={true}
             isLoading={isDistinctLoading}
             errors={errors}
-            rules={{
-              required: {
-                value: true,
-                message: "این فیلد اجباری است",
-              },
-            }}
           />
 
-          <SelectInput
-            name="parent"
-            label="از مجموعه"
-            options={parentOptions}
-            isLoading={isLookUpLoading || isLookUpFetching}
-            control={control}
-            required={false}
-            isClearable={true}
-          />
+          {parentOptions && parentOptions.length > 0 && (
+            <SelectInput
+              name="parent"
+              label="از مجموعه"
+              rules={requiredRule}
+              options={parentOptions}
+              isLoading={isParentLoading || isParentFetching}
+              control={control}
+              required={true}
+              isClearable={true}
+              errors={errors}
+            />
+          )}
 
           <TextArea
             name="description"
             label="شرح"
             control={control}
             required={true}
-            containerClassNames={"col-span-2 row-span-2"}
+            rules={requiredRule}
+            containerClassNames={"col-span-3 row-span-2"}
           />
         </div>
 

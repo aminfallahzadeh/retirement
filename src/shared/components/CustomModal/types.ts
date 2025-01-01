@@ -6,4 +6,5 @@ export type CustomModalProps = {
   ariaLabel?: string;
   ariaDescription?: string;
   fullScreen?: boolean;
+  bigTitle?: boolean;
 };
