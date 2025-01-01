@@ -45,6 +45,7 @@ export const UPDATE_HEIR = "ویرایش موظف";
 export const CONTINUE = "ادامه";
 export const CALCULATE = "محاسبه";
 export const PRINT = "چاپ";
+export const INQUIRY = "استعلام";
 
 // SCREENS
 export const RETIRED_INFO = "اطلاعات بازنشسته";
@@ -232,6 +233,7 @@ export const EMPLOYEE_TYPE = "نوع خدمت";
 export const REAL_TOTAL = "جمع واقعی";
 export const CHEST_NAME = "نام صندوق";
 export const ORGANIZATION = "سازمان";
+export const LIVING_STATUS = "وضعیت حیات";
 
 // VETERAN
 export const SACRIFICED_FAMILY = "خانواده شهید";
@@ -251,6 +253,7 @@ export const GENERATE_STATEMENT = "صدور حکم";
 export const STATEMENT_PRINT = "چاپ حکم";
 export const REQUEST_INFO = "اطلاعات درخواست";
 export const STATEMENTS_AND_TARIFF = "احکام و تعرفه";
+export const NATIONAL_CODE_INQUIRY = "استعلام ثبت احوال";
 
 // TITLES
 export const BACKUP_INFO = "اطلاعات پشتیبان";

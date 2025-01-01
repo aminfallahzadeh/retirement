@@ -12,6 +12,7 @@ import { LoadingButton } from "@mui/lab";
 import { Box, CircularProgress } from "@mui/material";
 import { separateByThousand } from "@/helpers/numberConverter";
 import { useEnterToSubmit } from "@/hooks/useEnterToSubmit";
+import { yearKeys } from "./schema";
 import {
   INCLUDED_FRACTION_AMOUNT,
   TRANSFERRED_AMOUNT,
@@ -74,7 +75,7 @@ const CalculateFractionStepTwo = () => {
     const data = response?.itemList[0];
 
     Object.keys(data).forEach((key) => {
-      if (typeof data[key] === "number") {
+      if (typeof data[key] === "number" && !yearKeys.includes(key)) {
         setValue(key, separateByThousand(data[key]));
       } else {
         setValue(key, data[key]);
@@ -158,7 +159,7 @@ const CalculateFractionStepTwo = () => {
               />
 
               <Input
-                name="sumFraction"
+                name="includedFraction"
                 label={INCLUDED_FRACTION_AMOUNT}
                 editable={false}
                 required={false}

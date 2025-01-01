@@ -96,20 +96,6 @@ const CalculateFractionStepThree = () => {
             setValue(key, data[key]);
           }
         });
-
-        setValue(
-          "sumFractionOrganizationPercent",
-          `%${separateByThousand(
-            ((data.sumFractionOrganization * 100) / data.sumFraction).toFixed(2)
-          )}`
-        );
-
-        setValue(
-          "sumFractionPersonnelPercent",
-          `%${separateByThousand(
-            ((data.sumFractionPersonnel * 100) / data.sumFraction).toFixed(2)
-          )}`
-        );
       } else {
         dispatch(setFractionData(null));
         toastConfig.success(response.message);
@@ -216,7 +202,7 @@ const CalculateFractionStepThree = () => {
               />
 
               <Input
-                name="sumFractionOrganizationPercent"
+                name="organizationPercent"
                 label={MANAGER_PERCENT_SHARE}
                 editable={false}
                 required={false}
@@ -225,7 +211,7 @@ const CalculateFractionStepThree = () => {
               />
 
               <Input
-                name="sumFractionPersonnelPercent"
+                name="personnelPercent"
                 label={PERSONNEL_PERCENT_SHARE}
                 editable={false}
                 required={false}
