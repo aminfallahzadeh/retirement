@@ -234,6 +234,8 @@ export const REAL_TOTAL = "جمع واقعی";
 export const CHEST_NAME = "نام صندوق";
 export const ORGANIZATION = "سازمان";
 export const LIVING_STATUS = "وضعیت حیات";
+export const ACTIVE = "فعال";
+export const IDENTIFIER = "شناسه";
 
 // VETERAN
 export const SACRIFICED_FAMILY = "خانواده شهید";
@@ -266,6 +268,8 @@ export const RETIREMENT_STATEMENT = "حکم بازنشستگی";
 export const SELECT_EXPERT = "انتخاب کارشناس";
 export const RECRUITING_STATEMENT = "حکم کارگزینی";
 export const TEHRAN_MUNICIPALITY = "شهرداری تهران";
+export const BASE_INFO = "اطلاعات پایه";
+export const BASE_INFO_2 = "اطلاعات پایه ۲";
 
 // TABS
 export const SUBMIT_FRACTION = "ثبت کسورات";

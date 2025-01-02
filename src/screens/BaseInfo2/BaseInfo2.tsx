@@ -1,14 +1,12 @@
 // IMPORTS
 import { BaseInfoForm } from "./forms";
+import { Title } from "@/shared/components/Title";
+import { BASE_INFO_2 } from "@/constants/const";
 
 const BaseInfo2 = () => {
   const content = (
     <section className="flex-col">
-      <div className="title-primary--container flex-row flex-center">
-        <h4 className="title-primary">
-          <span className="title-primary--underline"></span>اطلاعات پایه ۲
-        </h4>
-      </div>
+      <Title title={BASE_INFO_2} back={true} />
 
       <BaseInfoForm />
     </section>

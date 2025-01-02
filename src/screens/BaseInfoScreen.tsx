@@ -1,7 +1,6 @@
 // IMPORTS
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import { ArrowDropDown as ArrowDropDownIcon } from "@mui/icons-material";
-import BaseOrganizationForm from "@/forms/BaseInfoForms/BaseOrganizationForm";
 import BaseFractionForm from "@/forms/BaseInfoForms/BaseFractionForm";
 import BaseBankBranchForm from "@/forms/BaseInfoForms/BaseBankBranchForm";
 import BaseJobForm from "@/forms/BaseInfoForms/BaseJobForm";
@@ -16,10 +15,13 @@ import BaseRetiredConditionForm from "@/forms/BaseInfoForms/BaseRetiredCondition
 import BaseRelatedConditionForm from "@/forms/BaseInfoForms/BaseRelatedConditionForm";
 import BaseHeirConditionForm from "@/forms/BaseInfoForms/BaseHeirConditionForm";
 import BaseFixedAmountForm from "@/forms/BaseInfoForms/BaseFixedAmountForm";
+import BaseInfo from "./BaseInfo/BaseInfo";
 
 function BaseInfoScreen() {
   const content = (
     <section className="flex-col u-margin-bottom-xl">
+      <BaseInfo />
+
       <div className="title-primary--container flex-row flex-center">
         <h4 className="title-primary">
           <span className="title-primary--underline"></span>اطلاعات پایه
@@ -27,19 +29,6 @@ function BaseInfoScreen() {
       </div>
 
       <div>
-        <Accordion slotProps={{ transition: { unmountOnExit: true } }}>
-          <AccordionSummary
-            id="panel-header"
-            aria-controls="panel-content"
-            expandIcon={<ArrowDropDownIcon />}
-          >
-            فرم اطلاعات پایه سازمان
-          </AccordionSummary>
-          <AccordionDetails>
-            <BaseOrganizationForm />
-          </AccordionDetails>
-        </Accordion>
-
         <Accordion slotProps={{ transition: { unmountOnExit: true } }}>
           <AccordionSummary
             id="panel-header"
