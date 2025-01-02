@@ -34,6 +34,8 @@ export const processDataForView = (
           : options[key]?.find(
               (option: Option) => option.value === transformedData[key]
             );
+    } else if (!transformedData[key]) {
+      transformedData[key] = "";
     }
   });
 
@@ -43,7 +45,9 @@ export const processDataForView = (
 export const processDataForRequest = (
   data: any,
   selectKeys: string[],
-  dateKeys: string[]
+  dateKeys: string[],
+  intKeys: string[],
+  floatKeys: string[]
 ) => {
   const result = { ...data };
 
@@ -68,6 +72,19 @@ export const processDataForRequest = (
   Object.keys(result).forEach((key) => {
     if (!dateKeys.includes(key) && !selectKeys.includes(key)) {
       result[key] = convertToEnglishNumber(data[key]);
+    }
+    if (result[key] == null || result[key] === "") {
+      result[key] = null;
+    }
+    if (intKeys.includes(key)) {
+      result[key] = result[key]
+        ? parseInt(convertToEnglishNumber(result[key]))
+        : null;
+    }
+    if (floatKeys.includes(key)) {
+      result[key] = result[key]
+        ? parseFloat(convertToEnglishNumber(result[key]))
+        : null;
     }
   });
 

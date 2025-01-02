@@ -34,7 +34,7 @@ import {
   onlyNumbersRules,
   postalCodeRules,
 } from "@/constants/rules";
-import { updateFormSchema } from "./schema";
+import { updateFormSchema, intKeys } from "./schema";
 import {
   SAVE,
   RELATION,
@@ -205,7 +205,13 @@ const UpdateRelated = () => {
   // HANDLERS
   const onSubmit = async (data: FieldValues) => {
     // CONVERT DATA FOR REQUEST
-    const transformedData = processDataForRequest(data, selectKeys, dateKeys);
+    const transformedData = processDataForRequest(
+      data,
+      selectKeys,
+      dateKeys,
+      intKeys,
+      []
+    );
     const response = await updateRelated({
       ...transformedData,
       parentPersonID,

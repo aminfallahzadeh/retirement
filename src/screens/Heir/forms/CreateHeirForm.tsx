@@ -18,6 +18,7 @@ import { SelectInput } from "@/shared/components/SelectInput";
 import { createOptions } from "@/utils/optionsCreator";
 import { processDataForRequest } from "@/utils/convertFormData";
 import { toastConfig } from "@/config/toast";
+import { intKeys, floatKeys } from "./schema";
 import { useInsertHeirMutation } from "@/features/heir/heirApi";
 import {
   requiredRule,
@@ -190,7 +191,13 @@ const CreateHeirForm = () => {
 
   const onSubmit = async (data: FieldValues) => {
     // PROCESS DATA FOR SUBMIT
-    const transformedData = processDataForRequest(data, selectKeys, dateKeys);
+    const transformedData = processDataForRequest(
+      data,
+      selectKeys,
+      dateKeys,
+      intKeys,
+      floatKeys
+    );
     const response = await insertHeir({
       ...transformedData,
       parentPersonID,

@@ -9,7 +9,6 @@ import { DatePicker } from "@/shared/components/DatePicker";
 import { SelectInput } from "@/shared/components/SelectInput";
 import { createOptions } from "@/utils/optionsCreator";
 import { convertToPersianDate } from "@/helpers/dateConverter";
-import { convertToEnglishNumber } from "@/helpers/numberConverter";
 import { toastConfig } from "@/config/toast";
 import { Box, CircularProgress } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
@@ -36,7 +35,7 @@ import {
   onlyNumbersRules,
   onlyPersianAlphabetsRules,
 } from "@/constants/rules";
-import { retiredPensionarySchema } from "./schema";
+import { retiredPensionarySchema, retiredPensionaryIntKeys } from "./schema";
 import {
   GROUP,
   SAVE,
@@ -149,20 +148,16 @@ export const PensionaryForm = () => {
 
   const onSubmit = async (data: FieldValues) => {
     // CONVERT DATA FOR REQUEST
-    const transformedData = processDataForRequest(data, selectKeys, dateKeys);
+    const transformedData = processDataForRequest(
+      data,
+      selectKeys,
+      dateKeys,
+      retiredPensionaryIntKeys,
+      []
+    );
 
     const response = await updateRetiredPensionary({
       ...transformedData,
-      retiredGroup: parseInt(convertToEnglishNumber(data.retiredGroup)),
-      retiredJobDegreeCoef: parseInt(
-        convertToEnglishNumber(data.retiredJobDegreeCoef)
-      ),
-      retiredRealDuration: parseInt(
-        convertToEnglishNumber(data.retiredRealDuration)
-      ),
-      retiredGrantDuration: parseInt(
-        convertToEnglishNumber(data.retiredGrantDuration)
-      ),
       personID,
     }).unwrap();
     toggleEditable();

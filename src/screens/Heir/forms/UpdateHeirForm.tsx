@@ -36,7 +36,7 @@ import {
   onlyNumbersRules,
   postalCodeRules,
 } from "@/constants/rules";
-import { heirSchema, dateKeys, selectKeys } from "./schema";
+import { heirSchema, dateKeys, selectKeys, intKeys, floatKeys } from "./schema";
 import {
   SAVE,
   RELATION,
@@ -205,7 +205,13 @@ const UpdateHeirForm = () => {
   const onSubmit = async (data: FieldValues) => {
     // CONVERT DATA FOR REQUEST
 
-    const transformedData = processDataForRequest(data, selectKeys, dateKeys);
+    const transformedData = processDataForRequest(
+      data,
+      selectKeys,
+      dateKeys,
+      intKeys,
+      floatKeys
+    );
     const response = await updateHeir({
       ...transformedData,
       parentPersonID,

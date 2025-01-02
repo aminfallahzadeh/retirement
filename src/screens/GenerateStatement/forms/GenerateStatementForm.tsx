@@ -14,7 +14,7 @@ import { requiredRule, onlyNumbersRules } from "@/constants/rules";
 import { baseSalaryOptions } from "@/data/control";
 import { convertToPersianDate } from "@/helpers/dateConverter";
 import { processDataForRequest } from "@/utils/convertFormData";
-import { dateKeys, selectKeys } from "./schema";
+import { dateKeys, selectKeys, intKeys } from "./schema";
 import { toastConfig } from "@/config/toast";
 import {
   useGenerateNewRetirementStatementMutation,
@@ -65,7 +65,13 @@ const GenerateStatementForm = () => {
   // HANDLERS
   const onSubmit = async (data: FieldValues) => {
     // PROCESS DATA FOR SUBMIT
-    const transformedData = processDataForRequest(data, selectKeys, dateKeys);
+    const transformedData = processDataForRequest(
+      data,
+      selectKeys,
+      dateKeys,
+      intKeys,
+      []
+    );
     const response = await generateStatement({
       ...transformedData,
       personID,

@@ -17,6 +17,7 @@ import { SelectInput } from "@/shared/components/SelectInput";
 import { createOptions } from "@/utils/optionsCreator";
 import { processDataForRequest } from "@/utils/convertFormData";
 import { toastConfig } from "@/config/toast";
+import { intKeys } from "./schema";
 import {
   requiredRule,
   onlyPersianAlphabetsRules,
@@ -171,7 +172,13 @@ const CreateRelated = () => {
   // HANDLERS
   const onSubmit = async (data: FieldValues) => {
     // CONVERT DATA FOR REQUEST
-    const transformedData = processDataForRequest(data, selectKeys, dateKeys);
+    const transformedData = processDataForRequest(
+      data,
+      selectKeys,
+      dateKeys,
+      intKeys,
+      []
+    );
     const response = await insertRelated({
       ...transformedData,
       parentPersonID,

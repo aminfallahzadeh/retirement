@@ -29,7 +29,13 @@ export const InsertAnnounceForm = () => {
   // HANDLERS
   const onSubmit = async (data: FieldValues) => {
     // PROCESS DATA FOR REQUEST
-    const transformedData = processDataForRequest(data, [], ["runDate"]);
+    const transformedData = processDataForRequest(
+      data,
+      [],
+      ["runDate"],
+      [],
+      []
+    );
     const response = await insertAnnounce({
       ...transformedData,
       runDate: transformedData.runDate,

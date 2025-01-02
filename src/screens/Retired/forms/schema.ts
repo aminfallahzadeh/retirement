@@ -56,3 +56,27 @@ export const retiredAdditionalInfoSchema: string[] = [
   "insuranceCoef",
   "insuranceAmount",
 ];
+
+export const retiredPersonIntKeys: string[] = [
+  "personRegion",
+  "personArea",
+  "retiredID",
+];
+
+export const retiredPensionaryIntKeys: string[] = [
+  "retiredGroup",
+  "retiredJobDegree",
+  "retiredJobDegreeCoef",
+  "retiredRealDuration",
+  "retiredRealDurationYEAR",
+  "retiredRealDurationMONTH",
+  "retiredRealDurationDAY",
+  "retiredGrantDuration",
+];
+
+export const retiredAdditionalInfoIntKeys: string[] = ["ledgerCode"];
+
+export const retiredPersonFloatKeys: string[] = [
+  "insuranceAmount",
+  "insuranceCoef",
+];

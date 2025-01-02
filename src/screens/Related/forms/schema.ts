@@ -37,3 +37,5 @@ export const updateFormSchema: string[] = [
   "backupCellphone",
   "backupAddress",
 ];
+
+export const intKeys: string[] = ["personRegion", "personArea", "relatedID"];

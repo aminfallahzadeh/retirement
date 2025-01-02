@@ -9,7 +9,6 @@ import {
   useUpdateRetiredAccountMutation,
   useGetRetiredAccountQuery,
 } from "@/features/retired/retiredApi";
-import { convertToEnglishNumber } from "@/helpers/numberConverter";
 import { Input } from "@/shared/components/Input";
 import { SelectInput } from "@/shared/components/SelectInput";
 import { LoadingButton } from "@mui/lab";
@@ -21,7 +20,11 @@ import { createOptions } from "@/utils/optionsCreator";
 import { onlyNumbersRules } from "@/constants/rules";
 import { toastConfig } from "@/config/toast";
 import { processDataForRequest } from "@/utils/convertFormData";
-import { retiredAdditionalInfoSchema } from "./schema";
+import {
+  retiredAdditionalInfoSchema,
+  retiredAdditionalInfoIntKeys,
+  retiredPersonFloatKeys,
+} from "./schema";
 import {
   BANK,
   SAVE,
@@ -94,16 +97,16 @@ export const AdditionalInfoForm = () => {
 
   const onSubmit = async (data: FieldValues) => {
     // CONVERT DATA FOR REQUEST
-    const transformedData = processDataForRequest(data, selectKeys, dateKeys);
+    const transformedData = processDataForRequest(
+      data,
+      selectKeys,
+      dateKeys,
+      retiredAdditionalInfoIntKeys,
+      retiredPersonFloatKeys
+    );
 
     const response = await updateRetiredAccount({
       ...transformedData,
-      accountNo: convertToEnglishNumber(data.accountNo) || null,
-      ledgerCode: parseInt(convertToEnglishNumber(data.ledgerCode)) || null,
-      insuranceAmount:
-        parseFloat(convertToEnglishNumber(data.insuranceAmount)) || null,
-      insuranceCoef:
-        parseFloat(convertToEnglishNumber(data.insuranceCoef)) || null,
       personID,
     }).unwrap();
     refetch();

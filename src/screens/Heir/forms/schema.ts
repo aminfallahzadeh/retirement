@@ -49,3 +49,13 @@ export const selectKeys: string[] = [
   "bankID",
   "bankBranchID",
 ];
+
+export const intKeys: string[] = [
+  "personRegion",
+  "personArea",
+  "heirID",
+  "ledgerCode",
+  "insuranceAmount",
+];
+
+export const floatKeys: string[] = ["insuranceCoef"];

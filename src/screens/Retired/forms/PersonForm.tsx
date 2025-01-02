@@ -13,7 +13,6 @@ import { Input } from "@/shared/components/Input";
 import { SelectInput } from "@/shared/components/SelectInput";
 import { DatePicker } from "@/shared/components/DatePicker";
 import { CustomCheckBox } from "@/shared/components/CustomCheckBox";
-import { NumberInput } from "@/shared/components/NumberInput";
 import { TextArea } from "@/shared/components/TextArea";
 import DoneIcon from "@mui/icons-material/DoneOutlined";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
@@ -22,7 +21,7 @@ import { LoadingButton } from "@mui/lab";
 import useToggleState from "@/hooks/useToggleState";
 import { useFetchLookUpData } from "@/hooks/useFetchLookUpData";
 import { createOptions } from "@/utils/optionsCreator";
-import { retiredPersonSchema } from "./schema";
+import { retiredPersonSchema, retiredPersonIntKeys } from "./schema";
 import {
   processDataForView,
   processDataForRequest,
@@ -102,9 +101,7 @@ export const PersonForm = () => {
     handleSubmit,
     formState: { errors },
     setValue,
-    watch,
   } = useForm<FieldValues>();
-  const form_data = watch();
 
   // FETCH DATA
   const {
@@ -175,12 +172,15 @@ export const PersonForm = () => {
   // HANDLERS
   const onSubmit = async (data: FieldValues) => {
     // CONVERT DATA FOR REQUEST
-    const transformedData = processDataForRequest(data, selectKeys, dateKeys);
+    const transformedData = processDataForRequest(
+      data,
+      selectKeys,
+      dateKeys,
+      retiredPersonIntKeys,
+      []
+    );
 
-    const response = await updateRetiredPerson({
-      ...transformedData,
-      personRegion: data.personRegion ? parseInt(data.personRegion) : null,
-    }).unwrap();
+    const response = await updateRetiredPerson(transformedData).unwrap();
     refetch();
     toggleEditable();
     toastConfig.success(response.message);
@@ -243,11 +243,6 @@ export const PersonForm = () => {
     dateKeys,
     selectKeys,
   ]);
-
-  // DEBUG
-  useEffect(() => {
-    console.log(form_data);
-  }, [form_data]);
 
   const content = (
     <>
